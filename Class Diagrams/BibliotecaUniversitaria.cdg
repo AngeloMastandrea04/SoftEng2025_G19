@@ -2,7 +2,7 @@
 
 <ClassDiagram name="BibliotecaUniversitaria">
   <ClassDiagramComponents>
-    <Class name="Utente" package="" visibility="public" xPosition="148.0" yPosition="106.0">
+    <Class name="Utente" package="" visibility="public" xPosition="20.0" yPosition="35.0">
       <Fields>
         <Field name="nome" type="SimpleStringProperty" visibility="private"/>
         <Field name="cognome" type="SimpleStringProperty" visibility="private"/>
@@ -27,7 +27,7 @@
         <Method name="getPrestitiAttivi" returnType="ObservableList&lt;Prestito&gt;" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Libro" package="" visibility="public" xPosition="121.0" yPosition="446.0">
+    <Class name="Libro" package="" visibility="public" xPosition="20.0" yPosition="463.0">
       <Fields>
         <Field name="titolo" type="SimpleStringProperty" visibility="private"/>
         <Field name="autore" type="SimpleStringProperty" visibility="private"/>
@@ -55,6 +55,26 @@
         <Method name="getIsbn" returnType="String" visibility="public"/>
         <Method name="incrementaDisponibili" returnType="void" visibility="public"/>
         <Method name="decrementaDisponibili" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Prestito" package="" visibility="public" xPosition="634.0" yPosition="213.0">
+      <Fields>
+        <Field name="utente" type="ObjectProperty&lt;Utente&gt;" visibility="private"/>
+        <Field name="libro" type="ObjectProperty&lt;Libro&gt;" visibility="private"/>
+        <Field name="dataRestituzione" type="ObjectProperty&lt;LocalDate&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Utente" name="utente"/>
+          <Argument type="Libro" name="libro"/>
+          <Argument type="LocalDate" name="dataRestituzione"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="utenteProperty" returnType="ObjectProperty&lt;Utente&gt;" visibility="public"/>
+        <Method name="libroProperty" returnType="ObjectProperty&lt;Libro&gt;" visibility="public"/>
+        <Method name="dataRestituzioneProperty" returnType="ObjectProperty&lt;LocalDate&gt;" visibility="public"/>
+        <Method name="isScaduto" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
   </ClassDiagramComponents>
