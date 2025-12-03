@@ -2,8 +2,6 @@
 
 <ClassDiagram name="BibliotecaUniversitaria">
   <ClassDiagramComponents>
-
-
     <Class name="Utente" package="" visibility="public" xPosition="20.0" yPosition="35.0">
       <Fields>
         <Field name="nome" type="SimpleStringProperty" visibility="private"/>
@@ -12,7 +10,6 @@
         <Field name="email" type="SimpleStringProperty" visibility="private"/>
         <Field name="prestitiAttivi" type="ObservableList&lt;Prestito&gt;" visibility="private"/>
       </Fields>
-
       <Constructors>
         <Constructor visibility="public">
           <Argument type="String" name="nome"/>
@@ -21,7 +18,6 @@
           <Argument type="String" name="email"/>
         </Constructor>
       </Constructors>
-
       <Methods>
         <Method name="nomeProperty" returnType="StringProperty" visibility="public"/>
         <Method name="cognomeProperty" returnType="StringProperty" visibility="public"/>
@@ -31,8 +27,6 @@
         <Method name="getPrestitiAttivi" returnType="ObservableList&lt;Prestito&gt;" visibility="public"/>
       </Methods>
     </Class>
-
-
     <Class name="Libro" package="" visibility="public" xPosition="20.0" yPosition="463.0">
       <Fields>
         <Field name="titolo" type="SimpleStringProperty" visibility="private"/>
@@ -42,7 +36,6 @@
         <Field name="copieTotali" type="SimpleIntegerProperty" visibility="private"/>
         <Field name="copieDisponibili" type="SimpleIntegerProperty" visibility="private"/>
       </Fields>
-
       <Constructors>
         <Constructor visibility="public">
           <Argument type="String" name="nome"/>
@@ -53,7 +46,6 @@
           <Argument type="int" name="copieDisponibili"/>
         </Constructor>
       </Constructors>
-
       <Methods>
         <Method name="titoloProperty" returnType="StringProperty" visibility="public"/>
         <Method name="autoreProperty" returnType="StringProperty" visibility="public"/>
@@ -65,15 +57,13 @@
         <Method name="decrementaDisponibili" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-
-
     <Class name="Prestito" package="" visibility="public" xPosition="589.0" yPosition="35.0">
       <Fields>
         <Field name="utente" type="ObjectProperty&lt;Utente&gt;" visibility="private"/>
         <Field name="libro" type="ObjectProperty&lt;Libro&gt;" visibility="private"/>
         <Field name="dataRestituzione" type="ObjectProperty&lt;LocalDate&gt;" visibility="private"/>
+        <Field name="isScaduto" type="SimpleBooleanProperty" visibility="private"/>
       </Fields>
-
       <Constructors>
         <Constructor visibility="public">
           <Argument type="Utente" name="utente"/>
@@ -81,28 +71,25 @@
           <Argument type="LocalDate" name="dataRestituzione"/>
         </Constructor>
       </Constructors>
-
       <Methods>
         <Method name="utenteProperty" returnType="ObjectProperty&lt;Utente&gt;" visibility="public"/>
         <Method name="libroProperty" returnType="ObjectProperty&lt;Libro&gt;" visibility="public"/>
         <Method name="dataRestituzioneProperty" returnType="ObjectProperty&lt;LocalDate&gt;" visibility="public"/>
-        <Method name="isScaduto" returnType="Boolean" visibility="public"/>
+        <Method name="isScadutoProperty" returnType="BooleanProperty" visibility="public"/>
       </Methods>
     </Class>
-
-
-    <Class name="Dashboard generale" package="" visibility="public" xPosition="620.0" yPosition="306.0">
+    <Class name="DashboardGenerale" package="" visibility="public" xPosition="46.0" yPosition="883.0">
       <Fields>
         <Field name="sezUtenti" type="Button" visibility="private"/>
         <Field name="sezLibri" type="Button" visibility="private"/>
         <Field name="sezPrestiti" type="Button" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="private"/>
+      </Methods>
     </Class>
-
-
-    <Class name="Sezione Libri" package="" visibility="public" xPosition="41.0" yPosition="864.0">
+    <Class name="SezioneLibri" package="" visibility="public" xPosition="589.0" yPosition="883.0">
       <Fields>
         <Field name="tabLibri" type="TableView" visibility="private"/>
         <Field name="cTitolo" type="TableColumn" visibility="private"/>
@@ -116,11 +103,11 @@
         <Field name="cancLibro" type="Button" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="private"/>
+      </Methods>
     </Class>
-
-
-    <Class name="Sezione Utenti" package="" visibility="public" xPosition="905.0" yPosition="306.0">
+    <Class name="SezioneUtenti" package="" visibility="public" xPosition="280.0" yPosition="883.0">
       <Fields>
         <Field name="tabUtenti" type="TableView" visibility="private"/>
         <Field name="cCognome" type="TableColumn" visibility="private"/>
@@ -133,11 +120,11 @@
         <Field name="cancUtente" type="Button" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="private"/>
+      </Methods>
     </Class>
-
-
-    <Class name="Sezione Presiti" package="" visibility="public" xPosition="277.0" yPosition="884.0">
+    <Class name="SezionePresiti" package="" visibility="public" xPosition="851.0" yPosition="883.0">
       <Fields>
         <Field name="tabPrestiti" type="TableView" visibility="private"/>
         <Field name="cUtente" type="TableColumn" visibility="private"/>
@@ -147,10 +134,44 @@
         <Field name="cancPrestito" type="Button" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="initialize" returnType="void" visibility="private"/>
+      </Methods>
     </Class>
-
+    <Class name="Biblioteca" package="" visibility="public" xPosition="728.0" yPosition="331.0">
+      <Fields>
+        <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="private"/>
+        <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="private"/>
+        <Field name="listaPrestiti" type="ObservableList&lt;Prestito&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="Biblioteca" visibility="public" isStatic="true"/>
+        <Method name="getListaUtenti" returnType="ObservableList&lt;Utente&gt;" visibility="public"/>
+        <Method name="getListaLibri" returnType="ObservableList&lt;Libro&gt;" visibility="public"/>
+        <Method name="getListaPrestiti" returnType="ObservableList&lt;Prestito&gt;" visibility="public"/>
+        <Method name="caricaDaFile" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="filename"/>
+        </Method>
+        <Method name="salvaSuFile" returnType="String" visibility="public">
+          <Argument type="String" name="filename"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Applicazione" package="" visibility="public" xPosition="762.0" yPosition="646.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="start" returnType="void" visibility="public">
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+      </Methods>
+    </Class>
   </ClassDiagramComponents>
-
   <ClassDiagramRelations/>
 </ClassDiagram>
