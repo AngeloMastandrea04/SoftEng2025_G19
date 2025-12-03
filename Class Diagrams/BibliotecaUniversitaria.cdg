@@ -57,7 +57,7 @@
         <Method name="decrementaDisponibili" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Prestito" package="" visibility="public" xPosition="634.0" yPosition="213.0">
+    <Class name="Prestito" package="" visibility="public" xPosition="589.0" yPosition="35.0">
       <Fields>
         <Field name="utente" type="ObjectProperty&lt;Utente&gt;" visibility="private"/>
         <Field name="libro" type="ObjectProperty&lt;Libro&gt;" visibility="private"/>
@@ -76,6 +76,30 @@
         <Method name="dataRestituzioneProperty" returnType="ObjectProperty&lt;LocalDate&gt;" visibility="public"/>
         <Method name="isScaduto" returnType="Boolean" visibility="public"/>
       </Methods>
+    </Class>
+    <Class name="Dashboard generale" package="" visibility="public" xPosition="620.0" yPosition="306.0">
+      <Fields>
+        <Field name="sezUtenti" type="Button" visibility="private"/>
+        <Field name="sezLibri" type="Button" visibility="private"/>
+        <Field name="sezPrestiti" type="Button" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Sezione Utenti" package="" visibility="public" xPosition="905.0" yPosition="306.0">
+      <Fields>
+        <Field name="tabUtenti" type="TableView" visibility="private"/>
+        <Field name="cCognome" type="TableColumn" visibility="private"/>
+        <Field name="cNome" type="TableColumn" visibility="private"/>
+        <Field name="cMatricola" type="TableColumn" visibility="private"/>
+        <Field name="cEmail" type="TableColumn" visibility="private"/>
+        <Field name="cPrestitiAttivi" type="TableColumn" visibility="private"/>
+        <Field name="ricUtente" type="TextField" visibility="private"/>
+        <Field name="addUtente" type="Button" visibility="private"/>
+        <Field name="cancUtente" type="Button" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations/>
