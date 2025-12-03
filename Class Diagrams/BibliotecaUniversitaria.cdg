@@ -77,6 +77,34 @@
         <Method name="isScaduto" returnType="Boolean" visibility="public"/>
       </Methods>
     </Class>
+    <Class name="Sezione Libri" package="" visibility="public" xPosition="41.0" yPosition="864.0">
+      <Fields>
+        <Field name="tabLibri" type="TableView" visibility="private"/>
+        <Field name="cTitolo" type="TableColumn" visibility="private"/>
+        <Field name="cAutori" type="TableColumn" visibility="private"/>
+        <Field name="cAnno" type="TableColumn" visibility="private"/>
+        <Field name="cISBN" type="TableColumn" visibility="private"/>
+        <Field name="cCatalogo" type="TableColumn" visibility="private"/>
+        <Field name="cDisponibili" type="TableColumn" visibility="private"/>
+        <Field name="ricLibro" type="TextField" visibility="private"/>
+        <Field name="addLibro" type="Button" visibility="private"/>
+        <Field name="cancLibro" type="Button" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Sezione Presiti" package="" visibility="public" xPosition="277.0" yPosition="884.0">
+      <Fields>
+        <Field name="tabPrestiti" type="TableView" visibility="private"/>
+        <Field name="cUtente" type="TableColumn" visibility="private"/>
+        <Field name="cLibro" type="TableColumn" visibility="private"/>
+        <Field name="cData" type="TableColumn" visibility="private"/>
+        <Field name="addPrestito" type="Button" visibility="private"/>
+        <Field name="cancPrestito" type="Button" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations/>
 </ClassDiagram>
