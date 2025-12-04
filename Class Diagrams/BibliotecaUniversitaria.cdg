@@ -25,7 +25,7 @@
         <Method name="emailProperty" returnType="StringProperty" visibility="public"/>
         <Method name="getMatricola" returnType="String" visibility="public"/>
         <Method name="getPrestitiAttivi" returnType="ObservableList&lt;Prestito&gt;" visibility="public"/>
-        <Method name="equals" returnType="Boolean" visibility="public">
+        <Method name="equals" returnType="boolean" visibility="public">
           <Argument type="Object" name="obj"/>
         </Method>
       </Methods>
@@ -58,7 +58,7 @@
         <Method name="getIsbn" returnType="String" visibility="public"/>
         <Method name="incrementaDisponibili" returnType="void" visibility="public"/>
         <Method name="decrementaDisponibili" returnType="void" visibility="public"/>
-        <Method name="equals" returnType="Boolean" visibility="public">
+        <Method name="equals" returnType="boolean" visibility="public">
           <Argument type="Object" name="obj"/>
         </Method>
       </Methods>
