@@ -25,6 +25,9 @@
         <Method name="emailProperty" returnType="StringProperty" visibility="public"/>
         <Method name="getMatricola" returnType="String" visibility="public"/>
         <Method name="getPrestitiAttivi" returnType="ObservableList&lt;Prestito&gt;" visibility="public"/>
+        <Method name="equals" returnType="Boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
       </Methods>
     </Class>
     <Class name="Libro" package="" visibility="public" xPosition="20.0" yPosition="463.0">
@@ -55,6 +58,9 @@
         <Method name="getIsbn" returnType="String" visibility="public"/>
         <Method name="incrementaDisponibili" returnType="void" visibility="public"/>
         <Method name="decrementaDisponibili" returnType="void" visibility="public"/>
+        <Method name="equals" returnType="Boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
       </Methods>
     </Class>
     <Class name="Prestito" package="" visibility="public" xPosition="589.0" yPosition="35.0">
@@ -138,11 +144,12 @@
         <Method name="initialize" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="Biblioteca" package="" visibility="public" xPosition="728.0" yPosition="331.0">
+    <Class name="Biblioteca" package="" visibility="public" xPosition="698.0" yPosition="412.0">
       <Fields>
         <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="private"/>
         <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="private"/>
         <Field name="listaPrestiti" type="ObservableList&lt;Prestito&gt;" visibility="private"/>
+        <Field name="instance" type="Biblioteca" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="private"/>
@@ -160,7 +167,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Applicazione" package="" visibility="public" xPosition="762.0" yPosition="646.0">
+    <Class name="Applicazione" package="" visibility="public" xPosition="1120.0" yPosition="412.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -173,5 +180,7 @@
       </Methods>
     </Class>
   </ClassDiagramComponents>
-  <ClassDiagramRelations/>
+  <ClassDiagramRelations>
+    <HasRelation name="instance" source="Biblioteca" target="Biblioteca" type="Default" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
 </ClassDiagram>
