@@ -117,7 +117,7 @@
         <Method name="apriSezPrestiti" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="SezioneLibri" package="" visibility="public" xPosition="450.0" yPosition="883.0">
+    <Class name="SezioneLibriController" package="" visibility="public" xPosition="450.0" yPosition="883.0">
       <Fields>
         <Field name="tabLibri" type="TableView" visibility="private"/>
         <Field name="cTitolo" type="TableColumn" visibility="private"/>
@@ -135,9 +135,10 @@
         <Method name="initialize" returnType="void" visibility="private"/>
         <Method name="aggiungiLibro" returnType="void" visibility="private"/>
         <Method name="cancellaLibro" returnType="void" visibility="private"/>
+        <Method name="tornaIndietro" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="SezioneUtenti" package="" visibility="public" xPosition="210.0" yPosition="883.0">
+    <Class name="SezioneUtentiController" package="" visibility="public" xPosition="210.0" yPosition="883.0">
       <Fields>
         <Field name="tabUtenti" type="TableView" visibility="private"/>
         <Field name="cCognome" type="TableColumn" visibility="private"/>
@@ -154,9 +155,10 @@
         <Method name="initialize" returnType="void" visibility="private"/>
         <Method name="aggiungiUtente" returnType="void" visibility="private"/>
         <Method name="cancellaUtente" returnType="void" visibility="private"/>
+        <Method name="tornaIndietro" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="SezionePresiti" package="" visibility="public" xPosition="676.0" yPosition="883.0">
+    <Class name="SezionePresitiController" package="" visibility="public" xPosition="676.0" yPosition="883.0">
       <Fields>
         <Field name="tabPrestiti" type="TableView" visibility="private"/>
         <Field name="cUtente" type="TableColumn" visibility="private"/>
@@ -172,6 +174,7 @@
         <Method name="initialize" returnType="void" visibility="private"/>
         <Method name="aggiungiPrestito" returnType="void" visibility="private"/>
         <Method name="cancellaPrestito" returnType="void" visibility="private"/>
+        <Method name="tornaIndietro" returnType="void" visibility="private"/>
       </Methods>
     </Class>
     <Class name="Biblioteca" package="" visibility="public" xPosition="36.0" yPosition="533.0">
@@ -208,6 +211,20 @@
           <Argument type="Stage" name="primaryStage"/>
         </Method>
       </Methods>
+    </Class>
+    <Class name="AggiungiUtenteDialog" package="" visibility="public" xPosition="36.0" yPosition="1200.0">
+      <Fields>
+        <Field name="nomeField" type="TextField" visibility="private"/>
+        <Field name="cognomeField" type="TextField" visibility="private"/>
+        <Field name="matricolaField" type="TextField" visibility="private"/>
+        <Field name="matricolaError" type="Label" visibility="private"/>
+        <Field name="emailField" type="TextField" visibility="private"/>
+        <Field name="emailError" type="Label" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
