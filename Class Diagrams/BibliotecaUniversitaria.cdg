@@ -32,7 +32,7 @@
         <Method name="cognomeProperty" returnType="StringProperty" visibility="public"/>
         <Method name="matricolaProperty" returnType="StringProperty" visibility="public"/>
         <Method name="emailProperty" returnType="StringProperty" visibility="public"/>
-        <Method name="equals" returnType="boolean" visibility="public">
+        <Method name="equals" returnType="Object" visibility="public">
           <Argument type="Object" name="obj"/>
         </Method>
         <Method name="toString" returnType="String" visibility="public"/>
@@ -77,7 +77,7 @@
         <Method name="isbnProperty" returnType="StringProperty" visibility="public"/>
         <Method name="copieTotaliProperty" returnType="IntegerProperty" visibility="public"/>
         <Method name="copieDisponibiliProperty" returnType="IntegerProperty" visibility="public"/>
-        <Method name="equals" returnType="boolean" visibility="public">
+        <Method name="equals" returnType="Object" visibility="public">
           <Argument type="Object" name="obj"/>
         </Method>
         <Method name="toString" returnType="String" visibility="public"/>
@@ -107,7 +107,7 @@
         <Method name="toStringUtente" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="DashboardGenerale" package="" visibility="public" xPosition="36.0" yPosition="883.0">
+    <Class name="DashboardGeneraleController" package="" visibility="public" xPosition="36.0" yPosition="883.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -117,7 +117,7 @@
         <Method name="apriSezPrestiti" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="SezioneLibri" package="" visibility="public" xPosition="450.0" yPosition="883.0">
+    <Class name="SezioneLibriController" package="" visibility="public" xPosition="507.0" yPosition="883.0">
       <Fields>
         <Field name="tabLibri" type="TableView" visibility="private"/>
         <Field name="cTitolo" type="TableColumn" visibility="private"/>
@@ -135,9 +135,10 @@
         <Method name="initialize" returnType="void" visibility="private"/>
         <Method name="aggiungiLibro" returnType="void" visibility="private"/>
         <Method name="cancellaLibro" returnType="void" visibility="private"/>
+        <Method name="tornaIndietro" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="SezioneUtenti" package="" visibility="public" xPosition="210.0" yPosition="883.0">
+    <Class name="SezioneUtentiController" package="" visibility="public" xPosition="264.0" yPosition="883.0">
       <Fields>
         <Field name="tabUtenti" type="TableView" visibility="private"/>
         <Field name="cCognome" type="TableColumn" visibility="private"/>
@@ -154,9 +155,10 @@
         <Method name="initialize" returnType="void" visibility="private"/>
         <Method name="aggiungiUtente" returnType="void" visibility="private"/>
         <Method name="cancellaUtente" returnType="void" visibility="private"/>
+        <Method name="tornaIndietro" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="SezionePresiti" package="" visibility="public" xPosition="676.0" yPosition="883.0">
+    <Class name="SezionePresitiController" package="" visibility="public" xPosition="730.0" yPosition="883.0">
       <Fields>
         <Field name="tabPrestiti" type="TableView" visibility="private"/>
         <Field name="cUtente" type="TableColumn" visibility="private"/>
@@ -172,6 +174,7 @@
         <Method name="initialize" returnType="void" visibility="private"/>
         <Method name="aggiungiPrestito" returnType="void" visibility="private"/>
         <Method name="cancellaPrestito" returnType="void" visibility="private"/>
+        <Method name="tornaIndietro" returnType="void" visibility="private"/>
       </Methods>
     </Class>
     <Class name="Biblioteca" package="" visibility="public" xPosition="36.0" yPosition="533.0">
@@ -189,25 +192,77 @@
         <Method name="getListaUtenti" returnType="ObservableList&lt;Utente&gt;" visibility="public"/>
         <Method name="getListaLibri" returnType="ObservableList&lt;Libro&gt;" visibility="public"/>
         <Method name="getListaPrestiti" returnType="ObservableList&lt;Prestito&gt;" visibility="public"/>
-        <Method name="caricaDaFile" returnType="Biblioteca" visibility="public" isStatic="true">
+        <Method name="caricaDaFile" returnType="String" visibility="public" isStatic="true">
           <Argument type="String" name="filename"/>
         </Method>
-        <Method name="salvaSuFile" returnType="void" visibility="public">
+        <Method name="salvaSuFile" returnType="String" visibility="public">
           <Argument type="String" name="filename"/>
         </Method>
       </Methods>
     </Class>
-    <Class name="Applicazione" package="" visibility="public" xPosition="1120.0" yPosition="412.0">
-      <Fields/>
+    <Class name="App" package="" visibility="public" xPosition="999.0" yPosition="394.0">
+      <Fields>
+        <Field name="scene" type="Scene" visibility="private" isStatic="true"/>
+      </Fields>
       <Constructors/>
       <Methods>
-        <Method name="main" returnType="void" visibility="public" isStatic="true">
+        <Method name="start" returnType="Stage" visibility="public">
+          <Argument type="Stage" name="stage"/>
+        </Method>
+        <Method name="setRoot" returnType="Object" visibility="public" isStatic="true">
+          <Argument type="String" name="fxml"/>
+          <Argument type="Object" name="controller"/>
+        </Method>
+        <Method name="loadFXML" returnType="Object" visibility="private" isStatic="true">
+          <Argument type="String" name="fxml"/>
+          <Argument type="Object" name="controller"/>
+        </Method>
+        <Method name="main" returnType="String[]" visibility="public" isStatic="true">
           <Argument type="String[]" name="args"/>
         </Method>
-        <Method name="start" returnType="void" visibility="public">
-          <Argument type="Stage" name="primaryStage"/>
+      </Methods>
+    </Class>
+    <Class name="AggiungiUtenteDialog" package="" visibility="public" xPosition="36.0" yPosition="1272.0">
+      <Fields>
+        <Field name="nomeField" type="TextField" visibility="private"/>
+        <Field name="cognomeField" type="TextField" visibility="private"/>
+        <Field name="matricolaField" type="TextField" visibility="private"/>
+        <Field name="matricolaError" type="Label" visibility="private"/>
+        <Field name="emailField" type="TextField" visibility="private"/>
+        <Field name="emailError" type="Label" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="AggiornaOk" returnType="Node" visibility="private">
+          <Argument type="Node" name="ok"/>
         </Method>
       </Methods>
+    </Class>
+    <Class name="AggiungiLibroDialog" package="" visibility="public" xPosition="264.0" yPosition="1272.0">
+      <Fields>
+        <Field name="titoloField" type="TextField" visibility="private"/>
+        <Field name="autoriField" type="TextField" visibility="private"/>
+        <Field name="annoField" type="TextField" visibility="private"/>
+        <Field name="annoError" type="Label" visibility="private"/>
+        <Field name="isbnField" type="TextField" visibility="private"/>
+        <Field name="isbnError" type="Label" visibility="private"/>
+        <Field name="copieField" type="TextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="AggiornaOk" returnType="Node" visibility="public">
+          <Argument type="Node" name="ok"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AggiungiPrestitoDialog" package="" visibility="public" xPosition="507.0" yPosition="1272.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
