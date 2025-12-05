@@ -20,13 +20,21 @@
       </Constructors>
       <Methods>
         <Method name="getNome" returnType="String" visibility="public"/>
-        <Method name="setNome" returnType="void" visibility="public"/>
-        <Method name="getCognome" returnType="string" visibility="public"/>
-        <Method name="setCognome" returnType="void" visibility="public"/>
+        <Method name="setNome" returnType="void" visibility="public">
+          <Argument type="String" name="nome"/>
+        </Method>
+        <Method name="getCognome" returnType="String" visibility="public"/>
+        <Method name="setCognome" returnType="void" visibility="public">
+          <Argument type="String" name="cognome"/>
+        </Method>
         <Method name="getMatricola" returnType="String" visibility="public"/>
-        <Method name="setMatricola" returnType="void" visibility="public"/>
+        <Method name="setMatricola" returnType="void" visibility="public">
+          <Argument type="String" name="matricola"/>
+        </Method>
         <Method name="getEmail" returnType="String" visibility="public"/>
-        <Method name="setEmail" returnType="void" visibility="public"/>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
         <Method name="getPrestitiAttivi" returnType="ObservableList&lt;String&gt;" visibility="public"/>
         <Method name="nomeProperty" returnType="StringProperty" visibility="public"/>
         <Method name="cognomeProperty" returnType="StringProperty" visibility="public"/>
@@ -42,7 +50,7 @@
     <Class name="Libro" package="" visibility="public" xPosition="450.0" yPosition="13.0">
       <Fields>
         <Field name="titolo" type="StringProperty" visibility="private" isFinal="true"/>
-        <Field name="autore" type="StringProperty" visibility="private" isFinal="true"/>
+        <Field name="autori" type="StringProperty" visibility="private" isFinal="true"/>
         <Field name="anno" type="IntegerProperty" visibility="private" isFinal="true"/>
         <Field name="isbn" type="StringProperty" visibility="private" isFinal="true"/>
         <Field name="copieTotali" type="IntegerProperty" visibility="private" isFinal="true"/>
@@ -60,17 +68,29 @@
       </Constructors>
       <Methods>
         <Method name="getTitolo" returnType="String" visibility="public"/>
-        <Method name="setTitolo" returnType="void" visibility="public"/>
+        <Method name="setTitolo" returnType="void" visibility="public">
+          <Argument type="String" name="titolo"/>
+        </Method>
         <Method name="getAutori" returnType="String" visibility="public"/>
-        <Method name="setAutori" returnType="void" visibility="public"/>
+        <Method name="setAutori" returnType="void" visibility="public">
+          <Argument type="String" name="autori"/>
+        </Method>
         <Method name="getAnno" returnType="int" visibility="public"/>
-        <Method name="setAnno" returnType="void" visibility="public"/>
+        <Method name="setAnno" returnType="void" visibility="public">
+          <Argument type="int" name="anno"/>
+        </Method>
         <Method name="getIsbn" returnType="String" visibility="public"/>
-        <Method name="setIsbn" returnType="void" visibility="public"/>
+        <Method name="setIsbn" returnType="void" visibility="public">
+          <Argument type="String" name="isbn"/>
+        </Method>
         <Method name="getCopieTotali" returnType="int" visibility="public"/>
-        <Method name="setCopieTotali" returnType="void" visibility="public"/>
+        <Method name="setCopieTotali" returnType="void" visibility="public">
+          <Argument type="int" name="copieTotali"/>
+        </Method>
         <Method name="getCopieDisponibili" returnType="int" visibility="public"/>
-        <Method name="setCopieDisponibili" returnType="void" visibility="public"/>
+        <Method name="setCopieDisponibili" returnType="void" visibility="public">
+          <Argument type="int" name="copieDisponibili"/>
+        </Method>
         <Method name="titoloProperty" returnType="StringProperty" visibility="public"/>
         <Method name="autoriProperty" returnType="StringProperty" visibility="public"/>
         <Method name="annoProperty" returnType="IntegerProperty" visibility="public"/>
