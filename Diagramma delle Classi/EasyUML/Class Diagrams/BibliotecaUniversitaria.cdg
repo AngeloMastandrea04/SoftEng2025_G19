@@ -289,10 +289,7 @@
         <Field name="dataRestituzioneError" type="Label" visibility="private"/>
       </Fields>
       <Constructors>
-        <Constructor visibility="public">
-          <Argument type="ObservableList&lt;Utente&gt;" name="utenti"/>
-          <Argument type="ObservableList&lt;Libro&gt;" name="libri"/>
-        </Constructor>
+        <Constructor visibility="public"/>
       </Constructors>
       <Methods>
         <Method name="aggiornaOk" returnType="void" visibility="private">

@@ -180,7 +180,7 @@ class AggiungiPrestitoDialog {
     - libroError : Label
     - dataRestituzionePicker : DatePicker
     - dataRestituzioneError : Label
-    + AggiungiPrestitoDialog(utenti : ObservableList<Utente>, libri : ObservableList<Libro>)
+    + AggiungiPrestitoDialog()
     - aggiornaOk(ok : Node) : void
 }
 
