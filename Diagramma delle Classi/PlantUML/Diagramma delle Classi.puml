@@ -1,0 +1,190 @@
+@startuml DiagrammaDelleClassi
+
+title Biblioteca Universitaria - Diagramma delle Classi
+
+
+class Utente {
+    - nome : StringProperty {readOnly}
+    - cognome : StringProperty {readOnly}
+    - matricola : StringProperty {readOnly}
+    - email : StringProperty {readOnly}
+    - prestitiAttivi : ObservableList<String> {readOnly}
+    + Utente(nome : String, cognome : String, matricola : String, email : String)
+    + getNome() : String
+    + setNome(nome : String) : void
+    + getCognome() : String
+    + setCognome(cognome : String) : void
+    + getMatricola() : String
+    + setMatricola(matricola : String) : void
+    + getEmail() : String
+    + setEmail(email : String) : void
+    + getPrestitiAttivi() : ObservableList<String>
+    + nomeProperty() : StringProperty
+    + cognomeProperty() : StringProperty
+    + matricolaProperty() : StringProperty
+    + emailProperty() : StringProperty
+    + equals(obj : Object) : boolean
+    + toString() : String
+    + toStringPrestito() : String
+}
+
+class Libro {
+    - titolo : StringProperty {readOnly}
+    - autori : StringProperty {readOnly}
+    - anno : IntegerProperty {readOnly}
+    - isbn : StringProperty {readOnly}
+    - copieTotali : IntegerProperty {readOnly}
+    - copieDisponibili : IntegerProperty {readOnly}
+    + Libro(nome : String, autori : String, anno : int, isbn : String, copieTotali : int, copieDisponibili : int)
+    + getTitolo() : String
+    + setTitolo(titolo : String) : void
+    + getAutori() : String
+    + setAutori(autori : String) : void
+    + getAnno() : int
+    + setAnno(anno : int) : void
+    + getIsbn() : String
+    + setIsbn(isbn : String) : void
+    + getCopieTotali() : int
+    + setCopieTotali(copieTotali : int) : void
+    + getCopieDisponibili() : int
+    + setCopieDisponibili(copieDisponibili : int) : void
+    + titoloProperty() : StringProperty
+    + autoriProperty() : StringProperty
+    + annoProperty() : IntegerProperty
+    + isbnProperty() : StringProperty
+    + copieTotaliProperty() : IntegerProperty
+    + copieDisponibiliProperty() : IntegerProperty
+    + equals(obj : Object) : boolean
+    + toString() : String
+    + toStringPrestito() : String
+}
+
+class Prestito {
+    - utente : StringProperty {readOnly}
+    - libro : StringProperty {readOnly}
+    - dataRestituzione : LocalDate {readOnly}
+    + Prestito(utente : String, libro : String, dataRestituzione : LocalDate)
+    + getUtente() : String
+    + getLibro() : String
+    + getDataRestituzione() : LocalDate
+    + utenteProperty() : StringProperty
+    + libroProperty() : StringProperty
+    + toString() : String
+    + toStringUtente() : String
+}
+
+class Biblioteca {
+    - listaUtenti : ObservableList<Utente> {readOnly}
+    - listaLibri : ObservableList<Libro> {readOnly}
+    - listaPrestiti : ObservableList<Prestito> {readOnly}
+    - instance : Biblioteca
+    - Biblioteca()
+    + {static} getInstance() : Biblioteca
+    + getListaUtenti() : ObservableList<Utente>
+    + getListaLibri() : ObservableList<Libro>
+    + getListaPrestiti() : ObservableList<Prestito>
+    + {static} caricaDaFile(filename : String) : Biblioteca
+    + salvaSuFile(filename : String) : void
+}
+
+class App {
+    - {static} scene : Scene
+    + start(stage : Stage) : void
+    + {static} setRoot(fxml : String, controller : Object) : void
+    - {static} loadFXML(fxml : String, controller : Object) : Parent
+    + {static} main(args : String[]) : void
+}
+
+class DashboardGeneraleController {
+    - initialize() : void
+    - apriSezUtente() : void
+    - apriSezLibro() : void
+    - apriSezPrestiti() : void
+}
+
+class SezioneLibriController {
+    - tabLibri : TableView
+    - cTitolo : TableColumn
+    - cAutori : TableColumn
+    - cAnno : TableColumn
+    - cIsbn : TableColumn
+    - cCopieTotali : TableColumn
+    - cCopieDisponibili : TableColumn
+    - ricLibro : TextField
+    - cancLibroBtn : Button
+    - listaLibri : ObservableList<Libro>
+    - initialize() : void
+    - aggiungiLibro() : void
+    - cancellaLibro() : void
+    - tornaIndietro() : void
+}
+
+class SezioneUtentiController {
+    - tabUtenti : TableView
+    - cCognome : TableColumn
+    - cNome : TableColumn
+    - cMatricola : TableColumn
+    - cEmail : TableColumn
+    - cPrestitiAttivi : TableColumn
+    - ricUtente : TextField
+    - cancUtenteBtn : Button
+    - listaUtenti : ObservableList<Utente>
+    - initialize() : void
+    - aggiungiUtente() : void
+    - cancellaUtente() : void
+    - tornaIndietro() : void
+}
+
+class SezionePresitiController {
+    - tabPrestiti : TableView
+    - cUtente : TableColumn
+    - cLibro : TableColumn
+    - cData : TableColumn
+    - cancPrestitoBtn : Button
+    - listaUtenti : ObservableList<Utente>
+    - listaLibri : ObservableList<Libro>
+    - listaPrestiti : ObservableList<Prestito>
+    - initialize() : void
+    - aggiungiPrestito() : void
+    - cancellaPrestito() : void
+    - tornaIndietro() : void
+}
+
+class AggiungiUtenteDialog {
+    - nomeField : TextField
+    - cognomeField : TextField
+    - matricolaField : TextField
+    - matricolaError : Label
+    - emailField : TextField
+    - emailError : Label
+    + AggiungiUtenteDialog()
+    - aggiornaOk(ok : Node) : void
+}
+
+class AggiungiLibroDialog {
+    - titoloField : TextField
+    - autoriField : TextField
+    - annoField : TextField
+    - annoError : Label
+    - isbnField : TextField
+    - isbnError : Label
+    - copieField : TextField
+    + AggiungiLibroDialog()
+    - aggiornaOk(ok : Node) : void
+}
+
+class AggiungiPrestitoDialog {
+    - utenteBox : ComboBox<Utente>
+    - utenteError : Label
+    - libroBox : ComboBox<Libro>
+    - libroError : Label
+    - dataRestituzionePicker : DatePicker
+    - dataRestituzioneError : Label
+    + AggiungiPrestitoDialog(utenti : ObservableList<Utente>, libri : ObservableList<Libro>)
+    - aggiornaOk(ok : Node) : void
+}
+
+' Relazione Singleton: instance contiene l'unica istanza della classe Biblioteca
+Biblioteca "1" --> "1" Biblioteca : instance
+
+@enduml
