@@ -290,12 +290,12 @@
       </Fields>
       <Constructors>
         <Constructor visibility="public">
-          <Argument type="ObservableList&lt;Persona&gt;" name="utenti"/>
+          <Argument type="ObservableList&lt;Utente&gt;" name="utenti"/>
           <Argument type="ObservableList&lt;Libro&gt;" name="libri"/>
         </Constructor>
       </Constructors>
       <Methods>
-        <Method name="aggiornaOK" returnType="void" visibility="private">
+        <Method name="aggiornaOk" returnType="void" visibility="private">
           <Argument type="Node" name="ok"/>
         </Method>
       </Methods>
