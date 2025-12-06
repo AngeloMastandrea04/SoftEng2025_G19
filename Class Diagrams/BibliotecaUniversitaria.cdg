@@ -255,7 +255,7 @@
         <Constructor visibility="public"/>
       </Constructors>
       <Methods>
-        <Method name="AggiornaOk" returnType="Node" visibility="private">
+        <Method name="aggiornaOk" returnType="void" visibility="private">
           <Argument type="Node" name="ok"/>
         </Method>
       </Methods>
@@ -274,15 +274,31 @@
         <Constructor visibility="public"/>
       </Constructors>
       <Methods>
-        <Method name="AggiornaOk" returnType="Node" visibility="public">
+        <Method name="aggiornaOk" returnType="void" visibility="private">
           <Argument type="Node" name="ok"/>
         </Method>
       </Methods>
     </Class>
     <Class name="AggiungiPrestitoDialog" package="" visibility="public" xPosition="507.0" yPosition="1272.0">
-      <Fields/>
-      <Constructors/>
-      <Methods/>
+      <Fields>
+        <Field name="utenteBox" type="ComboBox&lt;Utente&gt;" visibility="private"/>
+        <Field name="utenteError" type="Label" visibility="private"/>
+        <Field name="libroBox" type="ComboBox&lt;Libro&gt;" visibility="private"/>
+        <Field name="libroError" type="Label" visibility="private"/>
+        <Field name="dataRestituzionePicker" type="DatePicker" visibility="private"/>
+        <Field name="dataRestituzioneError" type="Label" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ObservableList&lt;Persona&gt;" name="utenti"/>
+          <Argument type="ObservableList&lt;Libro&gt;" name="libri"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="aggiornaOK" returnType="void" visibility="private">
+          <Argument type="Node" name="ok"/>
+        </Method>
+      </Methods>
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
