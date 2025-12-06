@@ -184,7 +184,46 @@ class AggiungiPrestitoDialog {
     - aggiornaOk(ok : Node) : void
 }
 
+
+
+' Start dell'Applicazione e Dashboard Generale
+App "1" --> "1" DashboardGeneraleController : <<uses>>
+
+DashboardGeneraleController "1" --> "1" SezioneUtentiController : <<uses>>
+DashboardGeneraleController "1" --> "1" SezioneLibriController : <<uses>>
+DashboardGeneraleController "1" --> "1" SezionePresitiController : <<uses>>
+
+
+' Biblioteca
+Biblioteca "1" o-- "0..*" Utente : <<has-a>>
+Biblioteca "1" o-- "0..*" Libro : <<has-a>>
+Biblioteca "1" o-- "0..*" Prestito : <<has-a>>
+
 ' Relazione Singleton: instance contiene l'unica istanza della classe Biblioteca
 Biblioteca "1" --> "1" Biblioteca : instance
+
+
+' Controller
+SezioneUtentiController "1" --> "0..*" Utente : <<uses>>
+SezioneLibriController "1" --> "0..*" Libro : <<uses>>
+
+SezionePresitiController "1" --> "0..*" Prestito : <<uses>>
+SezionePresitiController "1" --> "0..*" Utente : <<uses>>
+SezionePresitiController "1" --> "0..*" Libro : <<uses>>
+
+' Relazione tra Controller e Finestre di Dialogo
+SezioneUtentiController "1" --> "1" AggiungiUtenteDialog : <<uses>>
+SezioneLibriController "1" --> "1" AggiungiLibroDialog : <<uses>>
+SezionePresitiController "1" --> "1" AggiungiPrestitoDialog : <<uses>>
+
+
+' Finestre di Dialogo
+AggiungiUtenteDialog "1" --> "0..*" Utente : <<uses>>
+AggiungiLibroDialog "1" --> "0..*" Libro : <<uses>>
+
+AggiungiPrestitoDialog "1" --> "0..*" Prestito : <<uses>>
+AggiungiPrestitoDialog "1" --> "0..*" Utente : <<uses>>
+AggiungiPrestitoDialog "1" --> "0..*" Libro : <<uses>>
+
 
 @enduml
