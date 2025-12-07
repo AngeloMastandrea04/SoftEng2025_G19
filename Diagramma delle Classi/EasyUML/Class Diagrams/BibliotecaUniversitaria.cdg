@@ -63,7 +63,6 @@
           <Argument type="int" name="anno"/>
           <Argument type="String" name="isbn"/>
           <Argument type="int" name="copieTotali"/>
-          <Argument type="int" name="copieDisponibili"/>
         </Constructor>
       </Constructors>
       <Methods>

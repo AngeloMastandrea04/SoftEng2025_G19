@@ -35,7 +35,7 @@ class Libro {
     - isbn : StringProperty {readOnly}
     - copieTotali : IntegerProperty {readOnly}
     - copieDisponibili : IntegerProperty {readOnly}
-    + Libro(nome : String, autori : String, anno : int, isbn : String, copieTotali : int, copieDisponibili : int)
+    + Libro(nome : String, autori : String, anno : int, isbn : String, copieTotali : int)
     + getTitolo() : String
     + setTitolo(titolo : String) : void
     + getAutori() : String
