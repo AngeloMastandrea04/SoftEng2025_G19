@@ -31,6 +31,10 @@ public class Libro {
      * @param[in] anno Anno di rilascio del Libro.
      * @param[in] isbn Codice ISBN del Libro
      * @param[in] copieTotali Numero di copie del Libro nella Biblioteca.
+     * @pre 
+     * Il formato dell'ISBN è di 13 cifre e inizia per 978 o 979
+     * @pre 
+     * l'anno non deve essere ambiguo
      * @post
      * Verrà creato un Libro con i parametri specificati in input inseriti nei
      * corrispondenti attributi property e con il numero di copie disponibili
