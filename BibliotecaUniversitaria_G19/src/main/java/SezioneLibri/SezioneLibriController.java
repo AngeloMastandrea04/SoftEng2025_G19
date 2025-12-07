@@ -26,7 +26,7 @@ public class SezioneLibriController {
 
     private Button cancLibroBtn;
 
-    private ObservableList<Libro> listaLibri;
+    private final ObservableList<Libro> listaLibri;
 
     private void initialize() {
     }

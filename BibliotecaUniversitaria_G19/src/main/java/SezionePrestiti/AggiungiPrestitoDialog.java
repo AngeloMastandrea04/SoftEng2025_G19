@@ -22,7 +22,11 @@ public class AggiungiPrestitoDialog {
 
     private Label dataRestituzioneError;
 
-    public AggiungiPrestitoDialog(ObservableList<Utente> utenti, ObservableList<Libro> libri) {
+    private final ObservableList<Utente> utenti
+    
+    private final ObservableList<Libro> libri
+
+    public AggiungiPrestitoDialog() {
     }
 
     private void aggiornaOk(Node ok) {

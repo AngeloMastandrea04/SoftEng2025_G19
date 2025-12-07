@@ -112,7 +112,7 @@ class SezioneLibriController {
     - cCopieDisponibili : TableColumn
     - ricLibro : TextField
     - cancLibroBtn : Button
-    - listaLibri : ObservableList<Libro>
+    - listaLibri : ObservableList<Libro> {readOnly}
     - initialize() : void
     - aggiungiLibro() : void
     - cancellaLibro() : void
@@ -128,7 +128,7 @@ class SezioneUtentiController {
     - cPrestitiAttivi : TableColumn
     - ricUtente : TextField
     - cancUtenteBtn : Button
-    - listaUtenti : ObservableList<Utente>
+    - listaUtenti : ObservableList<Utente> {readOnly}
     - initialize() : void
     - aggiungiUtente() : void
     - cancellaUtente() : void
@@ -141,9 +141,9 @@ class SezionePresitiController {
     - cLibro : TableColumn
     - cData : TableColumn
     - cancPrestitoBtn : Button
-    - listaUtenti : ObservableList<Utente>
-    - listaLibri : ObservableList<Libro>
-    - listaPrestiti : ObservableList<Prestito>
+    - listaUtenti : ObservableList<Utente> {readOnly}
+    - listaLibri : ObservableList<Libro> {readOnly}
+    - listaPrestiti : ObservableList<Prestito> {readOnly}
     - initialize() : void
     - aggiungiPrestito() : void
     - cancellaPrestito() : void
@@ -180,6 +180,8 @@ class AggiungiPrestitoDialog {
     - libroError : Label
     - dataRestituzionePicker : DatePicker
     - dataRestituzioneError : Label
+    - listaUtenti : ObservableList<Utente> {readOnly}
+    - listaLibri : ObservableList<Libro> {readOnly}
     + AggiungiPrestitoDialog()
     - aggiornaOk(ok : Node) : void
 }
@@ -187,11 +189,11 @@ class AggiungiPrestitoDialog {
 
 
 ' Start dell'Applicazione e Dashboard Generale
-App "1" --> "1" DashboardGeneraleController : <<uses>>
+App "1" --> "1" DashboardGeneraleController : <<use>>
 
-DashboardGeneraleController "1" --> "1" SezioneUtentiController : <<uses>>
-DashboardGeneraleController "1" --> "1" SezioneLibriController : <<uses>>
-DashboardGeneraleController "1" --> "1" SezionePresitiController : <<uses>>
+DashboardGeneraleController "1" --> "1" SezioneUtentiController : <<use>>
+DashboardGeneraleController "1" --> "1" SezioneLibriController : <<use>>
+DashboardGeneraleController "1" --> "1" SezionePresitiController : <<use>>
 
 
 ' Biblioteca
@@ -204,26 +206,26 @@ Biblioteca "1" --> "1" Biblioteca : instance
 
 
 ' Controller
-SezioneUtentiController "1" --> "0..*" Utente : <<uses>>
-SezioneLibriController "1" --> "0..*" Libro : <<uses>>
+SezioneUtentiController "1" --> "0..*" Utente : <<use>>
+SezioneLibriController "1" --> "0..*" Libro : <<use>>
 
-SezionePresitiController "1" --> "0..*" Prestito : <<uses>>
-SezionePresitiController "1" --> "0..*" Utente : <<uses>>
-SezionePresitiController "1" --> "0..*" Libro : <<uses>>
+SezionePresitiController "1" --> "0..*" Prestito : <<use>>
+SezionePresitiController "1" --> "0..*" Utente : <<use>>
+SezionePresitiController "1" --> "0..*" Libro : <<use>>
 
 ' Relazione tra Controller e Finestre di Dialogo
-SezioneUtentiController "1" --> "1" AggiungiUtenteDialog : <<uses>>
-SezioneLibriController "1" --> "1" AggiungiLibroDialog : <<uses>>
-SezionePresitiController "1" --> "1" AggiungiPrestitoDialog : <<uses>>
+SezioneUtentiController "1" --> "1" AggiungiUtenteDialog : <<create>>
+SezioneLibriController "1" --> "1" AggiungiLibroDialog : <<create>>
+SezionePresitiController "1" --> "1" AggiungiPrestitoDialog : <<create>>
 
 
 ' Finestre di Dialogo
-AggiungiUtenteDialog "1" --> "0..*" Utente : <<uses>>
-AggiungiLibroDialog "1" --> "0..*" Libro : <<uses>>
+AggiungiUtenteDialog "1" --> "1" Utente : <<create>>
+AggiungiLibroDialog "1" --> "1" Libro : <<create>>
 
-AggiungiPrestitoDialog "1" --> "0..*" Prestito : <<uses>>
-AggiungiPrestitoDialog "1" --> "0..*" Utente : <<uses>>
-AggiungiPrestitoDialog "1" --> "0..*" Libro : <<uses>>
+AggiungiPrestitoDialog "1" --> "1" Prestito : <<create>>
+AggiungiPrestitoDialog "1" --> "0..*" Utente : <<use>>
+AggiungiPrestitoDialog "1" --> "0..*" Libro : <<use>>
 
 
 @enduml

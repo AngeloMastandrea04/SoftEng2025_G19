@@ -24,7 +24,7 @@ public class SezioneUtentiController {
 
     private Button cancUtenteBtn;
 
-    private ObservableList<Utente> listaUtenti;
+    private final ObservableList<Utente> listaUtenti;
 
     private void initialize() {
     }

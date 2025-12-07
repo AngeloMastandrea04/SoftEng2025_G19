@@ -19,11 +19,11 @@ public class SezionePresitiController {
 
     private Button cancPrestitoBtn;
 
-    private ObservableList<Utente> listaUtenti;
+    private final ObservableList<Utente> listaUtenti;
 
-    private ObservableList<Libro> listaLibri;
+    private final ObservableList<Libro> listaLibri;
 
-    private ObservableList<Prestito> listaPrestiti;
+    private final ObservableList<Prestito> listaPrestiti;
 
     private void initialize() {
     }

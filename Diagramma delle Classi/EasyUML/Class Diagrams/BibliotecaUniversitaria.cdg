@@ -148,7 +148,7 @@
         <Field name="cCopieDisponibili" type="TableColumn" visibility="private"/>
         <Field name="ricLibro" type="TextField" visibility="private"/>
         <Field name="cancLibroBtn" type="Button" visibility="private"/>
-        <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="private"/>
+        <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="private" isFinal="true"/>
       </Fields>
       <Constructors/>
       <Methods>
@@ -168,7 +168,7 @@
         <Field name="cPrestitiAttivi" type="TableColumn" visibility="private"/>
         <Field name="ricUtente" type="TextField" visibility="private"/>
         <Field name="cancUtenteBtn" type="Button" visibility="private"/>
-        <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="private"/>
+        <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="private" isFinal="true"/>
       </Fields>
       <Constructors/>
       <Methods>
@@ -185,9 +185,9 @@
         <Field name="cLibro" type="TableColumn" visibility="private"/>
         <Field name="cData" type="TableColumn" visibility="private"/>
         <Field name="cancPrestitoBtn" type="Button" visibility="private"/>
-        <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="private"/>
-        <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="private"/>
-        <Field name="listaPrestiti" type="ObservableList&lt;Prestito&gt;" visibility="private"/>
+        <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="private" isFinal="true"/>
+        <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="private" isFinal="true"/>
+        <Field name="listaPrestiti" type="ObservableList&lt;Prestito&gt;" visibility="private" isFinal="true"/>
       </Fields>
       <Constructors/>
       <Methods>
@@ -287,6 +287,8 @@
         <Field name="libroError" type="Label" visibility="private"/>
         <Field name="dataRestituzionePicker" type="DatePicker" visibility="private"/>
         <Field name="dataRestituzioneError" type="Label" visibility="private"/>
+        <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="private" isFinal="true"/>
+        <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="private" isFinal="true"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>
