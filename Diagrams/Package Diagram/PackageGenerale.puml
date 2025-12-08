@@ -1,0 +1,35 @@
+@startuml generale
+
+package biblioteca{
+agent Biblioteca
+agent DashboardGeneraleController
+agent App
+note "DashboardGeneraleView.fxml si trova\nnel package resouces.biblioteca" as N1
+}
+
+package sezioneUtenti{
+agent Utente
+agent SezioneUtentiController
+agent AggiungiUtenteDialog
+note "SezioneUtentiView.fxml e AggiungiUtenteDialogView.fxml\nsi trovano nel package resouces.sezioneUtenti" as N2
+}
+
+package sezioneLibri{
+agent Libro
+agent SezioneLibriController
+agent AggiungiLibroDialog
+note "SezioneUtentiView.fxml e AggiungiLibroDialogView.fxml\nsi trovano nel package resouces.sezioneLibri" as N3
+}
+
+package sezionePrestiti{
+agent Prestito
+agent SezionePrestitiController
+agent AggiungiPrestitoDialog
+note "SezioneUtentiView.fxml e AggiungiPrestitoDialogView.fxml\nsi trovano nel package resouces.sezionePrestiti" as N4
+}
+
+sezioneUtenti .left.> biblioteca
+sezioneLibri .up.> biblioteca
+sezionePrestiti .left.> biblioteca
+
+@enduml

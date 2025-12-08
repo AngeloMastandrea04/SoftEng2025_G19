@@ -1,0 +1,8 @@
+@startuml utente
+package sezioneUtenti{
+agent Utente
+agent SezioneUtentiController
+agent AggiungiUtenteDialog
+note "SezioneUtentiView.fxml e AggiungiUtenteDialogView.fxml\nsi trovano nel package resouces.sezioneUtenti" as N2
+}
+@enduml

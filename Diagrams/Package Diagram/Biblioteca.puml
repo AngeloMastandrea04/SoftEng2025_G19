@@ -1,0 +1,8 @@
+@startuml biblioteca
+package biblioteca{
+agent Biblioteca
+agent DashboardGeneraleController
+agent App
+note "DashboardGeneraleView.fxml si trova\nnel package resouces.biblioteca" as N1
+}
+@enduml

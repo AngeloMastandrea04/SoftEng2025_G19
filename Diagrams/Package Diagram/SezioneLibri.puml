@@ -1,0 +1,8 @@
+@startuml libri
+package sezioneLibri{
+agent Libro
+agent SezioneLibriController
+agent AggiungiLibroDialog
+note "SezioneUtentiView.fxml e AggiungiLibroDialogView.fxml\nsi trovano nel package resouces.sezioneLibri" as N3
+}
+@enduml

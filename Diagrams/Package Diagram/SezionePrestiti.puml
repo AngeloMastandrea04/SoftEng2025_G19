@@ -1,0 +1,8 @@
+@startuml prestiti
+package sezionePrestiti{
+agent Prestito
+agent SezionePrestitiController
+agent AggiungiPrestitoDialog
+note "SezioneUtentiView.fxml e AggiungiPrestitoDialogView.fxml\nsi trovano nel package resouces.sezionePrestiti" as N4
+}
+@enduml
