@@ -5,6 +5,12 @@ import javafx.beans.property.StringProperty;
 /**
  * @brief Un Prestito inserito o che deve essere registrato nell'archivio.
  * Contiene utente, libro e dataRestituzione del libro.
+ * @invariant
+ * Il Libro deve disponibile.
+ * @invariant
+ * L'Utente deve essere registrato nel Sistema.
+ * @invariant
+ * La data di restituzione deve essere uguale o successiva a quella corrente.
  */
 public class Prestito {
 
@@ -17,16 +23,10 @@ public class Prestito {
      * @brief Costruttore.
      * @param[in] utente Utente al quale associare il Prestito.
      * @param[in] libro Libro coinvolto nel Prestito.
-     * @param[in] dataRestituzione Data di scadenza del Prestito.
+     * @param[in] dataRestituzione Data di restituzione del Prestito.
      * @post
      * Verrà creato un Prestito con i parametri specificati in input inseriti nei
      * corrispondenti attributi property.
-     * @pre
-     * Il Libro è disponibile.
-     * @pre
-     * L'Utente è registrato nel sistema.
-     * @pre 
-     * La data di restituzione non è ambigua
      */
     public Prestito(String utente, String libro, LocalDate dataRestituzione) {
     }
@@ -72,17 +72,16 @@ public class Prestito {
     }
     
     /**
-     * @brief Override di toString() di Object per la stampa delle informazioni riguardanti il Prestito.
-     * @return Stringa rappresentante del Prestito.
+     * @brief Override del metodo toString() di Object.
+     * @return Una rappresentazione in String dell'oggetto Prestito.
      */
     public String toString() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
-     * @brief Ulteriore rappresentazione in Stringa dell'oggetto Prestito, comoda per la visualizzazione dei prestiti attivi di un utente.
-     *
-     * * @return Una rappresentazione in String dell'oggetto Prestito.
+     * @brief Una rappresentazione in Stringa dell'oggetto Prestito, comoda per la visualizzazione dei prestiti attivi di un Utente.
+     * @return Ulteriore rappresentazione in String dell'oggetto Prestito.
      */
     public String toStringUtente() {
         throw new UnsupportedOperationException("Not supported yet.");

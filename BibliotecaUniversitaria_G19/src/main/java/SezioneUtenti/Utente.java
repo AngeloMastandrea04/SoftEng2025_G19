@@ -159,8 +159,8 @@ public class Utente {
     }
 
     /**
-     * @brief Ulteriore rappresentazione in Stringa dell'oggetto Utente, comoda per la visualizzazione nella sez Prestiti.
-     * @return Una rappresentazione in String dell'oggetto Utente comoda per la visualizzazione nella sez Prestiti.
+     * @brief Una rappresentazione in Stringa dell'oggetto Utente, comoda per la visualizzazione nella sez Prestiti.
+     * @return Ulteriore rappresentazione in String dell'oggetto Utente.
      */
     public String toStringPrestito() {
         throw new UnsupportedOperationException("Not supported yet.");

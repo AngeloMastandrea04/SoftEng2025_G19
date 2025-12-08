@@ -6,9 +6,12 @@ import javafx.beans.property.StringProperty;
  * @brief Un libro inserito o che deve essere inserito nella Biblioteca.
  * Contiene titolo, autori, anno, ISBN, copie totali e disponibili del Libro.
  * @invariant
- * L'anno deve essere valido.
+ * L'anno deve essere compreso tra 0 e l'anno corrente (inclusi).
  * @invariant
  * L'ISBN deve essere di 13 cifre e iniziare per 978 o 979.
+ * @invariant
+ * I numeri di copie devono essere sempre maggiori o uguali a 0 e
+ * il numero di copie disponibili deve essere minore o uguale al numero di copie totali.
  */
 public class Libro {
 
@@ -31,10 +34,6 @@ public class Libro {
      * @param[in] anno Anno di rilascio del Libro.
      * @param[in] isbn Codice ISBN del Libro
      * @param[in] copieTotali Numero di copie del Libro nella Biblioteca.
-     * @pre 
-     * Il formato dell'ISBN è di 13 cifre e inizia per 978 o 979
-     * @pre 
-     * l'anno non deve essere ambiguo
      * @post
      * Verrà creato un Libro con i parametri specificati in input inseriti nei
      * corrispondenti attributi property e con il numero di copie disponibili
@@ -92,7 +91,7 @@ public class Libro {
     }
 
     /**
-     * @brief Getter standard per l'ISBN.
+     * @brief Getter standard per l'isbn.
      * @return Il valore della property isbn del Libro.
      */
     public String getIsbn() {
@@ -205,8 +204,8 @@ public class Libro {
     }
 
     /**
-     * @brief Ulteriore rappresentazione in Stringa dell'oggetto Libro, comoda per la visualizzazione nella sez Prestiti.
-     * @return Una rappresentazione in String dell'oggetto Libro comoda per la visualizzazione nella sez Prestiti.
+     * @brief Una rappresentazione in Stringa dell'oggetto Libro, comoda per la visualizzazione nella sez Prestiti.
+     * @return Ulteriore rappresentazione in String dell'oggetto Libro.
      */
     public String toStringPrestito() {
         throw new UnsupportedOperationException("Not supported yet.");
