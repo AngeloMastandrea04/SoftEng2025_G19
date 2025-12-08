@@ -1,0 +1,57 @@
+@startuml inserimento
+title Sequence Diagram - Inserimento Utente (UC-3)
+
+autonumber
+
+actor "Bibliotecario" as User
+participant "Interfaccia" as Int
+participant "FinestraDialog" as Fin
+participant "SezioneUtentiController" as Ctrl
+participant "Biblioteca" as Bib
+
+activate User
+User -> Int : Clicca "Aggiungi"
+activate Int
+Int -> Ctrl : Action
+
+activate Ctrl
+Ctrl -> Fin : aggiungiUtente()
+deactivate Ctrl
+
+activate Fin
+Fin --> Int : Mostra Finestra di Dialogo
+loop Errori Formato Dati 
+User -> Int : Compila form (Nome, Cognome, Matricola, Email)
+Int -> Fin : Dati del form
+Fin -> Fin : Controlla la Vadilità dei dati inseriti
+
+opt Errore Formato Dati
+Fin --> Int : Mostra messaggi Errore Validità
+end
+end
+
+User -> Int : Clicca "OK"
+deactivate User
+Int -> Fin : Action
+
+
+Fin -> Fin : Crea oggetto nuovoUtente
+Fin --> Ctrl : nuovoUtente
+deactivate Fin
+
+activate Ctrl
+Ctrl -> Ctrl : Controlla Duplicati del nuovo Utente
+
+alt Errore Duplicati
+Ctrl --> Int : Mostra Alert Duplicati
+else No Errore
+Ctrl -> Bib : nuovoUtente aggiunto alla Lista
+activate Bib
+Bib -> Bib : salvaSuFile()
+Ctrl --> Int : Aggiona la Tabella
+deactivate Bib
+deactivate Ctrl
+deactivate Int
+end
+
+@enduml

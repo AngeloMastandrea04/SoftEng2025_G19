@@ -1,0 +1,42 @@
+@startuml modifica
+title Sequence Diagram - Modifica Utente (UC-5)
+
+autonumber
+
+actor "Bibliotecario" as User
+participant "Interfaccia" as Int
+participant "SezioneUtentiController" as Ctrl
+participant "Biblioteca" as Bib
+
+activate User
+User -> Int : Seleziona Utente
+activate Int
+User -> Int : Modifica il campo desiderato (Nome, Cognome, Matricola, Email)
+deactivate User
+Int -> Ctrl : Dato modificato
+
+activate Ctrl
+opt Modifica Matricola o Email
+Ctrl -> Ctrl : Controlla la Validità del Dato modificato
+opt Errore Formato Dati
+Ctrl --> Int : Mostra Alert Validità
+end
+end
+
+opt Modifica Matricola
+Ctrl -> Ctrl : Controlla Duplicati dell'Utente modificato 
+opt Errore Duplicati
+Ctrl --> Int : Mostra Alert Duplicati
+end
+end
+
+Ctrl -> Bib : Modifica l'Utente nella Lista
+activate Bib
+Bib -> Bib : salvaSuFile()
+Ctrl --> Int : Aggiona la Tabella
+deactivate Bib
+deactivate Ctrl
+deactivate Int
+
+
+@enduml

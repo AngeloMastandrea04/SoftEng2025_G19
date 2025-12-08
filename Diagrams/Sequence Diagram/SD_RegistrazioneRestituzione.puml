@@ -1,0 +1,37 @@
+@startuml restituzione
+title Sequence Diagram - Registrazione Restituzione (UC-16)
+
+autonumber
+
+actor "Bibliotecario" as User
+participant "Interfaccia" as Int
+participant "SezionePrestitiController" as Ctrl
+participant "Biblioteca" as Bib
+
+activate User
+User -> Int : Seleziona Prestito
+activate Int
+User -> Int : Clicca "Cancella" 
+
+Int -> Ctrl : Action
+activate Ctrl
+Ctrl -> Ctrl : Controllo Ritardo
+alt Restituzione in Ritardo
+Ctrl --> Int : Mostra Alert Warning Ritardo
+else No Ritardo
+Ctrl --> Int : Mostra Alert Conferma
+end
+
+User -> Int : Clicca "OK" 
+deactivate User
+Int -> Ctrl : Action
+Ctrl -> Bib : cancellaPrestito()
+
+
+activate Bib
+Bib -> Bib : salvaSuFile()
+Ctrl --> Int : Aggiona la Tabella
+deactivate Ctrl
+deactivate Bib
+deactivate Int 
+@enduml

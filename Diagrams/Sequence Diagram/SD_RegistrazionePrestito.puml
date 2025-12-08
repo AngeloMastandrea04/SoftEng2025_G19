@@ -1,0 +1,50 @@
+@startuml prestito
+title Sequence Diagram - Registrazione Prestito (UC-14)
+
+autonumber
+
+actor "Bibliotecario" as User
+participant "Interfaccia" as Int
+participant "FinestraDialog" as Fin
+participant "SezionePrestitiController" as Ctrl
+participant "Biblioteca" as Bib
+
+activate User
+User -> Int : Clicca "Registra Prestito"
+activate Int
+Int -> Ctrl : Action
+
+activate Ctrl
+Ctrl -> Fin : aggiungiPrestito()
+deactivate Ctrl
+
+activate Fin
+Fin --> Int : Mostra Finestra di Dialogo
+loop Errori Formato Dati
+User -> Int : Compila form (Utente, Libro, DataRestituzione)
+Int -> Fin : Dati del form
+Fin -> Fin : Controlla la Vadilità del nuovo Prestito
+
+opt Errore Formato Dati
+Fin --> Int : Mostra messaggi Errore Validità
+end
+end
+User -> Int : Clicca "Conferma"
+deactivate User
+Int -> Fin : Action
+
+Fin -> Fin : Crea oggetto nuovoPrestito
+Fin --> Ctrl : nuovoPrestito
+deactivate Fin
+activate Ctrl
+
+Ctrl -> Bib : nuovoPrestito aggiunto alla Lista
+activate Bib
+Ctrl -> Bib : Aggiorna la Lista dei Prestiti dell'Utente
+Ctrl -> Bib : Aggiorna le copie Disponibili del Libro in prestito
+Bib -> Bib : salvaSuFile()
+Ctrl --> Int : Aggiona la Tabella
+deactivate Bib
+deactivate Int
+
+@enduml

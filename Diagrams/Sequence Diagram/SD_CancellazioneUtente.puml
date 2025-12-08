@@ -1,0 +1,39 @@
+@startuml cancelllazione
+title Sequence Diagram - Cancellazione Utente (UC-6)
+
+autonumber
+
+actor "Bibliotecario" as User
+participant "Interfaccia" as Int
+participant "SezioneUtentiController" as Ctrl
+participant "Biblioteca" as Bib
+
+activate User
+User -> Int : Seleziona Utente
+activate Int
+User -> Int : Clicca "Cancella" 
+
+Int -> Ctrl : Action
+activate Ctrl
+Ctrl -> Ctrl : Controllo Prestiti Attivi
+alt Errore Prestiti Attivi
+Ctrl --> Int : Mostra Alert Prestiti Attivi
+else No Errore
+Ctrl --> Int : Mostra Alert Conferma
+
+
+User -> Int : Clicca "OK" 
+deactivate User
+Int -> Ctrl : Action
+Ctrl -> Bib : cancellaUtente()
+
+
+activate Bib
+Bib -> Bib : salvaSuFile()
+Ctrl --> Int : Aggiona la Tabella
+
+deactivate Ctrl
+deactivate Bib
+deactivate Int 
+end
+@enduml
