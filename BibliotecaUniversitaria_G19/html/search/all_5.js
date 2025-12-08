@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['getanno_0',['getAnno',['../class_sezione_libri_1_1_libro.html#acd4e7a11a764e987f59b1908cb566198',1,'SezioneLibri::Libro']]],
+  ['getautori_1',['getAutori',['../class_sezione_libri_1_1_libro.html#a9d66cb255d86711c20203506b3b40c0a',1,'SezioneLibri::Libro']]],
+  ['getcognome_2',['getCognome',['../class_sezione_utenti_1_1_utente.html#aa6dc73dba036adf8c2cdd9d7ddf564c4',1,'SezioneUtenti::Utente']]],
+  ['getcopiedisponibili_3',['getCopieDisponibili',['../class_sezione_libri_1_1_libro.html#a585b87dabd4833a35b9ffc91a4226fb1',1,'SezioneLibri::Libro']]],
+  ['getcopietotali_4',['getCopieTotali',['../class_sezione_libri_1_1_libro.html#afa8af26d290f67d63ad541719962ca4d',1,'SezioneLibri::Libro']]],
+  ['getdatarestituzione_5',['getDataRestituzione',['../class_sezione_prestiti_1_1_prestito.html#a09f05d5e4eda755d503001615c545f33',1,'SezionePrestiti::Prestito']]],
+  ['getemail_6',['getEmail',['../class_sezione_utenti_1_1_utente.html#a76e9965f2e817d764d73b45c65fdeb88',1,'SezioneUtenti::Utente']]],
+  ['getinstance_7',['getInstance',['../class_biblioteca_1_1_biblioteca.html#a7cfd101898a7ace5bc684604f5c76a8c',1,'Biblioteca::Biblioteca']]],
+  ['getisbn_8',['getIsbn',['../class_sezione_libri_1_1_libro.html#a5f7d59b5ad7463272efb4407c8d8c175',1,'SezioneLibri::Libro']]],
+  ['getlibro_9',['getLibro',['../class_sezione_prestiti_1_1_prestito.html#ad5d8695938460f3017d2d149b1d2c53a',1,'SezionePrestiti::Prestito']]],
+  ['getlistalibri_10',['getListaLibri',['../class_biblioteca_1_1_biblioteca.html#ad5c6880b17b6f5fcc1ab4cbfbe8ca779',1,'Biblioteca::Biblioteca']]],
+  ['getlistaprestiti_11',['getListaPrestiti',['../class_biblioteca_1_1_biblioteca.html#ac260fb3b84101de095daa75739026093',1,'Biblioteca::Biblioteca']]],
+  ['getlistautenti_12',['getListaUtenti',['../class_biblioteca_1_1_biblioteca.html#a275344d317d9922ca84ccd4e3f957c53',1,'Biblioteca::Biblioteca']]],
+  ['getmatricola_13',['getMatricola',['../class_sezione_utenti_1_1_utente.html#a784b211889dfb0248931ae648155a2af',1,'SezioneUtenti::Utente']]],
+  ['getnome_14',['getNome',['../class_sezione_utenti_1_1_utente.html#a5b63d13bfd244565d8c2e21826603df3',1,'SezioneUtenti::Utente']]],
+  ['getprestitiattivi_15',['getPrestitiAttivi',['../class_sezione_utenti_1_1_utente.html#a86de9828735c0d28349cee176e7b8031',1,'SezioneUtenti::Utente']]],
+  ['gettitolo_16',['getTitolo',['../class_sezione_libri_1_1_libro.html#ab5ffba137520aa6d02cdff5a1915e115',1,'SezioneLibri::Libro']]],
+  ['getutente_17',['getUtente',['../class_sezione_prestiti_1_1_prestito.html#aa6689646888d4666773a6fcffa816d50',1,'SezionePrestiti::Prestito']]]
+];

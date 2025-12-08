@@ -177,7 +177,7 @@
         <Method name="tornaIndietro" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="SezionePresitiController" package="" visibility="public" xPosition="730.0" yPosition="883.0">
+    <Class name="SezionePrestitiController" package="" visibility="public" xPosition="730.0" yPosition="883.0">
       <Fields>
         <Field name="tabPrestiti" type="TableView" visibility="private"/>
         <Field name="cUtente" type="TableColumn" visibility="private"/>

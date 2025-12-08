@@ -1,0 +1,114 @@
+\doxysection{Biblioteca.\+App Class Reference}
+\hypertarget{class_biblioteca_1_1_app}{}\label{class_biblioteca_1_1_app}\index{Biblioteca.App@{Biblioteca.App}}
+
+
+Java\+FX \doxylink{class_biblioteca_1_1_app}{App}, Classe principale dell\textquotesingle{}applicazione \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}.  
+
+
+Inheritance diagram for Biblioteca.\+App\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_biblioteca_1_1_app}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_biblioteca_1_1_app_a8df6f75fe14cbc9d6bd074ec21023349}{start}} (Stage stage)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Metodo di avvio dell\textquotesingle{}interfaccia. Viene invocato automaticamente al runtime e permette di inizializzare lo Stage primario, mostrando come prima cosa la Dashboard\+Generale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_biblioteca_1_1_app_a7e05e728e9a9a4e352a2262bab538f22}{main}} (String\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Punto di ingresso dell\textquotesingle{}applicazione Java. Invoca il metodo {\ttfamily launch()} per avviare l\textquotesingle{}applicazione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Parent \mbox{\hyperlink{class_biblioteca_1_1_app_a4c53baad36fd621f2f430d3ad9bf4ea9}{load\+FXML}} (String fxml, Object controller)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Metodo per il caricamento delle risorse FXML. Carica il file .fxml specificato e imposta il controller passato come parametro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_biblioteca_1_1_app_a49763828d30970bd9df5609f36bef7ae}\label{class_biblioteca_1_1_app_a49763828d30970bd9df5609f36bef7ae} 
+static Scene {\bfseries scene}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Java\+FX \doxylink{class_biblioteca_1_1_app}{App}, Classe principale dell\textquotesingle{}applicazione \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. 
+
+Questa classe si occupa di\+:
+\begin{DoxyItemize}
+\item Avviare l\textquotesingle{}applicazione.
+\item Inizializzare lo Stage principale.
+\item Gestire la navigazione cambiando la root della scena tramite il caricamento di file FXML. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{class_biblioteca_1_1_app_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_biblioteca_1_1_app_a4c53baad36fd621f2f430d3ad9bf4ea9}\index{Biblioteca.App@{Biblioteca.App}!loadFXML@{loadFXML}}
+\index{loadFXML@{loadFXML}!Biblioteca.App@{Biblioteca.App}}
+\doxysubsubsection{\texorpdfstring{loadFXML()}{loadFXML()}}
+{\footnotesize\ttfamily \label{class_biblioteca_1_1_app_a4c53baad36fd621f2f430d3ad9bf4ea9} 
+Parent Biblioteca.\+App.\+load\+FXML (\begin{DoxyParamCaption}\item[{String}]{fxml}{, }\item[{Object}]{controller}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Metodo per il caricamento delle risorse FXML. Carica il file .fxml specificato e imposta il controller passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em fxml} & Il nome del file FXML da caricare. \\
+\hline
+\mbox{\texttt{in}}  & {\em controller} & L\textquotesingle{}istanza dell\textquotesingle{}oggetto controller da associare alla nuova Sezione. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ritorna la schermata da caricare rispetto la gerarchia. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se si verificano errori di I/O durante il caricamento. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_biblioteca_1_1_app_a7e05e728e9a9a4e352a2262bab538f22}\index{Biblioteca.App@{Biblioteca.App}!main@{main}}
+\index{main@{main}!Biblioteca.App@{Biblioteca.App}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{class_biblioteca_1_1_app_a7e05e728e9a9a4e352a2262bab538f22} 
+void Biblioteca.\+App.\+main (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Punto di ingresso dell\textquotesingle{}applicazione Java. Invoca il metodo {\ttfamily launch()} per avviare l\textquotesingle{}applicazione. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em args} & Array di stringhe contenente gli argomenti passati da riga di comando. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_biblioteca_1_1_app_a8df6f75fe14cbc9d6bd074ec21023349}\index{Biblioteca.App@{Biblioteca.App}!start@{start}}
+\index{start@{start}!Biblioteca.App@{Biblioteca.App}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \label{class_biblioteca_1_1_app_a8df6f75fe14cbc9d6bd074ec21023349} 
+void Biblioteca.\+App.\+start (\begin{DoxyParamCaption}\item[{Stage}]{stage}{}\end{DoxyParamCaption}) throws IOException}
+
+
+
+Metodo di avvio dell\textquotesingle{}interfaccia. Viene invocato automaticamente al runtime e permette di inizializzare lo Stage primario, mostrando come prima cosa la Dashboard\+Generale. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em stage} & La finestra principale caricata all\textquotesingle{}avvio dell\textquotesingle{}applicazione. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se il file FXML della dashboard non viene trovato o non può essere caricato. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+Biblioteca/App.\+java\end{DoxyCompactItemize}

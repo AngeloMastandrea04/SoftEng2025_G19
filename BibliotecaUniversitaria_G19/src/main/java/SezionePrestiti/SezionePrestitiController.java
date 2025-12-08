@@ -15,7 +15,7 @@ import javafx.scene.control.TableView;
  * contenute nella classe Biblioteca.
  * 
 */
-public class SezionePresitiController {
+public class SezionePrestitiController {
 
     private TableView tabPrestiti;
 

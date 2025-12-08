@@ -1,0 +1,103 @@
+\doxysection{Sezione\+Prestiti.\+Aggiungi\+Prestito\+Dialog Class Reference}
+\hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog}{}\label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog}\index{SezionePrestiti.AggiungiPrestitoDialog@{SezionePrestiti.AggiungiPrestitoDialog}}
+
+
+La classe \doxylink{class_sezione_prestiti_1_1_aggiungi_prestito_dialog}{Aggiungi\+Prestito\+Dialog} si occupa della creazione di un nuovo oggetto \doxylink{class_sezione_prestiti_1_1_prestito}{Prestito} a partire dalla lettura degli attributi dai Combo\+Box e dal Date\+Picker.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_ac19c7e905039d82b49dbd2282d33d0ac}{Aggiungi\+Prestito\+Dialog}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_a946639b10bc1c7ddaa2040dd758a1c32}{aggiorna\+Ok}} (Node ok)
+\begin{DoxyCompactList}\small\item\em Metodo per l\textquotesingle{}aggiornamento del valore Disable\+Property del nodo passato come parametro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_a402df95512c4d1a790c1fed855f483df}\label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_a402df95512c4d1a790c1fed855f483df} 
+Combo\+Box$<$ \mbox{\hyperlink{class_sezione_utenti_1_1_utente}{Utente}} $>$ {\bfseries utente\+Box}
+\item 
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_ad346d2d086d0b47bb15bf155ac53375e}\label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_ad346d2d086d0b47bb15bf155ac53375e} 
+Label {\bfseries utente\+Error}
+\item 
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_afa0a802712d2ebf8b247b23c3bf6d786}\label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_afa0a802712d2ebf8b247b23c3bf6d786} 
+Combo\+Box$<$ \mbox{\hyperlink{class_sezione_libri_1_1_libro}{Libro}} $>$ {\bfseries libro\+Box}
+\item 
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_a079a2ea8027003ca42ea6c59e77f7d7b}\label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_a079a2ea8027003ca42ea6c59e77f7d7b} 
+Label {\bfseries libro\+Error}
+\item 
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_aa9ead8157a2936d8ae0783288ddbf178}\label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_aa9ead8157a2936d8ae0783288ddbf178} 
+Date\+Picker {\bfseries data\+Restituzione\+Picker}
+\item 
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_a9ec689942ec9c646ee26c17309092cfd}\label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_a9ec689942ec9c646ee26c17309092cfd} 
+Label {\bfseries data\+Restituzione\+Error}
+\item 
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_afa1add659c0807c82b8adf589b94206b}\label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_afa1add659c0807c82b8adf589b94206b} 
+final Observable\+List$<$ \mbox{\hyperlink{class_sezione_utenti_1_1_utente}{Utente}} $>$ {\bfseries utenti}
+\item 
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_ac9c03c1231c3a1615e0d921126910fbd}\label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_ac9c03c1231c3a1615e0d921126910fbd} 
+final Observable\+List$<$ \mbox{\hyperlink{class_sezione_libri_1_1_libro}{Libro}} $>$ {\bfseries libri}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La classe \doxylink{class_sezione_prestiti_1_1_aggiungi_prestito_dialog}{Aggiungi\+Prestito\+Dialog} si occupa della creazione di un nuovo oggetto \doxylink{class_sezione_prestiti_1_1_prestito}{Prestito} a partire dalla lettura degli attributi dai Combo\+Box e dal Date\+Picker. 
+
+Le operazioni interne nello specifico sono di lettura dai Combo\+Box e dal Date\+Picker, di creazione di un nuovo oggetto \doxylink{class_sezione_prestiti_1_1_prestito}{Prestito}, di ritorno di un risultato opzionale e di aggiornamento del pulsante ok e sono gestite tramite il costruttore e un metodo privato.
+
+La Finestra di Dialogo contiene i Combo\+Box per l\textquotesingle{}inserimento di \doxylink{class_sezione_utenti_1_1_utente}{Utente} e \doxylink{class_sezione_libri_1_1_libro}{Libro}, un Date\+Picker per l\textquotesingle{}inserimento della Data di Restituzione, le relative Label di errore e le liste contenenti Utenti e Libri. 
+
+\label{doc-constructors}
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_ac19c7e905039d82b49dbd2282d33d0ac}\index{SezionePrestiti.AggiungiPrestitoDialog@{SezionePrestiti.AggiungiPrestitoDialog}!AggiungiPrestitoDialog@{AggiungiPrestitoDialog}}
+\index{AggiungiPrestitoDialog@{AggiungiPrestitoDialog}!SezionePrestiti.AggiungiPrestitoDialog@{SezionePrestiti.AggiungiPrestitoDialog}}
+\doxysubsubsection{\texorpdfstring{AggiungiPrestitoDialog()}{AggiungiPrestitoDialog()}}
+{\footnotesize\ttfamily \label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_ac19c7e905039d82b49dbd2282d33d0ac} 
+Sezione\+Prestiti.\+Aggiungi\+Prestito\+Dialog.\+Aggiungi\+Prestito\+Dialog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore. 
+
+\begin{DoxyPrecond}{Precondition}
+È stato premuto il bottone "{}\+Aggiungi"{} in \doxylink{class_sezione_prestiti_1_1_sezione_prestiti_controller}{Sezione\+Prestiti\+Controller}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Se viene premuto il pulsante "{}\+OK"{} viene impostato come risultato un oggetto di tipo \doxylink{class_sezione_prestiti_1_1_prestito}{Prestito} con i corrispondenti attributi letti dai Combo\+Box e dal Date\+Picker, altrimenti null. 
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_a946639b10bc1c7ddaa2040dd758a1c32}\index{SezionePrestiti.AggiungiPrestitoDialog@{SezionePrestiti.AggiungiPrestitoDialog}!aggiornaOk@{aggiornaOk}}
+\index{aggiornaOk@{aggiornaOk}!SezionePrestiti.AggiungiPrestitoDialog@{SezionePrestiti.AggiungiPrestitoDialog}}
+\doxysubsubsection{\texorpdfstring{aggiornaOk()}{aggiornaOk()}}
+{\footnotesize\ttfamily \label{class_sezione_prestiti_1_1_aggiungi_prestito_dialog_a946639b10bc1c7ddaa2040dd758a1c32} 
+void Sezione\+Prestiti.\+Aggiungi\+Prestito\+Dialog.\+aggiorna\+Ok (\begin{DoxyParamCaption}\item[{Node}]{ok}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo per l\textquotesingle{}aggiornamento del valore Disable\+Property del nodo passato come parametro. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene rilevato un cambiamento all\textquotesingle{}interno di una Combo\+Box o del Date\+Picker. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Il valore Disable\+Property sarà impostato True se è possibile procedere con l\textquotesingle{}inserimento, altrimenti False. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em ok} & Il Nodo (Bottone) di cui aggiornare la Property. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+Sezione\+Prestiti/Aggiungi\+Prestito\+Dialog.\+java\end{DoxyCompactItemize}

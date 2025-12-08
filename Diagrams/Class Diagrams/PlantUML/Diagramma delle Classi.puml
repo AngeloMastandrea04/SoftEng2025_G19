@@ -135,7 +135,7 @@ class SezioneUtentiController {
     - tornaIndietro() : void
 }
 
-class SezionePresitiController {
+class SezionePrestitiController {
     - tabPrestiti : TableView
     - cUtente : TableColumn
     - cLibro : TableColumn
@@ -194,7 +194,7 @@ App "1" --> "1" DashboardGeneraleController : <<use>>
 
 DashboardGeneraleController "1" --> "1" SezioneUtentiController : <<use>>
 DashboardGeneraleController "1" --> "1" SezioneLibriController : <<use>>
-DashboardGeneraleController "1" --> "1" SezionePresitiController : <<use>>
+DashboardGeneraleController "1" --> "1" SezionePrestitiController : <<use>>
 
 
 ' Biblioteca
@@ -210,14 +210,14 @@ Biblioteca "1" --> "1" Biblioteca : instance
 SezioneUtentiController "1" --> "0..*" Utente : <<use>>
 SezioneLibriController "1" --> "0..*" Libro : <<use>>
 
-SezionePresitiController "1" --> "0..*" Prestito : <<use>>
-SezionePresitiController "1" --> "0..*" Utente : <<use>>
-SezionePresitiController "1" --> "0..*" Libro : <<use>>
+SezionePrestitiController "1" --> "0..*" Prestito : <<use>>
+SezionePrestitiController "1" --> "0..*" Utente : <<use>>
+SezionePrestitiController "1" --> "0..*" Libro : <<use>>
 
 ' Relazione tra Controller e Finestre di Dialogo
 SezioneUtentiController "1" --> "1" AggiungiUtenteDialog : <<create>>
 SezioneLibriController "1" --> "1" AggiungiLibroDialog : <<create>>
-SezionePresitiController "1" --> "1" AggiungiPrestitoDialog : <<create>>
+SezionePrestitiController "1" --> "1" AggiungiPrestitoDialog : <<create>>
 
 
 ' Finestre di Dialogo

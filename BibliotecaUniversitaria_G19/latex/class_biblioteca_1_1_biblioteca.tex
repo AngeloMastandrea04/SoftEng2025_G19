@@ -1,0 +1,170 @@
+\doxysection{Biblioteca.\+Biblioteca Class Reference}
+\hypertarget{class_biblioteca_1_1_biblioteca}{}\label{class_biblioteca_1_1_biblioteca}\index{Biblioteca.Biblioteca@{Biblioteca.Biblioteca}}
+
+
+La struttura \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} che contiene tutti i dati dell\textquotesingle{}archivio tra Utenti, Libri e Prestiti.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Observable\+List$<$ \mbox{\hyperlink{class_sezione_utenti_1_1_utente}{Utente}} $>$ \mbox{\hyperlink{class_biblioteca_1_1_biblioteca_a275344d317d9922ca84ccd4e3f957c53}{get\+Lista\+Utenti}} ()
+\begin{DoxyCompactList}\small\item\em Getter standard per la lista degli Utenti. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{class_sezione_libri_1_1_libro}{Libro}} $>$ \mbox{\hyperlink{class_biblioteca_1_1_biblioteca_ad5c6880b17b6f5fcc1ab4cbfbe8ca779}{get\+Lista\+Libri}} ()
+\begin{DoxyCompactList}\small\item\em Getter standard per la lista dei Libri. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{class_sezione_prestiti_1_1_prestito}{Prestito}} $>$ \mbox{\hyperlink{class_biblioteca_1_1_biblioteca_ac260fb3b84101de095daa75739026093}{get\+Lista\+Prestiti}} ()
+\begin{DoxyCompactList}\small\item\em Getter standard per la lista dei Prestiti. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_biblioteca_1_1_biblioteca_a609f1b20ec3b0c86ac83de34107a1156}{salva\+Su\+File}} (String filename)
+\begin{DoxyCompactList}\small\item\em Salva su file l\textquotesingle{}intero archivio della \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} contenuto nel Singleton oggetto \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_biblioteca_1_1_biblioteca}{Biblioteca}} \mbox{\hyperlink{class_biblioteca_1_1_biblioteca_a7cfd101898a7ace5bc684604f5c76a8c}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Metodo per ottenere l\textquotesingle{}unica istanza del Singleton \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_biblioteca_1_1_biblioteca}{Biblioteca}} \mbox{\hyperlink{class_biblioteca_1_1_biblioteca_ae25abf888579371986eeff9a03534ea9}{carica\+Da\+File}} (String filename)
+\begin{DoxyCompactList}\small\item\em Carica da file l\textquotesingle{}intero archivio della \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} contenuto nel Singleton oggetto \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} salvato sullo stesso file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_biblioteca_1_1_biblioteca_a069393039a63d2fab79728794f6cfb1f}{Biblioteca}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore privato (seguendo il design pattern del Singleton). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_biblioteca_1_1_biblioteca_a8c9da1284d6b827296c2f4d7af90ddf7}\label{class_biblioteca_1_1_biblioteca_a8c9da1284d6b827296c2f4d7af90ddf7} 
+final Observable\+List$<$ \mbox{\hyperlink{class_sezione_utenti_1_1_utente}{Utente}} $>$ {\bfseries lista\+Utenti}
+\begin{DoxyCompactList}\small\item\em Contiene la lista di tutti gli Utenti registrati nella \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\item 
+\Hypertarget{class_biblioteca_1_1_biblioteca_a29f405f16ad7c555dcf4c19e275aa526}\label{class_biblioteca_1_1_biblioteca_a29f405f16ad7c555dcf4c19e275aa526} 
+final Observable\+List$<$ \mbox{\hyperlink{class_sezione_libri_1_1_libro}{Libro}} $>$ {\bfseries lista\+Libri}
+\begin{DoxyCompactList}\small\item\em Contiene la lista di tutti i Libri registrati nella \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\item 
+\Hypertarget{class_biblioteca_1_1_biblioteca_aceceaaf50abed767714cb0676a39ae31}\label{class_biblioteca_1_1_biblioteca_aceceaaf50abed767714cb0676a39ae31} 
+final Observable\+List$<$ \mbox{\hyperlink{class_sezione_prestiti_1_1_prestito}{Prestito}} $>$ {\bfseries lista\+Prestiti}
+\begin{DoxyCompactList}\small\item\em Contiene la lista di tutti i Prestiti attivi registrati nella \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\item 
+\Hypertarget{class_biblioteca_1_1_biblioteca_ae8bee5c2bfb311d339e58a7aeed8e053}\label{class_biblioteca_1_1_biblioteca_ae8bee5c2bfb311d339e58a7aeed8e053} 
+\mbox{\hyperlink{class_biblioteca_1_1_biblioteca}{Biblioteca}} {\bfseries instance}
+\begin{DoxyCompactList}\small\item\em Inizialmente uguale a null, contiene l\textquotesingle{}unica istanza per tutto il programma del Singleton \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La struttura \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} che contiene tutti i dati dell\textquotesingle{}archivio tra Utenti, Libri e Prestiti. 
+
+La \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} è implementata attraverso il design pattern del Singleton. Contiene le tre liste di Utenti, Libri e Prestiti che il Bibliotecario è interessato a visualizzare durante l\textquotesingle{}utilizzo del Sistema.
+
+\begin{DoxyInvariant}{Invariant}
+È possibile creare una sola istanza di questa classe seguendo il design pattern del Singleton. 
+\end{DoxyInvariant}
+
+
+\label{doc-constructors}
+\Hypertarget{class_biblioteca_1_1_biblioteca_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_biblioteca_1_1_biblioteca_a069393039a63d2fab79728794f6cfb1f}\index{Biblioteca.Biblioteca@{Biblioteca.Biblioteca}!Biblioteca@{Biblioteca}}
+\index{Biblioteca@{Biblioteca}!Biblioteca.Biblioteca@{Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{Biblioteca()}{Biblioteca()}}
+{\footnotesize\ttfamily \label{class_biblioteca_1_1_biblioteca_a069393039a63d2fab79728794f6cfb1f} 
+Biblioteca.\+Biblioteca.\+Biblioteca (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Costruttore privato (seguendo il design pattern del Singleton). 
+
+\begin{DoxyPostcond}{Postcondition}
+Crea una biblioteca vuota, viene utilizzato solo una volta durante l\textquotesingle{}esecuzione del programma e solo se precedentemente non è stata trovata una \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} salvata su file. 
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{class_biblioteca_1_1_biblioteca_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_biblioteca_1_1_biblioteca_ae25abf888579371986eeff9a03534ea9}\index{Biblioteca.Biblioteca@{Biblioteca.Biblioteca}!caricaDaFile@{caricaDaFile}}
+\index{caricaDaFile@{caricaDaFile}!Biblioteca.Biblioteca@{Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{caricaDaFile()}{caricaDaFile()}}
+{\footnotesize\ttfamily \label{class_biblioteca_1_1_biblioteca_ae25abf888579371986eeff9a03534ea9} 
+\mbox{\hyperlink{class_biblioteca_1_1_biblioteca}{Biblioteca}} Biblioteca.\+Biblioteca.\+carica\+Da\+File (\begin{DoxyParamCaption}\item[{String}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Carica da file l\textquotesingle{}intero archivio della \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} contenuto nel Singleton oggetto \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} salvato sullo stesso file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em filename} & Percorso del file da cui caricare l\textquotesingle{}archivio della \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il Singleton instanza della classe \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} salvata precedentemente su file. 
+\end{DoxyReturn}
+\Hypertarget{class_biblioteca_1_1_biblioteca_a7cfd101898a7ace5bc684604f5c76a8c}\index{Biblioteca.Biblioteca@{Biblioteca.Biblioteca}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Biblioteca.Biblioteca@{Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_biblioteca_1_1_biblioteca_a7cfd101898a7ace5bc684604f5c76a8c} 
+\mbox{\hyperlink{class_biblioteca_1_1_biblioteca}{Biblioteca}} Biblioteca.\+Biblioteca.\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Metodo per ottenere l\textquotesingle{}unica istanza del Singleton \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. 
+
+Ritorna l\textquotesingle{}istanza del Singleton \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} se è già stata creata, altrimenti legge dal file e restituisce la \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} letta. Se nel file non è ancora presente alcuna \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} salvata, invoca il costruttore pricato e ne crea e restituisce una vuota.
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}unica istanza del Singleton \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} 
+\end{DoxyReturn}
+\Hypertarget{class_biblioteca_1_1_biblioteca_ad5c6880b17b6f5fcc1ab4cbfbe8ca779}\index{Biblioteca.Biblioteca@{Biblioteca.Biblioteca}!getListaLibri@{getListaLibri}}
+\index{getListaLibri@{getListaLibri}!Biblioteca.Biblioteca@{Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{getListaLibri()}{getListaLibri()}}
+{\footnotesize\ttfamily \label{class_biblioteca_1_1_biblioteca_ad5c6880b17b6f5fcc1ab4cbfbe8ca779} 
+Observable\+List$<$ \mbox{\hyperlink{class_sezione_libri_1_1_libro}{Libro}} $>$ Biblioteca.\+Biblioteca.\+get\+Lista\+Libri (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter standard per la lista dei Libri. 
+
+\begin{DoxyReturn}{Returns}
+La lista dei Libri. 
+\end{DoxyReturn}
+\Hypertarget{class_biblioteca_1_1_biblioteca_ac260fb3b84101de095daa75739026093}\index{Biblioteca.Biblioteca@{Biblioteca.Biblioteca}!getListaPrestiti@{getListaPrestiti}}
+\index{getListaPrestiti@{getListaPrestiti}!Biblioteca.Biblioteca@{Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{getListaPrestiti()}{getListaPrestiti()}}
+{\footnotesize\ttfamily \label{class_biblioteca_1_1_biblioteca_ac260fb3b84101de095daa75739026093} 
+Observable\+List$<$ \mbox{\hyperlink{class_sezione_prestiti_1_1_prestito}{Prestito}} $>$ Biblioteca.\+Biblioteca.\+get\+Lista\+Prestiti (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter standard per la lista dei Prestiti. 
+
+\begin{DoxyReturn}{Returns}
+La lista dei Prestiti. 
+\end{DoxyReturn}
+\Hypertarget{class_biblioteca_1_1_biblioteca_a275344d317d9922ca84ccd4e3f957c53}\index{Biblioteca.Biblioteca@{Biblioteca.Biblioteca}!getListaUtenti@{getListaUtenti}}
+\index{getListaUtenti@{getListaUtenti}!Biblioteca.Biblioteca@{Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{getListaUtenti()}{getListaUtenti()}}
+{\footnotesize\ttfamily \label{class_biblioteca_1_1_biblioteca_a275344d317d9922ca84ccd4e3f957c53} 
+Observable\+List$<$ \mbox{\hyperlink{class_sezione_utenti_1_1_utente}{Utente}} $>$ Biblioteca.\+Biblioteca.\+get\+Lista\+Utenti (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter standard per la lista degli Utenti. 
+
+\begin{DoxyReturn}{Returns}
+La lista degli Utenti. 
+\end{DoxyReturn}
+\Hypertarget{class_biblioteca_1_1_biblioteca_a609f1b20ec3b0c86ac83de34107a1156}\index{Biblioteca.Biblioteca@{Biblioteca.Biblioteca}!salvaSuFile@{salvaSuFile}}
+\index{salvaSuFile@{salvaSuFile}!Biblioteca.Biblioteca@{Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{salvaSuFile()}{salvaSuFile()}}
+{\footnotesize\ttfamily \label{class_biblioteca_1_1_biblioteca_a609f1b20ec3b0c86ac83de34107a1156} 
+void Biblioteca.\+Biblioteca.\+salva\+Su\+File (\begin{DoxyParamCaption}\item[{String}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Salva su file l\textquotesingle{}intero archivio della \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca} contenuto nel Singleton oggetto \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em filename} & Percorso del file su cui caricare l\textquotesingle{}archivio della \doxylink{class_biblioteca_1_1_biblioteca}{Biblioteca}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+Biblioteca/Biblioteca.\+java\end{DoxyCompactItemize}

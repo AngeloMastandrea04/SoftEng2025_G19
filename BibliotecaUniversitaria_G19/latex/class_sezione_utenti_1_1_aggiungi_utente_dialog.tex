@@ -1,0 +1,97 @@
+\doxysection{Sezione\+Utenti.\+Aggiungi\+Utente\+Dialog Class Reference}
+\hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog}{}\label{class_sezione_utenti_1_1_aggiungi_utente_dialog}\index{SezioneUtenti.AggiungiUtenteDialog@{SezioneUtenti.AggiungiUtenteDialog}}
+
+
+La classe \doxylink{class_sezione_utenti_1_1_aggiungi_utente_dialog}{Aggiungi\+Utente\+Dialog} si occupa della creazione di un nuovo oggetto \doxylink{class_sezione_utenti_1_1_utente}{Utente} a partire dalla lettura degli attributi dai campi di testo.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sezione_utenti_1_1_aggiungi_utente_dialog_a9ce95bdb98e645ad848358a4335a15da}{Aggiungi\+Utente\+Dialog}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_sezione_utenti_1_1_aggiungi_utente_dialog_a991fb578bb6ee34e243bb5c90ffd4b39}{aggiorna\+Ok}} (Node ok)
+\begin{DoxyCompactList}\small\item\em Metodo per l\textquotesingle{}aggiornamento del valore Disable\+Property del nodo passato come parametro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog_a931eaf4c6cbb666dc21a3ba08f4fce37}\label{class_sezione_utenti_1_1_aggiungi_utente_dialog_a931eaf4c6cbb666dc21a3ba08f4fce37} 
+Text\+Field {\bfseries nome\+Field}
+\item 
+\Hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog_a16e2fb69c9f437544b261bcd5a57ec40}\label{class_sezione_utenti_1_1_aggiungi_utente_dialog_a16e2fb69c9f437544b261bcd5a57ec40} 
+Text\+Field {\bfseries cognome\+Field}
+\item 
+\Hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog_aab4c8b010495477ec219bc6bc0a4890f}\label{class_sezione_utenti_1_1_aggiungi_utente_dialog_aab4c8b010495477ec219bc6bc0a4890f} 
+Text\+Field {\bfseries matricola\+Field}
+\item 
+\Hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog_a8eee279d52ac6242a69a52a7cef6a1b2}\label{class_sezione_utenti_1_1_aggiungi_utente_dialog_a8eee279d52ac6242a69a52a7cef6a1b2} 
+Label {\bfseries matricola\+Error}
+\item 
+\Hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog_a95da4e5f58a5bd34bafcf71a18e49d40}\label{class_sezione_utenti_1_1_aggiungi_utente_dialog_a95da4e5f58a5bd34bafcf71a18e49d40} 
+Text\+Field {\bfseries email\+Field}
+\item 
+\Hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog_a077a65e42d1aff8e97ff5e7e975bb75b}\label{class_sezione_utenti_1_1_aggiungi_utente_dialog_a077a65e42d1aff8e97ff5e7e975bb75b} 
+Label {\bfseries email\+Error}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La classe \doxylink{class_sezione_utenti_1_1_aggiungi_utente_dialog}{Aggiungi\+Utente\+Dialog} si occupa della creazione di un nuovo oggetto \doxylink{class_sezione_utenti_1_1_utente}{Utente} a partire dalla lettura degli attributi dai campi di testo. 
+
+Le operazioni interne nello specifico sono di lettura dai campi di testo, di creazione di un nuovo oggetto Libro, di ritorno di un risultato opzionale e di aggiornamento del pulsante ok e sono gestite tramite il costruttore e un metodo privato.
+
+La Finestra di Dialogo contiene i campi di testo per l\textquotesingle{}inserimento di Nome, Cognome, Matricola e Email, oltre alle relative Label di errore. 
+
+\label{doc-constructors}
+\Hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog_a9ce95bdb98e645ad848358a4335a15da}\index{SezioneUtenti.AggiungiUtenteDialog@{SezioneUtenti.AggiungiUtenteDialog}!AggiungiUtenteDialog@{AggiungiUtenteDialog}}
+\index{AggiungiUtenteDialog@{AggiungiUtenteDialog}!SezioneUtenti.AggiungiUtenteDialog@{SezioneUtenti.AggiungiUtenteDialog}}
+\doxysubsubsection{\texorpdfstring{AggiungiUtenteDialog()}{AggiungiUtenteDialog()}}
+{\footnotesize\ttfamily \label{class_sezione_utenti_1_1_aggiungi_utente_dialog_a9ce95bdb98e645ad848358a4335a15da} 
+Sezione\+Utenti.\+Aggiungi\+Utente\+Dialog.\+Aggiungi\+Utente\+Dialog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore. 
+
+\begin{DoxyPrecond}{Precondition}
+È stato premuto il bottone "{}\+Aggiungi"{} in \doxylink{class_sezione_utenti_1_1_sezione_utenti_controller}{Sezione\+Utenti\+Controller}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Se viene premuto il pulsante "{}\+OK"{} viene impostato come risultato un oggetto di tipo \doxylink{class_sezione_utenti_1_1_utente}{Utente} con i corrispondenti attributi letti dai campi di testo, altrimenti null. 
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sezione_utenti_1_1_aggiungi_utente_dialog_a991fb578bb6ee34e243bb5c90ffd4b39}\index{SezioneUtenti.AggiungiUtenteDialog@{SezioneUtenti.AggiungiUtenteDialog}!aggiornaOk@{aggiornaOk}}
+\index{aggiornaOk@{aggiornaOk}!SezioneUtenti.AggiungiUtenteDialog@{SezioneUtenti.AggiungiUtenteDialog}}
+\doxysubsubsection{\texorpdfstring{aggiornaOk()}{aggiornaOk()}}
+{\footnotesize\ttfamily \label{class_sezione_utenti_1_1_aggiungi_utente_dialog_a991fb578bb6ee34e243bb5c90ffd4b39} 
+void Sezione\+Utenti.\+Aggiungi\+Utente\+Dialog.\+aggiorna\+Ok (\begin{DoxyParamCaption}\item[{Node}]{ok}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo per l\textquotesingle{}aggiornamento del valore Disable\+Property del nodo passato come parametro. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene rilevato un cambiamento all\textquotesingle{}interno di un campo di testo. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Il valore Disable\+Property sarà impostato True se è possibile procedere con l\textquotesingle{}inserimento, altrimenti False. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em ok} & Il Nodo (Bottone) di cui aggiornare la Property. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+Sezione\+Utenti/Aggiungi\+Utente\+Dialog.\+java\end{DoxyCompactItemize}

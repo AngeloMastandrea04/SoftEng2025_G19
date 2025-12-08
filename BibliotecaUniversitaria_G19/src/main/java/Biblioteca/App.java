@@ -10,6 +10,7 @@ import java.io.IOException;
 
 /**
  * @brief JavaFX App, Classe principale dell'applicazione Biblioteca.
+ * 
  * Questa classe si occupa di:
  * - Avviare l'applicazione.
  * - Inizializzare lo Stage principale.

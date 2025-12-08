@@ -1,0 +1,130 @@
+\doxysection{Sezione\+Libri.\+Sezione\+Libri\+Controller Class Reference}
+\hypertarget{class_sezione_libri_1_1_sezione_libri_controller}{}\label{class_sezione_libri_1_1_sezione_libri_controller}\index{SezioneLibri.SezioneLibriController@{SezioneLibri.SezioneLibriController}}
+
+
+La classe \doxylink{class_sezione_libri_1_1_sezione_libri_controller}{Sezione\+Libri\+Controller} si occupa di gestire tutte le operazioni sulla struttura dati contenente i Libri.  
+
+
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_sezione_libri_1_1_sezione_libri_controller_a62152f095e3bf56a33d18a27637ad282}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di inizializzazione del Controller. Ha il compito di accedere al Singleton di Biblioteca e recuperare da esso il riferimento alla struttura dati associandolo al relativo attributo del Controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sezione_libri_1_1_sezione_libri_controller_a192a60872a3fbe216de7a3323ba2deaa}{aggiungi\+Libro}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di aggiunta del \doxylink{class_sezione_libri_1_1_libro}{Libro}. Ha il compito di aggiungere i dati del \doxylink{class_sezione_libri_1_1_libro}{Libro} passati dalla finestra di dialogo alla relativa struttura dati. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sezione_libri_1_1_sezione_libri_controller_a797c4b1c64f8989408b81c9c38ce5444}{cancella\+Libro}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di cancellazione del \doxylink{class_sezione_libri_1_1_libro}{Libro}. Ha il compito di cancellare il \doxylink{class_sezione_libri_1_1_libro}{Libro} dalla relativa struttura dati. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sezione_libri_1_1_sezione_libri_controller_ae2f847ae467006535ef23b9c135ecf86}{torna\+Indietro}} ()
+\begin{DoxyCompactList}\small\item\em Gestisce il ritorno alla Dashboard Generale. Ha il compito di far tornare alla Dashboard Generale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_a0f99e5430c677446050e091b724fcf01}\label{class_sezione_libri_1_1_sezione_libri_controller_a0f99e5430c677446050e091b724fcf01} 
+Table\+View {\bfseries tab\+Libri}
+\item 
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_a1b6291f5d6925967e80d38570eb6b5e4}\label{class_sezione_libri_1_1_sezione_libri_controller_a1b6291f5d6925967e80d38570eb6b5e4} 
+Table\+Column {\bfseries c\+Titolo}
+\item 
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_a30d81db236ec9ccca39dc512c9e72588}\label{class_sezione_libri_1_1_sezione_libri_controller_a30d81db236ec9ccca39dc512c9e72588} 
+Table\+Column {\bfseries c\+Autori}
+\item 
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_a6676253af935508e6d99325a3348416c}\label{class_sezione_libri_1_1_sezione_libri_controller_a6676253af935508e6d99325a3348416c} 
+Table\+Column {\bfseries c\+Anno}
+\item 
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_af8f6ca1dcf93181beb4ee01dc8f093d7}\label{class_sezione_libri_1_1_sezione_libri_controller_af8f6ca1dcf93181beb4ee01dc8f093d7} 
+Table\+Column {\bfseries c\+Isbn}
+\item 
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_a6ad9947d4bf8c8cd27084c07a68ddf13}\label{class_sezione_libri_1_1_sezione_libri_controller_a6ad9947d4bf8c8cd27084c07a68ddf13} 
+Table\+Column {\bfseries c\+Copie\+Totali}
+\item 
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_aad8f8154aef57c5a9552d39676ffe0f6}\label{class_sezione_libri_1_1_sezione_libri_controller_aad8f8154aef57c5a9552d39676ffe0f6} 
+Table\+Column {\bfseries c\+Copie\+Disponibili}
+\item 
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_afe64124e77203bf02c1e3ad55901ee87}\label{class_sezione_libri_1_1_sezione_libri_controller_afe64124e77203bf02c1e3ad55901ee87} 
+Text\+Field {\bfseries ric\+Libro}
+\item 
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_a17589ca2640639895e5acffa1082caf8}\label{class_sezione_libri_1_1_sezione_libri_controller_a17589ca2640639895e5acffa1082caf8} 
+Button {\bfseries canc\+Libro\+Btn}
+\item 
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_af9fba7b5255912f516def13e9c72a839}\label{class_sezione_libri_1_1_sezione_libri_controller_af9fba7b5255912f516def13e9c72a839} 
+final Observable\+List$<$ \mbox{\hyperlink{class_sezione_libri_1_1_libro}{Libro}} $>$ {\bfseries lista\+Libri}
+\begin{DoxyCompactList}\small\item\em Contiene il riferimento alla lista contenente tutti i Libri registrati nella Biblioteca. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La classe \doxylink{class_sezione_libri_1_1_sezione_libri_controller}{Sezione\+Libri\+Controller} si occupa di gestire tutte le operazioni sulla struttura dati contenente i Libri. 
+
+Il Controller contiene la Table\+View per la lista dei Libri e le relative colonne, un campo di testo per la ricerca e il bottone per cancellare un \doxylink{class_sezione_libri_1_1_libro}{Libro}. Il Controller ha un riferimento alla lista di Libri contenuta nella classe Biblioteca. 
+
+\label{doc-func-members}
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_a192a60872a3fbe216de7a3323ba2deaa}\index{SezioneLibri.SezioneLibriController@{SezioneLibri.SezioneLibriController}!aggiungiLibro@{aggiungiLibro}}
+\index{aggiungiLibro@{aggiungiLibro}!SezioneLibri.SezioneLibriController@{SezioneLibri.SezioneLibriController}}
+\doxysubsubsection{\texorpdfstring{aggiungiLibro()}{aggiungiLibro()}}
+{\footnotesize\ttfamily \label{class_sezione_libri_1_1_sezione_libri_controller_a192a60872a3fbe216de7a3323ba2deaa} 
+void Sezione\+Libri.\+Sezione\+Libri\+Controller.\+aggiungi\+Libro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di aggiunta del \doxylink{class_sezione_libri_1_1_libro}{Libro}. Ha il compito di aggiungere i dati del \doxylink{class_sezione_libri_1_1_libro}{Libro} passati dalla finestra di dialogo alla relativa struttura dati. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene premuto il bottone "{}\+Aggiungi"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Se non ci sono duplicati viene aggiunto un \doxylink{class_sezione_libri_1_1_libro}{Libro} alla lista, altrimenti lancia un alert di errore. 
+\end{DoxyPostcond}
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_a797c4b1c64f8989408b81c9c38ce5444}\index{SezioneLibri.SezioneLibriController@{SezioneLibri.SezioneLibriController}!cancellaLibro@{cancellaLibro}}
+\index{cancellaLibro@{cancellaLibro}!SezioneLibri.SezioneLibriController@{SezioneLibri.SezioneLibriController}}
+\doxysubsubsection{\texorpdfstring{cancellaLibro()}{cancellaLibro()}}
+{\footnotesize\ttfamily \label{class_sezione_libri_1_1_sezione_libri_controller_a797c4b1c64f8989408b81c9c38ce5444} 
+void Sezione\+Libri.\+Sezione\+Libri\+Controller.\+cancella\+Libro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di cancellazione del \doxylink{class_sezione_libri_1_1_libro}{Libro}. Ha il compito di cancellare il \doxylink{class_sezione_libri_1_1_libro}{Libro} dalla relativa struttura dati. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene selezionato un \doxylink{class_sezione_libri_1_1_libro}{Libro} dalla lista e viene premuto il bottone "{}\+Cancella"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene mostrato un alert di conferma e, se i numeri di copie totali e disponibili combaciano il \doxylink{class_sezione_libri_1_1_libro}{Libro} selezionato viene cancellato dalla lista, altrimenti lancia un alert di errore. 
+\end{DoxyPostcond}
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_a62152f095e3bf56a33d18a27637ad282}\index{SezioneLibri.SezioneLibriController@{SezioneLibri.SezioneLibriController}!initialize@{initialize}}
+\index{initialize@{initialize}!SezioneLibri.SezioneLibriController@{SezioneLibri.SezioneLibriController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_sezione_libri_1_1_sezione_libri_controller_a62152f095e3bf56a33d18a27637ad282} 
+void Sezione\+Libri.\+Sezione\+Libri\+Controller.\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di inizializzazione del Controller. Ha il compito di accedere al Singleton di Biblioteca e recuperare da esso il riferimento alla struttura dati associandolo al relativo attributo del Controller. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene caricata la scena della Sezione Libri. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene visualizzata a schermo la Sezione Libri. 
+\end{DoxyPostcond}
+\Hypertarget{class_sezione_libri_1_1_sezione_libri_controller_ae2f847ae467006535ef23b9c135ecf86}\index{SezioneLibri.SezioneLibriController@{SezioneLibri.SezioneLibriController}!tornaIndietro@{tornaIndietro}}
+\index{tornaIndietro@{tornaIndietro}!SezioneLibri.SezioneLibriController@{SezioneLibri.SezioneLibriController}}
+\doxysubsubsection{\texorpdfstring{tornaIndietro()}{tornaIndietro()}}
+{\footnotesize\ttfamily \label{class_sezione_libri_1_1_sezione_libri_controller_ae2f847ae467006535ef23b9c135ecf86} 
+void Sezione\+Libri.\+Sezione\+Libri\+Controller.\+torna\+Indietro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gestisce il ritorno alla Dashboard Generale. Ha il compito di far tornare alla Dashboard Generale. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene premuto il bottone "{}\+Torna indietro"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene caricata la scena della Dashboard Generale. 
+\end{DoxyPostcond}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+Sezione\+Libri/Sezione\+Libri\+Controller.\+java\end{DoxyCompactItemize}
