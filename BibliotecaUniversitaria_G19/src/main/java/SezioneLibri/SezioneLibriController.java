@@ -12,9 +12,6 @@ import javafx.scene.control.TableView;
  * Il Controller contiene la lista di Libri catturata dalla classe Biblioteca
  * in fase di initialize().
  * 
- * @invariant
- * È possibile creare una sola istanza di questa classe seguendo il design
- * pattern del Singleton.
  */
 
 public class SezioneLibriController {
