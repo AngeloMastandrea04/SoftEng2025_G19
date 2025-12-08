@@ -1,35 +1,43 @@
 @startuml generale
-
-package biblioteca{
-agent Biblioteca
-agent DashboardGeneraleController
+skinparam Linetype ortho
+skinparam rectangle {
+    borderColor transparent
+}
+left to right direction
+package Biblioteca{
 agent App
+agent Biblioteca as BibClass
 note "DashboardGeneraleView.fxml si trova\nnel package resouces.biblioteca" as N1
+agent DashboardGeneraleController
 }
 
-package sezioneUtenti{
-agent Utente
-agent SezioneUtentiController
+rectangle {
+package SezioneUtenti{
 agent AggiungiUtenteDialog
+agent Utente
 note "SezioneUtentiView.fxml e AggiungiUtenteDialogView.fxml\nsi trovano nel package resouces.sezioneUtenti" as N2
+agent SezioneUtentiController
 }
 
-package sezioneLibri{
-agent Libro
-agent SezioneLibriController
+package SezioneLibri{
 agent AggiungiLibroDialog
+agent Libro
 note "SezioneUtentiView.fxml e AggiungiLibroDialogView.fxml\nsi trovano nel package resouces.sezioneLibri" as N3
+agent SezioneLibriController
 }
 
-package sezionePrestiti{
-agent Prestito
-agent SezionePrestitiController
+package SezionePrestiti{
 agent AggiungiPrestitoDialog
+agent Prestito
 note "SezioneUtentiView.fxml e AggiungiPrestitoDialogView.fxml\nsi trovano nel package resouces.sezionePrestiti" as N4
+agent SezionePrestitiController
 }
+}
+Biblioteca <.down. SezioneUtenti
+Biblioteca <.down. SezioneLibri
+Biblioteca <.down. SezionePrestiti
 
-sezioneUtenti .left.> biblioteca
-sezioneLibri .up.> biblioteca
-sezionePrestiti .left.> biblioteca
-
+SezionePrestiti -[hidden]right- SezioneLibri
+SezionePrestiti -[hidden]right- SezioneUtenti
+SezioneLibri -[hidden]left- SezioneUtenti
 @enduml
