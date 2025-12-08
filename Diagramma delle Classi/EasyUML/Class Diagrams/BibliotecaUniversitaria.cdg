@@ -268,6 +268,7 @@
         <Field name="isbnField" type="TextField" visibility="private"/>
         <Field name="isbnError" type="Label" visibility="private"/>
         <Field name="copieField" type="TextField" visibility="private"/>
+        <Field name="copieError" type="Label" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public"/>

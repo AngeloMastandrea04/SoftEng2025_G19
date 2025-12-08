@@ -169,6 +169,7 @@ class AggiungiLibroDialog {
     - isbnField : TextField
     - isbnError : Label
     - copieField : TextField
+    - copieError : Label
     + AggiungiLibroDialog()
     - aggiornaOk(ok : Node) : void
 }
