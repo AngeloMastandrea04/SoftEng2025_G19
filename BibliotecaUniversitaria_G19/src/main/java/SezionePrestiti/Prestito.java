@@ -56,16 +56,16 @@ public class Prestito {
     }
 
     /**
-     * @brief Getter per l'aggiornamento dinamico della TableView.
-     * @return Il valore aggiornato dell'utente associato al Prestito.
+     * @brief Metodo necessario per Binding tra la TableView e la property utente.
+     * @return La property utente del Prestito.
      */
     public StringProperty utenteProperty() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
-     * @brief Getter per l'aggiornamento dinamico della TableView.
-     * @return Il valore aggiornato del libro coinvolto del Prestito.
+     * @brief Metodo necessario per Binding tra la TableView e la property libro.
+     * @return La property libro del Prestito.
      */
     public StringProperty libroProperty() {
         throw new UnsupportedOperationException("Not supported yet.");
