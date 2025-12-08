@@ -1,0 +1,41 @@
+@startuml act_prestito
+title Activity Diagram - Registrazione Prestito (UC-14)
+
+|Bibliotecario|
+start
+
+|Bibliotecario|
+:Clicca su "Registra Prestito";
+
+|Sistema|
+:Mostra Finestra di Dialogo;
+
+|Bibliotecario|
+repeat
+:Compila il form
+(Utente, Libro, DataRestituzione);
+
+|Sistema|
+:Controlla la Validità del nuovo Prestito;
+
+|Sistema|
+backward :Mostra messaggi Errore Validità;
+
+repeat while (Dati Validi?) is ([no]) not ([si])
+|Bibliotecario|
+:Clicca su "Conferma";
+
+|Sistema|
+:Crea oggetto nuovoPrestito;
+
+
+:Aggiunge nuovoPrestito alla Lista;
+:Aggiorna la Lista dei 
+    Prestiti dell'Utente;
+:Aggiorna le copie Disponibili
+    del Libro in prestito;
+:Salva sul File;
+:Aggiorna la Tabella;
+
+stop
+@enduml

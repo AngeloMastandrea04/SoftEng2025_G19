@@ -1,0 +1,47 @@
+@startuml act_modifica_split
+title Activity Diagram - Modifica Utente (UC-5)
+
+|Bibliotecario|
+start
+
+|Bibliotecario|
+:Seleziona Utente;
+:Modifica un campo
+(Nome, Cognome, Matricola o Email);
+
+|Sistema|
+if (Quale campo è stato modificato?) then (Matricola/Email)
+
+if (Modifica su Matricola o Email?) then (Matricola)
+    :Controlla la Validità Dato modificato;
+    if (Dato Valido?) then ([no])
+        :Mostra Alert Validità;
+        stop
+    else ([si])
+        :Controlla l'esistenza di Duplicati;
+        if (Esiste un Duplicato?) then ([si])
+            :Mostra Alert Duplicati;
+            stop
+        else ([no])
+        endif
+    endif
+
+else (Email)
+    :Controlla la Validità Dato modificato;
+    if (Dato Valido?) then ([no])
+        :Mostra Alert Validità;
+        stop
+    else ([si])
+    endif
+endif
+
+else (Nome/Cognome)
+endif
+
+:Modifica l'Utente nella 
+     Lista degli Utenti;
+:Salva sul File (salvaSuFile);
+:Aggiorna la Tabella;
+
+stop
+@enduml

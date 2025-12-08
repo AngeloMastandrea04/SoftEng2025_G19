@@ -1,0 +1,28 @@
+@startuml act_restituzione
+title Activity Diagram - Registrazione Restituzione (UC-16)
+
+|Bibliotecario|
+start
+|Bibliotecario|
+:Seleziona Prestito;
+:Clicca su "Cancella";
+
+|Sistema|
+:Controlla Ritardo;
+
+if (Restituzione in Ritardo?) then ([si])
+    :Mostra Alert Warning Ritardo;
+else ([no])
+    :Mostra Alert Conferma;
+endif
+
+|Bibliotecario|
+:Clicca su "OK";
+
+|Sistema|
+:Rimuove il Prestito dalla Lista dei Prestiti;
+:Salva sul File;
+:Aggiorna la Tabella;
+
+stop
+@enduml

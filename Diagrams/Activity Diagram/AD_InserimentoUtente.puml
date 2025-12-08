@@ -1,0 +1,44 @@
+@startuml act1_inserimento
+title Activity Diagram - Inserimento Utente (UC-3)
+
+|Bibliotecario|
+start
+|Bibliotecario|
+:Clicca su "Aggiungi";
+
+|Sistema|
+:Mostra Finestra di Dialogo;
+
+
+|Bibliotecario|
+repeat
+:Compila il form
+(Nome, Cognome, Matricola, Email);
+
+|Sistema|
+:Controlla Validità Formato Dati;
+
+|Sistema|
+backward :Mostra messaggio Errore Validità;
+
+repeat while (Dati Validi?) is ([no]) not ([yes])
+|Bibliotecario|
+:Clicca su "OK";
+
+
+
+|Sistema|
+:Crea oggetto nuovoUtente;
+:Controlla esistenza Duplicati;
+
+if (Utente già presente?) then ([si])
+    :Mostra Alert "Utente Duplicato";
+    stop
+else ([no])
+    :Aggiunge nuovoUtente alla 
+        Lista degli Utenti;
+    :Salva sul File;
+    :Aggiorna la Tabella;
+endif
+stop
+@enduml
