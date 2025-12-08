@@ -14,10 +14,7 @@ import javafx.scene.control.TableView;
  * Il Controller contiene le liste dei Libri, degli Utenti e dei Prestiti catturate dalla classe Biblioteca
  * in fase di initialize().
  * 
- * @invariant
- * È possibile creare una sola istanza di questa classe seguendo il design
- * pattern del Singleton.
- */
+*/
 public class SezionePresitiController {
 
     private TableView tabPrestiti;
@@ -46,9 +43,9 @@ public class SezionePresitiController {
     private final ObservableList<Prestito> listaPrestiti;
 
     /**
-     * @brief Metodo di inizializzazione del Controller
+     * @brief Metodo di inizializzazione del Controller.
      * Ha il compito di accedere al Singleton di Biblioteca e recuperare da esso i riferimenti alle strutture dati
-     * associandoli ai relativi attributi del Controller
+     * associandoli ai relativi attributi del Controller.
      */
     private void initialize() {
     }
@@ -56,7 +53,7 @@ public class SezionePresitiController {
     /**
      * @brief Metodo di aggiunta del Prestito. 
      * Ha il compito di aggiungere i dati del prestito passati dalla finestra di dialogo alla relativa struttura dati, inoltre si occupa di decrementare le copie del Libro
-     * e di aggiungere all'attributo prestitiAttivi di Utente la rappresentazione del prestito data dalla Prestiti.toStringUtente()
+     * e di aggiungere all'attributo prestitiAttivi di Utente la rappresentazione del prestito data dalla Prestiti.toStringUtente().
      * @see Prestito::toStringUtente()
      * @see Utente::prestitiAttivi
      */
@@ -66,7 +63,7 @@ public class SezionePresitiController {
     /**
      * @brief Metodo di cancellazione del Prestito. 
      * Ha il compito di cancellare il prestito dalla relativa struttura dati, inoltre si occupa di incrementare le copie del Libro
-     * e di rimuovere dall'attributo prestitiAttivi di Utente la rappresentazione del prestito
+     * e di rimuovere dall'attributo prestitiAttivi di Utente la rappresentazione del prestito.
      * @see Utente::prestitiAttivi
      */
     private void cancellaPrestito() {

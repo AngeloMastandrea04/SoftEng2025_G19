@@ -12,7 +12,7 @@ import javafx.scene.control.TableView;
  * Il Controller contiene la lista di Libri catturata dalla classe Biblioteca
  * in fase di initialize().
  * 
- */
+*/
 
 public class SezioneLibriController {
 
@@ -36,28 +36,28 @@ public class SezioneLibriController {
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Libri registrati nella Biblioteca.
-     */
+    */
     private final ObservableList<Libro> listaLibri;
 
     /**
-     * @brief Metodo di inizializzazione del Controller
+     * @brief Metodo di inizializzazione del Controller.
      * Ha il compito di accedere al Singleton di Biblioteca e recuperare da esso il riferimento alla strutture dati
-     * associandolo al relativo attributo del Controller
-     */
+     * associandolo al relativo attributo del Controller.
+    */
     private void initialize() {
     }
 
-     /**
+    /**
      * @brief Metodo di aggiunta del Libro. 
-     * Ha il compito di aggiungere i dati del Libro passati dalla finestra di dialogo alla relativa struttura dati
-     */
+     * Ha il compito di aggiungere i dati del Libro passati dalla finestra di dialogo alla relativa struttura dati.
+    */
     private void aggiungiLibro() {
     }
 
-     /**
+    /**
      * @brief Metodo di cancellazione del Libro. 
-     * Ha il compito di cancellare il Libro dalla relativa struttura dati
-     */
+     * Ha il compito di cancellare il Libro dalla relativa struttura dati.
+    */
     private void cancellaLibro() {
     }
 
