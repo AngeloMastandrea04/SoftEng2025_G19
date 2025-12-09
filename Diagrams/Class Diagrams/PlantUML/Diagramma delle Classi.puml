@@ -77,13 +77,13 @@ class Biblioteca {
     - listaUtenti : ObservableList<Utente> {readOnly}
     - listaLibri : ObservableList<Libro> {readOnly}
     - listaPrestiti : ObservableList<Prestito> {readOnly}
-    - instance : Biblioteca
+    - {static} instance : Biblioteca
     - Biblioteca()
     + {static} getInstance() : Biblioteca
     + getListaUtenti() : ObservableList<Utente>
     + getListaLibri() : ObservableList<Libro>
     + getListaPrestiti() : ObservableList<Prestito>
-    + {static} caricaDaFile(filename : String) : Biblioteca
+    - {static} caricaDaFile(filename : String) : Biblioteca
     + salvaSuFile(filename : String) : void
 }
 

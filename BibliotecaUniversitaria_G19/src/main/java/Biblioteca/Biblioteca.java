@@ -3,6 +3,12 @@ package Biblioteca;
 import SezioneLibri.Libro;
 import SezionePrestiti.Prestito;
 import SezioneUtenti.Utente;
+import java.io.BufferedInputStream;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -36,7 +42,7 @@ public class Biblioteca {
     /**
      * @brief Inizialmente uguale a null, contiene l'unica istanza per tutto il programma del Singleton Biblioteca.
      */
-    private Biblioteca instance;
+    private static Biblioteca instance = null;
 
     /**
      * @brief Costruttore privato (seguendo il design pattern del Singleton).
@@ -46,6 +52,9 @@ public class Biblioteca {
      * trovata una Biblioteca salvata su file.
      */
     private Biblioteca() {
+        this.listaUtenti = FXCollections.observableArrayList();
+        this.listaLibri = FXCollections.observableArrayList();
+        this.listaPrestiti = FXCollections.observableArrayList();
     }
 
     /**
@@ -59,7 +68,15 @@ public class Biblioteca {
      * @return L'unica istanza del Singleton Biblioteca
      */
     public static Biblioteca getInstance() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (instance == null) {  
+            try {
+                instance = Biblioteca.caricaDaFile("ArchivioBiblioteca.ser");
+            } catch(EOFException ex) {
+                // Se il file è vuoto, crea un nuovo oggetto Biblioteca vuoto.
+                instance = new Biblioteca();
+            }
+        }
+        return instance;
     }
 
     /**
@@ -92,8 +109,17 @@ public class Biblioteca {
      * @param[in] filename Percorso del file da cui caricare l'archivio della Biblioteca.
      * @return Il Singleton instanza della classe Biblioteca salvata precedentemente su file.
      */
-    public static Biblioteca caricaDaFile(String filename) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private static Biblioteca caricaDaFile(String filename) throws EOFException {
+        Biblioteca ret = null;
+        try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)))) {
+                ret = (Biblioteca) ois.readObject();
+        } catch(EOFException ex) {
+            // Se il file è vuoto, bisogna creare un nuovo oggetto Biblioteca in getInstance()
+            throw new EOFException();
+        } catch(IOException | ClassNotFoundException ex) {
+            System.err.println("Il file " + filename + " ha generato un'eccezione in lettura.");
+        }
+        return ret;
     }
 
     /**
