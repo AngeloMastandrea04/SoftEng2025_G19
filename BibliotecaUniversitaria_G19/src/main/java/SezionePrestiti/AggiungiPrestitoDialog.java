@@ -1,19 +1,19 @@
 package SezionePrestiti;
+
 import Biblioteca.Biblioteca;
 import SezioneUtenti.Utente;
 import SezioneLibri.Libro;
-import java.awt.Label;
+import java.io.IOException;
+import java.time.LocalDate;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Dialog;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 /**
  * @brief La classe AggiungiPrestitoDialog si occupa della creazione di un nuovo oggetto Prestito a partire dalla lettura degli attributi dai ComboBox e dal DatePicker.
@@ -51,7 +51,7 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
     public AggiungiPrestitoDialog() {
         try{
             // Caricamento file FXML, impostazione controller, DialogPane, grandezza fissa, icona e titolo.
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AggiungiPrestitoDialogView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SezionePrestiti/AggiungiPrestitoDialogView.fxml"));
             loader.setController(this);
             this.setDialogPane(loader.load());
             this.setResizable(false);
@@ -69,8 +69,61 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
             FilteredList<Utente> utentiFiltrati = new FilteredList(utenti, p -> true);
             FilteredList<Libro> libriFiltrati = new FilteredList(libri, p -> true);
             
+            //Impostazione StringConverter per le ComboBox
+            utenteBox.setConverter(new StringConverter<Utente>(){
+                @Override
+                public String toString(Utente u){
+                    if(u == null)
+                        return null;
+                    return u.toStringPrestito();
+                }
+                @Override
+                public Utente fromString(String s){
+                    if(s == null || s.isEmpty())
+                        return null;
+                    return utenti.stream().filter(u -> u.toStringPrestito().equals(s)).findFirst().orElse(null);
+                }
+            });
+            libroBox.setConverter(new StringConverter<Libro>(){
+                @Override
+                public String toString(Libro l){
+                    if(l == null)
+                        return null;
+                    return l.toStringPrestito();
+                }
+                @Override
+                public Libro fromString(String s){
+                    if(s == null || s.isEmpty())
+                        return null;
+                    return libri.stream().filter(l -> l.toStringPrestito().equals(s)).findFirst().orElse(null);
+                }
+            });
+            
             // Listener su ComboBox e DatePicker
-            utenteBox.valueProperty().addListener(cl);
+            utenteBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+                utenteError.setVisible(newValue.getPrestitiAttivi().size() > 2);
+                aggiornaOk(ok);
+            });
+            libroBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+                libroError.setVisible(newValue.getCopieDisponibili() < 1);
+                aggiornaOk(ok);
+            });
+            dataRestituzionePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
+                dataRestituzioneError.setVisible(newValue.isBefore(LocalDate.now()));
+                aggiornaOk(ok);
+            });
+            
+            // Imposta il risultato
+            this.setResultConverter(db -> {
+                if(db == ButtonType.OK)
+                    return new Prestito(utenteBox.getSelectionModel().getSelectedItem().toStringPrestito(),
+                                        libroBox.getSelectionModel().getSelectedItem().toStringPrestito(),
+                                        dataRestituzionePicker.getValue());
+                return null;
+            });  
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("Impossibile caricare AggiungiPrestitoDialogView.fxml", ex);
         }
     }
 
@@ -81,5 +134,12 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
      * @param[in] ok Il Nodo (Bottone) di cui aggiornare la Property.
      */
     private void aggiornaOk(Node ok) {
+        boolean valido = !utenteBox.getSelectionModel().isEmpty();
+        valido &= !utenteError.isVisible();
+        valido &= !libroBox.getSelectionModel().isEmpty();
+        valido &= !libroError.isVisible();
+        valido &= dataRestituzionePicker.getValue() != null;
+        valido &= !dataRestituzioneError.isVisible();
+        ok.setDisable(!valido);
     }
 }

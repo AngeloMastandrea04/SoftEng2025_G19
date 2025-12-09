@@ -39,7 +39,7 @@ public class AggiungiUtenteDialog extends Dialog<Utente>{
     public AggiungiUtenteDialog() {
         try {
             // Caricamento file FXML, impostazione controller, DialogPane, grandezza fissa, icona e titolo.
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AggiungiUtenteDialogView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SezioneUtenti/AggiungiUtenteDialogView.fxml"));
             loader.setController(this);
             this.setDialogPane(loader.load());
             this.setResizable(false);
