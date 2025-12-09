@@ -201,7 +201,7 @@
         <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="private" isFinal="true"/>
         <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="private" isFinal="true"/>
         <Field name="listaPrestiti" type="ObservableList&lt;Prestito&gt;" visibility="private" isFinal="true"/>
-        <Field name="instance" type="Biblioteca" visibility="private"/>
+        <Field name="instance" type="Biblioteca" visibility="private" isStatic="true"/>
       </Fields>
       <Constructors>
         <Constructor visibility="private"/>
@@ -211,7 +211,7 @@
         <Method name="getListaUtenti" returnType="ObservableList&lt;Utente&gt;" visibility="public"/>
         <Method name="getListaLibri" returnType="ObservableList&lt;Libro&gt;" visibility="public"/>
         <Method name="getListaPrestiti" returnType="ObservableList&lt;Prestito&gt;" visibility="public"/>
-        <Method name="caricaDaFile" returnType="Biblioteca" visibility="public" isStatic="true">
+        <Method name="caricaDaFile" returnType="Biblioteca" visibility="private" isStatic="true">
           <Argument type="String" name="filename"/>
         </Method>
         <Method name="salvaSuFile" returnType="void" visibility="public">
