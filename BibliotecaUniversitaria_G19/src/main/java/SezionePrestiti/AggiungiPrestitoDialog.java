@@ -1,12 +1,19 @@
 package SezionePrestiti;
-
+import Biblioteca.Biblioteca;
 import SezioneUtenti.Utente;
 import SezioneLibri.Libro;
 import java.awt.Label;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 /**
  * @brief La classe AggiungiPrestitoDialog si occupa della creazione di un nuovo oggetto Prestito a partire dalla lettura degli attributi dai ComboBox e dal DatePicker.
@@ -17,23 +24,23 @@ import javafx.scene.control.DatePicker;
  * 
  * La Finestra di Dialogo contiene i ComboBox per l'inserimento di Utente e Libro, un DatePicker per l'inserimento della Data di Restituzione, le relative Label di errore e le liste contenenti Utenti e Libri.
  */
-public class AggiungiPrestitoDialog {
+public class AggiungiPrestitoDialog extends Dialog<Prestito>{
 
-    private ComboBox<Utente> utenteBox;
+    @FXML private ComboBox<Utente> utenteBox;
 
-    private Label utenteError;
+    @FXML private Label utenteError;
 
-    private ComboBox<Libro> libroBox;
+    @FXML private ComboBox<Libro> libroBox;
 
-    private Label libroError;
+    @FXML private Label libroError;
 
-    private DatePicker dataRestituzionePicker;
+    @FXML private DatePicker dataRestituzionePicker;
 
-    private Label dataRestituzioneError;
+    @FXML private Label dataRestituzioneError;
 
-    private final ObservableList<Utente> utenti;
+    @FXML private final ObservableList<Utente> utenti;
     
-    private final ObservableList<Libro> libri;
+    @FXML private final ObservableList<Libro> libri;
 
     /**
      * @brief Costruttore.
@@ -42,6 +49,29 @@ public class AggiungiPrestitoDialog {
      *       di tipo Prestito con i corrispondenti attributi letti dai ComboBox e dal DatePicker, altrimenti null.
      */
     public AggiungiPrestitoDialog() {
+        try{
+            // Caricamento file FXML, impostazione controller, DialogPane, grandezza fissa, icona e titolo.
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AggiungiPrestitoDialogView.fxml"));
+            loader.setController(this);
+            this.setDialogPane(loader.load());
+            this.setResizable(false);
+            Stage stage = (Stage) this.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(getClass().getResource("/Biblioteca/Icona.png").toExternalForm()));
+            this.setTitle("Registra un Prestito");
+            
+            // Disabilitazione iniziale pulsante ok
+            Node ok = this.getDialogPane().lookupButton(ButtonType.OK);
+            ok.setDisable(true);
+            
+            // Caricamento liste Utenti e Libri e creazione lista filtrabile
+            utenti = Biblioteca.getInstance().getListaUtenti();
+            libri = Biblioteca.getInstance().getListaLibri();
+            FilteredList<Utente> utentiFiltrati = new FilteredList(utenti, p -> true);
+            FilteredList<Libro> libriFiltrati = new FilteredList(libri, p -> true);
+            
+            // Listener su ComboBox e DatePicker
+            utenteBox.valueProperty().addListener(cl);
+        }
     }
 
     /**
