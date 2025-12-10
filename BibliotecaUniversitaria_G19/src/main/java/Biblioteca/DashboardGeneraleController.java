@@ -4,6 +4,7 @@ import SezioneLibri.SezioneLibriController;
 import SezionePrestiti.SezionePrestitiController;
 import SezioneUtenti.SezioneUtentiController;
 import java.io.IOException;
+import javafx.fxml.FXML;
 
 /**
  * @brief La classe DashboardGeneraleController gestisce la logica della Dashboard Generale.
@@ -17,6 +18,7 @@ public class DashboardGeneraleController {
      * @pre Viene caricata la scena della Dashboard Generale.
      * @post Viene visualizzata a schermo la Dashboard Generale.
     */
+    @FXML
     private void initialize() {
     }
     
@@ -28,6 +30,7 @@ public class DashboardGeneraleController {
      * @pre Viene premuto il bottone "Sezione Utenti".
      * @post Viene caricata la scena della Sezione Utenti.
     */
+    @FXML
     private void apriSezUtente() {
         try {
             App.setRoot("/Biblioteca/SezioneUtentiView.fxml", new SezioneUtentiController());
@@ -45,6 +48,7 @@ public class DashboardGeneraleController {
      * @pre Viene premuto il bottone "Sezione Libri".
      * @post Viene caricata la scena della Sezione Libri.
     */
+    @FXML
     private void apriSezLibro() {
         try {
             App.setRoot("/Biblioteca/SezioneLibriView.fxml", new SezioneLibriController());
@@ -62,6 +66,7 @@ public class DashboardGeneraleController {
      * @pre Viene premuto il bottone "Sezione Prestiti".
      * @post Viene caricata la scena della Sezione Prestiti.
     */
+    @FXML
     private void apriSezPrestiti() {
         try {
             App.setRoot("/Biblioteca/SezionePrestitiView.fxml", new SezionePrestitiController());
