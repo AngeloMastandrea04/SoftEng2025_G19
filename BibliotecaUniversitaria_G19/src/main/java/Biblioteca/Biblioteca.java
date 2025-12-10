@@ -4,12 +4,18 @@ import SezioneLibri.Libro;
 import SezionePrestiti.Prestito;
 import SezioneUtenti.Utente;
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.EOFException;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.util.Callback;
 
 /**
  * @brief La struttura Biblioteca che contiene tutti i dati dell'archivio tra Utenti, Libri e Prestiti.
@@ -52,9 +58,62 @@ public class Biblioteca {
      * trovata una Biblioteca salvata su file.
      */
     private Biblioteca() {
-        this.listaUtenti = FXCollections.observableArrayList();
-        this.listaLibri = FXCollections.observableArrayList();
+        
+        /*  Con la lambda expression overraido il metodo call dell'interfaccia funzionale
+            Callback. 
+            Quando verrà aggiunto un nuovo Utente/Libro alla lista, verrà creato un array
+            osservabile di tutte le property del nuovo oggetto in modo tale che anche quando
+            verrà modificato un campo dell'Utente/Libro presente in lista, tutti i Listener
+            verranno avvisati.
+        */
+        Callback<Utente, Observable[]> extractorUtente = (Utente u) -> new Observable[] {
+            u.nomeProperty(),
+            u.cognomeProperty(),
+            u.matricolaProperty(),
+            u.emailProperty(),
+            u.getPrestitiAttivi()
+        };
+        this.listaUtenti = FXCollections.observableArrayList(extractorUtente);
+        
+        Callback<Libro, Observable[]> extractorLibro = (Libro l) -> new Observable[] {
+            l.titoloProperty(),
+            l.autoriProperty(),
+            l.annoProperty(),
+            l.isbnProperty(),
+            l.copieTotaliProperty(),
+            l.copieDisponibiliProperty()
+        };
+        this.listaLibri = FXCollections.observableArrayList(extractorLibro);
+        
+        /*  I Prestiti non sono modificabili, non è necessario usare un extractor.
+        */
         this.listaPrestiti = FXCollections.observableArrayList();
+        
+        /*  Creazione del Listener per osservare le modifiche alla lista.
+            Per ogni cambiamento subito dalla lista, la Biblioteca verrà salvata su file.
+            Senza extractor verrebbero avvisati solo in caso di aggiunta/rimozione, non
+            di modifica di un campo di un elemento.
+        */
+        ListChangeListener<Utente> listenerSalvataggioUtenti = (change) -> {
+            while(change.next()) {
+                this.salvaSuFile("ArchivioBiblioteca.ser"); 
+            }
+        };
+        this.listaUtenti.addListener(listenerSalvataggioUtenti);
+        
+        ListChangeListener<Libro> listenerSalvataggioLibri = (change) -> {
+            while(change.next()) {
+                this.salvaSuFile("ArchivioBiblioteca.ser"); 
+            }
+        };
+        this.listaLibri.addListener(listenerSalvataggioLibri);
+        
+        ListChangeListener<Prestito> listenerSalvataggioPrestiti = (change) -> {
+            while(change.next()) {
+                this.salvaSuFile("ArchivioBiblioteca.ser"); 
+            }
+        };
+        this.listaPrestiti.addListener(listenerSalvataggioPrestiti);
     }
 
     /**
@@ -68,7 +127,7 @@ public class Biblioteca {
      * @return L'unica istanza del Singleton Biblioteca
      */
     public static Biblioteca getInstance() {
-        if (instance == null) {  
+        if(instance == null) {  
             try {
                 instance = Biblioteca.caricaDaFile("ArchivioBiblioteca.ser");
             } catch(EOFException ex) {
@@ -84,7 +143,7 @@ public class Biblioteca {
      * @return La lista degli Utenti.
      */
     public ObservableList<Utente> getListaUtenti() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return listaUtenti;
     }
 
     /**
@@ -92,7 +151,7 @@ public class Biblioteca {
      * @return La lista dei Libri.
      */
     public ObservableList<Libro> getListaLibri() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return listaLibri;
     }
 
     /**
@@ -100,7 +159,7 @@ public class Biblioteca {
      * @return La lista dei Prestiti.
      */
     public ObservableList<Prestito> getListaPrestiti() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return listaPrestiti;
     }
 
     /**
@@ -117,7 +176,7 @@ public class Biblioteca {
             // Se il file è vuoto, bisogna creare un nuovo oggetto Biblioteca in getInstance()
             throw new EOFException();
         } catch(IOException | ClassNotFoundException ex) {
-            System.err.println("Il file " + filename + " ha generato un'eccezione in lettura.");
+            System.err.println("E' stata generata un'eccezione durante la lettura del file." + filename);
         }
         return ret;
     }
@@ -128,5 +187,10 @@ public class Biblioteca {
      * @param[in] filename Percorso del file su cui caricare l'archivio della Biblioteca.
      */
     public void salvaSuFile(String filename) {
+        try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))) {
+                oos.writeObject(this);
+        } catch(IOException ex) {
+            System.err.println("E' stata generata un'eccezione durante la scrittura sul file." + filename);
+        }
     }
 }
