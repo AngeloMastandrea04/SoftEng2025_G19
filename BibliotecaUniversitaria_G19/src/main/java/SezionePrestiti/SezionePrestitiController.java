@@ -3,10 +3,14 @@ package SezionePrestiti;
 import SezioneLibri.Libro;
 import SezioneUtenti.AggiungiUtenteDialog;
 import SezioneUtenti.Utente;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import Biblioteca.App;
 import Biblioteca.Biblioteca;
+import Biblioteca.DashboardGeneraleController;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -101,18 +105,33 @@ public class SezionePrestitiController {
                 listaPrestiti.add(prestito);
                 //decremento le copie del libro
 
-                Scanner scan=new Scanner(prestito.getLibro());
-                scan.useDelimiter("ISBN:\\s*");
-                String isbn= scan.next();
-                FilteredList<Libro> filteredList;
-                filteredList= listaLibri.filtered( l -> {
+                Scanner scan_libro=new Scanner(prestito.getLibro());
+                scan_libro.useDelimiter("ISBN:\\s*");
+                Scanner scan_utente=new Scanner(prestito.getUtente());
+                scan_utente.useDelimiter("Matricola:\\s*");
+                String isbn= scan_libro.next();
+                String matricola= scan_utente.next();
+                scan_libro.close(); scan_utente.close();
+                FilteredList<Libro> filteredList_libro;
+                FilteredList<Utente> filteredList_utente;
+                filteredList_libro= listaLibri.filtered( l -> {
                     if(l.getIsbn()==isbn)
                         return true;
                     return false;
                 });
-                Libro libro=filteredList.remove(0);
+                filteredList_utente= listaUtenti.filtered( u -> {
+                    if((u.getMatricola())==matricola)
+                        return true;
+                    return false;
+                });
+                Libro libro=filteredList_libro.remove(0);
                 if(libro!=null) 
                 libro.setCopieDisponibili(libro.getCopieDisponibili() -1);
+
+                Utente utente=filteredList_utente.remove(0);
+                if(utente!=null) 
+                utente.getPrestitiAttivi().add(utente.toStringPrestito());
+
         });
     }
     /* 
@@ -144,6 +163,41 @@ public class SezionePrestitiController {
      */
     @FXML 
     private void cancellaPrestito() {
+          // Chiamata alla finestra di dialogo e attesa per un risultato opzionale
+        Optional<Prestito> result = new AggiungiPrestitoDialog().showAndWait();
+
+        // Se il risultato è presente
+        result.ifPresent(prestito -> {
+            listaPrestiti.remove(prestito);
+
+                Scanner scan_libro=new Scanner(prestito.getLibro());
+                scan_libro.useDelimiter("ISBN:\\s*");
+                Scanner scan_utente=new Scanner(prestito.getUtente());
+                scan_utente.useDelimiter("Matricola:\\s*");
+                String isbn= scan_libro.next();
+                String matricola= scan_utente.next();
+                scan_libro.close(); scan_utente.close();
+                FilteredList<Libro> filteredList_libro;
+                FilteredList<Utente> filteredList_utente;
+                filteredList_libro= listaLibri.filtered( l -> {
+                    if(l.getIsbn()==isbn)
+                        return true;
+                    return false;
+                });
+                filteredList_utente= listaUtenti.filtered( u -> {
+                    if((u.getMatricola())==matricola)
+                        return true;
+                    return false;
+                });
+                Libro libro=filteredList_libro.remove(0);
+                if(libro!=null) 
+                libro.setCopieDisponibili(libro.getCopieDisponibili() +1);
+
+                Utente utente=filteredList_utente.remove(0);
+                if(utente!=null) 
+                utente.getPrestitiAttivi().remove(utente.toStringPrestito());
+
+        });
     }
 
     /**
@@ -154,5 +208,11 @@ public class SezionePrestitiController {
     */
     @FXML 
     private void tornaIndietro() {
+        try {
+            App.setRoot("/Biblioteca/DashboardGeneraleView.fxml", new DashboardGeneraleController());
+        } catch(IOException ex){
+            ex.printStackTrace();
+            throw new RuntimeException("Impossibile caricare DashboardGeneraleView.fxml", ex); 
+        }
     }
 }
