@@ -1,6 +1,8 @@
 package SezioneLibri;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 /**
  * @brief Un libro inserito o che deve essere inserito nella Biblioteca.
@@ -15,17 +17,17 @@ import javafx.beans.property.StringProperty;
  */
 public class Libro {
 
-    private final StringProperty titolo;
+    private final StringProperty titolo = new SimpleStringProperty();
 
-    private final StringProperty autori;
+    private final StringProperty autori = new SimpleStringProperty();
 
-    private final IntegerProperty anno;
+    private final IntegerProperty anno = new SimpleIntegerProperty();
 
-    private final StringProperty isbn;
+    private final StringProperty isbn = new SimpleStringProperty();
 
-    private final IntegerProperty copieTotali;
+    private final IntegerProperty copieTotali = new SimpleIntegerProperty();
 
-    private final IntegerProperty copieDisponibili;
+    private final IntegerProperty copieDisponibili = new SimpleIntegerProperty();
 
     /**
      * @brief Costruttore.
@@ -40,6 +42,11 @@ public class Libro {
      * inizialmente uguale a quello di copie totali.
      */
     public Libro(String titolo, String autori, int anno, String isbn, int copieTotali) {
+        this.titolo.set(titolo);
+        this.autori.set(autori);
+        this.anno.set(anno);
+        this.isbn.set(isbn);
+        this.copieTotali.set(copieTotali);
     }
 
     /**
@@ -47,7 +54,7 @@ public class Libro {
      * @return Il valore della property titolo del Libro.
      */
     public String getTitolo() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return titolo.get();
     }
 
     /**
@@ -56,6 +63,7 @@ public class Libro {
      * @param[in] titolo Il valore da settare per il campo titolo.
      */
     public void setTitolo(String titolo) {
+        this.titolo.set(titolo);
     }
 
     /**
@@ -63,7 +71,7 @@ public class Libro {
      * @return Il valore della property autori del Libro.
      */
     public String getAutori() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return autori.get();
     }
 
     /**
@@ -72,6 +80,7 @@ public class Libro {
      * @param[in] autori Il valore da settare per il campo autori.
      */
     public void setAutori(String autori) {
+        this.autori.set(autori);
     }
 
     /**
@@ -79,7 +88,7 @@ public class Libro {
      * @return Il valore della property anno del Libro.
      */
     public int getAnno() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return anno.get();
     }
 
     /**
@@ -88,6 +97,7 @@ public class Libro {
      * @param[in] anno Il valore da settare per il campo anno.
      */
     public void setAnno(int anno) {
+        this.anno.set(anno);
     }
 
     /**
@@ -95,7 +105,7 @@ public class Libro {
      * @return Il valore della property isbn del Libro.
      */
     public String getIsbn() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return isbn.get();
     }
 
     /**
@@ -104,6 +114,7 @@ public class Libro {
      * @param[in] isbn Il valore da settare per il campo isbn.
      */
     public void setIsbn(String isbn) {
+        this.isbn.set(isbn);
     }
 
     /**
@@ -111,7 +122,7 @@ public class Libro {
      * @return Il valore della property copieTotali del Libro.
      */
     public int getCopieTotali() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return copieTotali.get();
     }
 
     /**
@@ -120,6 +131,7 @@ public class Libro {
      * @param[in] copieTotali Il valore da settare per il campo copieTotali.
      */
     public void setCopieTotali(int copieTotali) {
+        this.copieTotali.get();
     }
 
     /**
@@ -127,7 +139,7 @@ public class Libro {
      * @return Il valore della property copieDisponibili del Libro.
      */
     public int getCopieDisponibili() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return copieDisponibili.get();
     }
 
     /**
@@ -136,6 +148,7 @@ public class Libro {
      * @param[in] copieDisponibili Il valore da settare per il campo copieDisponibili.
      */
     public void setCopieDisponibili(int copieDisponibili) {
+        this.copieDisponibili.set(copieDisponibili);
     }
     
     /**
@@ -143,7 +156,7 @@ public class Libro {
      * @return La property titolo del Libro.
      */
     public StringProperty titoloProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return titolo;
     }
     
     /**
@@ -151,7 +164,7 @@ public class Libro {
      * @return La property autori del Libro.
      */
     public StringProperty autoriProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return autori;
     }
     
     /**
@@ -159,7 +172,7 @@ public class Libro {
      * @return La property anno del Libro.
      */
     public IntegerProperty annoProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return anno;
     }
     
     /**
@@ -167,7 +180,7 @@ public class Libro {
      * @return La property isbn del Libro.
      */
     public StringProperty isbnProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return isbn;
     }
     
     /**
@@ -175,7 +188,7 @@ public class Libro {
      * @return La property copieTotali del Libro.
      */
     public IntegerProperty copieTotaliProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return copieTotali;
     }
     
     /**
@@ -183,7 +196,7 @@ public class Libro {
      * @return La property copieDisponibili del Libro.
      */
     public IntegerProperty copieDisponibiliProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return copieDisponibili;
     }
 
     /**
@@ -192,7 +205,11 @@ public class Libro {
      * @return True se l'oggetto passato come parametro è uguale a questo oggetto Libro, False altrimenti.
      */
     public boolean equals(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(obj == null) return false;
+        if(this == obj) return true;
+        if(!(this.getClass() == obj.getClass())) return false;
+        Libro other=(Libro) obj;
+        return this.isbn.get().equalsIgnoreCase(other.isbn.get());  
     }
 
     /**
@@ -200,7 +217,8 @@ public class Libro {
      * @return Una rappresentazione in String dell'oggetto Libro. 
      */
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return ("Titolo: " + titolo + ", Autori: " + autori + ", Anno: " + anno +
+                ", ISBN: " + isbn + ", CopieTotali: " + copieTotali + ", CopieDisponibili: " + copieDisponibili);
     }
 
     /**
@@ -208,6 +226,6 @@ public class Libro {
      * @return Ulteriore rappresentazione in String dell'oggetto Libro.
      */
     public String toStringPrestito() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return ("Titolo: " + titolo + ", Autori: " + autori);
     }
 }

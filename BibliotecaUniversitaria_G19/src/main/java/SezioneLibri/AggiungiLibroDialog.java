@@ -1,8 +1,13 @@
 package SezioneLibri;
 
-import java.awt.Label;
-import java.awt.TextField;
+import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import java.time.LocalDate;
 
 /**
  * @brief La classe AggiungiLibroDialog si occupa della creazione di un nuovo oggetto Libro a partire dalla lettura degli attributi dai campi di testo.
@@ -13,7 +18,7 @@ import javafx.scene.Node;
  * 
  * La Finestra di Dialogo contiene i campi di testo per l'inserimento di Titolo, Autori, Anno di rilascio, ISBN e numero di Copie Totali, oltre alle relative Label di errore.
  */
-public class AggiungiLibroDialog {
+public class AggiungiLibroDialog extends Dialog<Libro> {
 
     private TextField titoloField;
 
@@ -38,6 +43,62 @@ public class AggiungiLibroDialog {
      *       di tipo Libro con i corrispondenti attributi letti dai campi di testo, altrimenti null.
      */
     public AggiungiLibroDialog() {
+         try {
+            // Caricamento file FXML, impostazione controller, DialogPane, grandezza fissa, icona e titolo.
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SezioneLibri/AggiungiLibroDialogView.fxml"));
+            loader.setController(this);
+            this.setDialogPane(loader.load());
+            this.setResizable(false);
+            Stage stage = (Stage) this.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image(getClass().getResource("/Biblioteca/Icona.png").toExternalForm()));
+            this.setTitle("Aggiungi un Libro");
+            
+            // Disabilitazione iniziale pulsante ok
+            Node ok = this.getDialogPane().lookupButton(ButtonType.OK);
+            ok.setDisable(true);
+                        
+            // Listener sui TextField, con eventuale gestione degli errori di validità
+            titoloField.textProperty().addListener((observable, oldValue, newValue) -> {
+                aggiornaOk(ok);
+            });
+            autoriField.textProperty().addListener((observable, oldValue, newValue) -> {
+                aggiornaOk(ok);
+            });
+            annoField.textProperty().addListener((observable, oldValue, newValue) -> {
+                try {
+                    int annoInserito = Integer.parseInt(newValue);
+                    annoError.setVisible(annoInserito < 0 || annoInserito > LocalDate.now().getYear());
+                } catch (NumberFormatException ex) {
+                    annoError.setVisible(true);
+                }
+                aggiornaOk(ok);
+            });
+            isbnField.textProperty().addListener((observable, oldValue, newValue) -> {
+                isbnError.setVisible(!newValue.matches("^(978|979)\\d{10}$"));
+                aggiornaOk(ok);
+            });
+            copieField.textProperty().addListener((observable, oldValue, newValue) -> {
+                copieError.setVisible(!newValue.matches("^[1-9]\\d*$"));
+                aggiornaOk(ok);
+            });
+            
+            // Imposta il risultato
+            this.setResultConverter(db -> {
+                if(db == ButtonType.OK)
+                    try{
+                        int annoInserito = Integer.parseInt(annoField.getText());
+                        int copieInserite = Integer.parseInt(copieField.getText());
+                        return new Libro(titoloField.getText(), autoriField.getText(), annoInserito, isbnField.getText(), copieInserite);
+                    }catch (NumberFormatException ex) {
+                        ex.printStackTrace();
+                        throw new RuntimeException("Impossibile creare nuovo oggetto Libro", ex);
+                    }
+                return null;
+            });
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("Impossibile caricare AggiungiLibriDialogView.fxml", ex);
+        }  
     }
 
     /**
@@ -47,5 +108,15 @@ public class AggiungiLibroDialog {
      * @param[in] ok Il Nodo (Bottone) di cui aggiornare la Property.
      */
     private void aggiornaOk(Node ok) {
+        boolean valido = !titoloField.getText().isEmpty();
+        valido &= !titoloField.getText().isEmpty();
+        valido &= !autoriField.getText().isEmpty();
+        valido &= !annoField.getText().isEmpty();
+        valido &= !annoError.isVisible();
+        valido &= !isbnField.getText().isEmpty();
+        valido &= !isbnError.isVisible();
+        valido &= !copieField.getText().isEmpty();
+        valido &= !copieError.isVisible();
+        ok.setVisible(!valido);
     }
 }

@@ -1,10 +1,22 @@
 package SezioneLibri;
 
-import java.awt.Button;
-import java.awt.TextField;
+import Biblioteca.*;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Optional;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.IntegerStringConverter;
 
 /**
  * @brief La classe SezioneLibriController si occupa di gestire tutte le operazioni sulla struttura dati contenente i Libri.
@@ -17,28 +29,28 @@ import javafx.scene.control.TableView;
 
 public class SezioneLibriController {
 
-    private TableView tabLibri;
+    @FXML private TableView<Libro> tabLibri;
 
-    private TableColumn cTitolo;
+    @FXML private TableColumn<Libro, String> cTitolo;
 
-    private TableColumn cAutori;
+    @FXML private TableColumn<Libro, String> cAutori;
 
-    private TableColumn cAnno;
+    @FXML private TableColumn<Libro, Integer> cAnno;
 
-    private TableColumn cIsbn;
+    @FXML private TableColumn<Libro, String> cIsbn;
 
-    private TableColumn cCopieTotali;
+    @FXML private TableColumn<Libro, Integer> cCopieTotali;
 
-    private TableColumn cCopieDisponibili;
+    @FXML private TableColumn<Libro, Integer> cCopieDisponibili;
 
-    private TextField ricLibro;
+    @FXML private TextField ricLibro;
 
-    private Button cancLibroBtn;
+    @FXML private Button cancLibroBtn;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Libri registrati nella Biblioteca.
     */
-    private final ObservableList<Libro> listaLibri;
+    private final ObservableList<Libro> listaLibri = Biblioteca.getInstance().getListaLibri();
 
     /**
      * @brief Metodo di inizializzazione del Controller.
@@ -47,7 +59,88 @@ public class SezioneLibriController {
      * @pre Viene caricata la scena della Sezione Libri.
      * @post Viene visualizzata a schermo la Sezione Libri.
     */
+    @FXML
     private void initialize() {
+        // Impostazione valori delle celle della TableView
+        cTitolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
+        cAutori.setCellValueFactory(new PropertyValueFactory<>("autori"));
+        cAnno.setCellValueFactory(new PropertyValueFactory<>("anno"));
+        cIsbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        cCopieTotali.setCellValueFactory(new PropertyValueFactory<>("copieTotali"));
+        cCopieDisponibili.setCellValueFactory(new PropertyValueFactory<>("copieDisponibili"));
+
+        // Creazione lista filtrata per la ricerca e impostazione listener per la ricerca
+        FilteredList<Libro> libriFiltrati = new FilteredList<>(listaLibri, p -> true);
+        ricLibro.textProperty().addListener((observable, oldValue, newValue) -> {
+            libriFiltrati.setPredicate(u -> {
+                if(newValue == null || newValue.isEmpty())
+                    return true;
+                if(u.getTitolo().toLowerCase().contains(newValue.toLowerCase()))
+                    return true;
+                else if(u.getAutori().contains(newValue))
+                    return true;
+                else if(u.getIsbn().contains(newValue))
+                    return true;
+                return false;
+            });
+        });
+        
+        // Creazione lista ordinata per l'ordinamento nella tabella
+        SortedList<Libro> libriOrdinati = new SortedList<>(libriFiltrati);
+        
+        // Impostazione di cambiamento cella con TextField per modifica campo
+        cTitolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        cAutori.setCellFactory(TextFieldTableCell.forTableColumn());
+        cAnno.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        cIsbn.setCellFactory(TextFieldTableCell.forTableColumn());
+        cCopieTotali.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        
+        // Impostazione event handler al completamento della modifica
+        cTitolo.setOnEditCommit(e -> {
+            e.getRowValue().setTitolo(e.getNewValue());
+            System.out.println("Modifica cognome -> " + libriOrdinati);
+        });
+        cAutori.setOnEditCommit(e -> {
+            e.getRowValue().setAutori(e.getNewValue());
+            System.out.println("Modifica autori -> " + libriOrdinati);
+        });
+        cAnno.setOnEditCommit(e -> {
+            if(e.getNewValue().intValue() < 0 ||  e.getNewValue().intValue() > LocalDate.now().getYear()){
+                new Alert(Alert.AlertType.ERROR, "L'anno inserito (" + e.getNewValue() + ") non è valido! Deve essere compreso tra 0 e l'anno corrente.", ButtonType.CANCEL).showAndWait();
+                tabLibri.refresh();
+            }
+            else{
+                e.getRowValue().setAnno(e.getNewValue());
+                System.out.println("Modifica anno -> " + libriOrdinati);
+            }
+        });
+        cIsbn.setOnEditCommit(e -> {
+            if(!(e.getNewValue().matches("^(978|979)\\d{10}$"))){
+                new Alert(Alert.AlertType.ERROR, "L'ISBN inserito (" + e.getNewValue() + ") non è valido! Deve essere ISBN di 13 cifre avente prefisso standard 978 o 979.", ButtonType.CANCEL).showAndWait();
+                tabLibri.refresh();
+            } else if (listaLibri.contains(new Libro("", "", -1, e.getNewValue(), -1))){
+                new Alert(Alert.AlertType.ERROR, "È già presente un Libro avente l'ISBN inserito (" + e.getNewValue() + ")!", ButtonType.CANCEL).showAndWait();
+                tabLibri.refresh();
+            } else{
+            e.getRowValue().setIsbn(e.getNewValue());
+            System.out.println("Modifica isbn -> " + libriOrdinati);
+            }
+        });
+        cCopieTotali.setOnEditCommit(e -> {
+            if(e.getNewValue().intValue()<1){
+                new Alert(Alert.AlertType.ERROR, "Le copieTotali inserite (" + e.getNewValue() + ") non sono valide! Ci deve essere almeno una copia del Libro.", ButtonType.CANCEL).showAndWait();
+                tabLibri.refresh();
+            } else {
+                e.getRowValue().setCopieTotali(e.getNewValue());
+                System.out.println("Modifica copieTotali -> " + libriOrdinati);
+                }
+        });
+        
+        // Impostazione elementi tabella
+        tabLibri.setItems(libriOrdinati);
+        
+        // Binding tra l'abilitazione del pulsante cancella e la selezione di un elemento nella tabella
+        cancLibroBtn.disableProperty().bind(tabLibri.getSelectionModel().selectedItemProperty().isNull());
     }
 
     /**
@@ -56,7 +149,17 @@ public class SezioneLibriController {
      * @pre Viene premuto il bottone "Aggiungi".
      * @post Se non ci sono duplicati viene aggiunto un Libro alla lista, altrimenti lancia un alert di errore.
     */
+    @FXML
     private void aggiungiLibro() {
+        // Chiamata alla finestra di dialogo e attesa per un risultato opzionale
+        Optional<Libro> result = new AggiungiLibroDialog().showAndWait();
+        // Se il risultato è presente controlla che non sia un duplicato e lo aggiunge alla lista
+        result.ifPresent(libro -> {
+            if(listaLibri.contains(libro))
+                new Alert(Alert.AlertType.ERROR, "È già presente un Libro avente l'ISBN inserito (" + libro.getIsbn() + ")!", ButtonType.CANCEL).showAndWait();
+            else
+                listaLibri.add(libro);
+        });
     }
 
     /**
@@ -66,7 +169,20 @@ public class SezioneLibriController {
      * @post Viene mostrato un alert di conferma e, se i numeri di copie totali e disponibili combaciano il Libro selezionato viene cancellato dalla lista,
      * altrimenti lancia un alert di errore.
     */
+    @FXML
     private void cancellaLibro() {
+        // Riferimento al libro selezionato
+        Libro sel = tabLibri.getSelectionModel().getSelectedItem();
+        // Se il libro selezionato ha copie attualmente in prestito (copieTotali != copieDisponibili) viene mostrato un alert di errore, altrimenti un alert di conferma della cancellazione
+        if(sel.getCopieTotali() != sel.getCopieDisponibili())
+            new Alert(Alert.AlertType.ERROR, "Il Libro selezionato per la cancellazione ha ancora sue copie in prestitoi! Non può essere cancellato.", ButtonType.CANCEL).showAndWait();
+        else {
+            Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la cancellazione del Libro selezionato?", ButtonType.OK, ButtonType.CANCEL).showAndWait();
+            result.ifPresent(db -> {
+                if(db == ButtonType.OK)
+                    listaLibri.remove(sel);
+            });
+        }
     }
 
     /**
@@ -75,6 +191,13 @@ public class SezioneLibriController {
      * @pre Viene premuto il bottone "Torna indietro".
      * @post Viene caricata la scena della Dashboard Generale.
     */
+    @FXML
     private void tornaIndietro() {
+        try {
+            App.setRoot("/Biblioteca/DashboardGeneraleView.fxml", new DashboardGeneraleController());
+        } catch(IOException ex){
+            ex.printStackTrace();
+            throw new RuntimeException("Impossibile caricare DashboardGeneraleView.fxml", ex); 
+        }
     }
 }
