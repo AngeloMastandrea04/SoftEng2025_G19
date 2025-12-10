@@ -1,5 +1,10 @@
 package Biblioteca;
 
+import SezioneLibri.SezioneLibriController;
+import SezionePrestiti.SezionePrestitiController;
+import SezioneUtenti.SezioneUtentiController;
+import java.io.IOException;
+
 /**
  * @brief La classe DashboardGeneraleController gestisce la logica della Dashboard Generale.
  * Questo Controller permette all'Utente di accedere alle Sezioni di gestione Utenti, Libri, Prestiti.
@@ -24,6 +29,12 @@ public class DashboardGeneraleController {
      * @post Viene caricata la scena della Sezione Utenti.
     */
     private void apriSezUtente() {
+        try {
+            App.setRoot("/Biblioteca/SezioneUtentiView.fxml", new SezioneUtentiController());
+        } catch(IOException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("Impossibile caricare SezioneUtentiView.fxml", ex);
+        }
     }
     
     /**
@@ -35,6 +46,12 @@ public class DashboardGeneraleController {
      * @post Viene caricata la scena della Sezione Libri.
     */
     private void apriSezLibro() {
+        try {
+            App.setRoot("/Biblioteca/SezioneLibriView.fxml", new SezioneLibriController());
+        } catch(IOException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("Impossibile caricare SezioneLibriView.fxml", ex);
+        }
     }
     
     /**
@@ -46,5 +63,11 @@ public class DashboardGeneraleController {
      * @post Viene caricata la scena della Sezione Prestiti.
     */
     private void apriSezPrestiti() {
+        try {
+            App.setRoot("/Biblioteca/SezionePrestitiView.fxml", new SezionePrestitiController());
+        } catch(IOException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("Impossibile caricare SezionePrestitiView.fxml", ex);
+        }
     }
 }

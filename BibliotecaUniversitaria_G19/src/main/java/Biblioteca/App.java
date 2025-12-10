@@ -42,7 +42,7 @@ public class App extends Application {
      * @param[in] controller L'istanza dell'oggetto controller da associare alla nuova Sezione.
      * @throws IOException Se il file FXML non può essere caricato.
      */
-    static void setRoot(String fxml, Object controller) throws IOException {
+    public static void setRoot(String fxml, Object controller) throws IOException {
         scene.setRoot(loadFXML(fxml, controller));
     }
 
