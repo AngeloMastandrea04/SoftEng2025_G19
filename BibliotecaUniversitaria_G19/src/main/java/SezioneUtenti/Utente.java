@@ -50,7 +50,7 @@ public class Utente {
      * @return Il valore della property matricola dell'Utente.
      */
     public String getNome() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return nome.get();
     }
 
     /**
@@ -59,6 +59,7 @@ public class Utente {
      * @param[in] nome Il valore da settare per il campo nome.
      */
     public void setNome(String nome) {
+        this.nome.set(nome);
     }
 
     /**
@@ -66,7 +67,7 @@ public class Utente {
      * @return Il valore della property matricola dell'Utente.
      */
     public String getCognome() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return cognome.get();
     }
 
     /**
@@ -75,6 +76,7 @@ public class Utente {
      * @param[in] cognome Il valore da settare per il campo cognome.
      */
     public void setCognome(String cognome) {
+        this.cognome.set(cognome);
     }
 
     /**
@@ -82,7 +84,7 @@ public class Utente {
      * @return Il valore della property matricola dell'Utente.
      */
     public String getMatricola() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return matricola.get();
     }
 
     /**
@@ -91,6 +93,7 @@ public class Utente {
      * @param[in] matricola Il valore da settare per il campo matricola.
      */
     public void setMatricola(String matricola) {
+        this.matricola.set(matricola);
     }
 
     /**
@@ -98,7 +101,7 @@ public class Utente {
      * @return Il valore della property matricola dell'Utente.
      */
     public String getEmail() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return email.get();
     }
 
     /**
@@ -107,6 +110,7 @@ public class Utente {
      * @param[in] nome Il valore da settare per il campo email.
      */
     public void setEmail(String email) {
+        this.email.set(email);
     }
 
     /**
@@ -114,7 +118,7 @@ public class Utente {
      * @return La lista prestiti dell'Utente.
      */
     public ObservableList<String> getPrestitiAttivi() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return prestitiAttivi;
     }
     
     /**
@@ -122,7 +126,7 @@ public class Utente {
      * @return La property nome dell'Utente.
      */
     public StringProperty nomeProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return nome;
     }
 
     /**
@@ -130,7 +134,7 @@ public class Utente {
      * @return La property cognome dell'Utente.
      */
     public StringProperty cognomeProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return cognome;
     }
 
     /**
@@ -138,7 +142,7 @@ public class Utente {
      * @return La property matricola dell'Utente.
      */
     public StringProperty matricolaProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return matricola;
     }
 
     /**
@@ -146,7 +150,7 @@ public class Utente {
      * @return La property email dell'Utente.
      */
     public StringProperty emailProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return email;
     }
 
     /**
@@ -155,7 +159,11 @@ public class Utente {
      * @return True se l'oggetto passato come parametro è uguale a questo oggetto Utente, False altrimenti.
      */
     public boolean equals(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(obj==null) return false;
+        if(obj==this) return true;
+        if(!(obj instanceof Utente)) return false;
+            Utente u=(Utente) obj;
+            return this.matricola.get().equals(u.matricola.get());
     }
 
     /**
@@ -163,7 +171,7 @@ public class Utente {
      * @return Una rappresentazione in String dell'oggetto Utente. 
      */
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "Nome: " + getNome() + ", Cognome: " + getCognome() + ", Matricola: " + getMatricola() + ", Email: " + getEmail();
     }
 
     /**
@@ -171,6 +179,7 @@ public class Utente {
      * @return Ulteriore rappresentazione in String dell'oggetto Utente.
      */
     public String toStringPrestito() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //da vedere in seguito
+        return "Cognome: " + getCognome() + ", Nome" + getNome() + ", Matricola" + getMatricola();
     }
 }
