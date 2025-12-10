@@ -1,6 +1,8 @@
 package SezionePrestiti;
 
 import java.time.LocalDate;
+
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 /**
  * @brief Un Prestito inserito o che deve essere registrato nell'archivio.
@@ -14,9 +16,9 @@ import javafx.beans.property.StringProperty;
  */
 public class Prestito {
 
-    private final StringProperty utente;
+    private final StringProperty utente=new SimpleStringProperty();
 
-    private final StringProperty libro;
+    private final StringProperty libro=new SimpleStringProperty();
 
     private final LocalDate dataRestituzione;
 /**
@@ -28,7 +30,10 @@ public class Prestito {
      * Verrà creato un Prestito con i parametri specificati in input inseriti nei
      * corrispondenti attributi property.
      */
-    public Prestito(String utente, String libro, LocalDate dataRestituzione) {
+    public Prestito(String utente, String libro, LocalDate dataRestituzione){
+        this.utente.set(utente);
+        this.libro.set(libro);
+        this.dataRestituzione=dataRestituzione;
     }
 
     /**
@@ -36,7 +41,7 @@ public class Prestito {
      * @return Il valore della property utente del Prestito.
      */
     public String getUtente() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return utente.get();
     }
 
     /**
@@ -44,7 +49,7 @@ public class Prestito {
      * @return Il valore della property libro del Prestito.
      */
     public String getLibro() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return libro.get();
     }
 
     /**
@@ -52,7 +57,7 @@ public class Prestito {
      * @return Il valore della LocalDate dataRestituzione del Prestito.
      */
     public LocalDate getDataRestituzione() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return dataRestituzione;
     }
 
     /**
@@ -60,7 +65,7 @@ public class Prestito {
      * @return La property utente del Prestito.
      */
     public StringProperty utenteProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return utente;
     }
 
     /**
@@ -68,7 +73,7 @@ public class Prestito {
      * @return La property libro del Prestito.
      */
     public StringProperty libroProperty() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return libro;
     }
     
     /**
@@ -76,7 +81,7 @@ public class Prestito {
      * @return Una rappresentazione in String dell'oggetto Prestito.
      */
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "Utente: " + getUtente() + ", Libro: " + getLibro() + ", Data di restituzione: " + getDataRestituzione() + "\n";
     }
 
     /**
@@ -85,5 +90,6 @@ public class Prestito {
      */
     public String toStringUtente() {
         throw new UnsupportedOperationException("Not supported yet.");
+        // da vedere in seguito
     }
 }

@@ -2,10 +2,15 @@ package SezionePrestiti;
 
 import SezioneLibri.Libro;
 import SezioneUtenti.Utente;
-import java.awt.Button;
+import java.time.LocalDate;
+
+import Biblioteca.Biblioteca;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Button;
 /**
  * @brief La classe SezioniPrestitiController si occupa delle operazioni da effettuare sulla struttura dati contenente i Prestiti.
  * 
@@ -17,30 +22,30 @@ import javafx.scene.control.TableView;
 */
 public class SezionePrestitiController {
 
-    private TableView tabPrestiti;
+    private TableView<Prestito> tabPrestiti;
 
-    private TableColumn cUtente;
+    private TableColumn<Utente, String> cUtente;
 
-    private TableColumn cLibro;
+    private TableColumn<Libro, String> cLibro;
 
-    private TableColumn cData;
+    private TableColumn<Libro, LocalDate> cData;
 
     private Button cancPrestitoBtn;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti gli Utenti registrati nella Biblioteca.
      */
-    private final ObservableList<Utente> listaUtenti;
+    private ObservableList<Utente> listaUtenti;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Libri registrati nella Biblioteca.
      */
-    private final ObservableList<Libro> listaLibri;
+    private ObservableList<Libro> listaLibri;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Prestiti registrati nella Biblioteca.
      */
-    private final ObservableList<Prestito> listaPrestiti;
+    private ObservableList<Prestito> listaPrestiti;
 
     /**
      * @brief Metodo di inizializzazione del Controller.
@@ -50,6 +55,25 @@ public class SezionePrestitiController {
      * @post Viene visualizzata a schermo la Sezione Prestiti.
      */
     private void initialize() {
+        //recupero il riferimento all2 strutture dati contenenti gli utenti, i libri ed i prestiti
+        listaUtenti = Biblioteca.getInstance().getListaUtenti();
+        listaLibri = Biblioteca.getInstance().getListaLibri();
+        listaPrestiti = Biblioteca.getInstance().getListaPrestiti();
+
+        // Collego le colonne ai getter di Persona
+        cUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("utente"));
+        cLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("libro"));
+        cData.setCellValueFactory(new PropertyValueFactory<Libro, LocalDate>("dataRestituzione"));
+
+        // Creazione lista ordinata per l'ordinamento nella tabella
+        SortedList<Prestito> prestitiOrdinati = new SortedList<>(listaPrestiti);
+
+        // Impostazione elementi tabella
+        tabPrestiti.setItems(prestitiOrdinati);
+    
+        // Binding tra l'abilitazione del pulsante cancella e la selezione di un elemento nella tabella
+        cancPrestitoBtn.disableProperty().bind(tabPrestiti.getSelectionModel().selectedItemProperty().isNull());
+
     }
 
     /**
