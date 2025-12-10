@@ -1,17 +1,23 @@
 package SezionePrestiti;
 
 import SezioneLibri.Libro;
+import SezioneUtenti.AggiungiUtenteDialog;
 import SezioneUtenti.Utente;
 import java.time.LocalDate;
+import java.util.Optional;
 
 import Biblioteca.Biblioteca;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import java.util.Scanner;
 /**
  * @brief La classe SezioniPrestitiController si occupa delle operazioni da effettuare sulla struttura dati contenente i Prestiti.
  * 
@@ -87,7 +93,46 @@ public class SezionePrestitiController {
      */
     @FXML 
     private void aggiungiPrestito() {
+        // Chiamata alla finestra di dialogo e attesa per un risultato opzionale
+        Optional<Prestito> result = new AggiungiPrestitoDialog().showAndWait();
+
+        // Se il risultato è presente controlla che non sia un duplicato e lo aggiunge alla lista
+        result.ifPresent(prestito -> {
+                listaPrestiti.add(prestito);
+                //decremento le copie del libro
+
+                Scanner scan=new Scanner(prestito.getLibro());
+                scan.useDelimiter("ISBN:\\s*");
+                String isbn= scan.next();
+                FilteredList<Libro> filteredList;
+                filteredList= listaLibri.filtered( l -> {
+                    if(l.getIsbn()==isbn)
+                        return true;
+                    return false;
+                });
+                Libro libro=filteredList.remove(0);
+                if(libro!=null) 
+                libro.setCopieDisponibili(libro.getCopieDisponibili() -1);
+        });
     }
+    /* 
+    @FXML 
+    private void aggiungiPrestito() {
+        // Chiamata alla finestra di dialogo e attesa per un risultato opzionale
+        Optional<Prestito> result = new AggiungiPrestitoDialog().showAndWait();
+
+        // Se il risultato è presente controlla che non sia un duplicato e lo aggiunge alla lista
+        result.ifPresent(prestito -> {
+                listaPrestiti.add(prestito);
+                //decremento le copie del libro
+
+                Libro libro= listaLibri.stream()
+                .filter( l  -> l.toStringPrestito().equals(prestito.getLibro())).findFirst().orElse(null);
+
+                if(libro!=null) 
+                libro.setCopieDisponibili(libro.getCopieDisponibili() -1);
+        });
+    }*/
 
     /**
      * @brief Metodo di cancellazione (restituzione) del Prestito. 
