@@ -1,6 +1,9 @@
 package SezioneUtenti;
 
+import Biblioteca.Biblioteca;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -12,14 +15,14 @@ import javafx.collections.ObservableList;
  * L'email deve terminare per @studenti.uni.it o @uni.it.
  */
 public class Utente {
+            
+    private final StringProperty nome= new SimpleStringProperty();
 
-    private final StringProperty nome;
+    private final StringProperty cognome= new SimpleStringProperty();
 
-    private final StringProperty cognome;
+    private final StringProperty matricola= new SimpleStringProperty();
 
-    private final StringProperty matricola;
-
-    private final StringProperty email;
+    private final StringProperty email= new SimpleStringProperty();;
 
     private final ObservableList<String> prestitiAttivi;
 
@@ -35,6 +38,11 @@ public class Utente {
      * inizialmente vuota.
      */
     public Utente(String nome, String cognome, String matricola, String email) {
+        this.nome.set(nome);
+        this.cognome.set(cognome);
+        this.matricola.set(matricola);
+        this.email.set(email);
+        prestitiAttivi = FXCollections.observableArrayList();
     }
 
     /**

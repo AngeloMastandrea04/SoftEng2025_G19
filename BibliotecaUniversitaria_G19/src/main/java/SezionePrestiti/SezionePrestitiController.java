@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import Biblioteca.Biblioteca;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
+import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -22,30 +23,30 @@ import javafx.scene.control.Button;
 */
 public class SezionePrestitiController {
 
-    private TableView<Prestito> tabPrestiti;
+    @FXML private TableView<Prestito> tabPrestiti;
 
-    private TableColumn<Utente, String> cUtente;
+    @FXML private TableColumn<Utente, String> cUtente;
 
-    private TableColumn<Libro, String> cLibro;
+    @FXML private TableColumn<Libro, String> cLibro;
 
-    private TableColumn<Libro, LocalDate> cData;
+    @FXML private TableColumn<Libro, LocalDate> cData;
 
-    private Button cancPrestitoBtn;
+    @FXML private Button cancPrestitoBtn;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti gli Utenti registrati nella Biblioteca.
      */
-    private ObservableList<Utente> listaUtenti;
+    @FXML private ObservableList<Utente> listaUtenti;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Libri registrati nella Biblioteca.
      */
-    private ObservableList<Libro> listaLibri;
+    @FXML private ObservableList<Libro> listaLibri;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Prestiti registrati nella Biblioteca.
      */
-    private ObservableList<Prestito> listaPrestiti;
+    @FXML private ObservableList<Prestito> listaPrestiti;
 
     /**
      * @brief Metodo di inizializzazione del Controller.
@@ -54,6 +55,7 @@ public class SezionePrestitiController {
      * @pre Viene caricata la scena della Sezione Prestiti.
      * @post Viene visualizzata a schermo la Sezione Prestiti.
      */
+    @FXML 
     private void initialize() {
         //recupero il riferimento all2 strutture dati contenenti gli utenti, i libri ed i prestiti
         listaUtenti = Biblioteca.getInstance().getListaUtenti();
@@ -83,6 +85,7 @@ public class SezionePrestitiController {
      * @pre Viene premuto il bottone "Registra nuovo Prestito".
      * @post Viene aggiunto un Prestito alla lista e modificati Libro e Utente corrispondenti.
      */
+    @FXML 
     private void aggiungiPrestito() {
     }
 
@@ -94,6 +97,7 @@ public class SezionePrestitiController {
      * @post Viene mostrato un alert di conferma (di warning nel caso la restituzione sia in ritardo),
      * rimosso il Prestito dalla lista e modificati Libro e Utente corrispondenti.
      */
+    @FXML 
     private void cancellaPrestito() {
     }
 
@@ -103,6 +107,7 @@ public class SezionePrestitiController {
      * @pre Viene premuto il bottone "Torna indietro".
      * @post Viene caricata la scena della Dashboard Generale.
     */
+    @FXML 
     private void tornaIndietro() {
     }
 }
