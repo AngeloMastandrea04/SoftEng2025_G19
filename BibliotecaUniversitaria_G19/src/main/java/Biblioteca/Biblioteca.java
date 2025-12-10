@@ -7,6 +7,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.EOFException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -130,7 +131,7 @@ public class Biblioteca {
         if(instance == null) {  
             try {
                 instance = Biblioteca.caricaDaFile("ArchivioBiblioteca.ser");
-            } catch(EOFException ex) {
+            } catch(EOFException | FileNotFoundException ex) {
                 // Se il file è vuoto, crea un nuovo oggetto Biblioteca vuoto.
                 instance = new Biblioteca();
             }
@@ -168,12 +169,15 @@ public class Biblioteca {
      * @param[in] filename Percorso del file da cui caricare l'archivio della Biblioteca.
      * @return Il Singleton instanza della classe Biblioteca salvata precedentemente su file.
      */
-    private static Biblioteca caricaDaFile(String filename) throws EOFException {
+    private static Biblioteca caricaDaFile(String filename) throws EOFException, FileNotFoundException {
         Biblioteca ret = null;
         try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)))) {
                 ret = (Biblioteca) ois.readObject();
+        } catch(FileNotFoundException ex) {
+            // Se il file non viene trovato, bisogna creare un nuovo oggetto Biblioteca in getInstance()
+            throw new FileNotFoundException();
         } catch(EOFException ex) {
-            // Se il file è vuoto, bisogna creare un nuovo oggetto Biblioteca in getInstance()
+            // Allo stesso modo se il file è vuoto, bisogna creare un nuovo oggetto Biblioteca in getInstance()
             throw new EOFException();
         } catch(IOException | ClassNotFoundException ex) {
             System.err.println("E' stata generata un'eccezione durante la lettura del file." + filename);
