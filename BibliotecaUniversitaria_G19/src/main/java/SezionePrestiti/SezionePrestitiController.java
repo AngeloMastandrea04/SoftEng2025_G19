@@ -13,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert;
@@ -79,6 +80,22 @@ public class SezionePrestitiController {
 
         // Impostazione elementi tabella
         tabPrestiti.setItems(prestitiOrdinati);
+
+        tabPrestiti.setRowFactory(tv -> new TableRow<Prestito>() {
+            @Override
+            protected void updateItem(Prestito item, boolean empty) {
+                super.updateItem(item, empty); // IMPORTANTE: Mantiene la funzionalità base
+                if (item == null || empty) {
+                // Se la riga è vuota, rimuovi lo stile (altrimenti eredita lo stile della riga precedente riciclata)
+                setStyle("");
+                // Controllo ritardo
+                } else if (item.getDataRestituzione().isBefore(LocalDate.now())) {
+                        setStyle("-fx-background-color: rgb(255,127,127); -fx-font-weight: bold; -fx-font-style: italic;"); // Rosso chiaro
+                } else {
+                    setStyle("-fx-font-weight: normal;"); // Stile default per i maggiorenni
+                }
+            }
+        });
     
         // Binding tra l'abilitazione del pulsante cancella e la selezione di un elemento nella tabella
         cancPrestitoBtn.disableProperty().bind(tabPrestiti.getSelectionModel().selectedItemProperty().isNull());
