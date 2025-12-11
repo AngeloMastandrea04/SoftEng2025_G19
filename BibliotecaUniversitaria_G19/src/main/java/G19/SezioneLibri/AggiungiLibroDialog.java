@@ -20,21 +20,21 @@ import java.time.LocalDate;
  */
 public class AggiungiLibroDialog extends Dialog<Libro> {
 
-    private TextField titoloField;
+    @FXML private TextField titoloField;
 
-    private TextField autoriField;
+    @FXML private TextField autoriField;
 
-    private TextField annoField;
+    @FXML private TextField annoField;
 
-    private Label annoError;
+    @FXML private Label annoError;
 
-    private TextField isbnField;
+    @FXML private TextField isbnField;
 
-    private Label isbnError;
+    @FXML private Label isbnError;
 
-    private TextField copieField;
+    @FXML private TextField copieField;
 
-    private Label copieError;
+    @FXML private Label copieError;
 
     /**
      * @brief Costruttore.
@@ -117,6 +117,6 @@ public class AggiungiLibroDialog extends Dialog<Libro> {
         valido &= !isbnError.isVisible();
         valido &= !copieField.getText().isEmpty();
         valido &= !copieError.isVisible();
-        ok.setVisible(!valido);
+        ok.setDisable(!valido);
     }
 }

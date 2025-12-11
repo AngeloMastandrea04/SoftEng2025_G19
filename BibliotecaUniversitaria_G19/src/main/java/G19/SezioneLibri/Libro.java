@@ -47,6 +47,7 @@ public class Libro {
         this.anno.set(anno);
         this.isbn.set(isbn);
         this.copieTotali.set(copieTotali);
+        this.copieDisponibili.set(copieTotali);
     }
 
     /**

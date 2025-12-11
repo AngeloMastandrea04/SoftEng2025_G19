@@ -129,12 +129,12 @@ public class Biblioteca {
      */
     public static Biblioteca getInstance() {
         if(instance == null) {  
-            try {
+            /*try {
                 instance = Biblioteca.caricaDaFile("ArchivioBiblioteca.ser");
-            } catch(EOFException | FileNotFoundException ex) {
+            } catch(EOFException | FileNotFoundException ex) {*/
                 // Se il file è vuoto, crea un nuovo oggetto Biblioteca vuoto.
                 instance = new Biblioteca();
-            }
+            //}
         }
         return instance;
     }

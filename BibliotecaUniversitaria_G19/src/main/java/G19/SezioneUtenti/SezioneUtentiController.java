@@ -5,6 +5,8 @@ import G19.Biblioteca.Biblioteca;
 import G19.Biblioteca.DashboardGeneraleController;
 import java.io.IOException;
 import java.util.Optional;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -12,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -38,7 +41,7 @@ public class SezioneUtentiController {
 
     @FXML private TableColumn<Utente, String> cEmail;
 
-    @FXML private TableColumn<Utente, ObservableList<String>> cPrestitiAttivi;
+    @FXML private TableColumn<Utente, String> cPrestitiAttivi;
 
     @FXML private TextField ricUtente;
 
@@ -66,7 +69,10 @@ public class SezioneUtentiController {
         cNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         cMatricola.setCellValueFactory(new PropertyValueFactory<>("matricola"));
         cEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        cEmail.setCellValueFactory(new PropertyValueFactory<>("prestitiAttivi"));
+        cPrestitiAttivi.setCellValueFactory(dati -> {
+            ObservableList<String> prestiti = dati.getValue().getPrestitiAttivi();
+            return Bindings.createStringBinding(() -> String.join(",\n", prestiti), prestiti);
+        });
 
         // Creazione lista filtrata per la ricerca e impostazione listener per la ricerca
         FilteredList<Utente> utentiFiltrati = new FilteredList<>(listaUtenti, p -> true);

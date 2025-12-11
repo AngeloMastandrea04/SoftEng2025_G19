@@ -92,6 +92,6 @@ public class AggiungiUtenteDialog extends Dialog<Utente>{
         valido &= !matricolaError.isVisible();
         valido &= !emailField.getText().isEmpty();
         valido &= !emailError.isVisible();
-        ok.setVisible(!valido);
+        ok.setDisable(!valido);
     }
 }
