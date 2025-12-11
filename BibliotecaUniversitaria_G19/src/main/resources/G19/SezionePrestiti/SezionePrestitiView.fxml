@@ -5,14 +5,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefWidth="500.0" style="-fx-background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmlibGlvdGVjYXxlbnwwfHwwfHx8MA%3D%3D'); -fx-background-repeat: no-repeat; -fx-background-size: cover; -fx-background-position: center center;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" style="-fx-background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmlibGlvdGVjYXxlbnwwfHwwfHx8MA%3D%3D'); -fx-background-repeat: no-repeat; -fx-background-size: cover; -fx-background-position: center center;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 16px;">
          <VBox.margin>
@@ -22,28 +21,21 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Label text="Sezione Utenti">
+            <Label text="Sezione Prestiti">
                <font>
                   <Font name="System Bold Italic" size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="tabUtenti" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-size: 16;">
+            <TableView fx:id="tabPrestiti" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" style="-fx-font-size: 16;">
                <columns>
-                  <TableColumn fx:id="cCognome" style="-fx-font-size: 16;" text="Cognome" />
-                  <TableColumn fx:id="cNome" prefWidth="60.0" text="Nome" />
-                  <TableColumn fx:id="cMatricola" sortable="false" text="Matricola" />
-                  <TableColumn fx:id="cEmail" prefWidth="50.0" text="Email" />
-                  <TableColumn fx:id="cPrestitiAttivi" prefWidth="110.0" sortable="false" text="Prestiti Attivi" />
+                  <TableColumn fx:id="cUtente" editable="false" prefWidth="60.0" sortable="false" style="-fx-font-size: 16;" text="Utente" />
+                  <TableColumn fx:id="cLibro" editable="false" prefWidth="50.0" sortable="false" text="Libro" />
+                  <TableColumn fx:id="cData" editable="false" prefWidth="160.0" text="Data di Restituzione" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <TextField fx:id="ricUtente" alignment="CENTER" promptText="Ricerca per Cognome o Matricola">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </TextField>
             <GridPane hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -53,12 +45,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#aggiungiUtente" text="Aggiungi Utente">
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#aggiungiPrestito" text="Registra Prestito">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="cancUtenteBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancellaUtente" text="Cancella Utente" GridPane.columnIndex="1">
+                  <Button fx:id="cancPrestitoBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancellaPrestito" text="Registra Restituzione" GridPane.columnIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>

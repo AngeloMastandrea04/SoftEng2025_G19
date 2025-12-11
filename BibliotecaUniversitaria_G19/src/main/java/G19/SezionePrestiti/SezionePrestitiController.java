@@ -1,13 +1,13 @@
-package BibliotecaUniversitaria_G19.SezionePrestiti;
+package G19.SezionePrestiti;
 
-import BibliotecaUniversitaria_G19.SezioneLibri.Libro;
-import BibliotecaUniversitaria_G19.SezioneUtenti.Utente;
+import G19.SezioneLibri.Libro;
+import G19.SezioneUtenti.Utente;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
-import BibliotecaUniversitaria_G19.Biblioteca.App;
-import BibliotecaUniversitaria_G19.Biblioteca.Biblioteca;
-import BibliotecaUniversitaria_G19.Biblioteca.DashboardGeneraleController;
+import G19.Biblioteca.App;
+import G19.Biblioteca.Biblioteca;
+import G19.Biblioteca.DashboardGeneraleController;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -223,7 +223,7 @@ public class SezionePrestitiController {
     @FXML 
     private void tornaIndietro() {
         try {
-            App.setRoot("/Biblioteca/DashboardGeneraleView.fxml", new DashboardGeneraleController());
+            App.setRoot("/G19/Biblioteca/DashboardGeneraleView", new DashboardGeneraleController());
         } catch(IOException ex){
             ex.printStackTrace();
             throw new RuntimeException("Impossibile caricare DashboardGeneraleView.fxml", ex); 

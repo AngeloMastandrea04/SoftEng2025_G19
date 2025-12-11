@@ -1,8 +1,8 @@
-package BibliotecaUniversitaria_G19.SezionePrestiti;
+package G19.SezionePrestiti;
 
-import BibliotecaUniversitaria_G19.Biblioteca.Biblioteca;
-import BibliotecaUniversitaria_G19.SezioneUtenti.Utente;
-import BibliotecaUniversitaria_G19.SezioneLibri.Libro;
+import G19.Biblioteca.Biblioteca;
+import G19.SezioneUtenti.Utente;
+import G19.SezioneLibri.Libro;
 import java.io.IOException;
 import java.time.LocalDate;
 import javafx.collections.ObservableList;
@@ -51,12 +51,12 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
     public AggiungiPrestitoDialog() {
         try{
             // Caricamento file FXML, impostazione controller, DialogPane, grandezza fissa, icona e titolo.
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SezionePrestiti/AggiungiPrestitoDialogView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AggiungiPrestitoDialogView.fxml"));
             loader.setController(this);
             this.setDialogPane(loader.load());
             this.setResizable(false);
             Stage stage = (Stage) this.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image(getClass().getResource("/Biblioteca/Icona.png").toExternalForm()));
+            stage.getIcons().add(new Image(getClass().getResource("/G19/Biblioteca/Icona.png").toExternalForm()));
             this.setTitle("Registra un Prestito");
             
             // Disabilitazione iniziale pulsante ok

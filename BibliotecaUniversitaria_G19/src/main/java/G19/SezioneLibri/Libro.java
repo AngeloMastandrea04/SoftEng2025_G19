@@ -1,4 +1,4 @@
-package BibliotecaUniversitaria_G19.SezioneLibri;
+package G19.SezioneLibri;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

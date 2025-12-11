@@ -1,4 +1,4 @@
-package BibliotecaUniversitaria_G19.SezioneUtenti;
+package G19.SezioneUtenti;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -39,12 +39,12 @@ public class AggiungiUtenteDialog extends Dialog<Utente>{
     public AggiungiUtenteDialog() {
         try {
             // Caricamento file FXML, impostazione controller, DialogPane, grandezza fissa, icona e titolo.
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SezioneUtenti/AggiungiUtenteDialogView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AggiungiUtenteDialogView.fxml"));
             loader.setController(this);
             this.setDialogPane(loader.load());
             this.setResizable(false);
             Stage stage = (Stage) this.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image(getClass().getResource("/Biblioteca/Icona.png").toExternalForm()));
+            stage.getIcons().add(new Image(getClass().getResource("/G19/Biblioteca/Icona.png").toExternalForm()));
             this.setTitle("Aggiungi un Utente");
             
             // Disabilitazione iniziale pulsante ok

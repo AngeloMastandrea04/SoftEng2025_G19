@@ -1,4 +1,4 @@
-package BibliotecaUniversitaria_G19.SezioneUtenti;
+package G19.SezioneUtenti;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

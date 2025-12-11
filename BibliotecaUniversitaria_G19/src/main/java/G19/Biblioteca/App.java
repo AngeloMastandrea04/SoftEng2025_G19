@@ -1,4 +1,4 @@
-package BibliotecaUniversitaria_G19.Biblioteca;
+package G19.Biblioteca;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 /**
  * @brief JavaFX App, Classe principale dell'applicazione Biblioteca.
@@ -28,8 +29,11 @@ public class App extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("DashboardGeneraleView", new DashboardGeneraleController()), 640, 480);
+        scene = new Scene(loadFXML("DashboardGeneraleView", new DashboardGeneraleController()));
         stage.setScene(scene);
+        stage.getIcons().add(new Image(getClass().getResource("Icona.png").toExternalForm()));
+        stage.setTitle("Biblioteca Universitaria");
+        stage.setMaximized(true);
         stage.show();
     }
     

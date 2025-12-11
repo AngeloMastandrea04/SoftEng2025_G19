@@ -1,4 +1,4 @@
-package BibliotecaUniversitaria_G19.SezioneLibri;
+package G19.SezioneLibri;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -45,12 +45,12 @@ public class AggiungiLibroDialog extends Dialog<Libro> {
     public AggiungiLibroDialog() {
          try {
             // Caricamento file FXML, impostazione controller, DialogPane, grandezza fissa, icona e titolo.
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SezioneLibri/AggiungiLibroDialogView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AggiungiLibroDialogView.fxml"));
             loader.setController(this);
             this.setDialogPane(loader.load());
             this.setResizable(false);
             Stage stage = (Stage) this.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image(getClass().getResource("/Biblioteca/Icona.png").toExternalForm()));
+            stage.getIcons().add(new Image(getClass().getResource("/G19/Biblioteca/Icona.png").toExternalForm()));
             this.setTitle("Aggiungi un Libro");
             
             // Disabilitazione iniziale pulsante ok

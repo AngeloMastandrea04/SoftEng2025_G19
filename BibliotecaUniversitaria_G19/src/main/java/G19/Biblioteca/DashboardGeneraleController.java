@@ -1,8 +1,8 @@
-package BibliotecaUniversitaria_G19.Biblioteca;
+package G19.Biblioteca;
 
-import BibliotecaUniversitaria_G19.SezioneLibri.SezioneLibriController;
-import BibliotecaUniversitaria_G19.SezionePrestiti.SezionePrestitiController;
-import BibliotecaUniversitaria_G19.SezioneUtenti.SezioneUtentiController;
+import G19.SezioneLibri.SezioneLibriController;
+import G19.SezionePrestiti.SezionePrestitiController;
+import G19.SezioneUtenti.SezioneUtentiController;
 import java.io.IOException;
 import javafx.fxml.FXML;
 
@@ -33,7 +33,7 @@ public class DashboardGeneraleController {
     @FXML
     private void apriSezUtenti() {
         try {
-            App.setRoot("/BibliotecaUniversitaria_G19/SezioneUtenti/SezioneUtentiView", new SezioneUtentiController());
+            App.setRoot("/G19/SezioneUtenti/SezioneUtentiView", new SezioneUtentiController());
         } catch(IOException ex) {
             ex.printStackTrace();
             throw new RuntimeException("Impossibile caricare SezioneUtentiView.fxml", ex);
@@ -51,7 +51,7 @@ public class DashboardGeneraleController {
     @FXML
     private void apriSezLibri() {
         try {
-            App.setRoot("/BibliotecaUniversitaria_G19/SezioneLibri/SezioneLibriView", new SezioneLibriController());
+            App.setRoot("/G19/SezioneLibri/SezioneLibriView", new SezioneLibriController());
         } catch(IOException ex) {
             ex.printStackTrace();
             throw new RuntimeException("Impossibile caricare SezioneLibriView.fxml", ex);
@@ -69,7 +69,7 @@ public class DashboardGeneraleController {
     @FXML
     private void apriSezPrestiti() {
         try {
-            App.setRoot("/BibliotecaUniversitaria_G19/SezionePrestiti/SezionePrestitiView", new SezionePrestitiController());
+            App.setRoot("/G19/SezionePrestiti/SezionePrestitiView", new SezionePrestitiController());
         } catch(IOException ex) {
             ex.printStackTrace();
             throw new RuntimeException("Impossibile caricare SezionePrestitiView.fxml", ex);

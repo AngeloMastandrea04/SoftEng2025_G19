@@ -1,8 +1,8 @@
-package BibliotecaUniversitaria_G19.SezioneLibri;
+package G19.SezioneLibri;
 
-import BibliotecaUniversitaria_G19.Biblioteca.App;
-import BibliotecaUniversitaria_G19.Biblioteca.Biblioteca;
-import BibliotecaUniversitaria_G19.Biblioteca.DashboardGeneraleController;
+import G19.Biblioteca.App;
+import G19.Biblioteca.Biblioteca;
+import G19.Biblioteca.DashboardGeneraleController;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -199,7 +199,7 @@ public class SezioneLibriController {
     @FXML
     public void tornaIndietro() {
         try {
-            App.setRoot("/Biblioteca/DashboardGeneraleView.fxml", new DashboardGeneraleController());
+            App.setRoot("/G19/Biblioteca/DashboardGeneraleView", new DashboardGeneraleController());
         } catch(IOException ex){
             ex.printStackTrace();
             throw new RuntimeException("Impossibile caricare DashboardGeneraleView.fxml", ex); 
