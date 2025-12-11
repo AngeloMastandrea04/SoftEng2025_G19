@@ -1,6 +1,7 @@
 package SezioneUtenti;
 
 import Biblioteca.*;
+import java.io.IOException;
 import java.util.Optional;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -53,6 +54,7 @@ public class SezioneUtentiController {
      * @pre Viene caricata la scena della Sezione Utenti.
      * @post Viene visualizzata a schermo la Sezione Utenti.
      */
+    @FXML
     private void initialize() {
         // Impostazione valori delle celle della TableView
         cCognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
@@ -154,9 +156,9 @@ public class SezioneUtentiController {
         Utente sel = tabUtenti.getSelectionModel().getSelectedItem();
         // Se l'utente selezionato ha prestiti attivi viene mostrato un alert di errore, altrimenti un alert di conferma della cancellazione
         if(!sel.getPrestitiAttivi().isEmpty())
-            new Alert(Alert.AlertType.ERROR, "L'utente selezionato per la cancellazione ha ancora prestiti attivi! Non può essere cancellato.", ButtonType.CANCEL).showAndWait();
+            new Alert(Alert.AlertType.ERROR, "L'Utente selezionato per la cancellazione ha ancora prestiti attivi! Non può essere cancellato.", ButtonType.CANCEL).showAndWait();
         else {
-            Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la cancellazione dell'utente selezionato?", ButtonType.OK, ButtonType.CANCEL).showAndWait();
+            Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la cancellazione dell'Utente selezionato?", ButtonType.OK, ButtonType.CANCEL).showAndWait();
             result.ifPresent(db -> {
                 if(db == ButtonType.OK)
                     listaUtenti.remove(sel);
@@ -172,6 +174,11 @@ public class SezioneUtentiController {
     */
     @FXML
     private void tornaIndietro() {
-        App.setRoot("/Biblioteca/DashboardGeneraleView.fxml", new DashboardGeneraleController());
+        try {
+            App.setRoot("/Biblioteca/DashboardGeneraleView.fxml", new DashboardGeneraleController());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("Impossibile caricare DashboardGeneraleView.fxml", ex);
+        }
     }
 }

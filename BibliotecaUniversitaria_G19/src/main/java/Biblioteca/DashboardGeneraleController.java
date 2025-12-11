@@ -31,7 +31,7 @@ public class DashboardGeneraleController {
      * @post Viene caricata la scena della Sezione Utenti.
     */
     @FXML
-    private void apriSezUtente() {
+    private void apriSezUtenti() {
         try {
             App.setRoot("/Biblioteca/SezioneUtentiView.fxml", new SezioneUtentiController());
         } catch(IOException ex) {
@@ -49,7 +49,7 @@ public class DashboardGeneraleController {
      * @post Viene caricata la scena della Sezione Libri.
     */
     @FXML
-    private void apriSezLibro() {
+    private void apriSezLibri() {
         try {
             App.setRoot("/Biblioteca/SezioneLibriView.fxml", new SezioneLibriController());
         } catch(IOException ex) {
