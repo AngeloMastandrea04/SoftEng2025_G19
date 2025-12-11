@@ -50,7 +50,7 @@ public class SezioneLibriController {
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Libri registrati nella Biblioteca.
     */
-    private final ObservableList<Libro> listaLibri = Biblioteca.getInstance().getListaLibri();
+    private ObservableList<Libro> listaLibri;
 
     /**
      * @brief Metodo di inizializzazione del Controller.
@@ -61,6 +61,9 @@ public class SezioneLibriController {
     */
     @FXML
     private void initialize() {
+        // Recupero il riferimento alla struttura dati contenente i libri
+        listaLibri = Biblioteca.getInstance().getListaLibri();
+        
         // Impostazione valori delle celle della TableView
         cTitolo.setCellValueFactory(new PropertyValueFactory<>("titolo"));
         cAutori.setCellValueFactory(new PropertyValueFactory<>("autori"));

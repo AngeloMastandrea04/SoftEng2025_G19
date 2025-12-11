@@ -1,13 +1,10 @@
 package SezionePrestiti;
 
 import SezioneLibri.Libro;
-import SezioneUtenti.AggiungiUtenteDialog;
 import SezioneUtenti.Utente;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
-
 import Biblioteca.App;
 import Biblioteca.Biblioteca;
 import Biblioteca.DashboardGeneraleController;
@@ -67,7 +64,7 @@ public class SezionePrestitiController {
      */
     @FXML 
     private void initialize() {
-        //recupero il riferimento all2 strutture dati contenenti gli utenti, i libri ed i prestiti
+        // Recupero il riferimento alle strutture dati contenenti gli utenti, i libri ed i prestiti
         listaUtenti = Biblioteca.getInstance().getListaUtenti();
         listaLibri = Biblioteca.getInstance().getListaLibri();
         listaPrestiti = Biblioteca.getInstance().getListaPrestiti();

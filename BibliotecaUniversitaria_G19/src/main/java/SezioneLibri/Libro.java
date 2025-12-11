@@ -204,6 +204,7 @@ public class Libro {
      *        Il confronto è fatto sull'ISBN.
      * @return True se l'oggetto passato come parametro è uguale a questo oggetto Libro, False altrimenti.
      */
+    @Override
     public boolean equals(Object obj) {
         if(obj == null) return false;
         if(this == obj) return true;
@@ -216,6 +217,7 @@ public class Libro {
      * @brief Override del metodo toString() di Object.
      * @return Una rappresentazione in String dell'oggetto Libro. 
      */
+    @Override
     public String toString() {
         return ("Titolo: " + titolo + ", Autori: " + autori + ", Anno: " + anno +
                 ", ISBN: " + isbn + ", CopieTotali: " + copieTotali + ", CopieDisponibili: " + copieDisponibili);

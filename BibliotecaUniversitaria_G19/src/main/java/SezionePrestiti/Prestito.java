@@ -1,7 +1,6 @@
 package SezionePrestiti;
 
 import java.time.LocalDate;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 /**
@@ -80,6 +79,7 @@ public class Prestito {
      * @brief Override del metodo toString() di Object.
      * @return Una rappresentazione in String dell'oggetto Prestito.
      */
+    @Override
     public String toString() {
         return "Utente: " + getUtente() + ", Libro: " + getLibro() + ", Data di restituzione: " + getDataRestituzione() + "\n";
     }

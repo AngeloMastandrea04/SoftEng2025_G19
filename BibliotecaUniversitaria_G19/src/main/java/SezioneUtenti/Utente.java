@@ -1,6 +1,5 @@
 package SezioneUtenti;
 
-import Biblioteca.Biblioteca;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -158,6 +157,7 @@ public class Utente {
      *        Il confronto è fatto sulla matricola.
      * @return True se l'oggetto passato come parametro è uguale a questo oggetto Utente, False altrimenti.
      */
+    @Override
     public boolean equals(Object obj) {
         if(obj==null) return false;
         if(obj==this) return true;
@@ -170,6 +170,7 @@ public class Utente {
      * @brief Override del metodo toString() di Object.
      * @return Una rappresentazione in String dell'oggetto Utente. 
      */
+    @Override
     public String toString() {
         return "Nome: " + getNome() + ", Cognome: " + getCognome() + ", Matricola: " + getMatricola() + ", Email: " + getEmail();
     }

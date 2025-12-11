@@ -45,7 +45,7 @@ public class SezioneUtentiController {
     /**
      * @brief Contiene il riferimento alla lista contenente tutti gli Utenti registrati nella Biblioteca.
      */
-    private final ObservableList<Utente> listaUtenti = Biblioteca.getInstance().getListaUtenti();
+    private ObservableList<Utente> listaUtenti;
     
     /**
      * @brief Metodo di inizializzazione del Controller.
@@ -56,6 +56,9 @@ public class SezioneUtentiController {
      */
     @FXML
     private void initialize() {
+        // Recupero il riferimento alla struttura dati contenente gli utenti
+        listaUtenti = Biblioteca.getInstance().getListaUtenti();
+
         // Impostazione valori delle celle della TableView
         cCognome.setCellValueFactory(new PropertyValueFactory<>("cognome"));
         cNome.setCellValueFactory(new PropertyValueFactory<>("nome"));

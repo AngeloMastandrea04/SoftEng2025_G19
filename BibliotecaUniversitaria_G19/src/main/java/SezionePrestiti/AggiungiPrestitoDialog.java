@@ -62,13 +62,7 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
             // Disabilitazione iniziale pulsante ok
             Node ok = this.getDialogPane().lookupButton(ButtonType.OK);
             ok.setDisable(true);
-            
-            // Caricamento liste Utenti e Libri e creazione lista filtrabile
-            utenti = Biblioteca.getInstance().getListaUtenti();
-            libri = Biblioteca.getInstance().getListaLibri();
-            FilteredList<Utente> utentiFiltrati = new FilteredList(utenti, p -> true);
-            FilteredList<Libro> libriFiltrati = new FilteredList(libri, p -> true);
-            
+                        
             //Impostazione StringConverter per le ComboBox
             utenteBox.setConverter(new StringConverter<Utente>(){
                 @Override
@@ -98,6 +92,14 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
                     return libri.stream().filter(l -> l.toStringPrestito().equals(s)).findFirst().orElse(null);
                 }
             });
+            
+            // Caricamento liste Utenti e Libri, creazione lista filtrabile e assegnazione elementi ComboBox
+            utenti = Biblioteca.getInstance().getListaUtenti();
+            libri = Biblioteca.getInstance().getListaLibri();
+            FilteredList<Utente> utentiFiltrati = new FilteredList(utenti, p -> true);
+            FilteredList<Libro> libriFiltrati = new FilteredList(libri, p -> true);
+            utenteBox.setItems(utentiFiltrati);
+            libroBox.setItems(libriFiltrati);
             
             // Listener su ComboBox e DatePicker
             utenteBox.valueProperty().addListener((observable, oldValue, newValue) -> {

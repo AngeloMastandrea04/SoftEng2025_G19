@@ -103,16 +103,16 @@ class DashboardGeneraleController {
 }
 
 class SezioneLibriController {
-    - tabLibri : TableView
-    - cTitolo : TableColumn
-    - cAutori : TableColumn
-    - cAnno : TableColumn
-    - cIsbn : TableColumn
-    - cCopieTotali : TableColumn
-    - cCopieDisponibili : TableColumn
+    - tabLibri : TableView<Libro>
+    - cTitolo : TableColumn<Libro, String>
+    - cAutori : TableColumn<Libro, String>
+    - cAnno : TableColumn<Libro, Integer>
+    - cIsbn : TableColumn<Libro, String>
+    - cCopieTotali : TableColumn<Libro, Integer>
+    - cCopieDisponibili : TableColumn<Libro, Integer>
     - ricLibro : TextField
     - cancLibroBtn : Button
-    - listaLibri : ObservableList<Libro> {readOnly}
+    - listaLibri : ObservableList<Libro>
     - initialize() : void
     - aggiungiLibro() : void
     - cancellaLibro() : void
@@ -120,15 +120,15 @@ class SezioneLibriController {
 }
 
 class SezioneUtentiController {
-    - tabUtenti : TableView
-    - cCognome : TableColumn
-    - cNome : TableColumn
-    - cMatricola : TableColumn
-    - cEmail : TableColumn
-    - cPrestitiAttivi : TableColumn
+    - tabUtenti : TableView<Utente>
+    - cCognome : TableColumn<Utente, String>
+    - cNome : TableColumn<Utente, String>
+    - cMatricola : TableColumn<Utente, String>
+    - cEmail : TableColumn<Utente, String>
+    - cPrestitiAttivi : TableColumn<Utente, ObservableList<String>>
     - ricUtente : TextField
     - cancUtenteBtn : Button
-    - listaUtenti : ObservableList<Utente> {readOnly}
+    - listaUtenti : ObservableList<Utente>
     - initialize() : void
     - aggiungiUtente() : void
     - cancellaUtente() : void
@@ -136,14 +136,14 @@ class SezioneUtentiController {
 }
 
 class SezionePrestitiController {
-    - tabPrestiti : TableView
-    - cUtente : TableColumn
-    - cLibro : TableColumn
-    - cData : TableColumn
+    - tabPrestiti : TableView<Prestito>
+    - cUtente : TableColumn<Utente, String>
+    - cLibro : TableColumn<Utente, String>
+    - cData : TableColumn<Libro, LocalDate>
     - cancPrestitoBtn : Button
-    - listaUtenti : ObservableList<Utente> {readOnly}
-    - listaLibri : ObservableList<Libro> {readOnly}
-    - listaPrestiti : ObservableList<Prestito> {readOnly}
+    - listaUtenti : ObservableList<Utente>
+    - listaLibri : ObservableList<Libro>
+    - listaPrestiti : ObservableList<Prestito>
     - initialize() : void
     - aggiungiPrestito() : void
     - cancellaPrestito() : void
