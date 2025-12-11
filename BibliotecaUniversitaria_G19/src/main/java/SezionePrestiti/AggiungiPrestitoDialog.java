@@ -93,7 +93,7 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
                 }
             });
             
-            // Caricamento liste Utenti e Libri, creazione lista filtrabile e assegnazione elementi ComboBox
+            // Caricamento liste Utenti e Libri, creazione liste filtrabili e assegnazione elementi ComboBox
             utenti = Biblioteca.getInstance().getListaUtenti();
             libri = Biblioteca.getInstance().getListaLibri();
             FilteredList<Utente> utentiFiltrati = new FilteredList(utenti, p -> true);
@@ -101,14 +101,28 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
             utenteBox.setItems(utentiFiltrati);
             libroBox.setItems(libriFiltrati);
             
-            // Listener su ComboBox e DatePicker
+            // Listener su ComboBox e DatePicker e impostazione predicati delle liste filtrabili
             utenteBox.valueProperty().addListener((observable, oldValue, newValue) -> {
                 utenteError.setVisible(newValue.getPrestitiAttivi().size() > 2);
                 aggiornaOk(ok);
             });
+            utenteBox.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+                utentiFiltrati.setPredicate(u -> {
+                    if(newValue == null || newValue.isEmpty())
+                        return true;
+                    return u.toStringPrestito().toLowerCase().contains(newValue.toLowerCase());
+                });
+            });
             libroBox.valueProperty().addListener((observable, oldValue, newValue) -> {
                 libroError.setVisible(newValue.getCopieDisponibili() < 1);
                 aggiornaOk(ok);
+            });
+            libroBox.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+                libriFiltrati.setPredicate(l -> {
+                    if(newValue == null || newValue.isEmpty())
+                        return true;
+                    return l.toStringPrestito().toLowerCase().contains(newValue.toLowerCase());
+                });
             });
             dataRestituzionePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
                 dataRestituzioneError.setVisible(newValue.isBefore(LocalDate.now()));
