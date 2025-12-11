@@ -1,4 +1,4 @@
-package SezionePrestiti;
+package BibliotecaUniversitaria_G19.SezionePrestiti;
 
 import java.time.LocalDate;
 import javafx.beans.property.SimpleStringProperty;

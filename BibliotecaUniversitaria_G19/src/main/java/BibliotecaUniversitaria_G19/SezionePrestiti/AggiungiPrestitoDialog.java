@@ -1,8 +1,8 @@
-package SezionePrestiti;
+package BibliotecaUniversitaria_G19.SezionePrestiti;
 
-import Biblioteca.Biblioteca;
-import SezioneUtenti.Utente;
-import SezioneLibri.Libro;
+import BibliotecaUniversitaria_G19.Biblioteca.Biblioteca;
+import BibliotecaUniversitaria_G19.SezioneUtenti.Utente;
+import BibliotecaUniversitaria_G19.SezioneLibri.Libro;
 import java.io.IOException;
 import java.time.LocalDate;
 import javafx.collections.ObservableList;

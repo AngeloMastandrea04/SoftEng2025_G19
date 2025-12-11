@@ -1,4 +1,4 @@
-package SezioneLibri;
+package BibliotecaUniversitaria_G19.SezioneLibri;
 
 import java.io.IOException;
 import javafx.fxml.FXML;

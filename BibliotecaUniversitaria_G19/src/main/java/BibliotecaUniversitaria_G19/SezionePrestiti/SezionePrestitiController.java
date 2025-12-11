@@ -1,13 +1,13 @@
-package SezionePrestiti;
+package BibliotecaUniversitaria_G19.SezionePrestiti;
 
-import SezioneLibri.Libro;
-import SezioneUtenti.Utente;
+import BibliotecaUniversitaria_G19.SezioneLibri.Libro;
+import BibliotecaUniversitaria_G19.SezioneUtenti.Utente;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
-import Biblioteca.App;
-import Biblioteca.Biblioteca;
-import Biblioteca.DashboardGeneraleController;
+import BibliotecaUniversitaria_G19.Biblioteca.App;
+import BibliotecaUniversitaria_G19.Biblioteca.Biblioteca;
+import BibliotecaUniversitaria_G19.Biblioteca.DashboardGeneraleController;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;

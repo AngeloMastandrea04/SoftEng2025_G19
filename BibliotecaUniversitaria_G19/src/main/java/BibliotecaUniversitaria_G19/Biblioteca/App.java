@@ -1,4 +1,4 @@
-package Biblioteca;
+package BibliotecaUniversitaria_G19.Biblioteca;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

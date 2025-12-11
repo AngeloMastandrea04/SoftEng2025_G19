@@ -1,6 +1,8 @@
-package SezioneUtenti;
+package BibliotecaUniversitaria_G19.SezioneUtenti;
 
-import Biblioteca.*;
+import BibliotecaUniversitaria_G19.Biblioteca.App;
+import BibliotecaUniversitaria_G19.Biblioteca.Biblioteca;
+import BibliotecaUniversitaria_G19.Biblioteca.DashboardGeneraleController;
 import java.io.IOException;
 import java.util.Optional;
 import javafx.collections.ObservableList;

@@ -1,8 +1,8 @@
-package Biblioteca;
+package BibliotecaUniversitaria_G19.Biblioteca;
 
-import SezioneLibri.Libro;
-import SezionePrestiti.Prestito;
-import SezioneUtenti.Utente;
+import BibliotecaUniversitaria_G19.SezioneLibri.Libro;
+import BibliotecaUniversitaria_G19.SezionePrestiti.Prestito;
+import BibliotecaUniversitaria_G19.SezioneUtenti.Utente;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.EOFException;

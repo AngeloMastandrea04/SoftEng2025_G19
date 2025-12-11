@@ -1,6 +1,8 @@
-package SezioneLibri;
+package BibliotecaUniversitaria_G19.SezioneLibri;
 
-import Biblioteca.*;
+import BibliotecaUniversitaria_G19.Biblioteca.App;
+import BibliotecaUniversitaria_G19.Biblioteca.Biblioteca;
+import BibliotecaUniversitaria_G19.Biblioteca.DashboardGeneraleController;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -29,28 +31,28 @@ import javafx.util.converter.IntegerStringConverter;
 
 public class SezioneLibriController {
 
-    @FXML private TableView<Libro> tabLibri;
+    @FXML public TableView<Libro> tabLibri;
 
-    @FXML private TableColumn<Libro, String> cTitolo;
+    @FXML public TableColumn<Libro, String> cTitolo;
 
-    @FXML private TableColumn<Libro, String> cAutori;
+    @FXML public TableColumn<Libro, String> cAutori;
 
-    @FXML private TableColumn<Libro, Integer> cAnno;
+    @FXML public TableColumn<Libro, Integer> cAnno;
 
-    @FXML private TableColumn<Libro, String> cIsbn;
+    @FXML public TableColumn<Libro, String> cIsbn;
 
-    @FXML private TableColumn<Libro, Integer> cCopieTotali;
+    @FXML public TableColumn<Libro, Integer> cCopieTotali;
 
-    @FXML private TableColumn<Libro, Integer> cCopieDisponibili;
+    @FXML public TableColumn<Libro, Integer> cCopieDisponibili;
 
-    @FXML private TextField ricLibro;
+    @FXML public TextField ricLibro;
 
-    @FXML private Button cancLibroBtn;
+    @FXML public Button cancLibroBtn;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Libri registrati nella Biblioteca.
     */
-    private ObservableList<Libro> listaLibri;
+    public ObservableList<Libro> listaLibri;
 
     /**
      * @brief Metodo di inizializzazione del Controller.
@@ -60,7 +62,7 @@ public class SezioneLibriController {
      * @post Viene visualizzata a schermo la Sezione Libri.
     */
     @FXML
-    private void initialize() {
+    public void initialize() {
         // Recupero il riferimento alla struttura dati contenente i libri
         listaLibri = Biblioteca.getInstance().getListaLibri();
         
@@ -153,7 +155,7 @@ public class SezioneLibriController {
      * @post Se non ci sono duplicati viene aggiunto un Libro alla lista, altrimenti lancia un alert di errore.
     */
     @FXML
-    private void aggiungiLibro() {
+    public void aggiungiLibro() {
         // Chiamata alla finestra di dialogo e attesa per un risultato opzionale
         Optional<Libro> result = new AggiungiLibroDialog().showAndWait();
         // Se il risultato è presente controlla che non sia un duplicato e lo aggiunge alla lista
@@ -173,7 +175,7 @@ public class SezioneLibriController {
      * altrimenti lancia un alert di errore.
     */
     @FXML
-    private void cancellaLibro() {
+    public void cancellaLibro() {
         // Riferimento al libro selezionato
         Libro sel = tabLibri.getSelectionModel().getSelectedItem();
         // Se il libro selezionato ha copie attualmente in prestito (copieTotali != copieDisponibili) viene mostrato un alert di errore, altrimenti un alert di conferma della cancellazione
@@ -195,7 +197,7 @@ public class SezioneLibriController {
      * @post Viene caricata la scena della Dashboard Generale.
     */
     @FXML
-    private void tornaIndietro() {
+    public void tornaIndietro() {
         try {
             App.setRoot("/Biblioteca/DashboardGeneraleView.fxml", new DashboardGeneraleController());
         } catch(IOException ex){
