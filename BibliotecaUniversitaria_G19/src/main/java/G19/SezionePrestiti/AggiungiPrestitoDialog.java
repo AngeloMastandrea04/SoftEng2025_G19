@@ -103,7 +103,8 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
             
             // Listener su ComboBox e DatePicker e impostazione predicati delle liste filtrabili
             utenteBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-                utenteError.setVisible(newValue.getPrestitiAttivi().size() > 2);
+                if(utenti.contains(newValue))
+                    utenteError.setVisible(newValue.getPrestitiAttivi().size() > 2);
                 aggiornaOk(ok);
             });
             utenteBox.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
@@ -112,9 +113,12 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
                         return true;
                     return u.toStringPrestito().toLowerCase().contains(newValue.toLowerCase());
                 });
+                if(newValue.isEmpty())
+                    utenteError.setVisible(false);
             });
             libroBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-                libroError.setVisible(newValue.getCopieDisponibili() < 1);
+                if(libri.contains(newValue))
+                    libroError.setVisible(newValue.getCopieDisponibili() < 1);
                 aggiornaOk(ok);
             });
             libroBox.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
@@ -123,10 +127,16 @@ public class AggiungiPrestitoDialog extends Dialog<Prestito>{
                         return true;
                     return l.toStringPrestito().toLowerCase().contains(newValue.toLowerCase());
                 });
+                if(newValue.isEmpty())
+                    libroError.setVisible(false);
             });
             dataRestituzionePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
                 dataRestituzioneError.setVisible(newValue.isBefore(LocalDate.now()));
                 aggiornaOk(ok);
+            });
+            dataRestituzionePicker.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+                if(newValue.isEmpty())
+                    dataRestituzioneError.setVisible(false);
             });
             
             // Imposta il risultato

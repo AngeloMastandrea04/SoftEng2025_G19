@@ -76,7 +76,7 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="matricolaError" text="⛔ La Matricola deve essere di 10 cifre" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                  <Label fx:id="matricolaError" text="⛔ La Matricola deve essere di 10 cifre" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Italic" size="16.0" />
                      </font>
@@ -94,7 +94,7 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="emailError" text="⛔ L'Email deve terminare per @studenti.uni.it o @uni.it" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                  <Label fx:id="emailError" text="⛔ L'Email deve terminare per @studenti.uni.it o @uni.it" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Italic" size="16.0" />
                      </font>

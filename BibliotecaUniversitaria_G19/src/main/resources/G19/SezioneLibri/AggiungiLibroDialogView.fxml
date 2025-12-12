@@ -63,7 +63,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="annoError" text="⛔ L'Anno deve essere compreso tra 0 e l'anno corrente" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                  <Label fx:id="annoError" text="⛔ L'Anno deve essere compreso tra 0 e l'anno corrente" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Italic" size="16.0" />
                      </font>
@@ -76,7 +76,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="isbnError" text="⛔ L'ISBN deve essere di 13 cifre e iniziare per 978 o 979" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                  <Label fx:id="isbnError" text="⛔ L'ISBN deve essere di 13 cifre e iniziare per 978 o 979" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Italic" size="16.0" />
                      </font>
@@ -114,7 +114,7 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="copieError" text="⛔ Il numero di Copie deve essere maggiore di 0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="9" GridPane.valignment="TOP">
+                  <Label fx:id="copieError" text="⛔ Il numero di Copie deve essere maggiore di 0" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="9" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Italic" size="16.0" />
                      </font>

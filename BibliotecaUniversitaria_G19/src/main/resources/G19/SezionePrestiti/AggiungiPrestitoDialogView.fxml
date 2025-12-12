@@ -41,7 +41,7 @@
                      </font>
                   </Label>
                   <ComboBox fx:id="utenteBox" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Seleziona un Utente" GridPane.columnIndex="1" />
-                  <Label fx:id="utenteError" text="⛔ L'Utente selezionato ha già 3 Prestiti attivi" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <Label fx:id="utenteError" text="⛔ L'Utente selezionato ha già 3 Prestiti attivi" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Italic" size="16.0" />
                      </font>
@@ -55,7 +55,7 @@
                      </font>
                   </Label>
                   <ComboBox fx:id="libroBox" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Seleziona un Libro" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="libroError" text="⛔ Il Libro selezionato non è disponibile" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                  <Label fx:id="libroError" text="⛔ Il Libro selezionato non è disponibile" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Italic" size="16.0" />
                      </font>
@@ -69,7 +69,7 @@
                      </font>
                   </Label>
                   <DatePicker fx:id="dataRestituzionePicker" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" promptText="Scegli la Data di Restituzione" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label fx:id="dataRestituzioneError" text="⛔ La Data scelta è precedente a quella odierna" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                  <Label fx:id="dataRestituzioneError" text="⛔ La Data scelta è precedente a quella odierna" textFill="RED" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
                      <font>
                         <Font name="System Italic" size="16.0" />
                      </font>

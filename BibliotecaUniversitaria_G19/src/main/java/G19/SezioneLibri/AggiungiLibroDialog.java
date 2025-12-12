@@ -65,20 +65,22 @@ public class AggiungiLibroDialog extends Dialog<Libro> {
                 aggiornaOk(ok);
             });
             annoField.textProperty().addListener((observable, oldValue, newValue) -> {
-                try {
-                    int annoInserito = Integer.parseInt(newValue);
-                    annoError.setVisible(annoInserito < 0 || annoInserito > LocalDate.now().getYear());
-                } catch (NumberFormatException ex) {
-                    annoError.setVisible(true);
-                }
+                if(!newValue.isEmpty())
+                    try {
+                        int annoInserito = Integer.parseInt(newValue);
+                        annoError.setVisible(!newValue.isEmpty() && annoInserito < 0 || annoInserito > LocalDate.now().getYear());
+                    } catch (NumberFormatException ex) {
+                        annoError.setVisible(true);
+                } else
+                    annoError.setVisible(false);
                 aggiornaOk(ok);
             });
             isbnField.textProperty().addListener((observable, oldValue, newValue) -> {
-                isbnError.setVisible(!newValue.matches("^(978|979)\\d{10}$"));
+                isbnError.setVisible(!newValue.isEmpty() && !newValue.matches("^(978|979)\\d{10}$"));
                 aggiornaOk(ok);
             });
             copieField.textProperty().addListener((observable, oldValue, newValue) -> {
-                copieError.setVisible(!newValue.matches("^[1-9]\\d*$"));
+                copieError.setVisible(!newValue.isEmpty() && !newValue.matches("^[1-9]\\d*$"));
                 aggiornaOk(ok);
             });
             
