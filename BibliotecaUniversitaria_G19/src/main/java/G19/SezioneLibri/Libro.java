@@ -50,6 +50,19 @@ public class Libro {
         this.copieDisponibili.set(copieTotali);
     }
     
+    /**
+     * @brief Costruttore.
+     * @param[in] titolo Titolo del Libro.
+     * @param[in] autori Autori del Libro.
+     * @param[in] anno Anno di rilascio del Libro.
+     * @param[in] isbn Codice ISBN del Libro
+     * @param[in] copieTotali Numero di copie del Libro nella Biblioteca.
+     * @param[in] copieDisponibili Numero di copie non in prestito del Libro.
+     * @post
+     * Verrà creato un Libro con i parametri specificati in input inseriti nei
+     * corrispondenti attributi property e con il numero di copie disponibili
+     * inizializzato a quello inserito come parametro in ingresso.
+     */
     public Libro(String titolo, String autori, int anno, String isbn, int copieTotali, int copieDisponibili) {
         this.titolo.set(titolo);
         this.autori.set(autori);
