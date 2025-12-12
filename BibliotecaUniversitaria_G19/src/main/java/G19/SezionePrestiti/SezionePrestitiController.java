@@ -180,6 +180,7 @@ public class SezionePrestitiController {
      * @post Viene mostrato un alert di conferma (di warning nel caso la restituzione sia in ritardo),
      * rimosso il Prestito dalla lista e modificati Libro e Utente corrispondenti.
      */
+    @FXML
     private void cancellaPrestito(){
         // Se il risultato è presente controlla che non sia un duplicato e lo aggiunge alla lista
                 Prestito prestito= tabPrestiti.getSelectionModel().getSelectedItem();

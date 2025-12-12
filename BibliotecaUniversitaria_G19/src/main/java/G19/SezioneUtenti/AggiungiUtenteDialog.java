@@ -59,11 +59,11 @@ public class AggiungiUtenteDialog extends Dialog<Utente>{
                 aggiornaOk(ok);
             });
             matricolaField.textProperty().addListener((observable, oldValue, newValue) -> {
-                matricolaError.setVisible(!newValue.matches("^\\d{10}$"));
+                matricolaError.setVisible(!newValue.isEmpty() && !newValue.matches("^\\d{10}$"));
                 aggiornaOk(ok);
             });
             emailField.textProperty().addListener((observable, oldValue, newValue) -> {
-                emailError.setVisible(!newValue.matches("^.+(?:@studenti\\.uni\\.it|@uni\\.it)$"));
+                emailError.setVisible(!newValue.isEmpty() && !newValue.matches("^.+(?:@studenti\\.uni\\.it|@uni\\.it)$"));
                 aggiornaOk(ok);
             });
             
