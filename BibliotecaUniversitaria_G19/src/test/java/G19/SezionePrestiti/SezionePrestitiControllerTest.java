@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package G19.SezionePrestiti;
+import G19.SezioneUtenti.Utente;
+import G19.SezioneLibri.Libro;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;

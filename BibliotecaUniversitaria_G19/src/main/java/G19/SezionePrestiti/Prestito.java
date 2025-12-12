@@ -89,7 +89,6 @@ public class Prestito {
      * @return Ulteriore rappresentazione in String dell'oggetto Prestito.
      */
     public String toStringUtente() {
-        throw new UnsupportedOperationException("Not supported yet.");
-        // da vedere in seguito
+        return "Libro: " + getLibro() + ", Data di restituzione: " + getDataRestituzione() + "\n";
     }
 }
