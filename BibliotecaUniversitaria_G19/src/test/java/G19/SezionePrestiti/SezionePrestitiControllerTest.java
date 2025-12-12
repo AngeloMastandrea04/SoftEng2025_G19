@@ -7,6 +7,7 @@ package G19.SezionePrestiti;
 import G19.SezioneUtenti.Utente;
 import G19.SezioneLibri.Libro;
 
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,9 +15,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 /**
  *
- * @author angelo
+ * @author Vincenzo
  */
 public class SezionePrestitiControllerTest {
     
@@ -40,9 +43,12 @@ public class SezionePrestitiControllerTest {
     }
 
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void aggiungiPrestito() {
+        
+        SezionePrestitiController controller=new SezionePrestitiController();
+        System.out.println("aggiungiPrestito");
+        Utente utente = new Utente("Vincenzo", "Rossi", "1234567890", "");
+        controller.aggiungiPrestito();
     }
     
 }

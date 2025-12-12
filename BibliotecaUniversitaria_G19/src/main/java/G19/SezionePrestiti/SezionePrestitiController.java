@@ -177,11 +177,13 @@ public class SezionePrestitiController {
      */
     @FXML 
     private void cancellaPrestito() {
-          // Chiamata alla finestra di dialogo e attesa per un risultato opzionale
-        Optional<Prestito> result = new AggiungiPrestitoDialog().showAndWait();
-
-        // Se il risultato è presente
-        result.ifPresent(prestito -> {
+        
+        Prestito prestito= tabPrestiti.getSelectionModel().getSelectedItem();
+        Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la cancellazione del Prestito selezionato?", ButtonType.OK, ButtonType.CANCEL).showAndWait();
+            result.ifPresent(db -> {
+                if(db == ButtonType.OK)
+                    listaPrestiti.remove(prestito);
+            });
             listaPrestiti.remove(prestito);
 
                 Scanner scan_libro=new Scanner(prestito.getLibro());
@@ -211,7 +213,7 @@ public class SezionePrestitiController {
                 if(utente!=null) 
                 utente.getPrestitiAttivi().remove(utente.toStringPrestito());
 
-        });
+        
     }
 
     /**
