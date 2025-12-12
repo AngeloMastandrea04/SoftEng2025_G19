@@ -172,7 +172,7 @@ public class Utente {
      */
     @Override
     public String toString() {
-        return "Nome: " + getNome() + ", Cognome: " + getCognome() + ", Matricola: " + getMatricola() + ", Email: " + getEmail();
+        return "Cognome: " + getCognome() + ", Nome: " + getNome() + ", Matricola: " + getMatricola() + ", Email: " + getEmail();
     }
 
     /**
@@ -180,7 +180,6 @@ public class Utente {
      * @return Ulteriore rappresentazione in String dell'oggetto Utente.
      */
     public String toStringPrestito() {
-        //da vedere in seguito
-        return "Cognome: " + getCognome() + ", Nome" + getNome() + ", Matricola" + getMatricola();
+        return "Cognome: " + getCognome() + ", Nome: " + getNome() + ", Matricola: " + getMatricola();
     }
 }

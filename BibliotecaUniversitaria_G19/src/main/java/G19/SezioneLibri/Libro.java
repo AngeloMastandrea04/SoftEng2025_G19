@@ -229,8 +229,8 @@ public class Libro {
      */
     @Override
     public String toString() {
-        return ("Titolo: " + titolo + ", Autori: " + autori + ", Anno: " + anno +
-                ", ISBN: " + isbn + ", CopieTotali: " + copieTotali + ", CopieDisponibili: " + copieDisponibili);
+        return ("Titolo: " + getTitolo() + ", Autori: " + getAutori() + ", Anno: " + getAnno() +
+                ", ISBN: " + getIsbn() + ", CopieTotali: " + getCopieTotali() + ", CopieDisponibili: " + getCopieDisponibili());
     }
 
     /**
@@ -238,6 +238,6 @@ public class Libro {
      * @return Ulteriore rappresentazione in String dell'oggetto Libro.
      */
     public String toStringPrestito() {
-        return ("Titolo: " + titolo + ", Autori: " + autori);
+        return ("Titolo: " + getTitolo() + ", Autori: " + getAutori());
     }
 }
