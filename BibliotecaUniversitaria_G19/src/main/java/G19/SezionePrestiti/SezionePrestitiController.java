@@ -102,14 +102,9 @@ public class SezionePrestitiController {
 
     }
 
-    /**
-     * @brief Metodo di aggiunta (registrazione) del Prestito. 
-     * Ha il compito di aggiungere i dati del prestito passati dalla finestra di dialogo alla relativa struttura dati,
-     * inoltre si occupa di decrementare le copie disponibili del Libro e di aggiungere il prestito tra quelli attivi per l'Utente.
-     * @pre Viene premuto il bottone "Registra nuovo Prestito".
-     * @post Viene aggiunto un Prestito alla lista e modificati Libro e Utente corrispondenti.
-     */
-    @FXML 
+    
+
+    /*    @FXML 
     private void aggiungiPrestito() {
         // Chiamata alla finestra di dialogo e attesa per un risultato opzionale
         Optional<Prestito> result = new AggiungiPrestitoDialog().showAndWait();
@@ -147,8 +142,15 @@ public class SezionePrestitiController {
                 utente.getPrestitiAttivi().add(utente.toStringPrestito());
 
         });
-    }
-    /* 
+    } */
+    
+/**
+     * @brief Metodo di aggiunta (registrazione) del Prestito. 
+     * Ha il compito di aggiungere i dati del prestito passati dalla finestra di dialogo alla relativa struttura dati,
+     * inoltre si occupa di decrementare le copie disponibili del Libro e di aggiungere il prestito tra quelli attivi per l'Utente.
+     * @pre Viene premuto il bottone "Registra nuovo Prestito".
+     * @post Viene aggiunto un Prestito alla lista e modificati Libro e Utente corrispondenti.
+     */
     @FXML 
     private void aggiungiPrestito() {
         // Chiamata alla finestra di dialogo e attesa per un risultato opzionale
@@ -161,11 +163,14 @@ public class SezionePrestitiController {
 
                 Libro libro= listaLibri.stream()
                 .filter( l  -> l.toStringPrestito().equals(prestito.getLibro())).findFirst().orElse(null);
-
+                Utente utente= listaUtenti.stream()
+                .filter( l  -> l.toStringPrestito().equals(prestito.getUtente())).findFirst().orElse(null);
                 if(libro!=null) 
                 libro.setCopieDisponibili(libro.getCopieDisponibili() -1);
+                if(utente!=null) 
+                utente.getPrestitiAttivi().add(prestito.toStringUtente());
         });
-    }*/
+    }
 
     /**
      * @brief Metodo di cancellazione (restituzione) del Prestito. 
@@ -175,45 +180,29 @@ public class SezionePrestitiController {
      * @post Viene mostrato un alert di conferma (di warning nel caso la restituzione sia in ritardo),
      * rimosso il Prestito dalla lista e modificati Libro e Utente corrispondenti.
      */
-    @FXML 
-    private void cancellaPrestito() {
-        
-        Prestito prestito= tabPrestiti.getSelectionModel().getSelectedItem();
-        Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la cancellazione del Prestito selezionato?", ButtonType.OK, ButtonType.CANCEL).showAndWait();
-            result.ifPresent(db -> {
-                if(db == ButtonType.OK)
-                    listaPrestiti.remove(prestito);
-            });
-            listaPrestiti.remove(prestito);
+    private void cancellaPrestito(){
+        // Se il risultato è presente controlla che non sia un duplicato e lo aggiunge alla lista
+                Prestito prestito= tabPrestiti.getSelectionModel().getSelectedItem();
 
-                Scanner scan_libro=new Scanner(prestito.getLibro());
-                scan_libro.useDelimiter("ISBN:\\s*");
-                Scanner scan_utente=new Scanner(prestito.getUtente());
-                scan_utente.useDelimiter("Matricola:\\s*");
-                String isbn= scan_libro.next();
-                String matricola= scan_utente.next();
-                scan_libro.close(); scan_utente.close();
-                FilteredList<Libro> filteredList_libro;
-                FilteredList<Utente> filteredList_utente;
-                filteredList_libro= listaLibri.filtered( l -> {
-                    if(l.getIsbn()==isbn)
-                        return true;
-                    return false;
-                });
-                filteredList_utente= listaUtenti.filtered( u -> {
-                    if((u.getMatricola())==matricola)
-                        return true;
-                    return false;
-                });
-                Libro libro=filteredList_libro.remove(0);
+                Optional<ButtonType> result;
+        if(prestito.getDataRestituzione().isBefore(LocalDate.now()))
+            result = new Alert(Alert.AlertType.WARNING, "La restituzione è in ritardo era prevista per il " + prestito.getDataRestituzione().toString() + ".\nConfermi la cancellazione del Prestito selezionato?", ButtonType.OK, ButtonType.CANCEL).showAndWait();
+        else
+            result = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la cancellazione del Prestito selezionato?", ButtonType.OK, ButtonType.CANCEL).showAndWait();
+        result.ifPresent(db -> {
+            if(db == ButtonType.OK)
+                listaPrestiti.remove(prestito);
+
+                //incrementa le copie del libro ed aggiorna la lista prestit dell'utente
+                Libro libro= listaLibri.stream()
+                .filter( l  -> l.toStringPrestito().equals(prestito.getLibro())).findFirst().orElse(null);
+                Utente utente= listaUtenti.stream()
+                .filter( l  -> l.toStringPrestito().equals(prestito.getUtente())).findFirst().orElse(null);
                 if(libro!=null) 
                 libro.setCopieDisponibili(libro.getCopieDisponibili() +1);
-
-                Utente utente=filteredList_utente.remove(0);
                 if(utente!=null) 
-                utente.getPrestitiAttivi().remove(utente.toStringPrestito());
-
-        
+                utente.getPrestitiAttivi().remove(prestito.toStringUtente());
+        });
     }
 
     /**
