@@ -5,19 +5,13 @@ import G19.SezionePrestiti.Prestito;
 import G19.SezioneUtenti.Utente;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.EOFException;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Reader;
 import java.io.Writer;
 import java.time.LocalDate;
@@ -108,21 +102,21 @@ public class Biblioteca {
         */
         ListChangeListener<Utente> listenerSalvataggioUtenti = (change) -> {
             while(change.next()) {
-                this.salvaSuFile("ArchivioBiblioteca.ser"); 
+                this.salvaSuFile("ArchivioBiblioteca.json"); 
             }
         };
         this.listaUtenti.addListener(listenerSalvataggioUtenti);
         
         ListChangeListener<Libro> listenerSalvataggioLibri = (change) -> {
             while(change.next()) {
-                this.salvaSuFile("ArchivioBiblioteca.ser"); 
+                this.salvaSuFile("ArchivioBiblioteca.json"); 
             }
         };
         this.listaLibri.addListener(listenerSalvataggioLibri);
         
         ListChangeListener<Prestito> listenerSalvataggioPrestiti = (change) -> {
             while(change.next()) {
-                this.salvaSuFile("ArchivioBiblioteca.ser"); 
+                this.salvaSuFile("ArchivioBiblioteca.json"); 
             }
         };
         this.listaPrestiti.addListener(listenerSalvataggioPrestiti);
