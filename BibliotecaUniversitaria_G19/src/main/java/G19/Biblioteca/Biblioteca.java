@@ -3,15 +3,26 @@ package G19.Biblioteca;
 import G19.SezioneLibri.Libro;
 import G19.SezionePrestiti.Prestito;
 import G19.SezioneUtenti.Utente;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Reader;
+import java.io.Writer;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -129,12 +140,7 @@ public class Biblioteca {
      */
     public static Biblioteca getInstance() {
         if(instance == null) {  
-            /*try {
-                instance = Biblioteca.caricaDaFile("ArchivioBiblioteca.ser");
-            } catch(EOFException | FileNotFoundException ex) {*/
-                // Se il file è vuoto, crea un nuovo oggetto Biblioteca vuoto.
-                instance = new Biblioteca();
-            //}
+            instance = Biblioteca.caricaDaFile("ArchivioBiblioteca.json");
         }
         return instance;
     }
@@ -169,20 +175,43 @@ public class Biblioteca {
      * @param[in] filename Percorso del file da cui caricare l'archivio della Biblioteca.
      * @return Il Singleton instanza della classe Biblioteca salvata precedentemente su file.
      */
-    private static Biblioteca caricaDaFile(String filename) throws EOFException, FileNotFoundException {
-        Biblioteca ret = null;
-        try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)))) {
-                ret = (Biblioteca) ois.readObject();
-        } catch(FileNotFoundException ex) {
-            // Se il file non viene trovato, bisogna creare un nuovo oggetto Biblioteca in getInstance()
-            throw new FileNotFoundException();
-        } catch(EOFException ex) {
-            // Allo stesso modo se il file è vuoto, bisogna creare un nuovo oggetto Biblioteca in getInstance()
-            throw new EOFException();
-        } catch(IOException | ClassNotFoundException ex) {
-            System.err.println("E' stata generata un'eccezione durante la lettura del file." + filename);
+    private static Biblioteca caricaDaFile(String filename) {
+        Biblioteca bib = new Biblioteca();
+        try (Reader reader = new BufferedReader(new FileReader(filename))) {
+            Gson gson = new Gson();
+            BibliotecaData data = gson.fromJson(reader, BibliotecaData.class);
+
+            if (data != null) {
+                // Utenti
+                if (data.utenti != null) {
+                    for (UtenteData ud : data.utenti) {
+                        Utente u = new Utente(ud.nome, ud.cognome, ud.matricola, ud.email);
+                        u.getPrestitiAttivi().addAll(ud.prestitiAttivi);
+                        bib.listaUtenti.add(u);
+                    }
+                }
+                // Libri
+                if (data.libri != null) {
+                    for (LibroData ld : data.libri) {
+                        Libro l = new Libro(ld.titolo, ld.autori, ld.anno, ld.isbn, ld.copieTotali, ld.copieDisponibili);
+                        bib.listaLibri.add(l);
+                    }
+                }
+                // Prestiti
+                if (data.prestiti != null) {
+                    for (PrestitoData pd : data.prestiti) {
+                        Prestito p = new Prestito(pd.utente, pd.libro, LocalDate.parse(pd.dataRestituzione));
+                        bib.listaPrestiti.add(p);
+                    }
+                }
+            }
+        } catch (FileNotFoundException | EOFException ex) {
+            // In caso di File non trovato o  File vuoto, ritorna Biblioteca vuota
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        return ret;
+
+        return bib;
     }
 
     /**
@@ -191,10 +220,78 @@ public class Biblioteca {
      * @param[in] filename Percorso del file su cui caricare l'archivio della Biblioteca.
      */
     public void salvaSuFile(String filename) {
-        try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))) {
-                oos.writeObject(this);
-        } catch(IOException ex) {
-            System.err.println("E' stata generata un'eccezione durante la scrittura sul file." + filename);
+        try (Writer writer = new BufferedWriter(new FileWriter(filename))) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            BibliotecaData data = new BibliotecaData();
+
+            // Utenti
+            data.utenti = new ArrayList<>();
+            for (Utente u : listaUtenti) {
+                UtenteData ud = new UtenteData();
+                ud.nome = u.getNome();
+                ud.cognome = u.getCognome();
+                ud.matricola = u.getMatricola();
+                ud.email = u.getEmail();
+                ud.prestitiAttivi = new ArrayList<>(u.getPrestitiAttivi());
+                data.utenti.add(ud);
+            }
+
+            // Libri
+            data.libri = new ArrayList<>();
+            for (Libro l : listaLibri) {
+                LibroData ld = new LibroData();
+                ld.titolo = l.getTitolo();
+                ld.autori = l.getAutori();
+                ld.anno = l.getAnno();
+                ld.isbn = l.getIsbn();
+                ld.copieTotali = l.getCopieTotali();
+                ld.copieDisponibili = l.getCopieDisponibili();
+                data.libri.add(ld);
+            }
+
+            // Prestiti
+            data.prestiti = new ArrayList<>();
+            for (Prestito p : listaPrestiti) {
+                PrestitoData pd = new PrestitoData();
+                pd.utente = p.getUtente();
+                pd.libro = p.getLibro();
+                pd.dataRestituzione = p.getDataRestituzione().toString();
+                data.prestiti.add(pd);
+            }
+
+            gson.toJson(data, writer);
+        } catch (IOException ex) {
+            System.err.println("Errore durante la scrittura su file: " + filename);
+            ex.printStackTrace();
         }
+    }
+    
+    private static class BibliotecaData {
+        List<UtenteData> utenti;
+        List<LibroData> libri;
+        List<PrestitoData> prestiti;
+    }
+
+    private static class UtenteData {
+        String nome;
+        String cognome;
+        String matricola;
+        String email;
+        List<String> prestitiAttivi;
+    }
+
+    private static class LibroData {
+        String titolo;
+        String autori;
+        int anno;
+        String isbn;
+        int copieTotali;
+        int copieDisponibili;
+    }
+
+    private static class PrestitoData {
+        String utente;
+        String libro;
+        String dataRestituzione;    // la data viene salvata: yyyy-MM-dd
     }
 }

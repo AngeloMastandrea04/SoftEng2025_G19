@@ -49,6 +49,15 @@ public class Libro {
         this.copieTotali.set(copieTotali);
         this.copieDisponibili.set(copieTotali);
     }
+    
+    public Libro(String titolo, String autori, int anno, String isbn, int copieTotali, int copieDisponibili) {
+        this.titolo.set(titolo);
+        this.autori.set(autori);
+        this.anno.set(anno);
+        this.isbn.set(isbn);
+        this.copieTotali.set(copieTotali);
+        this.copieDisponibili.set(copieDisponibili);
+    }
 
     /**
      * @brief Getter standard per il titolo.
@@ -132,7 +141,7 @@ public class Libro {
      * @param[in] copieTotali Il valore da settare per il campo copieTotali.
      */
     public void setCopieTotali(int copieTotali) {
-        this.copieTotali.get();
+        this.copieTotali.set(copieTotali);
     }
 
     /**
