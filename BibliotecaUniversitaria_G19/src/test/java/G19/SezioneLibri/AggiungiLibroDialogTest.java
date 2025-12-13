@@ -111,7 +111,7 @@ public class AggiungiLibroDialogTest extends ApplicationTest {
         verifyThat("OK", NodeMatchers.isEnabled());
         
         // Caso 4: Valido
-        doubleClickOn("#titoloField").write("Tu Mio");
+        doubleClickOn("#titoloField").write("Frankenstein");
         verifyThat("OK", NodeMatchers.isEnabled());
     }
 

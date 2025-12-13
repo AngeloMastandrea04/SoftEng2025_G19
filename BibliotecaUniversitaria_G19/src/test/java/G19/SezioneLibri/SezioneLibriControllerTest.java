@@ -168,7 +168,7 @@ public class SezioneLibriControllerTest extends ApplicationTest {
         clickOn("OK");
         
         // Verifica Alert di Errore (Generato dal Controller)
-        verifyThat("È già presente un Libro avente l'ISBN inserito", NodeMatchers.isVisible());                               //Verifica che sia apparso l'Alert
+        verifyThat("È già presente un Libro avente l'ISBN inserito (9780132350884)!", NodeMatchers.isVisible());       //Verifica che sia apparso l'Alert
 
         clickOn("Annulla"); 
         
