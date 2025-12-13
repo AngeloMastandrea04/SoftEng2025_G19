@@ -102,15 +102,23 @@ public class SezioneLibriController {
         
         // Impostazione event handler al completamento della modifica
         cTitolo.setOnEditCommit(e -> {
-            e.getRowValue().setTitolo(e.getNewValue());
-            System.out.println("Modifica cognome -> " + libriOrdinati);
+            if(e.getNewValue().isEmpty())
+                tabLibri.refresh();
+            else{
+                e.getRowValue().setTitolo(e.getNewValue());
+                System.out.println("Modifica titolo -> " + libriOrdinati);
+            }
         });
         cAutori.setOnEditCommit(e -> {
-            e.getRowValue().setAutori(e.getNewValue());
-            System.out.println("Modifica autori -> " + libriOrdinati);
+            if(e.getNewValue().isEmpty())
+                tabLibri.refresh();
+            else{
+                e.getRowValue().setAutori(e.getNewValue());
+                System.out.println("Modifica autori -> " + libriOrdinati);
+            }
         });
         cAnno.setOnEditCommit(e -> {
-            if(e.getNewValue().intValue() < 0 ||  e.getNewValue().intValue() > LocalDate.now().getYear()){
+            if(e.getNewValue() == null || e.getNewValue().intValue() < 0 ||  e.getNewValue().intValue() > LocalDate.now().getYear()){
                 new Alert(Alert.AlertType.ERROR, "L'anno inserito (" + e.getNewValue() + ") non è valido! Deve essere compreso tra 0 e l'anno corrente.", ButtonType.CANCEL).showAndWait();
                 tabLibri.refresh();
             }
@@ -132,13 +140,17 @@ public class SezioneLibriController {
             }
         });
         cCopieTotali.setOnEditCommit(e -> {
-            if(e.getNewValue().intValue()<1){
+            if(e.getNewValue() == null || e.getNewValue().intValue()<1){
                 new Alert(Alert.AlertType.ERROR, "Le copieTotali inserite (" + e.getNewValue() + ") non sono valide! Ci deve essere almeno una copia del Libro.", ButtonType.CANCEL).showAndWait();
                 tabLibri.refresh();
+            } else if(e.getNewValue() < e.getOldValue() - e.getRowValue().getCopieDisponibili()){
+                new Alert(Alert.AlertType.ERROR, "Le copieTotali inserite (" + e.getNewValue() + ") non sono valide! Devono essere almeno uguali alle copie date in prestito.", ButtonType.CANCEL).showAndWait();
             } else {
+                e.getRowValue().setCopieDisponibili(e.getNewValue() - e.getOldValue() + e.getRowValue().getCopieDisponibili());
+                System.out.println("Modifica copieDisponibili -> " + libriOrdinati);
                 e.getRowValue().setCopieTotali(e.getNewValue());
                 System.out.println("Modifica copieTotali -> " + libriOrdinati);
-                }
+            }
         });
         
         // Impostazione elementi tabella

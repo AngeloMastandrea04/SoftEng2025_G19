@@ -99,12 +99,20 @@ public class SezioneUtentiController {
         
         // Impostazione event handler al completamento della modifica
         cCognome.setOnEditCommit(e -> {
-            e.getRowValue().setCognome(e.getNewValue());
-            System.out.println("Modifica cognome -> " + utentiOrdinati);
+            if(e.getNewValue().isEmpty())
+                tabUtenti.refresh();
+            else{
+                e.getRowValue().setCognome(e.getNewValue());
+                System.out.println("Modifica cognome -> " + utentiOrdinati);
+            }
         });
         cNome.setOnEditCommit(e -> {
-            e.getRowValue().setNome(e.getNewValue());
-            System.out.println("Modifica nome -> " + utentiOrdinati);
+            if(e.getNewValue().isEmpty())
+                tabUtenti.refresh();
+            else{
+                e.getRowValue().setNome(e.getNewValue());
+                System.out.println("Modifica nome -> " + utentiOrdinati);
+            }
         });
         cMatricola.setOnEditCommit(e -> {
             if(!e.getNewValue().matches("^\\d{10}$")){
