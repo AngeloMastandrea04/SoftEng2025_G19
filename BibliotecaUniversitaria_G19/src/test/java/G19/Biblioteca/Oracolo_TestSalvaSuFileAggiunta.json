@@ -1,0 +1,30 @@
+{
+  "utenti": [
+    {
+      "nome": "Paolo",
+      "cognome": "Bianchi",
+      "matricola": "0612709555",
+      "email": "p.bianchi@uni.it",
+      "prestitiAttivi": [
+        "Libro: Titolo: I Promessi Sposi, Autori: Alessandro Manzoni, Data di restituzione: 2004-02-23"
+      ]
+    }
+  ],
+  "libri": [
+    {
+      "titolo": "I Promessi Sposi",
+      "autori": "Alessandro Manzoni",
+      "anno": 1840,
+      "isbn": "9788880801234",
+      "copieTotali": 10,
+      "copieDisponibili": 10
+    }
+  ],
+  "prestiti": [
+    {
+      "utente": "Cognome: Bianchi, Nome: Paolo, Matricola: 0612709555",
+      "libro": "Titolo: I Promessi Sposi, Autori: Alessandro Manzoni",
+      "dataRestituzione": "2004-02-23"
+    }
+  ]
+}

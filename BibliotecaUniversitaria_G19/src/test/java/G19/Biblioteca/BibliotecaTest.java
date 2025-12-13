@@ -9,8 +9,13 @@ import G19.SezioneLibri.Libro;
 import G19.SezionePrestiti.Prestito;
 import G19.SezioneUtenti.Utente;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
@@ -54,15 +59,7 @@ public class BibliotecaTest {
     public void testGetInstanceNotNull() {
         System.out.print("testGetInstanceNotNull: ");
         
-        // Blocco che forza il valore di instance a null.
-        Field fieldInstance=null;
-        try {
-            fieldInstance = Biblioteca.class.getDeclaredField("instance");
-            fieldInstance.setAccessible(true);
-            fieldInstance.set(null, null);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        setNullAttributo("instance");
         
         Biblioteca result = Biblioteca.getInstance();
         assertNotNull(result);   //Verifica che, dopo getInstance(), instance non rimanga null.
@@ -76,9 +73,49 @@ public class BibliotecaTest {
     @Test
     public void testGetInstanceSame() {
         System.out.print("testGetInstanceSame: ");
+        
+        setNullAttributo("instance");
+        
         Biblioteca result1 = Biblioteca.getInstance();
         Biblioteca result2 = Biblioteca.getInstance();
         assertSame(result1, result2);   //Verifica che getInstance() restituisca la stessa Biblitoeca.
+        System.out.println("OK");
+    }
+    
+    /**
+     * Test of salvaSuFile method, of class Biblioteca.
+     * Vengono salvate su file delle aggiunte, il contenuto del file viene infine confrontate
+     * con il contenuto di un file oracolo.
+     */
+    @Test
+    public void testSalvaSuFileAggiunta() {
+        System.out.print("testSalvaSuFileAggiunta: ");
+        
+        setNullAttributo("instance");
+        
+        // Si aggiunge un libro, un Utente, un Prestito e un Prestito attivo per quell'Utente.
+        Libro l1 = new Libro("I Promessi Sposi", "Alessandro Manzoni", 1840, "9788880801234", 10);
+        Utente u1 = new Utente("Paolo", "Bianchi", "0612709555", "p.bianchi@uni.it");
+        Prestito p1 = new Prestito(u1.toStringPrestito(), l1.toStringPrestito(), LocalDate.of(2004, 02, 23));
+        
+        Biblioteca.getInstance().getListaLibri().add(l1);
+        Biblioteca.getInstance().getListaUtenti().add(u1);
+        Biblioteca.getInstance().getListaPrestiti().add(p1);
+        u1.getPrestitiAttivi().add(p1.toStringUtente());
+        
+        Path archivioPath = Paths.get("ArchivioBiblioteca.json");
+        Path oracoloPath = Paths.get("src/test/java/G19/Biblioteca/Oracolo_TestSalvaSuFileAggiunta.json");
+        
+        List<String> archivio=null;
+        List<String> oracolo=null;
+        try {
+            archivio = Files.readAllLines(archivioPath);
+            oracolo = Files.readAllLines(oracoloPath);
+        } catch(IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        assertEquals(archivio, oracolo);
         System.out.println("OK");
     }
     
@@ -89,10 +126,12 @@ public class BibliotecaTest {
      * dei dati in seguito a delle aggiunte.
      */
     @Test
-    public void testCaricaDaFileAggiunta() {
+    public void testCaricaDaFileAggiunta() {        
+        System.out.print("testCaricaDaFileAggiunta: ");
+        
+        setNullAttributo("instance");
         
         // Si aggiunge un libro, un Utente, un Prestito e un Prestito attivo per quell'Utente.
-        System.out.print("testCaricaDaFileAggiunta: ");
         Libro l1 = new Libro("I Promessi Sposi", "Alessandro Manzoni", 1840, "9788880801234", 10);
         Utente u1 = new Utente("Paolo", "Bianchi", "0612709555", "p.bianchi@uni.it");
         Prestito p1 = new Prestito(u1.toStringPrestito(), l1.toStringPrestito(), LocalDate.of(2004, 02, 23));
@@ -102,15 +141,7 @@ public class BibliotecaTest {
         Biblioteca.getInstance().getListaPrestiti().add(p1);
         u1.getPrestitiAttivi().add(p1.toStringUtente());
         
-        // Blocco che forza il valore di instance a null per forzare, a sua volta, la lettura da file.
-        Field fieldInstance=null;
-        try {
-            fieldInstance = Biblioteca.class.getDeclaredField("instance");
-            fieldInstance.setAccessible(true);
-            fieldInstance.set(null, null);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        setNullAttributo("instance");
         
         // Si verifica se è presente il Libro aggiunto.
         boolean res1 = Biblioteca.getInstance().getListaLibri().contains(l1);
@@ -141,19 +172,15 @@ public class BibliotecaTest {
         System.out.println("Prestito attivo in un Utente OK.");
     }
     
-
-    /**
-     * Test of salvaSuFile method, of class Biblioteca.
-     */
-    /*@Test
-    public void testSalvaSuFile() {
-        System.out.println("salvaSuFile");
-        String filename = "ArchivioBiblioteca.json";
-        Biblioteca bib = Biblioteca.getInstance();
-        bib.salvaSuFile(filename);
-        
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }*/
-    
+    // Blocco che imposta il valore di instance a null per forzare la lettura da file.
+    private void setNullAttributo(String attributo) {
+        Field fieldInstance=null;
+        try {
+            fieldInstance = Biblioteca.class.getDeclaredField(attributo);
+            fieldInstance.setAccessible(true);
+            fieldInstance.set(null, null);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }
