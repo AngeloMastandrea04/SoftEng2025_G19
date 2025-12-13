@@ -110,9 +110,8 @@ public class AggiungiLibroDialog extends Dialog<Libro> {
      * @param[in] ok Il Nodo (Bottone) di cui aggiornare la Property.
      */
     private void aggiornaOk(Node ok) {
-        boolean valido = !titoloField.getText().isEmpty();
-        valido &= !titoloField.getText().isEmpty();
-        valido &= !autoriField.getText().isEmpty();
+        boolean valido = !(titoloField.getText().isEmpty() || titoloField.getText().matches("^\\s+$"));
+        valido &= !(autoriField.getText().isEmpty() || autoriField.getText().matches("^\\s+$"));
         valido &= !annoField.getText().isEmpty();
         valido &= !annoError.isVisible();
         valido &= !isbnField.getText().isEmpty();

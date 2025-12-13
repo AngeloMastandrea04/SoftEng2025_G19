@@ -102,7 +102,7 @@ public class SezioneLibriController {
         
         // Impostazione event handler al completamento della modifica
         cTitolo.setOnEditCommit(e -> {
-            if(e.getNewValue().isEmpty())
+            if(e.getNewValue().isEmpty() || e.getNewValue().matches("^\\s+$"))
                 tabLibri.refresh();
             else{
                 e.getRowValue().setTitolo(e.getNewValue());
@@ -110,7 +110,7 @@ public class SezioneLibriController {
             }
         });
         cAutori.setOnEditCommit(e -> {
-            if(e.getNewValue().isEmpty())
+            if(e.getNewValue().isEmpty() || e.getNewValue().matches("^\\s+$"))
                 tabLibri.refresh();
             else{
                 e.getRowValue().setAutori(e.getNewValue());
