@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 
 /**
@@ -33,6 +34,17 @@ public class App extends Application {
         stage.setScene(scene);
         stage.getIcons().add(new Image(getClass().getResource("Icona.png").toExternalForm()));
         stage.setTitle("Biblioteca Universitaria");
+        stage.maximizedProperty().addListener((observable, oldValue, newValue) -> {
+            if(!newValue){
+                stage.setMinWidth(0);
+                stage.setMinHeight(0);
+                stage.sizeToScene();
+                Platform.runLater(() -> {
+                    stage.setMinWidth(stage.getWidth());
+                    stage.setMinHeight(stage.getHeight());      
+                });
+            }
+        });
         stage.setMaximized(true);
         stage.show();
     }
@@ -47,6 +59,18 @@ public class App extends Application {
      */
     public static void setRoot(String fxml, Object controller) throws IOException {
         scene.setRoot(loadFXML(fxml, controller));
+        Stage stage = (Stage) scene.getWindow();
+        if(stage != null){
+            if(!stage.isMaximized()){
+                stage.setMinWidth(0);
+                stage.setMinHeight(0);
+                stage.sizeToScene();
+                Platform.runLater(() -> {
+                    stage.setMinWidth(stage.getWidth());
+                    stage.setMinHeight(stage.getHeight());      
+                });         
+            }
+        }
     }
 
     /**

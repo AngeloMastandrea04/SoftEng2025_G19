@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" style="-fx-background-image: url('/G19/Biblioteca/Sfondo.jpeg'); -fx-background-repeat: no-repeat; -fx-background-size: cover; -fx-background-position: center center;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="600.0" style="-fx-background-image: url('/G19/Biblioteca/Sfondo.jpeg'); -fx-background-repeat: no-repeat; -fx-background-size: cover; -fx-background-position: center center;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 16px;">
          <VBox.margin>

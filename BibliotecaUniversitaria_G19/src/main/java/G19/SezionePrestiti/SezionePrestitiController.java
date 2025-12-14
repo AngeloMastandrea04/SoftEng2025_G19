@@ -20,6 +20,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import java.util.Scanner;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 /**
  * @brief La classe SezioniPrestitiController si occupa delle operazioni da effettuare sulla struttura dati contenente i Prestiti.
  * 
@@ -85,6 +87,23 @@ public class SezionePrestitiController {
 
         // Impostazione elementi tabella
         tabPrestiti.setItems(prestitiOrdinati);
+        
+        // Ridimensionamento automatico colonne
+        tabPrestiti.getColumns().forEach(column -> {
+            Text t = new Text(column.getText());
+            t.setFont(Font.font("System", 16));
+            double maxW = t.getLayoutBounds().getWidth();
+            for (int i = 0; i < tabPrestiti.getItems().size(); i++) {
+                if (column.getCellData(i) != null) {
+                    t = new Text(column.getCellData(i).toString());
+                    t.setFont(Font.font("System", 16));
+                    double cellW = t.getLayoutBounds().getWidth();
+                    if (cellW > maxW)
+                        maxW = cellW;
+                }
+            }
+            column.setPrefWidth(maxW + 20.0d);
+        });
 
         tabPrestiti.setRowFactory(tv -> new TableRow<Prestito>() {
             @Override

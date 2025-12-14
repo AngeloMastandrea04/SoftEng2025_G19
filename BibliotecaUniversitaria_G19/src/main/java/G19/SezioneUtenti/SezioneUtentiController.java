@@ -6,7 +6,6 @@ import G19.Biblioteca.DashboardGeneraleController;
 import java.io.IOException;
 import java.util.Optional;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -14,12 +13,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 /**
  * @brief La classe SezioneUtentiController si occupa di gestire tutte le operazioni sulla struttura dati contenente gli Utenti.
@@ -121,7 +121,7 @@ public class SezioneUtentiController {
             if(!e.getNewValue().matches("^\\d{10}$")){
                 new Alert(Alert.AlertType.ERROR, "La matricola inserita (" + e.getNewValue() + ") non è valida! Deve essere di 10 cifre.", ButtonType.CANCEL).showAndWait();
                 tabUtenti.refresh();
-            } else if(listaUtenti.contains(new Utente("", "", e.getNewValue(), ""))){
+            } else if(!e.getNewValue().equals(e.getOldValue()) && listaUtenti.contains(new Utente("", "", e.getNewValue(), ""))){
                 new Alert(Alert.AlertType.ERROR, "È già presente un Utente avente la matricola inserita (" + e.getNewValue() + ")!", ButtonType.CANCEL).showAndWait();
                 tabUtenti.refresh();
             } else {
@@ -141,6 +141,23 @@ public class SezioneUtentiController {
         
         // Impostazione elementi tabella
         tabUtenti.setItems(utentiOrdinati);
+        
+        // Ridimensionamento automatico colonne
+        tabUtenti.getColumns().forEach(column -> {
+            Text t = new Text(column.getText());
+            t.setFont(Font.font("System", 16));
+            double maxW = t.getLayoutBounds().getWidth();
+            for (int i = 0; i < tabUtenti.getItems().size(); i++) {
+                if (column.getCellData(i) != null) {
+                    t = new Text(column.getCellData(i).toString());
+                    t.setFont(Font.font("System", 16));
+                    double cellW = t.getLayoutBounds().getWidth();
+                    if (cellW > maxW)
+                        maxW = cellW;
+                }
+            }
+            column.setPrefWidth(maxW + 20.0d);
+        });
         
         // Binding tra l'abilitazione del pulsante cancella e la selezione di un elemento nella tabella
         cancUtenteBtn.disableProperty().bind(tabUtenti.getSelectionModel().selectedItemProperty().isNull());

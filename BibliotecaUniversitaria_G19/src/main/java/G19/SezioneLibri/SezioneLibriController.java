@@ -18,6 +18,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.converter.IntegerStringConverter;
 
 /**
@@ -135,7 +137,7 @@ public class SezioneLibriController {
             if(!(e.getNewValue().matches("^(978|979)\\d{10}$"))){
                 new Alert(Alert.AlertType.ERROR, "L'ISBN inserito (" + e.getNewValue() + ") non è valido! Deve essere ISBN di 13 cifre avente prefisso standard 978 o 979.", ButtonType.CANCEL).showAndWait();
                 tabLibri.refresh();
-            } else if (listaLibri.contains(new Libro("", "", -1, e.getNewValue(), -1))){
+            } else if (!e.getNewValue().equals(e.getOldValue()) && listaLibri.contains(new Libro("", "", -1, e.getNewValue(), -1))){
                 new Alert(Alert.AlertType.ERROR, "È già presente un Libro avente l'ISBN inserito (" + e.getNewValue() + ")!", ButtonType.CANCEL).showAndWait();
                 tabLibri.refresh();
             } else{
@@ -159,6 +161,23 @@ public class SezioneLibriController {
         
         // Impostazione elementi tabella
         tabLibri.setItems(libriOrdinati);
+        
+        // Ridimensionamento automatico colonne
+        tabLibri.getColumns().forEach(column -> {
+            Text t = new Text(column.getText());
+            t.setFont(Font.font("System", 16));
+            double maxW = t.getLayoutBounds().getWidth();
+            for (int i = 0; i < tabLibri.getItems().size(); i++) {
+                if (column.getCellData(i) != null) {
+                    t = new Text(column.getCellData(i).toString());
+                    t.setFont(Font.font("System", 16));
+                    double cellW = t.getLayoutBounds().getWidth();
+                    if (cellW > maxW)
+                        maxW = cellW;
+                }
+            }
+            column.setPrefWidth(maxW + 20.0d);
+        });
         
         // Binding tra l'abilitazione del pulsante cancella e la selezione di un elemento nella tabella
         cancLibroBtn.disableProperty().bind(tabLibri.getSelectionModel().selectedItemProperty().isNull());

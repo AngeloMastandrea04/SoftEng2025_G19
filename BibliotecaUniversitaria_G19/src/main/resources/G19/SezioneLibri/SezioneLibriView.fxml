@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" style="-fx-background-image: url('/G19/Biblioteca/Sfondo.jpeg'); -fx-background-repeat: no-repeat; -fx-background-size: cover; -fx-background-position: center center;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-image: url('/G19/Biblioteca/Sfondo.jpeg'); -fx-background-repeat: no-repeat; -fx-background-size: cover; -fx-background-position: center center;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 16px;">
          <VBox.margin>
@@ -27,18 +27,15 @@
                   <Font name="System Bold Italic" size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="tabLibri" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" style="-fx-font-size: 16;">
+            <TableView fx:id="tabLibri" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-size: 16;">
               <columns>
-                <TableColumn fx:id="cTitolo" prefWidth="50.0" sortable="true" style="-fx-font-size: 16;" text="Titolo" />
-                <TableColumn fx:id="cAutori" prefWidth="60.0" sortable="false" text="Autori" />
-                  <TableColumn fx:id="cAnno" prefWidth="50.0" sortable="false" text="Anno" />
-                  <TableColumn fx:id="cIsbn" prefWidth="50.0" sortable="false" text="ISBN" />
-                  <TableColumn fx:id="cCopieTotali" prefWidth="100.0" sortable="false" text="Copie Totali" />
-                  <TableColumn fx:id="cCopieDisponibili" editable="false" prefWidth="140.0" sortable="false" text="Copie Disponibili" />
+                <TableColumn fx:id="cTitolo" maxWidth="1.7976931348623157E308" minWidth="52.0" prefWidth="-1.0" sortable="true" style="-fx-font-size: 16;" text="Titolo" />
+                <TableColumn fx:id="cAutori" maxWidth="1.7976931348623157E308" minWidth="56.0" prefWidth="-1.0" sortable="false" text="Autori" />
+                  <TableColumn fx:id="cAnno" maxWidth="1.7976931348623157E308" minWidth="52.0" prefWidth="-1.0" sortable="false" text="Anno" />
+                  <TableColumn fx:id="cIsbn" maxWidth="1.7976931348623157E308" minWidth="52.0" prefWidth="-1.0" sortable="false" text="ISBN" />
+                  <TableColumn fx:id="cCopieTotali" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" text="Copie Totali" />
+                  <TableColumn fx:id="cCopieDisponibili" editable="false" maxWidth="1.7976931348623157E308" minWidth="140.0" prefWidth="-1.0" sortable="false" text="Copie Disponibili" />
               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
             </TableView>
             <TextField fx:id="ricLibro" alignment="CENTER" promptText="Ricerca per Titolo, Autori o ISBN">
                <font>
