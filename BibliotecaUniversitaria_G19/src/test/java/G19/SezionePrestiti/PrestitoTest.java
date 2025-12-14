@@ -3,6 +3,7 @@ package G19.SezionePrestiti;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 
@@ -35,9 +36,9 @@ public class PrestitoTest {
     
     @BeforeEach
     public void setUp() {
-        //Creazione di una Fixture per eliminare ridondanza ed aggiungere chiarezza
-        l = new Libro("Norwegian wood", "Murakami", 2004, "1234", 3);
-        u = new Utente("Vinny", "Pasca", "081", "@ggmail.com");
+        //Creazione di una Fixture per eliminare ridondanza all'interno dei test incrementando la chiarezza
+        l = new Libro("Norwegian wood", "Murakami", 2004, "9780123456789", 3);
+        u = new Utente("Vinny", "Pasca", "0123456789", "vinny@studenti.uni.it");
         p = new Prestito(u.toStringPrestito(), l.toStringPrestito(), LocalDate.of(2004, 8, 27));
     }
     
@@ -54,18 +55,13 @@ public class PrestitoTest {
         
         //Test sulla rappresentazione scelta per Utente in Prestito.
         assertEquals(u.toStringPrestito(), p.getUtente());
-        assertNotEquals(u.toStringPrestito(), "Vinny");
 
         //Test sulla rappresentazione scelta per Libro in Prestito.
         assertEquals(l.toStringPrestito(), p.getLibro());
-        assertNotEquals(l.toStringPrestito(), "Norwegian wood");
 
         //Test sulla data
         assertEquals(LocalDate.of(2004, 8, 27), p.getDataRestituzione());
-        assertNotEquals(LocalDate.of(2007, 8, 27), p.getDataRestituzione());
-        assertNotEquals(LocalDate.of(2004, 12, 27), p.getDataRestituzione());
-        assertNotEquals(LocalDate.of(2044, 8, 15), p.getDataRestituzione());
-
+        
         /*I Test per l'inserimento di dati non coerenti sono svolti tramite FXTest nella sezione: SezionePrestitiControllerTest
         in quanto non è possibile testarli a questo livello*/
 
@@ -80,47 +76,52 @@ public class PrestitoTest {
         //Partendo dall'oggetto nella Fixture, testiamo la correttezza dei metodi getter degli attributi Property.
         assertNotNull(p.getUtente());
         assertNotNull(p.getLibro());
-
+        //Le Property devono avere il valore dato rispettivamente dai metodi Utente:: toStringPrestito() ed Libro:: toStringPrestito() 
+        assertTrue(p.getUtente().equals(u.toStringPrestito()));
+        assertTrue(p.getLibro().equals(l.toStringPrestito()));
     }
 
     @Test
     public void toStringTest(){
 
         //Stringa che mi aspetto, costruita con una Stringa esplicita
-        String expected1 = "Utente: " + "Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "081" + ", Libro: " + "Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami" +", Data di restituzione: " + LocalDate.of(2004, 8, 27);
+        String expected1 = "Utente: " + "Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789" + ", Libro: " + "Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami" +", Data di restituzione: " + LocalDate.of(2004, 8, 27);
 
         //Stringa che mi aspetto, costruita con getter di altre classi già testati che hanno l'unico scopo di restituire il formato corretto
         String expected2 = "Utente: " + u.toStringPrestito() + ", Libro: " + l.toStringPrestito() + ", Data di restituzione: " + LocalDate.of(2004, 8, 27);
 
         assertEquals(expected1, p.toString());
         assertEquals(expected2, p.toString());
+    }
 
-        //VANNO DIVISE PER MAGGIORE MODULABILITà
+    @Test
+    public void toStringFormatTest(){
         
-        //Aggiungo semplici variazioni ad ogni Stringa che precede il campo
-        String notExpected1 = "Utte: " + u.toStringPrestito() + ", Libro: " + l.toStringPrestito() + ", Data di restituzione: " + LocalDate.of(2004, 8, 27);
-        String notExpected2 = "Utente: " + u.toStringPrestito() + ", Lio: " + l.toStringPrestito() + ", Data di restituzione: " + LocalDate.of(2004, 8, 27);
-        String notExpected3 = "Utente: " + u.toStringPrestito() + ", Lio: " + l.toStringPrestito() + ", Data di restituzione: " + LocalDate.of(2004, 8, 27);
+        //Controllo solo se il formato della toString() sia corretto, escluse le rappresentazioni scelte dei dati.
+        String s= p.toString();
+        assertTrue(s.startsWith("Utente: "));
+        assertTrue(s.contains(", Libro: "));
+        assertTrue(s.contains(", Data di restituzione: "));
+    }
 
-        //Rimuovo gli spazi
-        String notExpected4 = "Utente:" + u.toStringPrestito() + ", Libro:" + l.toStringPrestito() + ", Datadirestituzione:" + LocalDate.of(2004, 8, 27);
+    @Test
+    public void toStringRappresentationTest(){
+
+        String actual = p.toString();
+        /*Le rappresentazioni utilizzate per l'utente ed il libro all'interno della
+        toString() di Prestito devono essere solo e soltanto quelle messe a disposizione
+        dalle classi utente e libro*/
+        assertTrue(actual.contains(u.toStringPrestito()));
+        assertTrue(actual.contains(l.toStringPrestito()));
+    }
+
+    @Test 
+    public void toStringWrongDate(){
+
+        //In questo modo si testa anche la corretta data di restituzione
+        assertTrue(p.toString().endsWith("2004-08-27")); 
         //Cambio la data di restituzione
-        String notExpected5 = "Utente:" + u.toStringPrestito() + ", Libro: " + l.toStringPrestito() + ", Data di restituzione: " + LocalDate.of(2044, 12, 15);
-        //Cambio le rappresentazioni dei model (Non uso più quelle date da "Model".toStringPrestito())
-
-        //Cambio la rappresentazione di Utente
-        String notExpected6 = "Utente:" + "Vinny" + ", Libro: " + l.toStringPrestito() + ", Data di restituzione: " + LocalDate.of(2004, 8, 27);
-        //Cambio la rappresentazione di Libro
-        String notExpected7 = "Utente:" + u.toStringPrestito() + ", Libro: " + "Norwegian Wood" + ", Data di restituzione: " + LocalDate.of(2004, 8, 27);
-
-        assertNotEquals(notExpected1, p.toString());
-        assertNotEquals(notExpected2, p.toString());
-        assertNotEquals(notExpected3, p.toString());
-        assertNotEquals(notExpected4, p.toString());
-        assertNotEquals(notExpected5, p.toString());
-        assertNotEquals(notExpected6, p.toString());
-        assertNotEquals(notExpected7, p.toString());
-
+        assertTrue(! p.toString().endsWith(LocalDate.of(2044, 8, 27).toString()));
     }
 
     @Test
@@ -139,6 +140,32 @@ public class PrestitoTest {
         assertEquals(expected2, p.toStringUtente());
     }
 
-    //IMPLEMENTARE IL TEST CON CONTENUTI SCORRETTI UTILIZZANDO assertTrue("Stringa".startsWith("Utente: ")); assertTrue(p.toString().Contains("Utente: ")); assertTrue(p.toString().endsWith("Utente: "));
+    @Test
+    public void toStringUtenteFormatTest(){
+        
+        //Controllo solo se il formato della toString() sia corretto, escluse le rappresentazioni scelte dei dati.
+        String s= p.toStringUtente();
+        assertTrue(s.startsWith("Libro: "));
+        assertTrue(s.contains(", Data di restituzione: "));
+    }
+
+    @Test
+    public void toStringUtenteRappresentationTest(){
+
+        String actual = p.toStringUtente();
+        /*La rappresentazione utilizzata per il Libro all'interno della
+        toStringUtente() di Prestito deve essere solo e soltanto quella messa a disposizione
+        dalla classe libro*/
+        assertTrue(actual.contains(l.toStringPrestito()));
+    }
+
+    @Test 
+    public void toStringUtenteWrongDate(){
+
+        //In questo modo si testa anche la corretta data di restituzione
+        assertTrue(p.toStringUtente().endsWith("2004-08-27")); 
+        //Cambio la data di restituzione
+        assertTrue(! p.toStringUtente().endsWith(LocalDate.of(2044, 8, 27).toString()));
+    }
 
 }
