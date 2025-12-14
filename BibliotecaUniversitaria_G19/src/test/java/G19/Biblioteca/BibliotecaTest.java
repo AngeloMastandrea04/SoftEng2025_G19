@@ -16,13 +16,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -79,6 +74,48 @@ public class BibliotecaTest {
         Biblioteca result1 = Biblioteca.getInstance();
         Biblioteca result2 = Biblioteca.getInstance();
         assertSame(result1, result2);   //Verifica che getInstance() restituisca la stessa Biblitoeca.
+        System.out.println("OK");
+    }
+    
+    /**
+     * Test of getListaUtenti method, of class Biblioteca.
+     * getListaUtenti() deve fornire un valore valido, cioè non nullo
+     */
+    @Test
+    public void testGetListaUtenti() {
+        System.out.print("testGetListaUtenti: ");
+        
+        setNullAttributo("instance");
+        
+        assertNotNull(Biblioteca.getInstance().getListaUtenti());
+        System.out.println("OK");
+    }
+    
+    /**
+     * Test of getListaLibri method, of class Biblioteca.
+     * getListaLibri() deve fornire un valore valido, cioè non nullo
+     */
+    @Test
+    public void testGetListaLibri() {
+        System.out.print("testGetListaLibri: ");
+        
+        setNullAttributo("instance");
+        
+        assertNotNull(Biblioteca.getInstance().getListaLibri());
+        System.out.println("OK");
+    }
+    
+    /**
+     * Test of getListaPrestiti method, of class Biblioteca.
+     * getListaPrestiti() deve fornire un valore valido, cioè non nullo
+     */
+    @Test
+    public void testGetListaPrestiti() {
+        System.out.print("testGetListaPrestiti: ");
+        
+        setNullAttributo("instance");
+        
+        assertNotNull(Biblioteca.getInstance().getListaPrestiti());
         System.out.println("OK");
     }
     
