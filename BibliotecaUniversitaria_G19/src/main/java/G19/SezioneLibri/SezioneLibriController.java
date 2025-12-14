@@ -82,7 +82,7 @@ public class SezioneLibriController {
                     return true;
                 if(u.getTitolo().toLowerCase().contains(newValue.toLowerCase()))
                     return true;
-                else if(u.getAutori().contains(newValue.toLowerCase()))
+                else if(u.getAutori().toLowerCase().contains(newValue.toLowerCase()))
                     return true;
                 else if(u.getIsbn().contains(newValue))
                     return true;
