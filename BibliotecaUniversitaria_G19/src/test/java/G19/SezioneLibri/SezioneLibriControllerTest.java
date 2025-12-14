@@ -220,7 +220,7 @@ public class SezioneLibriControllerTest extends ApplicationTest {
     // -------------------------------------------------- TEST CANCELLAZIONE --------------------------------------------
     /**
      * Test IF-2.3: Cancellazione di un Libro (Successo).
-     * Simula la selezione di un Libro, il click su "Cancella Libro" e il click su "Conferma".
+     * Simula la selezione di un Libro, il click su "Cancella Libro" e il click su "OK".
      */
     @Test
     public void testCancellaLibroSuccesso() {
@@ -245,7 +245,7 @@ public class SezioneLibriControllerTest extends ApplicationTest {
     }
     
     /**
-     * Test IF-2.3: Cancellazione di un Libro (Annnullata).
+     * Test IF-2.3: Cancellazione di un Libro (Annullata).
      * Simula la selezione di un Libro, il click su "Cancella Libro" e il click su "Annulla".
      */
     @Test

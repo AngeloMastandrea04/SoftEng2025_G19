@@ -33,30 +33,30 @@ import javafx.scene.text.Text;
 */
 public class SezionePrestitiController {
 
-    @FXML private TableView<Prestito> tabPrestiti;
+    @FXML public TableView<Prestito> tabPrestiti;
 
-    @FXML private TableColumn<Utente, String> cUtente;
+    @FXML public TableColumn<Utente, String> cUtente;
 
-    @FXML private TableColumn<Libro, String> cLibro;
+    @FXML public TableColumn<Libro, String> cLibro;
 
-    @FXML private TableColumn<Libro, LocalDate> cData;
+    @FXML public TableColumn<Libro, LocalDate> cData;
 
-    @FXML private Button cancPrestitoBtn;
+    @FXML public Button cancPrestitoBtn;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti gli Utenti registrati nella Biblioteca.
      */
-    @FXML private ObservableList<Utente> listaUtenti;
+    private ObservableList<Utente> listaUtenti;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Libri registrati nella Biblioteca.
      */
-    @FXML private ObservableList<Libro> listaLibri;
+    private ObservableList<Libro> listaLibri;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Prestiti registrati nella Biblioteca.
      */
-    @FXML private ObservableList<Prestito> listaPrestiti;
+    public ObservableList<Prestito> listaPrestiti;
 
     /**
      * @brief Metodo di inizializzazione del Controller.
