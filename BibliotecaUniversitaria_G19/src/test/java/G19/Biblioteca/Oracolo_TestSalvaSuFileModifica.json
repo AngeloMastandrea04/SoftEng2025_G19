@@ -1,0 +1,22 @@
+{
+  "utenti": [
+    {
+      "nome": "Paolo",
+      "cognome": "Bianchi",
+      "matricola": "0612700000",
+      "email": "p.bianchi@uni.it",
+      "prestitiAttivi": []
+    }
+  ],
+  "libri": [
+    {
+      "titolo": "I Promessi Sposi",
+      "autori": "Alessandro Manzoni",
+      "anno": 1840,
+      "isbn": "9780000000000",
+      "copieTotali": 10,
+      "copieDisponibili": 10
+    }
+  ],
+  "prestiti": []
+}

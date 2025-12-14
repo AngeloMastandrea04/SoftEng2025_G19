@@ -103,8 +103,48 @@ public class BibliotecaTest {
         Biblioteca.getInstance().getListaPrestiti().add(p1);
         u1.getPrestitiAttivi().add(p1.toStringUtente());
         
+        
         Path archivioPath = Paths.get("ArchivioBiblioteca.json");
         Path oracoloPath = Paths.get("src/test/java/G19/Biblioteca/Oracolo_TestSalvaSuFileAggiunta.json");
+        
+        List<String> archivio=null;
+        List<String> oracolo=null;
+        try {
+            archivio = Files.readAllLines(archivioPath);
+            oracolo = Files.readAllLines(oracoloPath);
+        } catch(IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        assertEquals(archivio, oracolo);
+        System.out.println("OK");
+    }
+    
+    /**
+     * Test of salvaSuFile method, of class Biblioteca.
+     * Vengono salvate su file delle modifiche, il contenuto del file viene infine confrontato
+     * con il contenuto di un file oracolo.
+     */
+    @Test
+    public void testSalvaSuFileModifica() {
+        System.out.print("testSalvaSuFileModifica: ");
+        
+        setNullAttributo("instance");
+        
+        // Si aggiunge un Libro e un Utente. Un Prestito non è modificabile.
+        Libro l1 = new Libro("I Promessi Sposi", "Alessandro Manzoni", 1840, "9788880801234", 10);
+        Utente u1 = new Utente("Paolo", "Bianchi", "0612709555", "p.bianchi@uni.it");
+        
+        Biblioteca.getInstance().getListaLibri().add(l1);
+        Biblioteca.getInstance().getListaUtenti().add(u1);
+        
+        // Si modificano il Libro e l'Utente aggiunto.
+        Biblioteca.getInstance().getListaLibri().get(0).setIsbn("9780000000000");
+        Biblioteca.getInstance().getListaUtenti().get(0).setMatricola("0612700000");
+        
+        
+        Path archivioPath = Paths.get("ArchivioBiblioteca.json");
+        Path oracoloPath = Paths.get("src/test/java/G19/Biblioteca/Oracolo_TestSalvaSuFileModifica.json");
         
         List<String> archivio=null;
         List<String> oracolo=null;
