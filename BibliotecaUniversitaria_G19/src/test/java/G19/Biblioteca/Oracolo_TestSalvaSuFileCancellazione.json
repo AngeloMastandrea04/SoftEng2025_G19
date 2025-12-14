@@ -1,0 +1,30 @@
+{
+  "utenti": [
+    {
+      "nome": "Giuseppe",
+      "cognome": "Verdi",
+      "matricola": "06127084444",
+      "email": "g.verdi@studenti.uni.it",
+      "prestitiAttivi": [
+        "Libro: Titolo: Divina Commedia, Autori: Dante Alighieri, Data di restituzione: 2004-05-15"
+      ]
+    }
+  ],
+  "libri": [
+    {
+      "titolo": "Divina Commedia",
+      "autori": "Dante Alighieri",
+      "anno": 1321,
+      "isbn": "9788880805678",
+      "copieTotali": 15,
+      "copieDisponibili": 15
+    }
+  ],
+  "prestiti": [
+    {
+      "utente": "Cognome: Verdi, Nome: Giuseppe, Matricola: 06127084444",
+      "libro": "Titolo: Divina Commedia, Autori: Dante Alighieri",
+      "dataRestituzione": "2004-05-15"
+    }
+  ]
+}

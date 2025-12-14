@@ -104,6 +104,7 @@ public class BibliotecaTest {
         u1.getPrestitiAttivi().add(p1.toStringUtente());
         
         
+        // Si confronta il risultato sull'archivio delle aggiunte effettuate con il contenuto di un file oracolo.
         Path archivioPath = Paths.get("ArchivioBiblioteca.json");
         Path oracoloPath = Paths.get("src/test/java/G19/Biblioteca/Oracolo_TestSalvaSuFileAggiunta.json");
         
@@ -143,8 +144,66 @@ public class BibliotecaTest {
         Biblioteca.getInstance().getListaUtenti().get(0).setMatricola("0612700000");
         
         
+        // Si confronta il risultato sull'archivio delle modifiche effettuate con il contenuto di un file oracolo.
         Path archivioPath = Paths.get("ArchivioBiblioteca.json");
         Path oracoloPath = Paths.get("src/test/java/G19/Biblioteca/Oracolo_TestSalvaSuFileModifica.json");
+        
+        List<String> archivio=null;
+        List<String> oracolo=null;
+        try {
+            archivio = Files.readAllLines(archivioPath);
+            oracolo = Files.readAllLines(oracoloPath);
+        } catch(IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        assertEquals(archivio, oracolo);
+        System.out.println("OK");
+    }
+    
+    /**
+     * Test of salvaSuFile method, of class Biblioteca.
+     * Viene salvato su file il risultato delle cancellazioni possibili, il contenuto del file viene infine confrontato
+     * con il contenuto di un file oracolo.
+     */
+    @Test
+    public void testSalvaSuFileCancellazione() {
+        System.out.print("testSalvaSuFileCancellazione: ");
+        
+        setNullAttributo("instance");
+        
+        // Si aggiunge un Libro, un Utente, un Prestito e un Prestito attivo per quell'Utente.
+        Libro l1 = new Libro("I Promessi Sposi", "Alessandro Manzoni", 1840, "9788880801234", 10);
+        Utente u1 = new Utente("Paolo", "Bianchi", "0612709555", "p.bianchi@uni.it");
+        Prestito p1 = new Prestito(u1.toStringPrestito(), l1.toStringPrestito(), LocalDate.of(2004, 02, 23));
+        
+        Biblioteca.getInstance().getListaLibri().add(l1);
+        Biblioteca.getInstance().getListaUtenti().add(u1);
+        Biblioteca.getInstance().getListaPrestiti().add(p1);
+        u1.getPrestitiAttivi().add(p1.toStringUtente());
+        
+        // Si aggiungono un altro Libro, un altro Utente, un altro Prestito e un Prestito attivo per quell'Utente.
+        Libro l2 = new Libro("Divina Commedia", "Dante Alighieri", 1321, "9788880805678", 15);
+        Utente u2 = new Utente("Giuseppe", "Verdi", "06127084444", "g.verdi@studenti.uni.it");
+        Prestito p2 = new Prestito(u2.toStringPrestito(), l2.toStringPrestito(), LocalDate.of(2004, 05, 15));
+        
+        Biblioteca.getInstance().getListaLibri().add(l2);
+        Biblioteca.getInstance().getListaUtenti().add(u2);
+        Biblioteca.getInstance().getListaPrestiti().add(p2);
+        u2.getPrestitiAttivi().add(p2.toStringUtente());
+        u1.getPrestitiAttivi().add(p2.toStringUtente());
+        u2.getPrestitiAttivi().add(p1.toStringUtente());
+        
+        // Effettuo la cancellazione dei primi inserimenti, lasciando solo i secondi.
+        Biblioteca.getInstance().getListaLibri().remove(l1);
+        Biblioteca.getInstance().getListaUtenti().remove(u1);
+        Biblioteca.getInstance().getListaPrestiti().remove(p1);
+        Biblioteca.getInstance().getListaUtenti().get(0).getPrestitiAttivi().remove(p1.toStringUtente());
+        
+        
+        // Si confronta il risultato sull'archivio delle cancellazioni effettuate con il contenuto di un file oracolo.
+        Path archivioPath = Paths.get("ArchivioBiblioteca.json");
+        Path oracoloPath = Paths.get("src/test/java/G19/Biblioteca/Oracolo_TestSalvaSuFileCancellazione.json");
         
         List<String> archivio=null;
         List<String> oracolo=null;
