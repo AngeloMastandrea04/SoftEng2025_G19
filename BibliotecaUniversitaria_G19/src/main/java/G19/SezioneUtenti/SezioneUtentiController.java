@@ -31,26 +31,25 @@ import javafx.scene.control.cell.TextFieldTableCell;
 */
 public class SezioneUtentiController {
 
-    @FXML private TableView<Utente> tabUtenti;
+    @FXML TableView<Utente> tabUtenti; // Visibilità di default per testing
 
-    @FXML private TableColumn<Utente, String> cCognome;
+    @FXML TableColumn<Utente, String> cCognome; // Visibilità di default per testing
 
-    @FXML private TableColumn<Utente, String> cNome;
+    @FXML TableColumn<Utente, String> cNome; // Visibilità di default per testing
 
-    @FXML private TableColumn<Utente, String> cMatricola;
+    @FXML TableColumn<Utente, String> cMatricola; // Visibilità di default per testing
 
-    @FXML private TableColumn<Utente, String> cEmail;
+    @FXML TableColumn<Utente, String> cEmail; // Visibilità di default per testing
 
-    @FXML private TableColumn<Utente, String> cPrestitiAttivi;
+    @FXML TableColumn<Utente, String> cPrestitiAttivi; // Visibilità di default per testing
 
-    @FXML private TextField ricUtente;
+    @FXML TextField ricUtente; // Visibilità di default per testing
 
-    @FXML private Button cancUtenteBtn;
-    
+    @FXML Button cancUtenteBtn; // Visibilità di default per testing
     /**
      * @brief Contiene il riferimento alla lista contenente tutti gli Utenti registrati nella Biblioteca.
      */
-    private ObservableList<Utente> listaUtenti;
+    ObservableList<Utente> listaUtenti; // Visibilità di default per testing
     
     /**
      * @brief Metodo di inizializzazione del Controller.
@@ -103,19 +102,19 @@ public class SezioneUtentiController {
         
         // Impostazione event handler al completamento della modifica
         cCognome.setOnEditCommit(e -> {
-            if(e.getNewValue().isEmpty())
+            if(e.getNewValue().isEmpty() || e.getNewValue().matches("^\\s+$"))
                 tabUtenti.refresh();
             else{
                 e.getRowValue().setCognome(e.getNewValue());
-                System.out.println("Modifica cognome -> " + utentiOrdinati);
+                System.out.println("Modifica cognome -> " + e.getRowValue());
             }
         });
         cNome.setOnEditCommit(e -> {
-            if(e.getNewValue().isEmpty())
+            if(e.getNewValue().isEmpty() || e.getNewValue().matches("^\\s+$"))
                 tabUtenti.refresh();
             else{
                 e.getRowValue().setNome(e.getNewValue());
-                System.out.println("Modifica nome -> " + utentiOrdinati);
+                System.out.println("Modifica nome -> " + e.getRowValue());
             }
         });
         cMatricola.setOnEditCommit(e -> {
@@ -127,16 +126,16 @@ public class SezioneUtentiController {
                 tabUtenti.refresh();
             } else {
                 e.getRowValue().setMatricola(e.getNewValue());
-                System.out.println("Modifica matricola -> " + utentiOrdinati);
+                System.out.println("Modifica matricola -> " + e.getRowValue());
             }
         });
         cEmail.setOnEditCommit(e -> {
-            if(!e.getNewValue().matches("^.+(?:@studenti\\.uni\\.it|@uni\\.it)$")){
+            if(!e.getNewValue().matches("^[^@\\s]+@(studenti\\.uni\\.it|uni\\.it)$")){
                 new Alert(Alert.AlertType.ERROR, "L'email inserita (" + e.getNewValue() + ") non è valida! Deve finire per @studenti.uni.it o @uni.it.", ButtonType.CANCEL).showAndWait();
                 tabUtenti.refresh();
             } else {
                 e.getRowValue().setEmail(e.getNewValue());
-                System.out.println("Modifica email -> " + utentiOrdinati);
+                System.out.println("Modifica email -> " + e.getRowValue());
             }
         });
         
@@ -161,8 +160,10 @@ public class SezioneUtentiController {
         result.ifPresent(utente -> {
             if(listaUtenti.contains(utente))
                 new Alert(Alert.AlertType.ERROR, "È già presente un Utente avente la matricola inserita (" + utente.getMatricola() + ")!", ButtonType.CANCEL).showAndWait();
-            else
+            else {
                 listaUtenti.add(utente);
+                System.out.println("Aggiunta utente -> " + utente);
+            }
         });
     }
     
@@ -183,8 +184,10 @@ public class SezioneUtentiController {
         else {
             Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la cancellazione dell'Utente selezionato?", ButtonType.OK, ButtonType.CANCEL).showAndWait();
             result.ifPresent(db -> {
-                if(db == ButtonType.OK)
+                if(db == ButtonType.OK){
                     listaUtenti.remove(sel);
+                    System.out.println("Cencellazione utente -> " + sel);
+                }
             });
         }
     }

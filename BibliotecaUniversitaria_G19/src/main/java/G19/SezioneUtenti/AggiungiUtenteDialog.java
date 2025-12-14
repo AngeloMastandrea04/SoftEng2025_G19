@@ -63,7 +63,7 @@ public class AggiungiUtenteDialog extends Dialog<Utente>{
                 aggiornaOk(ok);
             });
             emailField.textProperty().addListener((observable, oldValue, newValue) -> {
-                emailError.setVisible(!newValue.isEmpty() && !newValue.matches("^.+(?:@studenti\\.uni\\.it|@uni\\.it)$"));
+                emailError.setVisible(!newValue.isEmpty() && !newValue.matches("^[^@\\s]+@(studenti\\.uni\\.it|uni\\.it)$"));
                 aggiornaOk(ok);
             });
             
@@ -86,8 +86,8 @@ public class AggiungiUtenteDialog extends Dialog<Utente>{
      * @param[in] ok Il Nodo (Bottone) di cui aggiornare la Property.
      */
     private void aggiornaOk(Node ok) {
-        boolean valido = !nomeField.getText().isEmpty();
-        valido &= !nomeField.getText().isEmpty();
+        boolean valido = !(nomeField.getText().isEmpty() || nomeField.getText().matches("^\\s+$"));
+        valido &= !(cognomeField.getText().isEmpty() || cognomeField.getText().matches("^\\s+$"));
         valido &= !matricolaField.getText().isEmpty();
         valido &= !matricolaError.isVisible();
         valido &= !emailField.getText().isEmpty();
