@@ -84,7 +84,7 @@ public class BibliotecaTest {
     
     /**
      * Test of salvaSuFile method, of class Biblioteca.
-     * Vengono salvate su file delle aggiunte, il contenuto del file viene infine confrontate
+     * Vengono salvate su file delle aggiunte, il contenuto del file viene infine confrontato
      * con il contenuto di un file oracolo.
      */
     @Test
@@ -141,6 +141,8 @@ public class BibliotecaTest {
         Biblioteca.getInstance().getListaPrestiti().add(p1);
         u1.getPrestitiAttivi().add(p1.toStringUtente());
         
+        
+        // Forza la lettura da file.
         setNullAttributo("instance");
         
         // Si verifica se è presente il Libro aggiunto.
@@ -170,6 +172,54 @@ public class BibliotecaTest {
         boolean res4 = Biblioteca.getInstance().getListaUtenti().get(0).getPrestitiAttivi().get(0).equals(p1.toStringUtente());
         assertTrue(res4);
         System.out.println("Prestito attivo in un Utente OK.");
+    }
+    
+    /**
+     * Test of caricaDaFile method, of class Biblioteca.
+     * caricaDaFile(), richiamato da getInstance(), quando instance==null, legge
+     * il file .json contenente l'archivio. Si testa se avviene una corretta lettura
+     * dei dati in seguito a delle modifiche.
+     */
+    @Test
+    public void testCaricaDaFileModifica() {      
+        System.out.print("testCaricaDaFileModifica: ");
+        
+        setNullAttributo("instance");
+        
+        // Si aggiunge un Libro e un Utente. Un Prestito non è modificabile.
+        Libro l1 = new Libro("I Promessi Sposi", "Alessandro Manzoni", 1840, "9788880801234", 10);
+        Utente u1 = new Utente("Paolo", "Bianchi", "0612709555", "p.bianchi@uni.it");
+        
+        Biblioteca.getInstance().getListaLibri().add(l1);
+        Biblioteca.getInstance().getListaUtenti().add(u1);
+        
+        // Si modificano il Libro e l'Utente aggiunto.
+        Biblioteca.getInstance().getListaLibri().get(0).setIsbn("9780000000000");
+        Biblioteca.getInstance().getListaUtenti().get(0).setMatricola("0612700000");
+        
+        
+        // Forza la lettura da file.
+        setNullAttributo("instance");
+        
+        // Si verifica se è presente il Libro modificato.
+        boolean res1 = Biblioteca.getInstance().getListaLibri().contains(new Libro("I Promessi Sposi", "Alessandro Manzoni", 1840, "9780000000000", 10));
+        res1 &= !(Biblioteca.getInstance().getListaLibri().contains(new Libro("I Promessi Sposi", "Alessandro Manzoni", 1840, "9788880801234", 10)));
+        res1 &= Biblioteca.getInstance().getListaLibri().get(0).getTitolo().equals(l1.getTitolo());
+        res1 &= Biblioteca.getInstance().getListaLibri().get(0).getAutori().equals(l1.getAutori());
+        res1 &= Biblioteca.getInstance().getListaLibri().get(0).getAnno() == (l1.getAnno());
+        res1 &= Biblioteca.getInstance().getListaLibri().get(0).getCopieTotali() == (l1.getCopieTotali());
+        res1 &= Biblioteca.getInstance().getListaLibri().get(0).getCopieDisponibili() == (l1.getCopieDisponibili());
+        assertTrue(res1);
+        System.out.print("Libro OK, ");
+        
+        // Si verifica se è presente l'Utente modificato.
+        boolean res2 = Biblioteca.getInstance().getListaUtenti().contains(new Utente("Paolo", "Bianchi", "0612700000", "p.bianchi@uni.it"));
+        res2 &= !(Biblioteca.getInstance().getListaUtenti().contains(new Utente("Paolo", "Bianchi", "0612709555", "p.bianchi@uni.it")));
+        res2 &= Biblioteca.getInstance().getListaUtenti().get(0).getNome().equals(u1.getNome());
+        res2 &= Biblioteca.getInstance().getListaUtenti().get(0).getCognome().equals(u1.getCognome());
+        res2 &= Biblioteca.getInstance().getListaUtenti().get(0).getEmail().equals(u1.getEmail());
+        assertTrue(res2);
+        System.out.println("Utente OK.");
     }
     
     // Blocco che imposta il valore di instance a null per forzare la lettura da file.
