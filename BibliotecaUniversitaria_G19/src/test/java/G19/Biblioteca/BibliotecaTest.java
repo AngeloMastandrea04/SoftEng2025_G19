@@ -262,6 +262,84 @@ public class BibliotecaTest {
         System.out.println("Utente OK.");
     }
     
+    /**
+     * Test of caricaDaFile method, of class Biblioteca.
+     * caricaDaFile(), richiamato da getInstance(), quando instance==null, legge
+     * il file .json contenente l'archivio. Si testa se avviene una corretta lettura
+     * dei dati in seguito a delle cancellazioni.
+     */
+    @Test
+    public void testCaricaDaFileCancellazione() {      
+        System.out.print("testCaricaDaFileCancellazione: ");
+        
+        setNullAttributo("instance");
+        
+        // Si aggiunge un Libro, un Utente, un Prestito e un Prestito attivo per quell'Utente.
+        Libro l1 = new Libro("I Promessi Sposi", "Alessandro Manzoni", 1840, "9788880801234", 10);
+        Utente u1 = new Utente("Paolo", "Bianchi", "0612709555", "p.bianchi@uni.it");
+        Prestito p1 = new Prestito(u1.toStringPrestito(), l1.toStringPrestito(), LocalDate.of(2004, 02, 23));
+        
+        Biblioteca.getInstance().getListaLibri().add(l1);
+        Biblioteca.getInstance().getListaUtenti().add(u1);
+        Biblioteca.getInstance().getListaPrestiti().add(p1);
+        u1.getPrestitiAttivi().add(p1.toStringUtente());
+        
+        // Si aggiungono un altro Libro, un altro Utente, un altro Prestito e un Prestito attivo per quell'Utente.
+        Libro l2 = new Libro("Divina Commedia", "Dante Alighieri", 1321, "9788880805678", 15);
+        Utente u2 = new Utente("Giuseppe", "Verdi", "06127084444", "g.verdi@studenti.uni.it");
+        Prestito p2 = new Prestito(u2.toStringPrestito(), l2.toStringPrestito(), LocalDate.of(2004, 05, 15));
+        
+        Biblioteca.getInstance().getListaLibri().add(l2);
+        Biblioteca.getInstance().getListaUtenti().add(u2);
+        Biblioteca.getInstance().getListaPrestiti().add(p2);
+        u2.getPrestitiAttivi().add(p2.toStringUtente());
+        u1.getPrestitiAttivi().add(p2.toStringUtente());
+        u2.getPrestitiAttivi().add(p1.toStringUtente());
+        
+        // Effettuo la cancellazione dei primi inserimenti, lasciando solo i secondi.
+        Biblioteca.getInstance().getListaLibri().remove(l1);
+        Biblioteca.getInstance().getListaUtenti().remove(u1);
+        Biblioteca.getInstance().getListaPrestiti().remove(p1);
+        Biblioteca.getInstance().getListaUtenti().get(0).getPrestitiAttivi().remove(p1.toStringUtente());
+        
+        
+        // Forza la lettura da file.
+        setNullAttributo("instance");
+        
+        // Si verifica se è presente il secondo Libro e se è stato cancellato il primo Libro.
+        boolean res1 = Biblioteca.getInstance().getListaLibri().contains(l2);
+        res1 &= !(Biblioteca.getInstance().getListaLibri().contains(l1));
+        res1 &= Biblioteca.getInstance().getListaLibri().get(0).getTitolo().equals(l2.getTitolo());
+        res1 &= Biblioteca.getInstance().getListaLibri().get(0).getAutori().equals(l2.getAutori());
+        res1 &= Biblioteca.getInstance().getListaLibri().get(0).getAnno() == (l2.getAnno());
+        res1 &= Biblioteca.getInstance().getListaLibri().get(0).getCopieTotali() == (l2.getCopieTotali());
+        res1 &= Biblioteca.getInstance().getListaLibri().get(0).getCopieDisponibili() == (l2.getCopieDisponibili());
+        assertTrue(res1);
+        System.out.print("Libro OK, ");
+        
+        // Si verifica se è presente il secondo Utente e se è stato cancellato il primo Utente.
+        boolean res2 = Biblioteca.getInstance().getListaUtenti().contains(u2);
+        res2 &= !(Biblioteca.getInstance().getListaUtenti().contains(u1));
+        res2 &= Biblioteca.getInstance().getListaUtenti().get(0).getNome().equals(u2.getNome());
+        res2 &= Biblioteca.getInstance().getListaUtenti().get(0).getCognome().equals(u2.getCognome());
+        res2 &= Biblioteca.getInstance().getListaUtenti().get(0).getEmail().equals(u2.getEmail());
+        assertTrue(res2);
+        System.out.print("Utente OK, ");
+                
+        // Si verifica se è presente il secondo Prestito e se è stato cancellato il primo Prestito, attraverso la sua rappresentazione in String.
+        boolean res3 = Biblioteca.getInstance().getListaPrestiti().get(0).toString().equals(p2.toString());
+        res3 &= !(Biblioteca.getInstance().getListaPrestiti().get(0).toString().equals(p1.toString()));
+        assertTrue(res3);
+        System.out.print("Prestito OK, ");
+                
+        // Si verifica se è presente il secondo Prestito Attivo aggiunto all'oggetto Utente e se è stato cancellato il primo Prestito Attivo
+        // per quell'Utente, attraverso la sua rappresentazione in String.
+        boolean res4 = Biblioteca.getInstance().getListaUtenti().get(0).getPrestitiAttivi().get(0).equals(p2.toStringUtente());
+        res4 &= !(Biblioteca.getInstance().getListaUtenti().get(0).getPrestitiAttivi().get(0).equals(p1.toStringUtente()));
+        assertTrue(res4);
+        System.out.println("Prestito attivo in un Utente OK.");
+    }
+    
     // Blocco che imposta il valore di instance a null per forzare la lettura da file.
     private void setNullAttributo(String attributo) {
         Field fieldInstance=null;
