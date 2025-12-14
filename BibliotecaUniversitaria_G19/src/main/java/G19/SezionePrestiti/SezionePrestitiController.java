@@ -75,8 +75,13 @@ public class SezionePrestitiController {
         cLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("libro"));
         cData.setCellValueFactory(new PropertyValueFactory<Libro, LocalDate>("dataRestituzione"));
 
-        // Creazione lista ordinata per l'ordinamento nella tabella
+        /* Creazione lista ordinata per l'ordinamento nella tabella e
+           binding tra il comparatore della tabella e quello usato dalla
+           SortedList.
+        */
         SortedList<Prestito> prestitiOrdinati = new SortedList<>(listaPrestiti);
+        prestitiOrdinati.comparatorProperty().bind((tabPrestiti.comparatorProperty()));
+        
 
         // Impostazione elementi tabella
         tabPrestiti.setItems(prestitiOrdinati);
@@ -191,7 +196,7 @@ public class SezionePrestitiController {
         else
             result = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la cancellazione del Prestito selezionato?", ButtonType.OK, ButtonType.CANCEL).showAndWait();
         result.ifPresent(db -> {
-            if(db == ButtonType.OK)
+            if(db == ButtonType.OK) {
                 listaPrestiti.remove(prestito);
 
                 //incrementa le copie del libro ed aggiorna la lista prestit dell'utente
@@ -203,6 +208,7 @@ public class SezionePrestitiController {
                 libro.setCopieDisponibili(libro.getCopieDisponibili() +1);
                 if(utente!=null) 
                 utente.getPrestitiAttivi().remove(prestito.toStringUtente());
+            }
         });
     }
 

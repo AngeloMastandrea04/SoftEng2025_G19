@@ -88,8 +88,12 @@ public class SezioneUtentiController {
             });
         });
         
-        // Creazione lista ordinata per l'ordinamento nella tabella
-        SortedList<Utente> utentiOrdinati = new SortedList<>(utentiFiltrati);
+        /* Creazione lista ordinata per l'ordinamento nella tabella e
+           binding tra il comparatore della tabella e quello usato dalla
+           SortedList.
+        */
+        SortedList<Utente> utentiOrdinati = new SortedList<>(utentiFiltrati);  
+        utentiOrdinati.comparatorProperty().bind((tabUtenti.comparatorProperty()));
         
         // Impostazione di cambiamento cella con TextField per modifica campo
         cCognome.setCellFactory(TextFieldTableCell.forTableColumn());

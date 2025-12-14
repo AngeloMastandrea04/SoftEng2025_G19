@@ -82,7 +82,7 @@ public class SezioneLibriController {
                     return true;
                 if(u.getTitolo().toLowerCase().contains(newValue.toLowerCase()))
                     return true;
-                else if(u.getAutori().contains(newValue))
+                else if(u.getAutori().contains(newValue.toLowerCase()))
                     return true;
                 else if(u.getIsbn().contains(newValue))
                     return true;
@@ -90,8 +90,12 @@ public class SezioneLibriController {
             });
         });
         
-        // Creazione lista ordinata per l'ordinamento nella tabella
+        /* Creazione lista ordinata per l'ordinamento nella tabella e
+           binding tra il comparatore della tabella e quello usato dalla
+           SortedList.
+        */
         SortedList<Libro> libriOrdinati = new SortedList<>(libriFiltrati);
+        libriOrdinati.comparatorProperty().bind((tabLibri.comparatorProperty()));
         
         // Impostazione di cambiamento cella con TextField per modifica campo
         cTitolo.setCellFactory(TextFieldTableCell.forTableColumn());
