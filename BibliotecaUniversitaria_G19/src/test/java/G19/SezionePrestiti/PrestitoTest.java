@@ -1,7 +1,6 @@
 package G19.SezionePrestiti;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,7 +12,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import G19.SezionePrestiti.Prestito;
 import G19.SezioneUtenti.Utente;
 import G19.SezioneLibri.Libro;
 
@@ -47,7 +45,7 @@ public class PrestitoTest {
     }
 
 
-/*
+/**
  *   Test Costruttore.
  */
     @Test
@@ -67,7 +65,7 @@ public class PrestitoTest {
 
     }
 
-/*
+/**
  *   Test metodi Getter Property.
  */   
     @Test
@@ -81,6 +79,9 @@ public class PrestitoTest {
         assertTrue(p.getLibro().equals(l.toStringPrestito()));
     }
 
+    /**
+     *   Test della toString().
+     */
     @Test
     public void toStringTest(){
 
@@ -94,6 +95,9 @@ public class PrestitoTest {
         assertEquals(expected2, p.toString());
     }
 
+    /**
+     *   Test sul Formato della toString(), escluse le rappresentazioni scelte dei dati.
+     */
     @Test
     public void toStringFormatTest(){
         
@@ -104,6 +108,11 @@ public class PrestitoTest {
         assertTrue(s.contains("; Data di Restituzione: "));
     }
 
+    /**
+     * Test sulla rappresentazione utilizzata in toString().
+     * Verifica che la rappresentazione di Utente e Libro all'interno della sezione Prestiti
+     * siano quelle fornite dalle rispettive classi.
+     */
     @Test
     public void toStringRappresentationTest(){
 
@@ -115,6 +124,9 @@ public class PrestitoTest {
         assertTrue(actual.contains(l.toStringPrestito()));
     }
 
+    /**
+     * Test sulla data della toString.
+     */
     @Test 
     public void toStringWrongDate(){
 
@@ -124,6 +136,9 @@ public class PrestitoTest {
         assertTrue(! p.toString().endsWith(LocalDate.of(2044, 8, 27).toString()));
     }
 
+    /**
+     *   Test sulla rappresentazione di Prestito utilizzata nella sezione Utenti.
+     */
     @Test
     public void toStringUtenteTest(){
         /*System.out.println(p.getLibro());
@@ -141,6 +156,9 @@ public class PrestitoTest {
         assertEquals(expected2, p.toStringUtente());
     }
 
+    /**
+     *   Test sul Formato.
+     */
     @Test
     public void toStringUtenteFormatTest(){
         
@@ -150,6 +168,10 @@ public class PrestitoTest {
         assertTrue(s.contains("; Data di Restituzione: "));
     }
 
+    /**
+     * Test sulla rappresentazione utilizzata in toStringUtente().
+     * Verifica che la rappresentazione del Libro sia quella fornita dalla classe Libro.
+     */
     @Test
     public void toStringUtenteRappresentationTest(){
 
@@ -160,6 +182,9 @@ public class PrestitoTest {
         assertTrue(actual.contains(l.toStringPrestito()));
     }
 
+    /**
+     * Test toStringUtente Wrong Date.
+     */
     @Test 
     public void toStringUtenteWrongDate(){
 

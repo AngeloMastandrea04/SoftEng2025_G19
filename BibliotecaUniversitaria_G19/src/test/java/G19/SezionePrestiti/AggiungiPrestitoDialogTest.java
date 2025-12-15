@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.*;
@@ -17,8 +16,6 @@ import org.testfx.util.WaitForAsyncUtils;
 
 import G19.Biblioteca.Biblioteca;
 import G19.SezioneLibri.Libro;
-import G19.SezionePrestiti.AggiungiPrestitoDialog;
-import G19.SezionePrestiti.Prestito;
 import G19.SezioneUtenti.Utente;
 
 import java.time.LocalDate;
@@ -334,7 +331,8 @@ public void testValidazioneData() {
         sleep(1500);
 
         verifyThat("OK", NodeMatchers.isDisabled());
-        //Selezione data nel futuro
+        
+        //Selezione data nel futuro (corretta)
         clickOn("#dataRestituzionePicker .arrow-button");
         WaitForAsyncUtils.waitForFxEvents();
         DatePicker picker1 = lookup("#dataRestituzionePicker").query();

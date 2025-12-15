@@ -6,16 +6,13 @@
 package G19.SezionePrestiti;
 import G19.SezioneUtenti.Utente;
 import G19.SezioneLibri.Libro;
-import G19.SezionePrestiti.Prestito;
 import G19.Biblioteca.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import G19.SezioneLibri.Libro;
 import javafx.fxml.FXMLLoader;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.matcher.base.NodeMatchers;
@@ -29,20 +26,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.api.FxAssert.verifyThat;
 
-import javafx.application.Application;
 import javafx.application.Platform;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.Duration;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 
-import org.testfx.api.FxRobot;
 import org.testfx.api.FxToolkit;
-import static org.testfx.util.WaitForAsyncUtils.waitForFxEvents;
+
 
 
 
@@ -64,7 +59,7 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
         if (fxmlLocation == null) throw new RuntimeException("File FXML non trovato!");
         controller= new SezionePrestitiController();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("SezionePrestitiView.fxml")); ///MODIFICATO PRIMA C ERA SEZIONELIBRIVIEW
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("SezionePrestitiView.fxml"));
         fxmlLoader.setController(controller);
         fxmlLoader.setLocation(fxmlLocation);
         scene = new Scene(fxmlLoader.load());
@@ -408,4 +403,59 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
         verifyThat("#tabPrestiti", TableViewMatchers.hasNumRows(righeIniziali - 1));
     }
     
+    /**
+     * Test FC-4: Scalabilità Inserimento di 2000 Prestiti.
+     * Verifica che la tabella gestisca correttamente un alto volume di Prestiti.
+     */
+    @Test
+    public void testScalabilitaDuemilaPrestiti() {
+        //Creazione Libro tester.
+        
+        Libro libroTester= new Libro("Libro Scalabilità", "Autore Scalabilità", 2024 , "9789999999999" , 2000);
+
+        List<Utente> duemilaUtenti = new ArrayList<>();
+        for (int i = 0; i < 2000; i++) {
+            duemilaUtenti.add(new Utente(
+                "Utente",
+                "Scalabilità " + i, 
+                "Matricola-TEST-" + i, 
+                "Email-TEST-" + i + "@uni.it"
+            ));
+        }
+
+        interact(() -> {
+            Biblioteca.getInstance().getListaUtenti().addAll(duemilaUtenti);
+        });
+
+        WaitForAsyncUtils.waitForFxEvents(); //Attesa esplicita per l'aggiornamento della tabella
+
+        //Creazione di 2000 Prestiti associati agli utenti creati.
+        List<Prestito> duemilaPrestiti = new ArrayList<>();
+        for (int i = 0; i < 2000; i++) {
+            duemilaPrestiti.add( new Prestito(
+                duemilaUtenti.get(i).toStringPrestito(),
+                libroTester.toStringPrestito(),
+                LocalDate.now().plusDays(7)
+            ));
+        }
+
+        interact(() -> {
+            Biblioteca.getInstance().getListaPrestiti().addAll(duemilaPrestiti);
+        });
+
+        WaitForAsyncUtils.waitForFxEvents();        //Attesa esplicita per l'aggiornamento della tabella
+ 
+        verifyThat("#tabPrestiti", TableViewMatchers.hasNumRows(2003));    //Verifica 3 prestiti iniziali + 2000 aggiunti = 2003
+
+        
+        
+        interact(() -> {
+            Biblioteca.getInstance().getListaPrestiti().removeAll(duemilaPrestiti);
+        });
+        interact(() -> {
+            Biblioteca.getInstance().getListaUtenti().removeAll(duemilaUtenti);
+        });
+        verifyThat("#tabPrestiti", TableViewMatchers.hasNumRows(3)); //verifica che restano i 3 prestiti iniziali
+    }
+
 }
