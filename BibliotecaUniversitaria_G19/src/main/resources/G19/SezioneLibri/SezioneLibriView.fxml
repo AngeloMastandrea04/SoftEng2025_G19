@@ -63,7 +63,7 @@
                   </Button>
                </children>
             </GridPane>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#tornaIndietro" text="Torna Indietro" VBox.vgrow="ALWAYS">
+            <Button fx:id="btnIndietroDaSezLibri" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#tornaIndietro" text="Torna Indietro" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="16.0" />
                </font>
