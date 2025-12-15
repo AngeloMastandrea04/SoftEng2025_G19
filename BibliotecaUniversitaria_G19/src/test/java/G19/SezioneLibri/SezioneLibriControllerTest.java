@@ -273,7 +273,7 @@ public class SezioneLibriControllerTest extends ApplicationTest {
     }
     
     /**
-     * Test IF-2.3: Cancellazione di un Libro (Fallimento - Copie in prestito).
+     * Test IF-2.3: Cancellazione di un Libro (Copie in prestito, Fallimento).
      * Tenta la cancellazione di un libro con copie in prestito.
      */
     @Test
@@ -337,7 +337,7 @@ public class SezioneLibriControllerTest extends ApplicationTest {
     }
     
     /**
-     * Test IF-2.2: Modifica ISBN (Duplicato).
+     * Test IF-2.2: Modifica ISBN (Duplicato, Fallimento).
      * Verifica che la modifica sulla cella effetui i controlli.
      */
     @Test
@@ -391,7 +391,7 @@ public class SezioneLibriControllerTest extends ApplicationTest {
         write(nuovoIsbn);
         push(KeyCode.ENTER);
         
-        // Verifica che il valore NON sia cambiato
+        // Verifica che il valore sia cambiato
         verifyThat("#tabLibri", TableViewMatchers.containsRow("Effective Java", "Joshua Bloch", 2017, nuovoIsbn, 3, 3));
     }
     
@@ -466,6 +466,7 @@ public class SezioneLibriControllerTest extends ApplicationTest {
         
         clickOn("Annulla");
     }
+    
     /**
      * Test Scalabilità: Inserimento di 2000 libri.
      * Verifica che la tabella gestisca correttamente un alto volume di libri.
