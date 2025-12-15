@@ -472,11 +472,11 @@ public class SezioneLibriControllerTest extends ApplicationTest {
      * Verifica che la tabella gestisca correttamente un alto volume di libri.
      */
     @Test
-    public void testScalabilitaMilleLibri() {
+    public void testScalabilitaDuemilaLibri() {
         //Creazione ed aggiunta libri che non generano conflitti.
-        List<Libro> milleLibri = new ArrayList<>();
+        List<Libro> duemilaLibri = new ArrayList<>();
         for (int i = 0; i < 2000; i++) {
-            milleLibri.add(new Libro(
+            duemilaLibri.add(new Libro(
                 "Libro Scalabilità " + i, 
                 "Autore Test", 
                 2024, 
@@ -486,14 +486,18 @@ public class SezioneLibriControllerTest extends ApplicationTest {
         }
 
         interact(() -> {
-            Biblioteca.getInstance().getListaLibri().addAll(milleLibri);
+            Biblioteca.getInstance().getListaLibri().addAll(duemilaLibri);
         });
 
-        WaitForAsyncUtils.waitForFxEvents();        //Attesa esplicita per l'aggiornamento della tabella
+        WaitForAsyncUtils.waitForFxEvents();                            //Attesa esplicita per l'aggiornamento della tabella
  
         verifyThat("#tabLibri", TableViewMatchers.hasNumRows(2008));    //Verifica 8 libri iniziali + 2000 aggiunti = 2008
 
-        clickOn("#ricLibro").write("ISBN-TEST-1999");       //Verifica che l'ultimo libro sia ricercabile
+        clickOn("#ricLibro").write("ISBN-TEST-1999");                   //Verifica che l'ultimo libro sia ricercabile
         verifyThat("#tabLibri", TableViewMatchers.hasNumRows(1));
+        
+        interact(() -> {
+            Biblioteca.getInstance().getListaLibri().removeAll(duemilaLibri);
+        });
     }
 }
