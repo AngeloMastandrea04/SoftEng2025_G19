@@ -12,7 +12,7 @@ activate User
 User -> Int : Seleziona Utente
 Int -> Ctrl : Utente Selezionato
 
-opt Modifica Utente con Prestiti Attivi
+opt Errore Prestiti Attivi
 activate Ctrl
 Ctrl --> Int : Mostra Alert Prestiti Attivi
 deactivate Ctrl
