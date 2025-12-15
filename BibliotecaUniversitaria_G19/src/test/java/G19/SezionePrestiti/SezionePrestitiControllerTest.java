@@ -91,6 +91,13 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
         Libro l1= new Libro("Norwegian wood", "Murakami", 2004 , "9780123456789" , 3);
         Libro l2= new Libro("L'arte di correre", "Murakami", 2004 , "9781123456789" , 3);
 
+        Prestito p1= new Prestito(u1.toStringPrestito(), l1.toStringPrestito() , LocalDate.now().plusDays(3));
+        u1.getPrestitiAttivi().add(p1.toStringUtente()); l1.setCopieDisponibili(l1.getCopieDisponibili()-1);
+        Prestito p2= new Prestito(u2.toStringPrestito(), l2.toStringPrestito() , LocalDate.now().plusDays(3));
+        u2.getPrestitiAttivi().add(p2.toStringUtente()); l2.setCopieDisponibili(l2.getCopieDisponibili()-1);
+        Prestito p3= new Prestito(u3.toStringPrestito(), l2.toStringPrestito() , LocalDate.now().minusDays(1));
+        u3.getPrestitiAttivi().add(p3.toStringUtente()); l2.setCopieDisponibili(l2.getCopieDisponibili()-1);
+
         interact(() -> {
             Biblioteca.getInstance().getListaPrestiti().clear();
             Biblioteca.getInstance().getListaLibri().clear();
@@ -105,11 +112,9 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
             );
                                                                            
             Biblioteca.getInstance().getListaPrestiti().addAll(             
-                new Prestito(u1.toStringPrestito(), l1.toStringPrestito() , LocalDate.now().plusDays(3)),
-                new Prestito(u2.toStringPrestito(), l2.toStringPrestito() , LocalDate.now().plusDays(3)),
+                p1, p2,
                 //Aggiungiamo un Utente con il prestito scaduto
-                new Prestito(u3.toStringPrestito(), l2.toStringPrestito() , LocalDate.now().minusDays(1))
-
+                p3
             );
         });
     }
@@ -125,13 +130,15 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
     public void testInizializzazioneTabella() {
         verifyThat("#tabPrestiti", TableViewMatchers.hasNumRows(3));
         verifyThat("#tabPrestiti",
-        TableViewMatchers.containsRow("Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789" , "Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami" ,  LocalDate.now().plusDays(3))
+        TableViewMatchers.containsRow("0123456789 - Pasca Vinny" , "9780123456789 - Norwegian wood, Murakami" ,  LocalDate.now().plusDays(3))
         );
         verifyThat("#tabPrestiti",
-        TableViewMatchers.containsRow("Cognome: " + "Turi" + ", Nome: " + "Martin" + ", Matricola: " + "1123456789" , "Titolo: " + "L'arte di correre" + ", Autori: " + "Murakami" ,  LocalDate.now().plusDays(3))
+        TableViewMatchers.containsRow("1123456789 - Turi Martin" , "9781123456789 - L'arte di correre, Murakami" ,  LocalDate.now().plusDays(3)
+)
         );
          verifyThat("#tabPrestiti",
-        TableViewMatchers.containsRow("Cognome: " + "Pelle" + ", Nome: " + "Simon" + ", Matricola: " + "2123456789" , "Titolo: " + "L'arte di correre" + ", Autori: " + "Murakami" ,  LocalDate.now().minusDays(1))
+         
+        TableViewMatchers.containsRow("2123456789 - Pelle Simon" , "9781123456789 - L'arte di correre, Murakami" ,  LocalDate.now().minusDays(1))
         );
 
     }
@@ -144,7 +151,7 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
     public void testAbilitazionePulsanteCancella() {
         sleep(1000);
         verifyThat("#cancPrestitoBtn", NodeMatchers.isDisabled());
-        clickOn("Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789");
+        clickOn("0123456789 - Pasca Vinny");
         verifyThat("#cancPrestitoBtn", NodeMatchers.isEnabled());
         sleep(1000);
     }
@@ -157,6 +164,15 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
     public void testAggiungiPrestitoSuccesso() {
         sleep(1000);
         int righeIniziali = controller.tabPrestiti.getItems().size();
+
+        //Seleziono l'utente e il libro dalla lista del controller 
+        Utente utente= controller.listaUtenti.stream()
+                .filter( l  -> l.toStringPrestito().equals("0123456789 - Pasca Vinny")).findFirst().orElse(null);
+        Libro libro= controller.listaLibri.stream()
+                .filter( l  -> l.toStringPrestito().equals("9780123456789 - Norwegian wood, Murakami")).findFirst().orElse(null);
+        int numPrestitiIniziali= utente.getPrestitiAttivi().size();
+        int copieDisponibiliIniziali= libro.getCopieDisponibili();
+
         clickOn("Registra Prestito");
         
         verifyThat(".dialog-pane", NodeMatchers.isVisible());
@@ -168,7 +184,7 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
             n instanceof ListCell &&
             n.isVisible() &&
             ((ListCell<?>) n).getText() != null &&
-            ((ListCell<?>) n).getText().equals("Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789")
+            ((ListCell<?>) n).getText().equals("0123456789 - Pasca Vinny")
         )
         .query();
         clickOn(cell);//Non è possibile selezionare in modo più semplice dalla lista perchè le combo box rimangono in memoria, e clickOn non sa su quale lista cliccare
@@ -180,7 +196,7 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
             n instanceof ListCell &&
             n.isVisible() &&
             ((ListCell<?>) n).getText() != null &&
-            ((ListCell<?>) n).getText().equals("Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami")
+            ((ListCell<?>) n).getText().equals("9780123456789 - Norwegian wood, Murakami")
         )
         .query();
         clickOn(cell1);
@@ -196,8 +212,14 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
         
         // Verifica che il Prestito sia stato aggiunto alla tabella
         verifyThat("#tabPrestiti", TableViewMatchers.hasNumRows(righeIniziali + 1));
-        verifyThat("#tabPrestiti", TableViewMatchers.containsRow("Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789" , "Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami" ,  LocalDate.now().plusDays(3)));
+        verifyThat("#tabPrestiti", TableViewMatchers.containsRow("0123456789 - Pasca Vinny" , "9780123456789 - Norwegian wood, Murakami" ,  LocalDate.now().plusDays(3)));
+
+        //Controlli sugli attributi di Utente e Libro coinvolti
+        assertEquals(numPrestitiIniziali + 1, utente.getPrestitiAttivi().size());
+        assertEquals(copieDisponibiliIniziali - 1, libro.getCopieDisponibili());
     }
+
+
 
 /**
     * Test IF-3.1: Registrazione di un Prestito Fallito(Campi vuoti).
@@ -240,7 +262,7 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
             n instanceof ListCell &&
             n.isVisible() &&
             ((ListCell<?>) n).getText() != null &&
-            ((ListCell<?>) n).getText().equals("Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789")
+            ((ListCell<?>) n).getText().equals("0123456789 - Pasca Vinny")
         )
         .query();
         clickOn(cell);//Non è possibile selezionare in modo più semplice dalla lista perchè le combo box rimangono in memoria, e clickOn non sa su quale lista cliccare
@@ -252,7 +274,7 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
             n instanceof ListCell &&
             n.isVisible() &&
             ((ListCell<?>) n).getText() != null &&
-            ((ListCell<?>) n).getText().equals("Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami")
+            ((ListCell<?>) n).getText().equals("9780123456789 - Norwegian wood, Murakami")
         )
         .query();
         clickOn(cell1);
@@ -279,12 +301,22 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
     /**
      * IF-3.2: Registrazione di una restituzione (Successo).
      * Simula la selezione di un Prestito, il click su "Registra Restituzione" e il click su "OK".
+     * Inoltre controlla la corretta modifica degli attributi di Utente e Libro coinvolti.
      */
     @Test
     public void testRegistraRestituzioneSuccesso() {
         int righeIniziali = controller.tabPrestiti.getItems().size(); 
-        String prestito = "Utente: " + "Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789" + ", Libro: " + "Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami" +", Data di restituzione: " + LocalDate.now().plusDays(3);
-           
+        String prestito = "Utente: " + "0123456789 - Pasca Vinny" + "; Libro: " + "9780123456789 - Norwegian wood, Murakami" +"; Data di Restituzione: " + LocalDate.now().plusDays(3);
+        
+        //Seleziono l'utente e il libro dalla lista del controller 
+        Utente utente= controller.listaUtenti.stream()
+                .filter( l  -> l.toStringPrestito().equals("0123456789 - Pasca Vinny")).findFirst().orElse(null);
+        Libro libro= controller.listaLibri.stream()
+                .filter( l  -> l.toStringPrestito().equals("9780123456789 - Norwegian wood, Murakami")).findFirst().orElse(null);
+        int numPrestitiIniziali= utente.getPrestitiAttivi().size();
+        int copieDisponibiliIniziali= libro.getCopieDisponibili();
+
+
         interact(() -> {
              controller.tabPrestiti.getSelectionModel().clearSelection();              //Deselezione di tutti i campi
              Prestito target = controller.listaPrestiti.stream()
@@ -304,16 +336,21 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
         sleep(3000);
         // Verifica rimozione dalla tabella 
         verifyThat("#tabPrestiti", TableViewMatchers.hasNumRows(righeIniziali - 1));
+
+         //Controlli sugli attributi di Utente e Libro coinvolti
+        assertEquals(numPrestitiIniziali - 1, utente.getPrestitiAttivi().size());
+        assertEquals(copieDisponibiliIniziali + 1, libro.getCopieDisponibili());
     }
     
  /**
      * IF-3.2: Registrazione di una restituzione (Annullata).
      * Simula la selezione di un Prestito, il click su "Registra Restituzione" e il click su "Annulla".
+     * Inoltre controlla la corretta modifica degli attributi di Utente e Libro coinvolti.
      */
 @Test
     public void testRegistraRestituzioneAnnullata() {
         int righeIniziali = controller.tabPrestiti.getItems().size(); 
-        String prestito = "Utente: " + "Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789" + ", Libro: " + "Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami" +", Data di restituzione: " + LocalDate.now().plusDays(3);
+        String prestito = "Utente: " + "0123456789 - Pasca Vinny" + "; Libro: " + "9780123456789 - Norwegian wood, Murakami" +"; Data di Restituzione: " + LocalDate.now().plusDays(3);
            
         interact(() -> {
              controller.tabPrestiti.getSelectionModel().clearSelection();              //Deselezione di tutti i campi
@@ -334,7 +371,7 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
         sleep(3000);
         // Verifica rimozione dalla tabella 
         verifyThat("#tabPrestiti", TableViewMatchers.hasNumRows(righeIniziali));
-        verifyThat("#tabPrestiti", TableViewMatchers.containsRow("Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789" , "Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami" ,  LocalDate.now().plusDays(3)));
+        verifyThat("#tabPrestiti", TableViewMatchers.containsRow("0123456789 - Pasca Vinny", "9780123456789 - Norwegian wood, Murakami",  LocalDate.now().plusDays(3)));
 
     }
 
@@ -346,7 +383,8 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
     public void testRegistraRestituzioneInRitardo() {
         sleep(1500);
         int righeIniziali = controller.tabPrestiti.getItems().size(); 
-        String prestito = "Utente: " + "Cognome: " + "Pelle" + ", Nome: " + "Simon" + ", Matricola: " + "2123456789" + ", Libro: " + "Titolo: " + "L'arte di correre" + ", Autori: " + "Murakami" +", Data di restituzione: " + LocalDate.now().minusDays(1);
+        String prestito = "Utente: " + "2123456789 - Pelle Simon" + "; Libro: " + "9781123456789 - L'arte di correre, Murakami" +"; Data di Restituzione: " + LocalDate.now().minusDays(1);
+
         StringBuffer date_of_prestito= new StringBuffer();
         interact(() -> {
              controller.tabPrestiti.getSelectionModel().clearSelection();              //Deselezione di tutti i campi

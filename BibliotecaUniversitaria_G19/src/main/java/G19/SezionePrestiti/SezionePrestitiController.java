@@ -9,7 +9,6 @@ import G19.Biblioteca.App;
 import G19.Biblioteca.Biblioteca;
 import G19.Biblioteca.DashboardGeneraleController;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -19,7 +18,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import java.util.Scanner;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 /**
@@ -35,23 +33,23 @@ public class SezionePrestitiController {
 
     @FXML TableView<Prestito> tabPrestiti;
 
-    @FXML TableColumn<Utente, String> cUtente;
+    @FXML TableColumn<Prestito, String> cUtente;
 
-    @FXML TableColumn<Libro, String> cLibro;
+    @FXML TableColumn<Prestito, String> cLibro;
 
-    @FXML TableColumn<Libro, LocalDate> cData;
+    @FXML TableColumn<Prestito, LocalDate> cData;
 
     @FXML Button cancPrestitoBtn;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti gli Utenti registrati nella Biblioteca.
      */
-    private ObservableList<Utente> listaUtenti;
+    ObservableList<Utente> listaUtenti;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Libri registrati nella Biblioteca.
      */
-    private ObservableList<Libro> listaLibri;
+    ObservableList<Libro> listaLibri;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Prestiti registrati nella Biblioteca.
@@ -75,9 +73,9 @@ public class SezionePrestitiController {
         listaPrestiti = Biblioteca.getInstance().getListaPrestiti();
 
         // Collego le colonne ai getter di Persona
-        cUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("utente"));
-        cLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("libro"));
-        cData.setCellValueFactory(new PropertyValueFactory<Libro, LocalDate>("dataRestituzione"));
+        cUtente.setCellValueFactory(new PropertyValueFactory<Prestito, String>("utente"));
+        cLibro.setCellValueFactory(new PropertyValueFactory<Prestito, String>("libro"));
+        cData.setCellValueFactory(new PropertyValueFactory<Prestito, LocalDate>("dataRestituzione"));
 
         /* Creazione lista ordinata per l'ordinamento nella tabella e
            binding tra il comparatore della tabella e quello usato dalla
@@ -90,9 +88,17 @@ public class SezionePrestitiController {
         // Impostazione elementi tabella
         tabPrestiti.setItems(prestitiOrdinati);
         
+        // Ordina automaticamente gli elementi della tabella
+        cData.setSortType(TableColumn.SortType.ASCENDING);
+        tabPrestiti.getSortOrder().add(cData);
+        tabPrestiti.sort();
+        
         // Ridimensionamento automatico colonne
         tabPrestiti.getColumns().forEach(column -> {
             Text t = new Text(column.getText());
+            t.setFont(Font.font("System", 16));
+            double topW = t.getLayoutBounds().getWidth();
+            t = new Text("12345678901234567890123456789012345678901234567890");
             t.setFont(Font.font("System", 16));
             double maxW = t.getLayoutBounds().getWidth();
             for (int i = 0; i < tabPrestiti.getItems().size(); i++) {
@@ -100,11 +106,13 @@ public class SezionePrestitiController {
                     t = new Text(column.getCellData(i).toString());
                     t.setFont(Font.font("System", 16));
                     double cellW = t.getLayoutBounds().getWidth();
-                    if (cellW > maxW)
-                        maxW = cellW;
+                    if (cellW > topW)
+                        topW = cellW;
+                    if (topW > maxW)
+                        topW = maxW;
                 }
             }
-            column.setPrefWidth(maxW + 20.0d);
+            column.setPrefWidth(topW + 20.0d);
         });
 
         tabPrestiti.setRowFactory(tv -> new TableRow<Prestito>() {
@@ -128,48 +136,6 @@ public class SezionePrestitiController {
 
     }
 
-    
-
-    /*    @FXML 
-    private void aggiungiPrestito() {
-        // Chiamata alla finestra di dialogo e attesa per un risultato opzionale
-        Optional<Prestito> result = new AggiungiPrestitoDialog().showAndWait();
-
-        // Se il risultato è presente controlla che non sia un duplicato e lo aggiunge alla lista
-        result.ifPresent(prestito -> {
-                listaPrestiti.add(prestito);
-                //decremento le copie del libro
-
-                Scanner scan_libro=new Scanner(prestito.getLibro());
-                scan_libro.useDelimiter("ISBN:\\s*");
-                Scanner scan_utente=new Scanner(prestito.getUtente());
-                scan_utente.useDelimiter("Matricola:\\s*");
-                String isbn= scan_libro.next();
-                String matricola= scan_utente.next();
-                scan_libro.close(); scan_utente.close();
-                FilteredList<Libro> filteredList_libro;
-                FilteredList<Utente> filteredList_utente;
-                filteredList_libro= listaLibri.filtered( l -> {
-                    if(l.getIsbn()==isbn)
-                        return true;
-                    return false;
-                });
-                filteredList_utente= listaUtenti.filtered( u -> {
-                    if((u.getMatricola())==matricola)
-                        return true;
-                    return false;
-                });
-                Libro libro=filteredList_libro.remove(0);
-                if(libro!=null) 
-                libro.setCopieDisponibili(libro.getCopieDisponibili() -1);
-
-                Utente utente=filteredList_utente.remove(0);
-                if(utente!=null) 
-                utente.getPrestitiAttivi().add(utente.toStringPrestito());
-
-        });
-    } */
-    
 /**
      * @brief Metodo di aggiunta (registrazione) del Prestito. 
      * Ha il compito di aggiungere i dati del prestito passati dalla finestra di dialogo alla relativa struttura dati,
@@ -185,16 +151,21 @@ public class SezionePrestitiController {
         // Se il risultato è presente controlla che non sia un duplicato e lo aggiunge alla lista
         result.ifPresent(prestito -> {
                 listaPrestiti.add(prestito);
-                //decremento le copie del libro
+                System.out.println("Registrazione prestito -> " + prestito);
 
+                //Decrementa le copie del libro ed aggiorna la lista prestiti dell'utente
                 Libro libro= listaLibri.stream()
                 .filter( l  -> l.toStringPrestito().equals(prestito.getLibro())).findFirst().orElse(null);
                 Utente utente= listaUtenti.stream()
                 .filter( l  -> l.toStringPrestito().equals(prestito.getUtente())).findFirst().orElse(null);
-                if(libro!=null) 
-                libro.setCopieDisponibili(libro.getCopieDisponibili() -1);
-                if(utente!=null) 
+                if(libro!=null){ 
+                    libro.setCopieDisponibili(libro.getCopieDisponibili() -1);
+                    System.out.println("Decremento copie disponibili -> " + libro);
+                }
+                if(utente!=null){
                 utente.getPrestitiAttivi().add(prestito.toStringUtente());
+                System.out.println("Aggiornamento prestiti attivi -> " + utente);
+                }
         });
     }
 
@@ -220,15 +191,19 @@ public class SezionePrestitiController {
             if(db == ButtonType.OK) {
                 listaPrestiti.remove(prestito);
 
-                //incrementa le copie del libro ed aggiorna la lista prestit dell'utente
+                //Incrementa le copie del libro ed aggiorna la lista prestiti dell'utente
                 Libro libro= listaLibri.stream()
                 .filter( l  -> l.toStringPrestito().equals(prestito.getLibro())).findFirst().orElse(null);
                 Utente utente= listaUtenti.stream()
                 .filter( l  -> l.toStringPrestito().equals(prestito.getUtente())).findFirst().orElse(null);
-                if(libro!=null) 
-                libro.setCopieDisponibili(libro.getCopieDisponibili() +1);
-                if(utente!=null) 
+                if(libro!=null){
+                    libro.setCopieDisponibili(libro.getCopieDisponibili() +1);
+                    System.out.println("Incremento copie disponibili -> " + libro);
+                }
+                if(utente!=null){ 
                 utente.getPrestitiAttivi().remove(prestito.toStringUtente());
+                System.out.println("Aggiornamento prestiti attivi -> " + utente);
+                }
             }
         });
     }
