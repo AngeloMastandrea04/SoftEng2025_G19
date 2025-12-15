@@ -251,6 +251,6 @@ public class Libro {
      * @return Ulteriore rappresentazione in String dell'oggetto Libro.
      */
     public String toStringPrestito() {
-        return ("Titolo: " + getTitolo() + ", Autori: " + getAutori());
+        return (getIsbn() + " - " + getTitolo() + ", " + getAutori());
     }
 }

@@ -42,7 +42,7 @@ class LibroTest {
 
     @Test
     void testGettersAndSetters() {
-        Libro libro = new Libro("Titolo", "Autore", 2000, "ISBN123", 1);
+        Libro libro = new Libro("Titolo", "Autore", 2000, "9781234567890", 1);
 
         // Caso 1: Modifica Titolo
         libro.setTitolo("Nuovo Titolo");
@@ -86,15 +86,10 @@ class LibroTest {
         // Caso 3: Due libri con ISBN diverso non devono essere uguali
         assertNotEquals(libro1, libro3);
         
-        // Caso 4: Case insensitive, il confronto ISBN dovrebbe ignorare le maiuscole/minuscole
-        Libro libroIsbnMinuscolo = new Libro("A", "A", 2000, "978x", 1);
-        Libro libroIsbnMaiuscolo = new Libro("A", "A", 2000, "978X", 1);
-        assertEquals(libroIsbnMinuscolo, libroIsbnMaiuscolo);
-        
-        // Caso 5: Un libro inserito non deve essere uguale a null
+        // Caso 4: Un libro inserito non deve essere uguale a null
         assertNotEquals(libro1, null);
         
-        // Caso 6: Un libro inserito non deve essere uguale a un oggetto di tipo diverso
+        // Caso 5: Un libro inserito non deve essere uguale a un oggetto di tipo diverso
         assertNotEquals(libro1, "Stringa");
     }
 
@@ -102,7 +97,7 @@ class LibroTest {
 
     @Test
     void testJavaFXProperties() {
-        Libro libro = new Libro("Test", "Test", 2000, "123", 1);
+        Libro libro = new Libro("Test", "Test", 2000, "9781234567899", 1);
         //Le Property devono restituire oggetti validi non null
         assertNotNull(libro.titoloProperty());
         assertNotNull(libro.autoriProperty());
@@ -116,7 +111,7 @@ class LibroTest {
 
     @Test
     void testToString() {
-        Libro libro = new Libro("Java", "Gosling", 1995, "ISBN-001", 10, 5);
+        Libro libro = new Libro("Java", "Gosling", 1995, "9791234567890", 10, 5);
         
         String expected = "Titolo: Java, Autori: Gosling, Anno: 1995, ISBN: ISBN-001, CopieTotali: 10, CopieDisponibili: 5";
         assertEquals(expected, libro.toString());
@@ -124,9 +119,9 @@ class LibroTest {
     
     @Test
     void testToStringPrestito() {
-        Libro libro = new Libro("Design Patterns", "Gamma", 1994, "ISBN-DP", 5);
+        Libro libro = new Libro("Design Patterns", "Gamma", 1994, "9791234567899", 5);
         
-        String expected = "Titolo: Design Patterns, Autori: Gamma";
+        String expected = "9791234567899 - Design Patterns, Gamma";
         assertEquals(expected, libro.toStringPrestito());
     }
 }

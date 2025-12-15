@@ -179,6 +179,19 @@ public class SezioneLibriController {
             column.setPrefWidth(maxW + 20.0d);
         });
         
+        // Blocco modifica per libri con prestiti attivi
+        tabLibri.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null){
+                boolean editable;
+                editable = newValue.getCopieTotali() == newValue.getCopieDisponibili();     //se il libro ha copie in prestito, non può essere modificato
+                cTitolo.setEditable(editable);
+                cAutori.setEditable(editable);
+                cAnno.setEditable(editable);
+                cIsbn.setEditable(editable);
+                cCopieTotali.setEditable(editable);
+            }
+        });
+        
         // Binding tra l'abilitazione del pulsante cancella e la selezione di un elemento nella tabella
         cancLibroBtn.disableProperty().bind(tabLibri.getSelectionModel().selectedItemProperty().isNull());
     }

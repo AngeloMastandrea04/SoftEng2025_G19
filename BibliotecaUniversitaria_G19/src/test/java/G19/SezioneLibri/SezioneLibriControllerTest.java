@@ -26,6 +26,7 @@ import java.util.concurrent.TimeoutException;
 import javafx.scene.control.Label;
 
 import static org.testfx.api.FxAssert.verifyThat;
+import static org.junit.jupiter.api.Assertions.*;
 import org.testfx.util.WaitForAsyncUtils;
 
 public class SezioneLibriControllerTest extends ApplicationTest {
@@ -467,16 +468,49 @@ public class SezioneLibriControllerTest extends ApplicationTest {
         clickOn("Annulla");
     }
     
+      /** Test IF-2.2: Modifica Campi con Prestiti Attivi (Bloccata).
+     *  Verifica che la modifica sulla cella non sia possibile.
+     */
+    @Test
+    public void testModificaUtenteFallimentoPrestitiAttivi() {
+        interact(() -> {
+            controller.tabLibri.getSelectionModel().clearSelection();
+            Libro target = controller.listaLibri.stream()
+                .filter(l -> l.getTitolo().equals("Test Driven Development"))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Utente non trovato"));
+            controller.tabLibri.getSelectionModel().select(target);
+        });
+        
+        clickOn("Test Driven Development");
+        
+        // Verifica che le colonne non siano modificabili
+        assertFalse(controller.cTitolo.isEditable());
+        assertFalse(controller.cAutori.isEditable());
+        assertFalse(controller.cAnno.isEditable());
+        assertFalse(controller.cIsbn.isEditable());
+        assertFalse(controller.cCopieTotali.isEditable());
+        
+        clickOn("Pragmatic Programmer");
+        
+        // Verifica che le colonne siano nuovamente modificabili
+        assertTrue(controller.cTitolo.isEditable());
+        assertTrue(controller.cAutori.isEditable());
+        assertTrue(controller.cAnno.isEditable());
+        assertTrue(controller.cIsbn.isEditable());
+        assertTrue(controller.cCopieTotali.isEditable());
+    }
+    
     /**
-     * Test Scalabilità: Inserimento di 2000 libri.
+     * Test Scalabilità: Inserimento di 3000 libri.
      * Verifica che la tabella gestisca correttamente un alto volume di libri.
      */
     @Test
-    public void testScalabilitaDuemilaLibri() {
+    public void testScalabilitaTremilaLibri() {
         //Creazione ed aggiunta libri che non generano conflitti.
-        List<Libro> duemilaLibri = new ArrayList<>();
-        for (int i = 0; i < 2000; i++) {
-            duemilaLibri.add(new Libro(
+        List<Libro> tremilaLibri = new ArrayList<>();
+        for (int i = 0; i < 3000; i++) {
+            tremilaLibri.add(new Libro(
                 "Libro Scalabilità " + i, 
                 "Autore Test", 
                 2024, 
@@ -486,18 +520,18 @@ public class SezioneLibriControllerTest extends ApplicationTest {
         }
 
         interact(() -> {
-            Biblioteca.getInstance().getListaLibri().addAll(duemilaLibri);
+            Biblioteca.getInstance().getListaLibri().addAll(tremilaLibri);
         });
 
         WaitForAsyncUtils.waitForFxEvents();                            //Attesa esplicita per l'aggiornamento della tabella
  
-        verifyThat("#tabLibri", TableViewMatchers.hasNumRows(2008));    //Verifica 8 libri iniziali + 2000 aggiunti = 2008
+        verifyThat("#tabLibri", TableViewMatchers.hasNumRows(3008));    //Verifica 8 libri iniziali + 3000 aggiunti = 3008
 
-        clickOn("#ricLibro").write("ISBN-TEST-1999");                   //Verifica che l'ultimo libro sia ricercabile
+        clickOn("#ricLibro").write("ISBN-TEST-2999");                   //Verifica che l'ultimo libro sia ricercabile
         verifyThat("#tabLibri", TableViewMatchers.hasNumRows(1));
         
         interact(() -> {
-            Biblioteca.getInstance().getListaLibri().removeAll(duemilaLibri);
+            Biblioteca.getInstance().getListaLibri().removeAll(tremilaLibri);
         });
     }
 }
