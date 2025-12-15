@@ -6,7 +6,7 @@
       "matricola": "0612709555",
       "email": "p.bianchi@uni.it",
       "prestitiAttivi": [
-        "Libro: Titolo: I Promessi Sposi, Autori: Alessandro Manzoni, Data di restituzione: 2004-02-23"
+        "Libro: 9788880801234 - I Promessi Sposi, Alessandro Manzoni; Data di Restituzione: 2004-02-23"
       ]
     }
   ],
@@ -22,8 +22,8 @@
   ],
   "prestiti": [
     {
-      "utente": "Cognome: Bianchi, Nome: Paolo, Matricola: 0612709555",
-      "libro": "Titolo: I Promessi Sposi, Autori: Alessandro Manzoni",
+      "utente": "0612709555 - Bianchi Paolo",
+      "libro": "9788880801234 - I Promessi Sposi, Alessandro Manzoni",
       "dataRestituzione": "2004-02-23"
     }
   ]

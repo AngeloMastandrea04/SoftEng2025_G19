@@ -104,16 +104,16 @@ class DashboardGeneraleController {
 }
 
 class SezioneLibriController {
-    - tabLibri : TableView<Libro>
-    - cTitolo : TableColumn<Libro, String>
-    - cAutori : TableColumn<Libro, String>
-    - cAnno : TableColumn<Libro, Integer>
-    - cIsbn : TableColumn<Libro, String>
-    - cCopieTotali : TableColumn<Libro, Integer>
-    - cCopieDisponibili : TableColumn<Libro, Integer>
-    - ricLibro : TextField
-    - cancLibroBtn : Button
-    - listaLibri : ObservableList<Libro>
+    ~ tabLibri : TableView<Libro>
+    ~ cTitolo : TableColumn<Libro, String>
+    ~ cAutori : TableColumn<Libro, String>
+    ~ cAnno : TableColumn<Libro, Integer>
+    ~ cIsbn : TableColumn<Libro, String>
+    ~ cCopieTotali : TableColumn<Libro, Integer>
+    ~ cCopieDisponibili : TableColumn<Libro, Integer>
+    ~ ricLibro : TextField
+    ~ cancLibroBtn : Button
+    ~ listaLibri : ObservableList<Libro>
     - initialize() : void
     - aggiungiLibro() : void
     - cancellaLibro() : void
@@ -121,15 +121,15 @@ class SezioneLibriController {
 }
 
 class SezioneUtentiController {
-    - tabUtenti : TableView<Utente>
-    - cCognome : TableColumn<Utente, String>
-    - cNome : TableColumn<Utente, String>
-    - cMatricola : TableColumn<Utente, String>
-    - cEmail : TableColumn<Utente, String>
-    - cPrestitiAttivi : TableColumn<Utente, ObservableList<String>>
-    - ricUtente : TextField
-    - cancUtenteBtn : Button
-    - listaUtenti : ObservableList<Utente>
+    ~ tabUtenti : TableView<Utente>
+    ~ cCognome : TableColumn<Utente, String>
+    ~ cNome : TableColumn<Utente, String>
+    ~ cMatricola : TableColumn<Utente, String>
+    ~ cEmail : TableColumn<Utente, String>
+    ~ cPrestitiAttivi : TableColumn<Utente, ObservableList<String>>
+    ~ ricUtente : TextField
+    ~ cancUtenteBtn : Button
+    ~ listaUtenti : ObservableList<Utente>
     - initialize() : void
     - aggiungiUtente() : void
     - cancellaUtente() : void
@@ -137,14 +137,14 @@ class SezioneUtentiController {
 }
 
 class SezionePrestitiController {
-    - tabPrestiti : TableView<Prestito>
-    - cUtente : TableColumn<Utente, String>
-    - cLibro : TableColumn<Utente, String>
-    - cData : TableColumn<Libro, LocalDate>
-    - cancPrestitoBtn : Button
-    - listaUtenti : ObservableList<Utente>
-    - listaLibri : ObservableList<Libro>
-    - listaPrestiti : ObservableList<Prestito>
+    ~ tabPrestiti : TableView<Prestito>
+    ~ cUtente : TableColumn<Utente, String>
+    ~ cLibro : TableColumn<Utente, String>
+    ~ cData : TableColumn<Libro, LocalDate>
+    ~ cancPrestitoBtn : Button
+    ~ listaUtenti : ObservableList<Utente>
+    ~ listaLibri : ObservableList<Libro>
+    ~ listaPrestiti : ObservableList<Prestito>
     - initialize() : void
     - aggiungiPrestito() : void
     - cancellaPrestito() : void

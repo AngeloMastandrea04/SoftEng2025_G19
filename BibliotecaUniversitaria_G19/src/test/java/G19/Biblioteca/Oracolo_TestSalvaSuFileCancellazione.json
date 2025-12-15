@@ -6,7 +6,7 @@
       "matricola": "06127084444",
       "email": "g.verdi@studenti.uni.it",
       "prestitiAttivi": [
-        "Libro: Titolo: Divina Commedia, Autori: Dante Alighieri, Data di restituzione: 2004-05-15"
+        "Libro: 9788880805678 - Divina Commedia, Dante Alighieri; Data di Restituzione: 2004-05-15"
       ]
     }
   ],
@@ -22,8 +22,8 @@
   ],
   "prestiti": [
     {
-      "utente": "Cognome: Verdi, Nome: Giuseppe, Matricola: 06127084444",
-      "libro": "Titolo: Divina Commedia, Autori: Dante Alighieri",
+      "utente": "06127084444 - Verdi Giuseppe",
+      "libro": "9788880805678 - Divina Commedia, Dante Alighieri",
       "dataRestituzione": "2004-05-15"
     }
   ]

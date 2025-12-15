@@ -64,6 +64,14 @@
           <Argument type="String" name="isbn"/>
           <Argument type="int" name="copieTotali"/>
         </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="autori"/>
+          <Argument type="int" name="anno"/>
+          <Argument type="String" name="isbn"/>
+          <Argument type="int" name="copieTotali"/>
+          <Argument type="int" name="copieDisponibili"/>
+        </Constructor>
       </Constructors>
       <Methods>
         <Method name="getTitolo" returnType="String" visibility="public"/>
@@ -138,16 +146,16 @@
     </Class>
     <Class name="SezioneLibriController" package="" visibility="public" xPosition="507.0" yPosition="883.0">
       <Fields>
-        <Field name="tabLibri" type="TableView" visibility="private"/>
-        <Field name="cTitolo" type="TableColumn" visibility="private"/>
-        <Field name="cAutori" type="TableColumn" visibility="private"/>
-        <Field name="cAnno" type="TableColumn" visibility="private"/>
-        <Field name="cIsbn" type="TableColumn" visibility="private"/>
-        <Field name="cCopieTotali" type="TableColumn" visibility="private"/>
-        <Field name="cCopieDisponibili" type="TableColumn" visibility="private"/>
-        <Field name="ricLibro" type="TextField" visibility="private"/>
-        <Field name="cancLibroBtn" type="Button" visibility="private"/>
-        <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="private" isFinal="true"/>
+        <Field name="tabLibri" type="TableView" visibility="package"/>
+        <Field name="cTitolo" type="TableColumn" visibility="package"/>
+        <Field name="cAutori" type="TableColumn" visibility="package"/>
+        <Field name="cAnno" type="TableColumn" visibility="package"/>
+        <Field name="cIsbn" type="TableColumn" visibility="package"/>
+        <Field name="cCopieTotali" type="TableColumn" visibility="package"/>
+        <Field name="cCopieDisponibili" type="TableColumn" visibility="package"/>
+        <Field name="ricLibro" type="TextField" visibility="package"/>
+        <Field name="cancLibroBtn" type="Button" visibility="package"/>
+        <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="package"/>
       </Fields>
       <Constructors/>
       <Methods>
@@ -159,15 +167,15 @@
     </Class>
     <Class name="SezioneUtentiController" package="" visibility="public" xPosition="264.0" yPosition="883.0">
       <Fields>
-        <Field name="tabUtenti" type="TableView" visibility="private"/>
-        <Field name="cCognome" type="TableColumn" visibility="private"/>
-        <Field name="cNome" type="TableColumn" visibility="private"/>
-        <Field name="cMatricola" type="TableColumn" visibility="private"/>
-        <Field name="cEmail" type="TableColumn" visibility="private"/>
-        <Field name="cPrestitiAttivi" type="TableColumn" visibility="private"/>
-        <Field name="ricUtente" type="TextField" visibility="private"/>
-        <Field name="cancUtenteBtn" type="Button" visibility="private"/>
-        <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="private" isFinal="true"/>
+        <Field name="tabUtenti" type="TableView" visibility="package"/>
+        <Field name="cCognome" type="TableColumn" visibility="package"/>
+        <Field name="cNome" type="TableColumn" visibility="package"/>
+        <Field name="cMatricola" type="TableColumn" visibility="package"/>
+        <Field name="cEmail" type="TableColumn" visibility="package"/>
+        <Field name="cPrestitiAttivi" type="TableColumn" visibility="package"/>
+        <Field name="ricUtente" type="TextField" visibility="package"/>
+        <Field name="cancUtenteBtn" type="Button" visibility="package"/>
+        <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="package"/>
       </Fields>
       <Constructors/>
       <Methods>
@@ -179,14 +187,14 @@
     </Class>
     <Class name="SezionePrestitiController" package="" visibility="public" xPosition="730.0" yPosition="883.0">
       <Fields>
-        <Field name="tabPrestiti" type="TableView" visibility="private"/>
-        <Field name="cUtente" type="TableColumn" visibility="private"/>
-        <Field name="cLibro" type="TableColumn" visibility="private"/>
-        <Field name="cData" type="TableColumn" visibility="private"/>
-        <Field name="cancPrestitoBtn" type="Button" visibility="private"/>
-        <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="private" isFinal="true"/>
-        <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="private" isFinal="true"/>
-        <Field name="listaPrestiti" type="ObservableList&lt;Prestito&gt;" visibility="private" isFinal="true"/>
+        <Field name="tabPrestiti" type="TableView" visibility="package"/>
+        <Field name="cUtente" type="TableColumn" visibility="package"/>
+        <Field name="cLibro" type="TableColumn" visibility="package"/>
+        <Field name="cData" type="TableColumn" visibility="package"/>
+        <Field name="cancPrestitoBtn" type="Button" visibility="package"/>
+        <Field name="listaUtenti" type="ObservableList&lt;Utente&gt;" visibility="package"/>
+        <Field name="listaLibri" type="ObservableList&lt;Libro&gt;" visibility="package"/>
+        <Field name="listaPrestiti" type="ObservableList&lt;Prestito&gt;" visibility="package"/>
       </Fields>
       <Constructors/>
       <Methods>
