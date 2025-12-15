@@ -14,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -168,6 +169,20 @@ public class SezioneUtentiController {
                 cMatricola.setEditable(editable);
                 cEmail.setEditable(editable);
             }
+        });
+        
+        //Mosta l'Alert se si tenta di modificare un Utente con prestiti attivi
+        tabUtenti.setRowFactory(tv -> {
+            TableRow<Utente> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty()) ) {          //Se doppio click e la riga non è vuota
+                    Utente utente = row.getItem();
+                    if (!(utente.getPrestitiAttivi().isEmpty())) {
+                        new Alert(Alert.AlertType.ERROR, "Non è possibile modificare questo Utente perché ha dei Prestiti attivi.", ButtonType.CANCEL).showAndWait();
+                    }
+                }
+            });
+            return row;
         });
         
         // Binding tra l'abilitazione del pulsante cancella e la selezione di un elemento nella tabella

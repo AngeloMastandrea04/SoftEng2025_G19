@@ -14,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -190,6 +191,20 @@ public class SezioneLibriController {
                 cIsbn.setEditable(editable);
                 cCopieTotali.setEditable(editable);
             }
+        });
+        
+        //Mosta l'Alert se si tenta di modificare un libro con copie in prestito
+        tabLibri.setRowFactory(tv -> {
+            TableRow<Libro> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty()) ) {      //Doppio click e la riga non è vuota
+                    Libro libro = row.getItem();
+                    if (libro.getCopieTotali() != libro.getCopieDisponibili()) {
+                        new Alert(Alert.AlertType.ERROR, "Non è possibile modificare questo Libro perché ci sono copie attualmente in prestito.", ButtonType.CANCEL).showAndWait();
+                    }
+                }
+            });
+            return row;
         });
         
         // Binding tra l'abilitazione del pulsante cancella e la selezione di un elemento nella tabella

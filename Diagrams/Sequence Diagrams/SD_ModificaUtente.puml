@@ -10,12 +10,22 @@ participant "Biblioteca" as Bib
 
 activate User
 User -> Int : Seleziona Utente
+Int -> Ctrl : Utente Selezionato
+
+opt Modifica Utente con Prestiti Attivi
+activate Ctrl
+Ctrl --> Int : Mostra Alert Prestiti Attivi
+deactivate Ctrl
+end
+
+
 activate Int
 User -> Int : Modifica il campo desiderato (Nome, Cognome, Matricola, Email)
 deactivate User
 Int -> Ctrl : Dato modificato
 
 activate Ctrl
+
 opt Modifica Matricola o Email
 Ctrl -> Ctrl : Controlla la Validità del Dato modificato
 opt Errore Formato Dati

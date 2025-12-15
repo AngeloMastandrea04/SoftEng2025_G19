@@ -313,15 +313,19 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
         });
         
         clickOn("Laura");
-        
         // Verifica che le colonne non siano modificabili
         assertFalse(controller.cCognome.isEditable());
         assertFalse(controller.cNome.isEditable());
         assertFalse(controller.cMatricola.isEditable());
         assertFalse(controller.cEmail.isEditable());
         
-        clickOn("Martina");
+        //Verifica Alert se si tenta di modificare un Utente con prestiti attivi
+        clickOn("Laura");
+        clickOn("Laura");
+        verifyThat("Non è possibile modificare questo Utente perché ha dei Prestiti attivi.", NodeMatchers.isVisible());
+        clickOn("Annulla");
         
+        clickOn("Martina");
         // Verifica che le colonne siano nuovamente modificabili
         assertTrue(controller.cCognome.isEditable());
         assertTrue(controller.cNome.isEditable());

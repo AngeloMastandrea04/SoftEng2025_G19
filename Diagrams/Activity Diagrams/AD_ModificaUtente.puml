@@ -6,8 +6,17 @@ start
 
 |Bibliotecario|
 :Seleziona Utente;
-:Modifica un campo
-(Nome, Cognome, Matricola o Email);
+
+if (Prestiti Attivi presenti?) then ([si])
+    :Mostra Alert Prestiti Attivi;
+    stop
+else ([no])
+    :Modifica un campo
+    (Nome, Cognome, Matricola o Email);
+endif
+
+
+
 
 |Sistema|
 if (Quale campo è stato modificato?) then (Matricola/Email)

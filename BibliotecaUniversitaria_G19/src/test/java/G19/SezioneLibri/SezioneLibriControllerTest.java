@@ -472,7 +472,7 @@ public class SezioneLibriControllerTest extends ApplicationTest {
      *  Verifica che la modifica sulla cella non sia possibile.
      */
     @Test
-    public void testModificaUtenteFallimentoPrestitiAttivi() {
+    public void testModificaLibriFallimentoPrestitiAttivi() {
         interact(() -> {
             controller.tabLibri.getSelectionModel().clearSelection();
             Libro target = controller.listaLibri.stream()
@@ -483,7 +483,6 @@ public class SezioneLibriControllerTest extends ApplicationTest {
         });
         
         clickOn("Test Driven Development");
-        
         // Verifica che le colonne non siano modificabili
         assertFalse(controller.cTitolo.isEditable());
         assertFalse(controller.cAutori.isEditable());
@@ -491,8 +490,13 @@ public class SezioneLibriControllerTest extends ApplicationTest {
         assertFalse(controller.cIsbn.isEditable());
         assertFalse(controller.cCopieTotali.isEditable());
         
-        clickOn("Pragmatic Programmer");
+        //Verifica Alert se si tenta di modificare un libro con copie in prestito
+        clickOn("Kent Beck");
+        clickOn("Kent Beck");
+        verifyThat("Non è possibile modificare questo Libro perché ci sono copie attualmente in prestito.", NodeMatchers.isVisible());
+        clickOn("Annulla");
         
+        clickOn("Pragmatic Programmer");
         // Verifica che le colonne siano nuovamente modificabili
         assertTrue(controller.cTitolo.isEditable());
         assertTrue(controller.cAutori.isEditable());
