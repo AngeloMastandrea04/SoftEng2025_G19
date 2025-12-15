@@ -1,0 +1,187 @@
+\doxysection{G19.\+Biblioteca.\+Biblioteca Class Reference}
+\hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca}{}\label{class_g19_1_1_biblioteca_1_1_biblioteca}\index{G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}}
+
+
+La struttura \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} che contiene tutti i dati dell\textquotesingle{}archivio tra Utenti, Libri e Prestiti.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Biblioteca\+Data}
+\item 
+class {\bfseries Libro\+Data}
+\item 
+class {\bfseries Prestito\+Data}
+\item 
+class {\bfseries Utente\+Data}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Observable\+List$<$ \mbox{\hyperlink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}} $>$ \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca_a588ce108ab0777f11bcb24776ac9658a}{get\+Lista\+Utenti}} ()
+\begin{DoxyCompactList}\small\item\em Getter standard per la lista degli Utenti. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{class_g19_1_1_sezione_libri_1_1_libro}{Libro}} $>$ \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca_a9a313abed885c5935bdd8fb0ad321092}{get\+Lista\+Libri}} ()
+\begin{DoxyCompactList}\small\item\em Getter standard per la lista dei Libri. \end{DoxyCompactList}\item 
+Observable\+List$<$ \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}} $>$ \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca_aebe586f25cc04e2a82736d9292940a77}{get\+Lista\+Prestiti}} ()
+\begin{DoxyCompactList}\small\item\em Getter standard per la lista dei Prestiti. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca_ac16af4188aa8982b1a09cbf0c793fa44}{salva\+Su\+File}} (String filename)
+\begin{DoxyCompactList}\small\item\em Salva su file l\textquotesingle{}intero archivio della \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} contenuto nel Singleton oggetto \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}} \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca_a8f23ebf785710ba584c6281bf5412a5f}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Metodo per ottenere l\textquotesingle{}unica istanza del Singleton \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca_aefd420b0bd9215c4bee831cc28c4d99c}{Biblioteca}} ()
+\begin{DoxyCompactList}\small\item\em Costruttore privato (seguendo il design pattern del Singleton). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}} \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca_ae53b0a8713848375dc220c4c76d14c7f}{carica\+Da\+File}} (String filename)
+\begin{DoxyCompactList}\small\item\em Carica da file l\textquotesingle{}intero archivio della \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} contenuto nel Singleton oggetto \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} salvato sullo stesso file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_a012e2b6d22c2e6615677105f9cf20455}\label{class_g19_1_1_biblioteca_1_1_biblioteca_a012e2b6d22c2e6615677105f9cf20455} 
+final Observable\+List$<$ \mbox{\hyperlink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}} $>$ {\bfseries lista\+Utenti}
+\begin{DoxyCompactList}\small\item\em Contiene la lista di tutti gli Utenti registrati nella \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\item 
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_ae82868e12e425e6bc863ecc81a5134d6}\label{class_g19_1_1_biblioteca_1_1_biblioteca_ae82868e12e425e6bc863ecc81a5134d6} 
+final Observable\+List$<$ \mbox{\hyperlink{class_g19_1_1_sezione_libri_1_1_libro}{Libro}} $>$ {\bfseries lista\+Libri}
+\begin{DoxyCompactList}\small\item\em Contiene la lista di tutti i Libri registrati nella \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\item 
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_a818f28bf7dd96148432c4e264b1874dd}\label{class_g19_1_1_biblioteca_1_1_biblioteca_a818f28bf7dd96148432c4e264b1874dd} 
+final Observable\+List$<$ \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}} $>$ {\bfseries lista\+Prestiti}
+\begin{DoxyCompactList}\small\item\em Contiene la lista di tutti i Prestiti attivi registrati nella \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_aef8436efd0532f9ff930a9bde4f2ec85}\label{class_g19_1_1_biblioteca_1_1_biblioteca_aef8436efd0532f9ff930a9bde4f2ec85} 
+static \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}} {\bfseries instance} = null
+\begin{DoxyCompactList}\small\item\em Inizialmente uguale a null, contiene l\textquotesingle{}unica istanza per tutto il programma del Singleton \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La struttura \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} che contiene tutti i dati dell\textquotesingle{}archivio tra Utenti, Libri e Prestiti. 
+
+La \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} è implementata attraverso il design pattern del Singleton. Contiene le tre liste di Utenti, Libri e Prestiti che il Bibliotecario è interessato a visualizzare durante l\textquotesingle{}utilizzo del Sistema.
+
+\begin{DoxyInvariant}{Invariant}
+È possibile creare una sola istanza di questa classe seguendo il design pattern del Singleton. 
+\end{DoxyInvariant}
+
+
+\label{doc-constructors}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_aefd420b0bd9215c4bee831cc28c4d99c}\index{G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}!Biblioteca@{Biblioteca}}
+\index{Biblioteca@{Biblioteca}!G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{Biblioteca()}{Biblioteca()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_biblioteca_aefd420b0bd9215c4bee831cc28c4d99c} 
+G19.\+Biblioteca.\+Biblioteca.\+Biblioteca (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Costruttore privato (seguendo il design pattern del Singleton). 
+
+\begin{DoxyPostcond}{Postcondition}
+Crea una biblioteca vuota, viene utilizzato solo una volta durante l\textquotesingle{}esecuzione del programma e solo se precedentemente non è stata trovata una \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} salvata su file. 
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_ae53b0a8713848375dc220c4c76d14c7f}\index{G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}!caricaDaFile@{caricaDaFile}}
+\index{caricaDaFile@{caricaDaFile}!G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{caricaDaFile()}{caricaDaFile()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_biblioteca_ae53b0a8713848375dc220c4c76d14c7f} 
+\mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}} G19.\+Biblioteca.\+Biblioteca.\+carica\+Da\+File (\begin{DoxyParamCaption}\item[{String}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Carica da file l\textquotesingle{}intero archivio della \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} contenuto nel Singleton oggetto \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} salvato sullo stesso file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em filename} & Percorso del file da cui caricare l\textquotesingle{}archivio della \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Il Singleton instanza della classe \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} salvata precedentemente su file. 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_a8f23ebf785710ba584c6281bf5412a5f}\index{G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_biblioteca_a8f23ebf785710ba584c6281bf5412a5f} 
+\mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}} G19.\+Biblioteca.\+Biblioteca.\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Metodo per ottenere l\textquotesingle{}unica istanza del Singleton \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. 
+
+Ritorna l\textquotesingle{}istanza del Singleton \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} se è già stata creata, altrimenti legge dal file e restituisce la \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} letta. Se nel file non è ancora presente alcuna \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} salvata, invoca il costruttore pricato e ne crea e restituisce una vuota.
+
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}unica istanza del Singleton \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_a9a313abed885c5935bdd8fb0ad321092}\index{G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}!getListaLibri@{getListaLibri}}
+\index{getListaLibri@{getListaLibri}!G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{getListaLibri()}{getListaLibri()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_biblioteca_a9a313abed885c5935bdd8fb0ad321092} 
+Observable\+List$<$ \mbox{\hyperlink{class_g19_1_1_sezione_libri_1_1_libro}{Libro}} $>$ G19.\+Biblioteca.\+Biblioteca.\+get\+Lista\+Libri (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter standard per la lista dei Libri. 
+
+\begin{DoxyReturn}{Returns}
+La lista dei Libri. 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_aebe586f25cc04e2a82736d9292940a77}\index{G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}!getListaPrestiti@{getListaPrestiti}}
+\index{getListaPrestiti@{getListaPrestiti}!G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{getListaPrestiti()}{getListaPrestiti()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_biblioteca_aebe586f25cc04e2a82736d9292940a77} 
+Observable\+List$<$ \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}} $>$ G19.\+Biblioteca.\+Biblioteca.\+get\+Lista\+Prestiti (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter standard per la lista dei Prestiti. 
+
+\begin{DoxyReturn}{Returns}
+La lista dei Prestiti. 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_a588ce108ab0777f11bcb24776ac9658a}\index{G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}!getListaUtenti@{getListaUtenti}}
+\index{getListaUtenti@{getListaUtenti}!G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{getListaUtenti()}{getListaUtenti()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_biblioteca_a588ce108ab0777f11bcb24776ac9658a} 
+Observable\+List$<$ \mbox{\hyperlink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}} $>$ G19.\+Biblioteca.\+Biblioteca.\+get\+Lista\+Utenti (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter standard per la lista degli Utenti. 
+
+\begin{DoxyReturn}{Returns}
+La lista degli Utenti. 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_biblioteca_ac16af4188aa8982b1a09cbf0c793fa44}\index{G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}!salvaSuFile@{salvaSuFile}}
+\index{salvaSuFile@{salvaSuFile}!G19.Biblioteca.Biblioteca@{G19.Biblioteca.Biblioteca}}
+\doxysubsubsection{\texorpdfstring{salvaSuFile()}{salvaSuFile()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_biblioteca_ac16af4188aa8982b1a09cbf0c793fa44} 
+void G19.\+Biblioteca.\+Biblioteca.\+salva\+Su\+File (\begin{DoxyParamCaption}\item[{String}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Salva su file l\textquotesingle{}intero archivio della \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} contenuto nel Singleton oggetto \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em filename} & Percorso del file su cui caricare l\textquotesingle{}archivio della \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+G19/\+Biblioteca/Biblioteca.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,97 @@
+\doxysection{G19.\+Sezione\+Utenti.\+Sezione\+Utenti\+Controller Class Reference}
+\hypertarget{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller}{}\label{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller}\index{G19.SezioneUtenti.SezioneUtentiController@{G19.SezioneUtenti.SezioneUtentiController}}
+
+
+La classe \doxylink{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller}{Sezione\+Utenti\+Controller} si occupa di gestire tutte le operazioni sulla struttura dati contenente gli Utenti.  
+
+
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_ad15a2f69e17450806861f0609392c8e4}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di inizializzazione del Controller. Ha il compito di accedere al Singleton di \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} e recuperare da esso il riferimento alla struttura dati associandolo al relativo attributo del Controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_a858fbe66778f0347d9c272ff13000699}{aggiungi\+Utente}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di aggiunta dell\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. Ha il compito di aggiungere i dati dell\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} passati dalla finestra di dialogo alla relativa struttura dati. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_a77673468b495fc9b16d9bea0324d3084}{cancella\+Utente}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di cancellazione dell\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. Ha il compito di cancellare l\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} dalla relativa struttura dati. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_a4d4c40600248e0b1ba8aa674910165d2}{torna\+Indietro}} ()
+\begin{DoxyCompactList}\small\item\em Gestisce il ritorno alla Dashboard Generale. Ha il compito di far tornare alla Dashboard Generale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La classe \doxylink{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller}{Sezione\+Utenti\+Controller} si occupa di gestire tutte le operazioni sulla struttura dati contenente gli Utenti. 
+
+Il Controller contiene la Table\+View per la lista degli Utenti e le relative colonne, un campo di testo per la ricerca e il bottone per cancellare un \doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. Il Controller ha un riferimento alla lista degli Utenti contenuta nella classe \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. 
+
+\label{doc-func-members}
+\Hypertarget{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_a858fbe66778f0347d9c272ff13000699}\index{G19.SezioneUtenti.SezioneUtentiController@{G19.SezioneUtenti.SezioneUtentiController}!aggiungiUtente@{aggiungiUtente}}
+\index{aggiungiUtente@{aggiungiUtente}!G19.SezioneUtenti.SezioneUtentiController@{G19.SezioneUtenti.SezioneUtentiController}}
+\doxysubsubsection{\texorpdfstring{aggiungiUtente()}{aggiungiUtente()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_a858fbe66778f0347d9c272ff13000699} 
+void G19.\+Sezione\+Utenti.\+Sezione\+Utenti\+Controller.\+aggiungi\+Utente (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di aggiunta dell\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. Ha il compito di aggiungere i dati dell\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} passati dalla finestra di dialogo alla relativa struttura dati. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene premuto il bottone "{}\+Aggiungi"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Se non ci sono duplicati viene aggiunto un \doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} alla lista, altrimenti lancia un alert di errore. 
+\end{DoxyPostcond}
+\Hypertarget{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_a77673468b495fc9b16d9bea0324d3084}\index{G19.SezioneUtenti.SezioneUtentiController@{G19.SezioneUtenti.SezioneUtentiController}!cancellaUtente@{cancellaUtente}}
+\index{cancellaUtente@{cancellaUtente}!G19.SezioneUtenti.SezioneUtentiController@{G19.SezioneUtenti.SezioneUtentiController}}
+\doxysubsubsection{\texorpdfstring{cancellaUtente()}{cancellaUtente()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_a77673468b495fc9b16d9bea0324d3084} 
+void G19.\+Sezione\+Utenti.\+Sezione\+Utenti\+Controller.\+cancella\+Utente (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di cancellazione dell\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. Ha il compito di cancellare l\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} dalla relativa struttura dati. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene selezionato un \doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} dalla lista e viene premuto il bottone "{}\+Cancella"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene mostrato un alert di conferma e, se l\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} selezionato non ha prestiti attivi viene cancellato dalla lista, altrimenti lancia un alert di errore. 
+\end{DoxyPostcond}
+\Hypertarget{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_ad15a2f69e17450806861f0609392c8e4}\index{G19.SezioneUtenti.SezioneUtentiController@{G19.SezioneUtenti.SezioneUtentiController}!initialize@{initialize}}
+\index{initialize@{initialize}!G19.SezioneUtenti.SezioneUtentiController@{G19.SezioneUtenti.SezioneUtentiController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_ad15a2f69e17450806861f0609392c8e4} 
+void G19.\+Sezione\+Utenti.\+Sezione\+Utenti\+Controller.\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di inizializzazione del Controller. Ha il compito di accedere al Singleton di \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} e recuperare da esso il riferimento alla struttura dati associandolo al relativo attributo del Controller. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene caricata la scena della Sezione Utenti. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene visualizzata a schermo la Sezione Utenti. 
+\end{DoxyPostcond}
+\Hypertarget{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_a4d4c40600248e0b1ba8aa674910165d2}\index{G19.SezioneUtenti.SezioneUtentiController@{G19.SezioneUtenti.SezioneUtentiController}!tornaIndietro@{tornaIndietro}}
+\index{tornaIndietro@{tornaIndietro}!G19.SezioneUtenti.SezioneUtentiController@{G19.SezioneUtenti.SezioneUtentiController}}
+\doxysubsubsection{\texorpdfstring{tornaIndietro()}{tornaIndietro()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller_a4d4c40600248e0b1ba8aa674910165d2} 
+void G19.\+Sezione\+Utenti.\+Sezione\+Utenti\+Controller.\+torna\+Indietro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gestisce il ritorno alla Dashboard Generale. Ha il compito di far tornare alla Dashboard Generale. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene premuto il bottone "{}\+Torna indietro"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene caricata la scena della Dashboard Generale. 
+\end{DoxyPostcond}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+G19/\+Sezione\+Utenti/Sezione\+Utenti\+Controller.\+java\end{DoxyCompactItemize}

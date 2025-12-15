@@ -1,0 +1,97 @@
+\doxysection{G19.\+Sezione\+Libri.\+Sezione\+Libri\+Controller Class Reference}
+\hypertarget{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller}{}\label{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller}\index{G19.SezioneLibri.SezioneLibriController@{G19.SezioneLibri.SezioneLibriController}}
+
+
+La classe \doxylink{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller}{Sezione\+Libri\+Controller} si occupa di gestire tutte le operazioni sulla struttura dati contenente i Libri.  
+
+
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_aa99df39b5c83e25cc72a9a9fb6aacd1b}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di inizializzazione del Controller. Ha il compito di accedere al Singleton di \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} e recuperare da esso il riferimento alla struttura dati associandolo al relativo attributo del Controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_ac47f2e29bcdd83ffdf400c4507c5885d}{aggiungi\+Libro}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di aggiunta del \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro}. Ha il compito di aggiungere i dati del \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} passati dalla finestra di dialogo alla relativa struttura dati. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_a1b2f4a0b866743983cb48bd9d12737de}{cancella\+Libro}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di cancellazione del \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro}. Ha il compito di cancellare il \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} dalla relativa struttura dati. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_aee7fb6d61248b7425ac93994e90fe399}{torna\+Indietro}} ()
+\begin{DoxyCompactList}\small\item\em Gestisce il ritorno alla Dashboard Generale. Ha il compito di far tornare alla Dashboard Generale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La classe \doxylink{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller}{Sezione\+Libri\+Controller} si occupa di gestire tutte le operazioni sulla struttura dati contenente i Libri. 
+
+Il Controller contiene la Table\+View per la lista dei Libri e le relative colonne, un campo di testo per la ricerca e il bottone per cancellare un \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro}. Il Controller ha un riferimento alla lista di Libri contenuta nella classe \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. 
+
+\label{doc-func-members}
+\Hypertarget{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_ac47f2e29bcdd83ffdf400c4507c5885d}\index{G19.SezioneLibri.SezioneLibriController@{G19.SezioneLibri.SezioneLibriController}!aggiungiLibro@{aggiungiLibro}}
+\index{aggiungiLibro@{aggiungiLibro}!G19.SezioneLibri.SezioneLibriController@{G19.SezioneLibri.SezioneLibriController}}
+\doxysubsubsection{\texorpdfstring{aggiungiLibro()}{aggiungiLibro()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_ac47f2e29bcdd83ffdf400c4507c5885d} 
+void G19.\+Sezione\+Libri.\+Sezione\+Libri\+Controller.\+aggiungi\+Libro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di aggiunta del \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro}. Ha il compito di aggiungere i dati del \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} passati dalla finestra di dialogo alla relativa struttura dati. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene premuto il bottone "{}\+Aggiungi"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Se non ci sono duplicati viene aggiunto un \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} alla lista, altrimenti lancia un alert di errore. 
+\end{DoxyPostcond}
+\Hypertarget{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_a1b2f4a0b866743983cb48bd9d12737de}\index{G19.SezioneLibri.SezioneLibriController@{G19.SezioneLibri.SezioneLibriController}!cancellaLibro@{cancellaLibro}}
+\index{cancellaLibro@{cancellaLibro}!G19.SezioneLibri.SezioneLibriController@{G19.SezioneLibri.SezioneLibriController}}
+\doxysubsubsection{\texorpdfstring{cancellaLibro()}{cancellaLibro()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_a1b2f4a0b866743983cb48bd9d12737de} 
+void G19.\+Sezione\+Libri.\+Sezione\+Libri\+Controller.\+cancella\+Libro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di cancellazione del \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro}. Ha il compito di cancellare il \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} dalla relativa struttura dati. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene selezionato un \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} dalla lista e viene premuto il bottone "{}\+Cancella"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene mostrato un alert di conferma e, se i numeri di copie totali e disponibili combaciano il \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} selezionato viene cancellato dalla lista, altrimenti lancia un alert di errore. 
+\end{DoxyPostcond}
+\Hypertarget{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_aa99df39b5c83e25cc72a9a9fb6aacd1b}\index{G19.SezioneLibri.SezioneLibriController@{G19.SezioneLibri.SezioneLibriController}!initialize@{initialize}}
+\index{initialize@{initialize}!G19.SezioneLibri.SezioneLibriController@{G19.SezioneLibri.SezioneLibriController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_aa99df39b5c83e25cc72a9a9fb6aacd1b} 
+void G19.\+Sezione\+Libri.\+Sezione\+Libri\+Controller.\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di inizializzazione del Controller. Ha il compito di accedere al Singleton di \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} e recuperare da esso il riferimento alla struttura dati associandolo al relativo attributo del Controller. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene caricata la scena della Sezione Libri. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene visualizzata a schermo la Sezione Libri. 
+\end{DoxyPostcond}
+\Hypertarget{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_aee7fb6d61248b7425ac93994e90fe399}\index{G19.SezioneLibri.SezioneLibriController@{G19.SezioneLibri.SezioneLibriController}!tornaIndietro@{tornaIndietro}}
+\index{tornaIndietro@{tornaIndietro}!G19.SezioneLibri.SezioneLibriController@{G19.SezioneLibri.SezioneLibriController}}
+\doxysubsubsection{\texorpdfstring{tornaIndietro()}{tornaIndietro()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_libri_1_1_sezione_libri_controller_aee7fb6d61248b7425ac93994e90fe399} 
+void G19.\+Sezione\+Libri.\+Sezione\+Libri\+Controller.\+torna\+Indietro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gestisce il ritorno alla Dashboard Generale. Ha il compito di far tornare alla Dashboard Generale. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene premuto il bottone "{}\+Torna indietro"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene caricata la scena della Dashboard Generale. 
+\end{DoxyPostcond}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+G19/\+Sezione\+Libri/Sezione\+Libri\+Controller.\+java\end{DoxyCompactItemize}

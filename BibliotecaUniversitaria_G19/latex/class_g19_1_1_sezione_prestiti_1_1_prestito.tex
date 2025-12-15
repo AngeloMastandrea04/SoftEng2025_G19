@@ -1,0 +1,178 @@
+\doxysection{G19.\+Sezione\+Prestiti.\+Prestito Class Reference}
+\hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito}{}\label{class_g19_1_1_sezione_prestiti_1_1_prestito}\index{G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}}
+
+
+Un \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito} inserito o che deve essere registrato nell\textquotesingle{}archivio. Contiene utente, libro e data\+Restituzione del libro.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito_abd48b78857fd47f940c9c8f3131aa1b5}{Prestito}} (String utente, String libro, Local\+Date data\+Restituzione)
+\begin{DoxyCompactList}\small\item\em Costruttore. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito_a416ef47fb387a28f32d621e0bf20d7a3}{get\+Utente}} ()
+\begin{DoxyCompactList}\small\item\em Getter standard per l\textquotesingle{}utente. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito_abf7ef39c1a780afe8c41a59d1696d42e}{get\+Libro}} ()
+\begin{DoxyCompactList}\small\item\em Getter standard per il libro. \end{DoxyCompactList}\item 
+Local\+Date \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito_ac680a20a1456416aaa9dc1d264b92e7e}{get\+Data\+Restituzione}} ()
+\begin{DoxyCompactList}\small\item\em Getter standard per la data di restituzione. \end{DoxyCompactList}\item 
+String\+Property \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito_acc1449a2f00fde53e7bc9fd2b5627935}{utente\+Property}} ()
+\begin{DoxyCompactList}\small\item\em Metodo necessario per Binding tra la Table\+View e la property utente. \end{DoxyCompactList}\item 
+String\+Property \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito_a2e55c0cb190df318109e47233d6883e3}{libro\+Property}} ()
+\begin{DoxyCompactList}\small\item\em Metodo necessario per Binding tra la Table\+View e la property libro. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito_af8ce64ce7cb87d6fe1e45e8ca862d6c9}{to\+String}} ()
+\begin{DoxyCompactList}\small\item\em Override del metodo \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito_af8ce64ce7cb87d6fe1e45e8ca862d6c9}{to\+String()} di Object. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_prestito_a06d57df0049a771fe862d088a2b11114}{to\+String\+Utente}} ()
+\begin{DoxyCompactList}\small\item\em Una rappresentazione in Stringa dell\textquotesingle{}oggetto \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}, comoda per la visualizzazione dei prestiti attivi di un \doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_aafc8b901ad0e9811e7627bd0f2232402}\label{class_g19_1_1_sezione_prestiti_1_1_prestito_aafc8b901ad0e9811e7627bd0f2232402} 
+final String\+Property {\bfseries utente} =new Simple\+String\+Property()
+\item 
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_a5c31a9e30ec9edb95f7f4b3f8644f725}\label{class_g19_1_1_sezione_prestiti_1_1_prestito_a5c31a9e30ec9edb95f7f4b3f8644f725} 
+final String\+Property {\bfseries libro} =new Simple\+String\+Property()
+\item 
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_ae4d293cfcfd451b2971761fa83755759}\label{class_g19_1_1_sezione_prestiti_1_1_prestito_ae4d293cfcfd451b2971761fa83755759} 
+final Local\+Date {\bfseries data\+Restituzione}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Un \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito} inserito o che deve essere registrato nell\textquotesingle{}archivio. Contiene utente, libro e data\+Restituzione del libro. 
+
+\begin{DoxyInvariant}{Invariant}
+Il \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} deve disponibile. 
+
+L\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} deve essere registrato nel Sistema. 
+
+La data di restituzione deve essere uguale o successiva a quella corrente. 
+\end{DoxyInvariant}
+
+
+\label{doc-constructors}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_abd48b78857fd47f940c9c8f3131aa1b5}\index{G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}!Prestito@{Prestito}}
+\index{Prestito@{Prestito}!G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}}
+\doxysubsubsection{\texorpdfstring{Prestito()}{Prestito()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_prestito_abd48b78857fd47f940c9c8f3131aa1b5} 
+G19.\+Sezione\+Prestiti.\+Prestito.\+Prestito (\begin{DoxyParamCaption}\item[{String}]{utente}{, }\item[{String}]{libro}{, }\item[{Local\+Date}]{data\+Restituzione}{}\end{DoxyParamCaption})}
+
+
+
+Costruttore. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em utente} & \doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} al quale associare il \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. \\
+\hline
+\mbox{\texttt{in}}  & {\em libro} & \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} coinvolto nel \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. \\
+\hline
+\mbox{\texttt{in}}  & {\em data\+Restituzione} & Data di restituzione del \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+Verrà creato un \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito} con i parametri specificati in input inseriti nei corrispondenti attributi property. 
+\end{DoxyPostcond}
+
+
+\label{doc-func-members}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_ac680a20a1456416aaa9dc1d264b92e7e}\index{G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}!getDataRestituzione@{getDataRestituzione}}
+\index{getDataRestituzione@{getDataRestituzione}!G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}}
+\doxysubsubsection{\texorpdfstring{getDataRestituzione()}{getDataRestituzione()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_prestito_ac680a20a1456416aaa9dc1d264b92e7e} 
+Local\+Date G19.\+Sezione\+Prestiti.\+Prestito.\+get\+Data\+Restituzione (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter standard per la data di restituzione. 
+
+\begin{DoxyReturn}{Returns}
+Il valore della Local\+Date data\+Restituzione del \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_abf7ef39c1a780afe8c41a59d1696d42e}\index{G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}!getLibro@{getLibro}}
+\index{getLibro@{getLibro}!G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}}
+\doxysubsubsection{\texorpdfstring{getLibro()}{getLibro()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_prestito_abf7ef39c1a780afe8c41a59d1696d42e} 
+String G19.\+Sezione\+Prestiti.\+Prestito.\+get\+Libro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter standard per il libro. 
+
+\begin{DoxyReturn}{Returns}
+Il valore della property libro del \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_a416ef47fb387a28f32d621e0bf20d7a3}\index{G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}!getUtente@{getUtente}}
+\index{getUtente@{getUtente}!G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}}
+\doxysubsubsection{\texorpdfstring{getUtente()}{getUtente()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_prestito_a416ef47fb387a28f32d621e0bf20d7a3} 
+String G19.\+Sezione\+Prestiti.\+Prestito.\+get\+Utente (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter standard per l\textquotesingle{}utente. 
+
+\begin{DoxyReturn}{Returns}
+Il valore della property utente del \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_a2e55c0cb190df318109e47233d6883e3}\index{G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}!libroProperty@{libroProperty}}
+\index{libroProperty@{libroProperty}!G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}}
+\doxysubsubsection{\texorpdfstring{libroProperty()}{libroProperty()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_prestito_a2e55c0cb190df318109e47233d6883e3} 
+String\+Property G19.\+Sezione\+Prestiti.\+Prestito.\+libro\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Metodo necessario per Binding tra la Table\+View e la property libro. 
+
+\begin{DoxyReturn}{Returns}
+La property libro del \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_af8ce64ce7cb87d6fe1e45e8ca862d6c9}\index{G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}!toString@{toString}}
+\index{toString@{toString}!G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_prestito_af8ce64ce7cb87d6fe1e45e8ca862d6c9} 
+String G19.\+Sezione\+Prestiti.\+Prestito.\+to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Override del metodo \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito_af8ce64ce7cb87d6fe1e45e8ca862d6c9}{to\+String()} di Object. 
+
+\begin{DoxyReturn}{Returns}
+Una rappresentazione in String dell\textquotesingle{}oggetto \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_a06d57df0049a771fe862d088a2b11114}\index{G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}!toStringUtente@{toStringUtente}}
+\index{toStringUtente@{toStringUtente}!G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}}
+\doxysubsubsection{\texorpdfstring{toStringUtente()}{toStringUtente()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_prestito_a06d57df0049a771fe862d088a2b11114} 
+String G19.\+Sezione\+Prestiti.\+Prestito.\+to\+String\+Utente (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Una rappresentazione in Stringa dell\textquotesingle{}oggetto \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}, comoda per la visualizzazione dei prestiti attivi di un \doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. 
+
+\begin{DoxyReturn}{Returns}
+Ulteriore rappresentazione in String dell\textquotesingle{}oggetto \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. 
+\end{DoxyReturn}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_prestito_acc1449a2f00fde53e7bc9fd2b5627935}\index{G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}!utenteProperty@{utenteProperty}}
+\index{utenteProperty@{utenteProperty}!G19.SezionePrestiti.Prestito@{G19.SezionePrestiti.Prestito}}
+\doxysubsubsection{\texorpdfstring{utenteProperty()}{utenteProperty()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_prestito_acc1449a2f00fde53e7bc9fd2b5627935} 
+String\+Property G19.\+Sezione\+Prestiti.\+Prestito.\+utente\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Metodo necessario per Binding tra la Table\+View e la property utente. 
+
+\begin{DoxyReturn}{Returns}
+La property utente del \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+G19/\+Sezione\+Prestiti/Prestito.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,138 @@
+\doxysection{G19.\+Biblioteca.\+App Class Reference}
+\hypertarget{class_g19_1_1_biblioteca_1_1_app}{}\label{class_g19_1_1_biblioteca_1_1_app}\index{G19.Biblioteca.App@{G19.Biblioteca.App}}
+
+
+Java\+FX \doxylink{class_g19_1_1_biblioteca_1_1_app}{App}, Classe principale dell\textquotesingle{}applicazione \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}.  
+
+
+Inheritance diagram for G19.\+Biblioteca.\+App\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_g19_1_1_biblioteca_1_1_app}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_app_a77e7dfcc32e103136dacc78b9e620fb5}{start}} (Stage stage)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Metodo di avvio dell\textquotesingle{}interfaccia. Viene invocato automaticamente al runtime e permette di inizializzare lo Stage primario, mostrando come prima cosa la Dashboard\+Generale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_app_a8a1587fc14ffc2d72a9abc21f7329f29}{set\+Root}} (String fxml, Object controller)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Cambia la schermata visualizzata. Sostituisce il nodo radice della scena attuale con quello caricato dal file FXML specificato e dal rispettivo controller. Questo metodo permette la navigazione tra le schermate. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_app_aea5decef26029924d973523fddda94a3}{main}} (String\mbox{[}$\,$\mbox{]} args)
+\begin{DoxyCompactList}\small\item\em Punto di ingresso dell\textquotesingle{}applicazione Java. Invoca il metodo {\ttfamily launch()} per avviare l\textquotesingle{}applicazione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Parent \mbox{\hyperlink{class_g19_1_1_biblioteca_1_1_app_afb0514a8495b9deaaaa7cc4b9618253f}{load\+FXML}} (String fxml, Object controller)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Metodo per il caricamento delle risorse FXML. Carica il file .fxml specificato e imposta il controller passato come parametro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_g19_1_1_biblioteca_1_1_app_aa1fdd9d25bdb1f639059a63ef90241b9}\label{class_g19_1_1_biblioteca_1_1_app_aa1fdd9d25bdb1f639059a63ef90241b9} 
+static Scene {\bfseries scene}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Java\+FX \doxylink{class_g19_1_1_biblioteca_1_1_app}{App}, Classe principale dell\textquotesingle{}applicazione \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. 
+
+Questa classe si occupa di\+:
+\begin{DoxyItemize}
+\item Avviare l\textquotesingle{}applicazione.
+\item Inizializzare lo Stage principale.
+\item Gestire la navigazione cambiando la root della scena tramite il caricamento di file FXML. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_app_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_app_afb0514a8495b9deaaaa7cc4b9618253f}\index{G19.Biblioteca.App@{G19.Biblioteca.App}!loadFXML@{loadFXML}}
+\index{loadFXML@{loadFXML}!G19.Biblioteca.App@{G19.Biblioteca.App}}
+\doxysubsubsection{\texorpdfstring{loadFXML()}{loadFXML()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_app_afb0514a8495b9deaaaa7cc4b9618253f} 
+Parent G19.\+Biblioteca.\+App.\+load\+FXML (\begin{DoxyParamCaption}\item[{String}]{fxml}{, }\item[{Object}]{controller}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Metodo per il caricamento delle risorse FXML. Carica il file .fxml specificato e imposta il controller passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em fxml} & Il nome del file FXML da caricare. \\
+\hline
+\mbox{\texttt{in}}  & {\em controller} & L\textquotesingle{}istanza dell\textquotesingle{}oggetto controller da associare alla nuova Sezione. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ritorna la schermata da caricare rispetto la gerarchia. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se si verificano errori di I/O durante il caricamento. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_app_aea5decef26029924d973523fddda94a3}\index{G19.Biblioteca.App@{G19.Biblioteca.App}!main@{main}}
+\index{main@{main}!G19.Biblioteca.App@{G19.Biblioteca.App}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_app_aea5decef26029924d973523fddda94a3} 
+void G19.\+Biblioteca.\+App.\+main (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Punto di ingresso dell\textquotesingle{}applicazione Java. Invoca il metodo {\ttfamily launch()} per avviare l\textquotesingle{}applicazione. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em args} & Array di stringhe contenente gli argomenti passati da riga di comando. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_app_a8a1587fc14ffc2d72a9abc21f7329f29}\index{G19.Biblioteca.App@{G19.Biblioteca.App}!setRoot@{setRoot}}
+\index{setRoot@{setRoot}!G19.Biblioteca.App@{G19.Biblioteca.App}}
+\doxysubsubsection{\texorpdfstring{setRoot()}{setRoot()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_app_a8a1587fc14ffc2d72a9abc21f7329f29} 
+void G19.\+Biblioteca.\+App.\+set\+Root (\begin{DoxyParamCaption}\item[{String}]{fxml}{, }\item[{Object}]{controller}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Cambia la schermata visualizzata. Sostituisce il nodo radice della scena attuale con quello caricato dal file FXML specificato e dal rispettivo controller. Questo metodo permette la navigazione tra le schermate. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em fxml} & Il nome del file FXML da caricare. \\
+\hline
+\mbox{\texttt{in}}  & {\em controller} & L\textquotesingle{}istanza dell\textquotesingle{}oggetto controller da associare alla nuova Sezione. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se il file FXML non può essere caricato. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_g19_1_1_biblioteca_1_1_app_a77e7dfcc32e103136dacc78b9e620fb5}\index{G19.Biblioteca.App@{G19.Biblioteca.App}!start@{start}}
+\index{start@{start}!G19.Biblioteca.App@{G19.Biblioteca.App}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_biblioteca_1_1_app_a77e7dfcc32e103136dacc78b9e620fb5} 
+void G19.\+Biblioteca.\+App.\+start (\begin{DoxyParamCaption}\item[{Stage}]{stage}{}\end{DoxyParamCaption}) throws IOException}
+
+
+
+Metodo di avvio dell\textquotesingle{}interfaccia. Viene invocato automaticamente al runtime e permette di inizializzare lo Stage primario, mostrando come prima cosa la Dashboard\+Generale. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em stage} & La finestra principale caricata all\textquotesingle{}avvio dell\textquotesingle{}applicazione. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & Se il file FXML della dashboard non viene trovato o non può essere caricato. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+G19/\+Biblioteca/App.\+java\end{DoxyCompactItemize}

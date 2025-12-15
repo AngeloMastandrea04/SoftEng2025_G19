@@ -1,16 +1,19 @@
 var searchData=
 [
-  ['aggiornaok_0',['aggiornaOk',['../class_sezione_libri_1_1_aggiungi_libro_dialog.html#a34c300a304d6b9dc1f1b975ddb860b44',1,'SezioneLibri.AggiungiLibroDialog.aggiornaOk()'],['../class_sezione_prestiti_1_1_aggiungi_prestito_dialog.html#a946639b10bc1c7ddaa2040dd758a1c32',1,'SezionePrestiti.AggiungiPrestitoDialog.aggiornaOk()'],['../class_sezione_utenti_1_1_aggiungi_utente_dialog.html#a991fb578bb6ee34e243bb5c90ffd4b39',1,'SezioneUtenti.AggiungiUtenteDialog.aggiornaOk()']]],
-  ['aggiungilibro_1',['aggiungiLibro',['../class_sezione_libri_1_1_sezione_libri_controller.html#a192a60872a3fbe216de7a3323ba2deaa',1,'SezioneLibri::SezioneLibriController']]],
-  ['aggiungilibrodialog_2',['AggiungiLibroDialog',['../class_sezione_libri_1_1_aggiungi_libro_dialog.html',1,'SezioneLibri.AggiungiLibroDialog'],['../class_sezione_libri_1_1_aggiungi_libro_dialog.html#a2ae428d7f3cad8065ffc23346537e980',1,'SezioneLibri.AggiungiLibroDialog.AggiungiLibroDialog()']]],
-  ['aggiungiprestito_3',['aggiungiPrestito',['../class_sezione_prestiti_1_1_sezione_prestiti_controller.html#a3adae225de925167375185609cb76659',1,'SezionePrestiti::SezionePrestitiController']]],
-  ['aggiungiprestitodialog_4',['AggiungiPrestitoDialog',['../class_sezione_prestiti_1_1_aggiungi_prestito_dialog.html',1,'SezionePrestiti.AggiungiPrestitoDialog'],['../class_sezione_prestiti_1_1_aggiungi_prestito_dialog.html#ac19c7e905039d82b49dbd2282d33d0ac',1,'SezionePrestiti.AggiungiPrestitoDialog.AggiungiPrestitoDialog()']]],
-  ['aggiungiutente_5',['aggiungiUtente',['../class_sezione_utenti_1_1_sezione_utenti_controller.html#a9f611bfb4dc0b964b6986e36f749124c',1,'SezioneUtenti::SezioneUtentiController']]],
-  ['aggiungiutentedialog_6',['AggiungiUtenteDialog',['../class_sezione_utenti_1_1_aggiungi_utente_dialog.html',1,'SezioneUtenti.AggiungiUtenteDialog'],['../class_sezione_utenti_1_1_aggiungi_utente_dialog.html#a9ce95bdb98e645ad848358a4335a15da',1,'SezioneUtenti.AggiungiUtenteDialog.AggiungiUtenteDialog()']]],
-  ['annoproperty_7',['annoProperty',['../class_sezione_libri_1_1_libro.html#ac35a98df91ad76a03ab425b59b0bea1f',1,'SezioneLibri::Libro']]],
-  ['app_8',['App',['../class_biblioteca_1_1_app.html',1,'Biblioteca']]],
-  ['aprisezlibro_9',['apriSezLibro',['../class_biblioteca_1_1_dashboard_generale_controller.html#a843168225bb1ff33d667e75a71e3d0c1',1,'Biblioteca::DashboardGeneraleController']]],
-  ['aprisezprestiti_10',['apriSezPrestiti',['../class_biblioteca_1_1_dashboard_generale_controller.html#a64b95e70b8fd5bcf658fef587a344850',1,'Biblioteca::DashboardGeneraleController']]],
-  ['aprisezutente_11',['apriSezUtente',['../class_biblioteca_1_1_dashboard_generale_controller.html#a538f959828bc200c57ddab2bb0d13183',1,'Biblioteca::DashboardGeneraleController']]],
-  ['autoriproperty_12',['autoriProperty',['../class_sezione_libri_1_1_libro.html#ac7922b50338b54ff2e41a68ca9b6aa46',1,'SezioneLibri::Libro']]]
+  ['aggiornaok_0',['aggiornaOk',['../class_g19_1_1_sezione_libri_1_1_aggiungi_libro_dialog.html#a69d6a7912eb671676ce56ca5768603a4',1,'G19.SezioneLibri.AggiungiLibroDialog.aggiornaOk()'],['../class_g19_1_1_sezione_prestiti_1_1_aggiungi_prestito_dialog.html#afda19c8edde13b6902cbfac2ca5cae03',1,'G19.SezionePrestiti.AggiungiPrestitoDialog.aggiornaOk()'],['../class_g19_1_1_sezione_utenti_1_1_aggiungi_utente_dialog.html#a9843e8213d72f57cbcd2a790096f3ae0',1,'G19.SezioneUtenti.AggiungiUtenteDialog.aggiornaOk()']]],
+  ['aggiungilibro_1',['aggiungiLibro',['../class_g19_1_1_sezione_libri_1_1_sezione_libri_controller.html#ac47f2e29bcdd83ffdf400c4507c5885d',1,'G19::SezioneLibri::SezioneLibriController']]],
+  ['aggiungilibrodialog_2',['AggiungiLibroDialog',['../class_g19_1_1_sezione_libri_1_1_aggiungi_libro_dialog.html',1,'G19.SezioneLibri.AggiungiLibroDialog'],['../class_g19_1_1_sezione_libri_1_1_aggiungi_libro_dialog.html#a7c1a9c88c3d6f093fa50d17079c6bde1',1,'G19.SezioneLibri.AggiungiLibroDialog.AggiungiLibroDialog()']]],
+  ['aggiungilibrodialogtest_3',['AggiungiLibroDialogTest',['../class_g19_1_1_sezione_libri_1_1_aggiungi_libro_dialog_test.html',1,'G19::SezioneLibri']]],
+  ['aggiungiprestito_4',['aggiungiPrestito',['../class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller.html#ae1b6dfa955fe106018503ab8395661eb',1,'G19::SezionePrestiti::SezionePrestitiController']]],
+  ['aggiungiprestitodialog_5',['AggiungiPrestitoDialog',['../class_g19_1_1_sezione_prestiti_1_1_aggiungi_prestito_dialog.html',1,'G19.SezionePrestiti.AggiungiPrestitoDialog'],['../class_g19_1_1_sezione_prestiti_1_1_aggiungi_prestito_dialog.html#af6d6fd9b2651257b5bab12767a67844c',1,'G19.SezionePrestiti.AggiungiPrestitoDialog.AggiungiPrestitoDialog()']]],
+  ['aggiungiprestitodialogtest_6',['AggiungiPrestitoDialogTest',['../class_g19_1_1_sezione_prestiti_1_1_aggiungi_prestito_dialog_test.html',1,'G19::SezionePrestiti']]],
+  ['aggiungiutente_7',['aggiungiUtente',['../class_g19_1_1_sezione_utenti_1_1_sezione_utenti_controller.html#a858fbe66778f0347d9c272ff13000699',1,'G19::SezioneUtenti::SezioneUtentiController']]],
+  ['aggiungiutentedialog_8',['AggiungiUtenteDialog',['../class_g19_1_1_sezione_utenti_1_1_aggiungi_utente_dialog.html',1,'G19.SezioneUtenti.AggiungiUtenteDialog'],['../class_g19_1_1_sezione_utenti_1_1_aggiungi_utente_dialog.html#a94adeffc4bd35cdab51c030aa651af2c',1,'G19.SezioneUtenti.AggiungiUtenteDialog.AggiungiUtenteDialog()']]],
+  ['aggiungiutentedialogtest_9',['AggiungiUtenteDialogTest',['../class_g19_1_1_sezione_utenti_1_1_aggiungi_utente_dialog_test.html',1,'G19::SezioneUtenti']]],
+  ['annoproperty_10',['annoProperty',['../class_g19_1_1_sezione_libri_1_1_libro.html#a60f394520a87e8131e1a8195dd840c31',1,'G19::SezioneLibri::Libro']]],
+  ['app_11',['App',['../class_g19_1_1_biblioteca_1_1_app.html',1,'G19::Biblioteca']]],
+  ['aprisezlibri_12',['apriSezLibri',['../class_g19_1_1_biblioteca_1_1_dashboard_generale_controller.html#a99b7170d7220a78cc895790985fb1e9f',1,'G19::Biblioteca::DashboardGeneraleController']]],
+  ['aprisezprestiti_13',['apriSezPrestiti',['../class_g19_1_1_biblioteca_1_1_dashboard_generale_controller.html#a0839ad03781e4b49ff51fca3e35d62b4',1,'G19::Biblioteca::DashboardGeneraleController']]],
+  ['aprisezutenti_14',['apriSezUtenti',['../class_g19_1_1_biblioteca_1_1_dashboard_generale_controller.html#a9aab665d12709af2e0f6bb927508da9f',1,'G19::Biblioteca::DashboardGeneraleController']]],
+  ['autoriproperty_15',['autoriProperty',['../class_g19_1_1_sezione_libri_1_1_libro.html#a50f37ddd5f730cb85f37e074bb5bdc6a',1,'G19::SezioneLibri::Libro']]]
 ];

@@ -1,0 +1,97 @@
+\doxysection{G19.\+Sezione\+Prestiti.\+Sezione\+Prestiti\+Controller Class Reference}
+\hypertarget{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller}{}\label{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller}\index{G19.SezionePrestiti.SezionePrestitiController@{G19.SezionePrestiti.SezionePrestitiController}}
+
+
+La classe Sezioni\+Prestiti\+Controller si occupa delle operazioni da effettuare sulla struttura dati contenente i Prestiti.  
+
+
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_ab11c7ce096b31c68c13214a53c553fc0}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di inizializzazione del Controller. Ha il compito di accedere al Singleton di \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} e recuperare da esso i riferimenti alle strutture dati associandoli ai relativi attributi del Controller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_ae1b6dfa955fe106018503ab8395661eb}{aggiungi\+Prestito}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di aggiunta (registrazione) del \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. Ha il compito di aggiungere i dati del prestito passati dalla finestra di dialogo alla relativa struttura dati, inoltre si occupa di decrementare le copie disponibili del \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} e di aggiungere il prestito tra quelli attivi per l\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_a05d3b7f7116df5dd04d18130542ef78e}{cancella\+Prestito}} ()
+\begin{DoxyCompactList}\small\item\em Metodo di cancellazione (restituzione) del \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. Ha il compito di cancellare il prestito dalla relativa struttura dati, inoltre si occupa di incrementare le copie disponibili del \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} e di rimuovere il prestito da quelli attivi per l\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_ac539594c1e0cd985a85f753e3612fa07}{torna\+Indietro}} ()
+\begin{DoxyCompactList}\small\item\em Gestisce il ritorno alla Dashboard Generale. Ha il compito di far tornare alla Dashboard Generale. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La classe Sezioni\+Prestiti\+Controller si occupa delle operazioni da effettuare sulla struttura dati contenente i Prestiti. 
+
+Il Controller contiene la Tableview per la lista dei Prestiti e le relative colonne e il bottone per registrare una restituzione. Il Controller ha riferimenti alle liste dei Libri, degli Utenti e dei Prestiti contenute nella classe \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca}. 
+
+\label{doc-func-members}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_ae1b6dfa955fe106018503ab8395661eb}\index{G19.SezionePrestiti.SezionePrestitiController@{G19.SezionePrestiti.SezionePrestitiController}!aggiungiPrestito@{aggiungiPrestito}}
+\index{aggiungiPrestito@{aggiungiPrestito}!G19.SezionePrestiti.SezionePrestitiController@{G19.SezionePrestiti.SezionePrestitiController}}
+\doxysubsubsection{\texorpdfstring{aggiungiPrestito()}{aggiungiPrestito()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_ae1b6dfa955fe106018503ab8395661eb} 
+void G19.\+Sezione\+Prestiti.\+Sezione\+Prestiti\+Controller.\+aggiungi\+Prestito (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di aggiunta (registrazione) del \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. Ha il compito di aggiungere i dati del prestito passati dalla finestra di dialogo alla relativa struttura dati, inoltre si occupa di decrementare le copie disponibili del \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} e di aggiungere il prestito tra quelli attivi per l\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene premuto il bottone "{}\+Registra nuovo Prestito"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene aggiunto un \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito} alla lista e modificati \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} e \doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} corrispondenti. 
+\end{DoxyPostcond}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_a05d3b7f7116df5dd04d18130542ef78e}\index{G19.SezionePrestiti.SezionePrestitiController@{G19.SezionePrestiti.SezionePrestitiController}!cancellaPrestito@{cancellaPrestito}}
+\index{cancellaPrestito@{cancellaPrestito}!G19.SezionePrestiti.SezionePrestitiController@{G19.SezionePrestiti.SezionePrestitiController}}
+\doxysubsubsection{\texorpdfstring{cancellaPrestito()}{cancellaPrestito()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_a05d3b7f7116df5dd04d18130542ef78e} 
+void G19.\+Sezione\+Prestiti.\+Sezione\+Prestiti\+Controller.\+cancella\+Prestito (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di cancellazione (restituzione) del \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito}. Ha il compito di cancellare il prestito dalla relativa struttura dati, inoltre si occupa di incrementare le copie disponibili del \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} e di rimuovere il prestito da quelli attivi per l\textquotesingle{}\doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente}. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene selezionato un \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito} dalla lista e viene premuto il bottone "{}\+Registra la Restituzione"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene mostrato un alert di conferma (di warning nel caso la restituzione sia in ritardo), rimosso il \doxylink{class_g19_1_1_sezione_prestiti_1_1_prestito}{Prestito} dalla lista e modificati \doxylink{class_g19_1_1_sezione_libri_1_1_libro}{Libro} e \doxylink{class_g19_1_1_sezione_utenti_1_1_utente}{Utente} corrispondenti. 
+\end{DoxyPostcond}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_ab11c7ce096b31c68c13214a53c553fc0}\index{G19.SezionePrestiti.SezionePrestitiController@{G19.SezionePrestiti.SezionePrestitiController}!initialize@{initialize}}
+\index{initialize@{initialize}!G19.SezionePrestiti.SezionePrestitiController@{G19.SezionePrestiti.SezionePrestitiController}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_ab11c7ce096b31c68c13214a53c553fc0} 
+void G19.\+Sezione\+Prestiti.\+Sezione\+Prestiti\+Controller.\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Metodo di inizializzazione del Controller. Ha il compito di accedere al Singleton di \doxylink{class_g19_1_1_biblioteca_1_1_biblioteca}{Biblioteca} e recuperare da esso i riferimenti alle strutture dati associandoli ai relativi attributi del Controller. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene caricata la scena della Sezione Prestiti. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene visualizzata a schermo la Sezione Prestiti. 
+\end{DoxyPostcond}
+\Hypertarget{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_ac539594c1e0cd985a85f753e3612fa07}\index{G19.SezionePrestiti.SezionePrestitiController@{G19.SezionePrestiti.SezionePrestitiController}!tornaIndietro@{tornaIndietro}}
+\index{tornaIndietro@{tornaIndietro}!G19.SezionePrestiti.SezionePrestitiController@{G19.SezionePrestiti.SezionePrestitiController}}
+\doxysubsubsection{\texorpdfstring{tornaIndietro()}{tornaIndietro()}}
+{\footnotesize\ttfamily \label{class_g19_1_1_sezione_prestiti_1_1_sezione_prestiti_controller_ac539594c1e0cd985a85f753e3612fa07} 
+void G19.\+Sezione\+Prestiti.\+Sezione\+Prestiti\+Controller.\+torna\+Indietro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gestisce il ritorno alla Dashboard Generale. Ha il compito di far tornare alla Dashboard Generale. 
+
+\begin{DoxyPrecond}{Precondition}
+Viene premuto il bottone "{}\+Torna indietro"{}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Viene caricata la scena della Dashboard Generale. 
+\end{DoxyPostcond}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+G19/\+Sezione\+Prestiti/Sezione\+Prestiti\+Controller.\+java\end{DoxyCompactItemize}

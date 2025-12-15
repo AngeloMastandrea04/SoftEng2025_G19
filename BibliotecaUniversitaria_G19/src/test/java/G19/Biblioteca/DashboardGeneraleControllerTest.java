@@ -32,7 +32,7 @@ public class DashboardGeneraleControllerTest extends ApplicationTest {
      * verifica che sia presente una label con su scritto "Sezione Utenti".
      */
     @Test
-    void testApriSezUtenti() {
+    public void testApriSezUtenti() {
         System.out.print("test Sezione Utenti: ");
         clickOn("#btnSezUtenti");
         WaitForAsyncUtils.waitForFxEvents();    // Aspetta che venga caricata la scena per sincronizzare i controlli
@@ -48,7 +48,7 @@ public class DashboardGeneraleControllerTest extends ApplicationTest {
      * verifica che sia presente una label con su scritto "Sezione Libri".
      */
     @Test
-    void testApriSezLibri() {
+    public void testApriSezLibri() {
         System.out.print("test Sezione Libri: ");
         clickOn("#btnSezLibri");
         WaitForAsyncUtils.waitForFxEvents();
@@ -63,7 +63,7 @@ public class DashboardGeneraleControllerTest extends ApplicationTest {
      * verifica che sia presente una label con su scritto "Sezione Prestiti".
      */
     @Test
-    void testApriSezPrestiti() {
+    public void testApriSezPrestiti() {
         System.out.print("test Sezione Prestiti: ");
         clickOn("#btnSezPrestiti");
         WaitForAsyncUtils.waitForFxEvents();
@@ -79,7 +79,7 @@ public class DashboardGeneraleControllerTest extends ApplicationTest {
      * una label con su scritto "Biblioteca Universiataria".
      */
     @Test
-    void testTornaIndietroSezUtenti() {
+    public void testTornaIndietroSezUtenti() {
         System.out.print("test Sezione Utenti con TornaIndietro: ");
         clickOn("#btnSezUtenti");
         WaitForAsyncUtils.waitForFxEvents();
@@ -99,7 +99,7 @@ public class DashboardGeneraleControllerTest extends ApplicationTest {
      * una label con su scritto "Biblioteca Universiataria".
      */
     @Test
-    void testTornaIndietroSezLibri() {
+    public void testTornaIndietroSezLibri() {
         System.out.print("test Sezione Libri con TornaIndietro: ");
         clickOn("#btnSezLibri");
         WaitForAsyncUtils.waitForFxEvents();
@@ -119,7 +119,7 @@ public class DashboardGeneraleControllerTest extends ApplicationTest {
      * una label con su scritto "Biblioteca Universiataria".
      */
     @Test
-    void testTornaIndietroSezPrestiti() {
+    public void testTornaIndietroSezPrestiti() {
         System.out.print("test Sezione Prestiti con TornaIndietro: ");
         clickOn("#btnSezPrestiti");
         WaitForAsyncUtils.waitForFxEvents();

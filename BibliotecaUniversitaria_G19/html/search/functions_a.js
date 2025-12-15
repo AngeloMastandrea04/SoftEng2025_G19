@@ -1,15 +1,17 @@
 var searchData=
 [
-  ['salvasufile_0',['salvaSuFile',['../class_biblioteca_1_1_biblioteca.html#a609f1b20ec3b0c86ac83de34107a1156',1,'Biblioteca::Biblioteca']]],
-  ['setanno_1',['setAnno',['../class_sezione_libri_1_1_libro.html#a2e615d3b4c061e30508f3d0a2ae8237c',1,'SezioneLibri::Libro']]],
-  ['setautori_2',['setAutori',['../class_sezione_libri_1_1_libro.html#ab20143d2b7c52e70f9ce886ffad3b01c',1,'SezioneLibri::Libro']]],
-  ['setcognome_3',['setCognome',['../class_sezione_utenti_1_1_utente.html#a86829dc06f79235ac5b326c673acb56f',1,'SezioneUtenti::Utente']]],
-  ['setcopiedisponibili_4',['setCopieDisponibili',['../class_sezione_libri_1_1_libro.html#a1055775ba8969365a9fecc1c05cc6cc1',1,'SezioneLibri::Libro']]],
-  ['setcopietotali_5',['setCopieTotali',['../class_sezione_libri_1_1_libro.html#a9258582aa2d6a012a92d25eb2eb1e1cf',1,'SezioneLibri::Libro']]],
-  ['setemail_6',['setEmail',['../class_sezione_utenti_1_1_utente.html#a03fb3dd3fd44fed1cfcefc80889c012b',1,'SezioneUtenti::Utente']]],
-  ['setisbn_7',['setIsbn',['../class_sezione_libri_1_1_libro.html#a2a48221f86c44edc7b6c0040b9703db9',1,'SezioneLibri::Libro']]],
-  ['setmatricola_8',['setMatricola',['../class_sezione_utenti_1_1_utente.html#a7e5e5fe81488926a9aec9025ab66ffec',1,'SezioneUtenti::Utente']]],
-  ['setnome_9',['setNome',['../class_sezione_utenti_1_1_utente.html#a817bb736f987ffe78390239ac1ed3b1c',1,'SezioneUtenti::Utente']]],
-  ['settitolo_10',['setTitolo',['../class_sezione_libri_1_1_libro.html#a0d35d71f7a49061e9b2f655bd6503877',1,'SezioneLibri::Libro']]],
-  ['start_11',['start',['../class_biblioteca_1_1_app.html#a8df6f75fe14cbc9d6bd074ec21023349',1,'Biblioteca::App']]]
+  ['salvasufile_0',['salvaSuFile',['../class_g19_1_1_biblioteca_1_1_biblioteca.html#ac16af4188aa8982b1a09cbf0c793fa44',1,'G19::Biblioteca::Biblioteca']]],
+  ['setanno_1',['setAnno',['../class_g19_1_1_sezione_libri_1_1_libro.html#ab7da0ef9b1698afcac3cc0f95e82946c',1,'G19::SezioneLibri::Libro']]],
+  ['setautori_2',['setAutori',['../class_g19_1_1_sezione_libri_1_1_libro.html#ae76ffa561eb6215aa2c0da3a290ff263',1,'G19::SezioneLibri::Libro']]],
+  ['setcognome_3',['setCognome',['../class_g19_1_1_sezione_utenti_1_1_utente.html#a651cebdb0e395d05554407da7964717d',1,'G19::SezioneUtenti::Utente']]],
+  ['setcopiedisponibili_4',['setCopieDisponibili',['../class_g19_1_1_sezione_libri_1_1_libro.html#ad6ec28dff8b09bf3dbecc7085350965e',1,'G19::SezioneLibri::Libro']]],
+  ['setcopietotali_5',['setCopieTotali',['../class_g19_1_1_sezione_libri_1_1_libro.html#a0310cd461a5ec8974da639c338e6016a',1,'G19::SezioneLibri::Libro']]],
+  ['setemail_6',['setEmail',['../class_g19_1_1_sezione_utenti_1_1_utente.html#aacc3586a6ef4769835c4a3736dac6c5a',1,'G19::SezioneUtenti::Utente']]],
+  ['setisbn_7',['setIsbn',['../class_g19_1_1_sezione_libri_1_1_libro.html#ab09cc1d2ef512b6eca70d0bd6dd3a697',1,'G19::SezioneLibri::Libro']]],
+  ['setmatricola_8',['setMatricola',['../class_g19_1_1_sezione_utenti_1_1_utente.html#ac985e7907d16e2c440fe03477e809fef',1,'G19::SezioneUtenti::Utente']]],
+  ['setnome_9',['setNome',['../class_g19_1_1_sezione_utenti_1_1_utente.html#a8287ae7adbff71fd49b5dd5193d3e398',1,'G19::SezioneUtenti::Utente']]],
+  ['setroot_10',['setRoot',['../class_g19_1_1_biblioteca_1_1_app.html#a8a1587fc14ffc2d72a9abc21f7329f29',1,'G19::Biblioteca::App']]],
+  ['settitolo_11',['setTitolo',['../class_g19_1_1_sezione_libri_1_1_libro.html#ad62c32070ba7de30c1e142ebaf6e4c91',1,'G19::SezioneLibri::Libro']]],
+  ['setup_12',['setUp',['../class_g19_1_1_biblioteca_1_1_biblioteca_test.html#ae36d0e6f9da9188d6d5c86278808a46a',1,'G19::Biblioteca::BibliotecaTest']]],
+  ['start_13',['start',['../class_g19_1_1_biblioteca_1_1_app.html#a77e7dfcc32e103136dacc78b9e620fb5',1,'G19.Biblioteca.App.start()'],['../class_g19_1_1_biblioteca_1_1_dashboard_generale_controller_test.html#a0a49b046a66159a17ddf7c315dfb344f',1,'G19.Biblioteca.DashboardGeneraleControllerTest.start()']]]
 ];

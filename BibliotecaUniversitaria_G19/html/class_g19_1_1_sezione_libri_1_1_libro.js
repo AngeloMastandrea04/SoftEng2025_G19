@@ -1,0 +1,26 @@
+var class_g19_1_1_sezione_libri_1_1_libro =
+[
+    [ "Libro", "class_g19_1_1_sezione_libri_1_1_libro.html#a22c3881e70278ad17d65f7bc7d52b715", null ],
+    [ "Libro", "class_g19_1_1_sezione_libri_1_1_libro.html#abc6f22b48c389f385f477c8a610a3adb", null ],
+    [ "annoProperty", "class_g19_1_1_sezione_libri_1_1_libro.html#a60f394520a87e8131e1a8195dd840c31", null ],
+    [ "autoriProperty", "class_g19_1_1_sezione_libri_1_1_libro.html#a50f37ddd5f730cb85f37e074bb5bdc6a", null ],
+    [ "copieDisponibiliProperty", "class_g19_1_1_sezione_libri_1_1_libro.html#a84beb6393c3ea7559d26c031618df760", null ],
+    [ "copieTotaliProperty", "class_g19_1_1_sezione_libri_1_1_libro.html#a347a668528c54b8569f727af33d5f458", null ],
+    [ "equals", "class_g19_1_1_sezione_libri_1_1_libro.html#a25061a7eda7d3f5c85c10d014c14ec8b", null ],
+    [ "getAnno", "class_g19_1_1_sezione_libri_1_1_libro.html#a6315aeb6717bbb0b1cc174275e5d1d60", null ],
+    [ "getAutori", "class_g19_1_1_sezione_libri_1_1_libro.html#a325fafb4d8fd99570aad4f979e81e82a", null ],
+    [ "getCopieDisponibili", "class_g19_1_1_sezione_libri_1_1_libro.html#a08ac0be0e4c7787045cbdd67386aa334", null ],
+    [ "getCopieTotali", "class_g19_1_1_sezione_libri_1_1_libro.html#a8624dd844d872202f81540b61b776485", null ],
+    [ "getIsbn", "class_g19_1_1_sezione_libri_1_1_libro.html#a8436a65433154fee6ec99a2bc2e7acfc", null ],
+    [ "getTitolo", "class_g19_1_1_sezione_libri_1_1_libro.html#a6e04a66df312beccca571e38a30e4bb0", null ],
+    [ "isbnProperty", "class_g19_1_1_sezione_libri_1_1_libro.html#aebff540ee79f50ab8b56a2b5e50b0d10", null ],
+    [ "setAnno", "class_g19_1_1_sezione_libri_1_1_libro.html#ab7da0ef9b1698afcac3cc0f95e82946c", null ],
+    [ "setAutori", "class_g19_1_1_sezione_libri_1_1_libro.html#ae76ffa561eb6215aa2c0da3a290ff263", null ],
+    [ "setCopieDisponibili", "class_g19_1_1_sezione_libri_1_1_libro.html#ad6ec28dff8b09bf3dbecc7085350965e", null ],
+    [ "setCopieTotali", "class_g19_1_1_sezione_libri_1_1_libro.html#a0310cd461a5ec8974da639c338e6016a", null ],
+    [ "setIsbn", "class_g19_1_1_sezione_libri_1_1_libro.html#ab09cc1d2ef512b6eca70d0bd6dd3a697", null ],
+    [ "setTitolo", "class_g19_1_1_sezione_libri_1_1_libro.html#ad62c32070ba7de30c1e142ebaf6e4c91", null ],
+    [ "titoloProperty", "class_g19_1_1_sezione_libri_1_1_libro.html#af2077757ceee6f2c7f940b74a62de65c", null ],
+    [ "toString", "class_g19_1_1_sezione_libri_1_1_libro.html#a1b7bd7026e002a482f9dfd119fe2f9bf", null ],
+    [ "toStringPrestito", "class_g19_1_1_sezione_libri_1_1_libro.html#a3f2a20238aa52852a0ef8e73b3ce6dd7", null ]
+];
