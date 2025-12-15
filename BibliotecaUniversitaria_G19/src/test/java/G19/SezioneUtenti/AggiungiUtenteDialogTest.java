@@ -36,7 +36,7 @@ public class AggiungiUtenteDialogTest extends ApplicationTest {
         openDialogBtn.setOnAction(event -> {
             AggiungiUtenteDialog dialog = new AggiungiUtenteDialog();
             Optional<Utente> result = dialog.showAndWait();
-            result.ifPresent(libro -> risultatoDialog.set(libro));
+            result.ifPresent(utente -> risultatoDialog.set(utente));
         });
 
         stage.setScene(new Scene(new StackPane(openDialogBtn), 400, 200));

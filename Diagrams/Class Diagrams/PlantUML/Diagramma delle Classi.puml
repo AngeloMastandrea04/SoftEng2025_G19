@@ -138,9 +138,9 @@ class SezioneUtentiController {
 
 class SezionePrestitiController {
     ~ tabPrestiti : TableView<Prestito>
-    ~ cUtente : TableColumn<Utente, String>
-    ~ cLibro : TableColumn<Utente, String>
-    ~ cData : TableColumn<Libro, LocalDate>
+    ~ cUtente : TableColumn<Prestito, String>
+    ~ cLibro : TableColumn<Prestito, String>
+    ~ cData : TableColumn<Prestito, LocalDate>
     ~ cancPrestitoBtn : Button
     ~ listaUtenti : ObservableList<Utente>
     ~ listaLibri : ObservableList<Libro>

@@ -143,9 +143,17 @@ public class SezioneUtentiController {
         // Impostazione elementi tabella
         tabUtenti.setItems(utentiOrdinati);
         
+        // Ordina automaticamente gli elementi della tabella
+        cCognome.setSortType(TableColumn.SortType.ASCENDING);
+        tabUtenti.getSortOrder().add(cCognome);
+        tabUtenti.sort();
+        
         // Ridimensionamento automatico colonne
         tabUtenti.getColumns().forEach(column -> {
             Text t = new Text(column.getText());
+            t.setFont(Font.font("System", 16));
+            double topW = t.getLayoutBounds().getWidth();
+            t = new Text("12345678901234567890123456789012345678901234567890");
             t.setFont(Font.font("System", 16));
             double maxW = t.getLayoutBounds().getWidth();
             for (int i = 0; i < tabUtenti.getItems().size(); i++) {
@@ -153,11 +161,13 @@ public class SezioneUtentiController {
                     t = new Text(column.getCellData(i).toString());
                     t.setFont(Font.font("System", 16));
                     double cellW = t.getLayoutBounds().getWidth();
-                    if (cellW > maxW)
-                        maxW = cellW;
+                    if (cellW > topW)
+                        topW = cellW;
+                    if (topW > maxW)
+                        topW = maxW;
                 }
             }
-            column.setPrefWidth(maxW + 20.0d);
+            column.setPrefWidth(topW + 20.0d);
         });
         
         // Blocco modifica per utenti con prestiti attivi

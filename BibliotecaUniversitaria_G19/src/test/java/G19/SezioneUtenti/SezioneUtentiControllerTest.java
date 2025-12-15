@@ -95,14 +95,14 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
      * Verifica il filtro tramite la barra di ricerca.
      */
     @Test
-    public void testRicercaLibroPerCognome() {
+    public void testRicercaUtentePerCognome() {
         clickOn("#ricUtente").write("Pellecchia");
         verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(1));
         verifyThat("#tabUtenti", TableViewMatchers.containsRow("Pellecchia", "Simone", "0000000001", "s.pellecchia@studenti.uni.it", ""));
     }
 
     @Test
-    public void testRicercaLibroPerMatricola() {
+    public void testRicercaUtentePerMatricola() {
         clickOn("#ricUtente").write("0000000002");
         verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(1));
         verifyThat("#tabUtenti", TableViewMatchers.containsRow("Turi", "Martina", "0000000002", "m.turi@uni.it", ""));
@@ -263,7 +263,7 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
         verifyThat("Confermi la cancellazione dell'Utente selezionato?", NodeMatchers.isVisible());
         clickOn("Annulla");
         
-        // Verifica che il libro sia ancora lì
+        // Verifica che l'utente sia ancora lì
         verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(righeIniziali));
         verifyThat("#tabUtenti", TableViewMatchers.containsRow("Imparato", "Gabriele", "0000000006", "g.imparato@uni.it", ""));
     }
@@ -497,9 +497,9 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
 
         WaitForAsyncUtils.waitForFxEvents();        //Attesa esplicita per l'aggiornamento della tabella
  
-        verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(2007));    //Verifica 7 utenti iniziali + 3000 aggiunti = 3007
+        verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(2007));    //Verifica 7 utenti iniziali + 2000 aggiunti = 2007
 
-        clickOn("#ricUtente").write("Matricola-TEST-1999");       //Verifica che l'ultimo libro sia ricercabile
+        clickOn("#ricUtente").write("Matricola-TEST-1999");       //Verifica che l'ultimo utente sia ricercabile
         verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(1));
         
         interact(() -> {

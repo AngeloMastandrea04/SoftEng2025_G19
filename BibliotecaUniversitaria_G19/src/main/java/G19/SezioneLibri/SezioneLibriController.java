@@ -163,9 +163,17 @@ public class SezioneLibriController {
         // Impostazione elementi tabella
         tabLibri.setItems(libriOrdinati);
         
+        // Ordina automaticamente gli elementi della tabella
+        cTitolo.setSortType(TableColumn.SortType.ASCENDING);
+        tabLibri.getSortOrder().add(cTitolo);
+        tabLibri.sort();
+        
         // Ridimensionamento automatico colonne
         tabLibri.getColumns().forEach(column -> {
             Text t = new Text(column.getText());
+            t.setFont(Font.font("System", 16));
+            double topW = t.getLayoutBounds().getWidth();
+            t = new Text("12345678901234567890123456789012345678901234567890");
             t.setFont(Font.font("System", 16));
             double maxW = t.getLayoutBounds().getWidth();
             for (int i = 0; i < tabLibri.getItems().size(); i++) {
@@ -173,11 +181,13 @@ public class SezioneLibriController {
                     t = new Text(column.getCellData(i).toString());
                     t.setFont(Font.font("System", 16));
                     double cellW = t.getLayoutBounds().getWidth();
-                    if (cellW > maxW)
-                        maxW = cellW;
+                    if (cellW > topW)
+                        topW = cellW;
+                    if (topW > maxW)
+                        topW = maxW;
                 }
             }
-            column.setPrefWidth(maxW + 20.0d);
+            column.setPrefWidth(topW + 20.0d);
         });
         
         // Blocco modifica per libri con prestiti attivi

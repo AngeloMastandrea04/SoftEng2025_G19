@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 /**
  * @brief La classe AggiungiUtenteDialog si occupa della creazione di un nuovo oggetto Utente a partire dalla lettura degli attributi dai campi di testo.
  * 
- * Le operazioni interne nello specifico sono di lettura dai campi di testo, di creazione di un nuovo oggetto Libro,
+ * Le operazioni interne nello specifico sono di lettura dai campi di testo, di creazione di un nuovo oggetto Utente,
  * di ritorno di un risultato opzionale e di aggiornamento del pulsante ok e 
  * sono gestite tramite il costruttore e un metodo privato.
  * 

@@ -478,7 +478,7 @@ public class SezioneLibriControllerTest extends ApplicationTest {
             Libro target = controller.listaLibri.stream()
                 .filter(l -> l.getTitolo().equals("Test Driven Development"))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Utente non trovato"));
+                .orElseThrow(() -> new RuntimeException("Libro non trovato"));
             controller.tabLibri.getSelectionModel().select(target);
         });
         
