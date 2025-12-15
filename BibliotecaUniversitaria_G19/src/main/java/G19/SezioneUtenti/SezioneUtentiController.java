@@ -203,7 +203,7 @@ public class SezioneUtentiController {
             result.ifPresent(db -> {
                 if(db == ButtonType.OK){
                     listaUtenti.remove(sel);
-                    System.out.println("Cencellazione utente -> " + sel);
+                    System.out.println("Cancellazione utente -> " + sel);
                 }
             });
         }

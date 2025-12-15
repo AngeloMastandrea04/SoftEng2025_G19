@@ -6,6 +6,8 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,6 +24,7 @@ import org.testfx.matcher.control.TableViewMatchers;
 import java.util.concurrent.TimeoutException;
 
 import static org.testfx.api.FxAssert.verifyThat;
+import org.testfx.util.WaitForAsyncUtils;
 
 public class SezioneUtentiControllerTest extends ApplicationTest {
 
@@ -265,7 +268,7 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
     }
     
     /**
-     * Test IF-1.3: Cancellazione di un Utente (Fallimento - Prestiti Attivi).
+     * Test IF-1.3: Cancellazione di un Utente (Fallimento, Prestiti Attivi).
      * Tenta la cancellazione di un utente con prestiti Attivi.
      */
     @Test
@@ -312,7 +315,7 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
     }
     
         /**
-     * Test IF-1.2: Modifica Matricola (Duplicata).
+     * Test IF-1.2: Modifica Matricola (Duplicata, Fallimento).
      * Verifica che la modifica sulla cella effetui i controlli.
      */
     @Test
@@ -421,7 +424,7 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
     }
     
     /**
-     * Test IF-1.2: Modifica Cognome (Successp).
+     * Test IF-1.2: Modifica Cognome (Successo).
      * Verifica che la modifica sulla cella effetui i controlli.
      */
     @Test
@@ -432,5 +435,38 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
 
         // Verifica che il valore sia cambiato
         verifyThat("#tabUtenti", TableViewMatchers.containsRow("Mastro", "Angelo", "0000000004", "a.mastandrea@uni.it", ""));
+    }
+    
+    /**
+     * Test Scalabilità: Inserimento di 3000 utenti.
+     * Verifica che la tabella gestisca correttamente un alto volume di utenti.
+     */
+    @Test
+    public void testScalabilitaTremilaUtenti() {
+        //Creazione ed aggiunta utenti che non generano conflitti.
+        List<Utente> tremilaUtenti = new ArrayList<>();
+        for (int i = 0; i < 3000; i++) {
+            tremilaUtenti.add(new Utente(
+                "Utente",
+                "Scalabilità " + i, 
+                "Matricola-TEST-" + i, 
+                "Email-TEST-" + i + "@uni.it"
+            ));
+        }
+
+        interact(() -> {
+            Biblioteca.getInstance().getListaUtenti().addAll(tremilaUtenti);
+        });
+
+        WaitForAsyncUtils.waitForFxEvents();        //Attesa esplicita per l'aggiornamento della tabella
+ 
+        verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(3007));    //Verifica 7 utenti iniziali + 3000 aggiunti = 3007
+
+        clickOn("#ricUtente").write("Matricola-TEST-2999");       //Verifica che l'ultimo libro sia ricercabile
+        verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(1));
+        
+        interact(() -> {
+            Biblioteca.getInstance().getListaUtenti().removeAll(tremilaUtenti);
+        });
     }
 }

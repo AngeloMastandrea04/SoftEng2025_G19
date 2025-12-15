@@ -29,10 +29,10 @@
             </Label>
             <TableView fx:id="tabLibri" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-size: 16;">
               <columns>
-                <TableColumn fx:id="cTitolo" maxWidth="1.7976931348623157E308" minWidth="52.0" prefWidth="-1.0" sortable="true" style="-fx-font-size: 16;" text="Titolo" />
-                <TableColumn fx:id="cAutori" maxWidth="1.7976931348623157E308" minWidth="56.0" prefWidth="-1.0" sortable="false" text="Autori" />
-                  <TableColumn fx:id="cAnno" maxWidth="1.7976931348623157E308" minWidth="52.0" prefWidth="-1.0" sortable="false" text="Anno" />
-                  <TableColumn fx:id="cIsbn" maxWidth="1.7976931348623157E308" minWidth="52.0" prefWidth="-1.0" sortable="false" text="ISBN" />
+                <TableColumn fx:id="cTitolo" maxWidth="1.7976931348623157E308" minWidth="60.0" prefWidth="-1.0" sortable="true" style="-fx-font-size: 16;" text="Titolo" />
+                <TableColumn fx:id="cAutori" maxWidth="1.7976931348623157E308" minWidth="60.0" prefWidth="-1.0" sortable="false" text="Autori" />
+                  <TableColumn fx:id="cAnno" maxWidth="1.7976931348623157E308" minWidth="60.0" prefWidth="-1.0" sortable="false" text="Anno" />
+                  <TableColumn fx:id="cIsbn" maxWidth="1.7976931348623157E308" minWidth="60.0" prefWidth="-1.0" sortable="false" text="ISBN" />
                   <TableColumn fx:id="cCopieTotali" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" sortable="false" text="Copie Totali" />
                   <TableColumn fx:id="cCopieDisponibili" editable="false" maxWidth="1.7976931348623157E308" minWidth="140.0" prefWidth="-1.0" sortable="false" text="Copie Disponibili" />
               </columns>
