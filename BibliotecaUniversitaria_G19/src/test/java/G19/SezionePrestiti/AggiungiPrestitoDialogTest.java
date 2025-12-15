@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.*;
@@ -126,7 +127,7 @@ public class AggiungiPrestitoDialogTest extends ApplicationTest{
             n instanceof ListCell &&
             n.isVisible() &&
             ((ListCell<?>) n).getText() != null &&
-            ((ListCell<?>) n).getText().equals("Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789")
+            ((ListCell<?>) n).getText().equals("0123456789 - Pasca Vinny")
         )
         .query();
         clickOn(cell);
@@ -137,7 +138,7 @@ public class AggiungiPrestitoDialogTest extends ApplicationTest{
     interact(() ->         
         libroBox.getSelectionModel().select(
             libroBox.getItems().stream()
-                .filter(u -> u.toStringPrestito().contains("Titolo: " + "L'arte di correre" + ", Autori: " + "Murakami"))
+                .filter(u -> u.toStringPrestito().contains("9781123456789 - L'arte di correre, Murakami"))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Libro non trovato"))
         )
@@ -155,7 +156,7 @@ public class AggiungiPrestitoDialogTest extends ApplicationTest{
         // Verifica il risultato dell'oggetto Libro creato
         Prestito prestitoCreato = risultatoDialog.get();
         assertNotNull(prestitoCreato, "Il risultato della dialog non dovrebbe essere null");
-        assertEquals("Utente: " + "Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789" + ", Libro: " + "Titolo: " + "L'arte di correre" + ", Autori: " + "Murakami" +", Data di restituzione: " + LocalDate.now().plusMonths(1).withDayOfMonth(1), prestitoCreato.toString());
+        assertEquals("Utente: " + "0123456789 - Pasca Vinny" + "; Libro: " + "9781123456789 - L'arte di correre, Murakami" +"; Data di Restituzione: " + LocalDate.now().plusMonths(1).withDayOfMonth(1), prestitoCreato.toString());
     }
 
     /**
@@ -174,7 +175,7 @@ public void testValidazioneUtente() {
     interact(() ->         
         utenteBox.getSelectionModel().select(
             utenteBox.getItems().stream()
-                .filter(u -> u.toStringPrestito().contains("Cognome: Turi, Nome: Martin, Matricola: 1123456789"))
+                .filter(u -> u.toStringPrestito().contains("1123456789 - Turi Martin"))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Utente non trovato"))
         )
@@ -182,8 +183,45 @@ public void testValidazioneUtente() {
     WaitForAsyncUtils.waitForFxEvents();
     verifyThat("#utenteError", NodeMatchers.isVisible()); 
     clickOn();
+
+clickOn("#libroBox .arrow-button");
+        WaitForAsyncUtils.waitForFxEvents(); //si aspetta che la finestra sia pronta
+        ComboBox<Libro> libroBox = lookup("#libroBox").queryComboBox();
+    interact(() ->         
+        libroBox.getSelectionModel().select(
+            libroBox.getItems().stream()
+                .filter(u -> u.toStringPrestito().contains("9781123456789 - L'arte di correre, Murakami"))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Libro non trovato"))
+        )
+    );
+        clickOn("#dataRestituzionePicker");
+        clickOn("#dataRestituzionePicker .arrow-button");
+        WaitForAsyncUtils.waitForFxEvents();
+
+        clickOn(".next-month"); //ci assicuriamo che selezioni una data futura
+        WaitForAsyncUtils.waitForFxEvents();
+
     sleep(2000);
+
     verifyThat("OK", NodeMatchers.isDisabled());
+
+    //Ora cambio l'utente in modo da inserirne uno valido
+    clickOn("#utenteBox").eraseText(50);
+    clickOn("#utenteBox .arrow-button");
+
+    interact(() ->         
+        utenteBox.getSelectionModel().select(
+            utenteBox.getItems().stream()
+                .filter(u -> u.toStringPrestito().contains("0123456789 - Pasca Vinny"))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Utente non trovato"))
+        )
+    );
+    WaitForAsyncUtils.waitForFxEvents();
+    clickOn();
+    sleep(2000);
+    clickOn("OK");
 }
 
  /**
@@ -193,6 +231,19 @@ public void testValidazioneUtente() {
 @Test
 public void testValidazioneLibro() {
     clickOn("#openBtn");
+
+    clickOn("#utenteBox .arrow-button");
+        WaitForAsyncUtils.waitForFxEvents(); //si aspetta che la finestra sia pronta
+        Node cell = lookup(".list-cell")
+        .match(n ->
+            n instanceof ListCell &&
+            n.isVisible() &&
+            ((ListCell<?>) n).getText() != null &&
+            ((ListCell<?>) n).getText().equals("0123456789 - Pasca Vinny")
+        )
+        .query();
+        clickOn(cell);
+
     clickOn("#libroBox .arrow-button");
 
      /*Unico modo per selezionare un elemento che non è il primo in una ComboBox in TestFX dato
@@ -202,7 +253,7 @@ public void testValidazioneLibro() {
     interact(() ->         
         libroBox.getSelectionModel().select(
             libroBox.getItems().stream()
-                .filter(u -> u.toStringPrestito().contains("Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami"))
+                .filter(u -> u.toStringPrestito().contains("9780123456789 - Norwegian wood, Murakami"))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Libro non trovato"))
         )
@@ -210,8 +261,35 @@ public void testValidazioneLibro() {
     WaitForAsyncUtils.waitForFxEvents();
     verifyThat("#libroError", NodeMatchers.isVisible()); 
     clickOn();
+
+        clickOn("#dataRestituzionePicker");
+        clickOn("#dataRestituzionePicker .arrow-button");
+        WaitForAsyncUtils.waitForFxEvents();
+
+        clickOn(".next-month"); //ci assicuriamo che selezioni una data futura
+        WaitForAsyncUtils.waitForFxEvents();
+
     sleep(2000);
+
     verifyThat("OK", NodeMatchers.isDisabled());
+
+    //Ora cambio il Libro in modo da inserirne uno valido
+    interact(() -> libroBox.getSelectionModel().clearSelection()); //cancello contenuto precedente
+    WaitForAsyncUtils.waitForFxEvents();
+
+    clickOn("#libroBox .arrow-button");
+    interact(() ->         
+        libroBox.getSelectionModel().select(
+            libroBox.getItems().stream()
+                .filter(l -> l.toStringPrestito().contains("9781123456789 - L'arte di correre, Murakami"))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Libro non trovato"))
+        )
+    );
+    WaitForAsyncUtils.waitForFxEvents();
+    clickOn();
+    sleep(2000);
+    clickOn("OK");
 }
 /**
      * Test Validazione Data.
@@ -227,7 +305,7 @@ public void testValidazioneData() {
             n instanceof ListCell &&
             n.isVisible() &&
             ((ListCell<?>) n).getText() != null &&
-            ((ListCell<?>) n).getText().equals("Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789")
+            ((ListCell<?>) n).getText().equals("0123456789 - Pasca Vinny")
         )
         .query();
         clickOn(cell);//Non è possibile selezionare in modo più semplice dalla lista perchè le combo box rimangono in memoria, e clickOn non sa su quale lista cliccare
@@ -242,7 +320,7 @@ public void testValidazioneData() {
     interact(() ->         
         libroBox.getSelectionModel().select(
             libroBox.getItems().stream()
-                .filter(u -> u.toStringPrestito().contains("Titolo: " + "L'arte di correre" + ", Autori: " + "Murakami"))
+                .filter(u -> u.toStringPrestito().contains("9781123456789 - L'arte di correre, Murakami"))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Libro non trovato"))
         )
@@ -286,7 +364,7 @@ public void testValidazioneData() {
     interact(() ->         
         utenteBox.getSelectionModel().select(
             utenteBox.getItems().stream()
-                .filter(u -> u.toStringPrestito().contains("Cognome: Pelle, Nome: Simon, Matricola: 2123456789"))
+                .filter(u -> u.toStringPrestito().contains("2123456789 - Pelle Simon"))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Utente non trovato"))
         )
