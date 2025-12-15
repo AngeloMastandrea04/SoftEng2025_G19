@@ -180,6 +180,6 @@ public class Utente {
      * @return Ulteriore rappresentazione in String dell'oggetto Utente.
      */
     public String toStringPrestito() {
-        return "Cognome: " + getCognome() + ", Nome: " + getNome() + ", Matricola: " + getMatricola();
+        return getCognome() + " " + getNome() + " - " + getMatricola();
     }
 }

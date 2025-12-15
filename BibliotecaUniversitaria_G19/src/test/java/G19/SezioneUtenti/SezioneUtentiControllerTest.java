@@ -22,6 +22,7 @@ import org.testfx.matcher.base.NodeMatchers;
 import org.testfx.matcher.control.TableViewMatchers;
 
 import java.util.concurrent.TimeoutException;
+import static org.junit.jupiter.api.Assertions.*;
 
 import static org.testfx.api.FxAssert.verifyThat;
 import org.testfx.util.WaitForAsyncUtils;
@@ -296,6 +297,38 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
     }
     
     // -------------------------------------------------- TEST MODIFICA ---------------------------------------------------------
+    /** Test IF-1.2: Modifica Campi con Prestiti Attivi(Bloccata).
+     *  Verifica che la modifica sulla cella non sia possibile.
+     */
+    @Test
+    public void testModificaUtenteFallimentoPrestitiAttivi() {
+        interact(() -> {
+            controller.tabUtenti.getSelectionModel().clearSelection();
+            Utente target = controller.listaUtenti.stream()
+                .filter(l -> l.getNome().equals("Laura"))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Utente non trovato"));
+            target.getPrestitiAttivi().add("PrestitoTest");
+            controller.tabUtenti.getSelectionModel().select(target);
+        });
+        
+        clickOn("Laura");
+        
+        // Verifica che le colonne non siano modificabili
+        assertFalse(controller.cCognome.isEditable());
+        assertFalse(controller.cNome.isEditable());
+        assertFalse(controller.cMatricola.isEditable());
+        assertFalse(controller.cEmail.isEditable());
+        
+        clickOn("Martina");
+        
+        // Verifica che le colonne siano nuovamente modificabili
+        assertTrue(controller.cCognome.isEditable());
+        assertTrue(controller.cNome.isEditable());
+        assertTrue(controller.cMatricola.isEditable());
+        assertTrue(controller.cEmail.isEditable());
+    }
+    
     /**
      * Test IF-1.2: Modifica Matricola (Corta, Non valida).
      * Verifica che la modifica sulla cella effetui i controlli.

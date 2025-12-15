@@ -159,6 +159,17 @@ public class SezioneUtentiController {
             column.setPrefWidth(maxW + 20.0d);
         });
         
+        // Blocco modifica per utenti con prestiti attivi
+        tabUtenti.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null){
+                boolean editable = newValue.getPrestitiAttivi().isEmpty();
+                cCognome.setEditable(editable);
+                cNome.setEditable(editable);
+                cMatricola.setEditable(editable);
+                cEmail.setEditable(editable);
+            }
+        });
+        
         // Binding tra l'abilitazione del pulsante cancella e la selezione di un elemento nella tabella
         cancUtenteBtn.disableProperty().bind(tabUtenti.getSelectionModel().selectedItemProperty().isNull());
     }

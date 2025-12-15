@@ -102,7 +102,7 @@ class UtenteTest {
     void testToStringPrestito() {
         Utente utente = new Utente("Angelo", "Mastandrea", "0000000004", "a.mastandrea@uni.it");
         
-        String expected = "Cognome: Mastandrea, Nome: Angelo, Matricola: 0000000004";
+        String expected = "Mastandrea Angelo - 0000000004";
         assertEquals(expected, utente.toStringPrestito());
     }
 }
