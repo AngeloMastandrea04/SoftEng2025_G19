@@ -33,15 +33,15 @@ import javafx.scene.text.Text;
 */
 public class SezionePrestitiController {
 
-    @FXML public TableView<Prestito> tabPrestiti;
+    @FXML TableView<Prestito> tabPrestiti;
 
-    @FXML public TableColumn<Utente, String> cUtente;
+    @FXML TableColumn<Utente, String> cUtente;
 
-    @FXML public TableColumn<Libro, String> cLibro;
+    @FXML TableColumn<Libro, String> cLibro;
 
-    @FXML public TableColumn<Libro, LocalDate> cData;
+    @FXML TableColumn<Libro, LocalDate> cData;
 
-    @FXML public Button cancPrestitoBtn;
+    @FXML Button cancPrestitoBtn;
 
     /**
      * @brief Contiene il riferimento alla lista contenente tutti gli Utenti registrati nella Biblioteca.
@@ -56,7 +56,9 @@ public class SezionePrestitiController {
     /**
      * @brief Contiene il riferimento alla lista contenente tutti i Prestiti registrati nella Biblioteca.
      */
-    public ObservableList<Prestito> listaPrestiti;
+
+    //default per via dei test
+    ObservableList<Prestito> listaPrestiti;
 
     /**
      * @brief Metodo di inizializzazione del Controller.
@@ -112,7 +114,7 @@ public class SezionePrestitiController {
                 if (item == null || empty) {
                 // Se la riga è vuota, rimuovi lo stile (altrimenti eredita lo stile della riga precedente riciclata)
                 setStyle("");
-                // Controllo ritardo
+                // Controllo ritardo, nel caso evidenzia il Prestito
                 } else if (item.getDataRestituzione().isBefore(LocalDate.now())) {
                         setStyle("-fx-background-color: rgb(255,127,127); -fx-font-weight: bold; -fx-font-style: italic;"); // Rosso chiaro
                 } else {

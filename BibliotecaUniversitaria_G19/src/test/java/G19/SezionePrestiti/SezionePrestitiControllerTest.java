@@ -265,12 +265,12 @@ public class SezionePrestitiControllerTest extends ApplicationTest{
         DatePicker picker = lookup("#dataRestituzionePicker").query();
         Platform.runLater(() -> picker.setValue(LocalDate.now().minusMonths(1)));
         WaitForAsyncUtils.waitForFxEvents();
-        clickOn();//clicca fuori per far scomparire la DatePicker
+        clickOn("#dataRestituzionePicker");//clicca fuori per far scomparire la DatePicker
         verifyThat("OK", NodeMatchers.isDisabled());
         sleep(1000);
         clickOn("Annulla");
         
-        sleep(2000);
+        sleep(1000);
         // Verifica che il Prestito NON sia stato aggiunto 
         verifyThat("#tabPrestiti", TableViewMatchers.hasNumRows(righeIniziali));
     }
