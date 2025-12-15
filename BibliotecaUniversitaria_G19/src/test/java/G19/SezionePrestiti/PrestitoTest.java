@@ -85,10 +85,10 @@ public class PrestitoTest {
     public void toStringTest(){
 
         //Stringa che mi aspetto, costruita con una Stringa esplicita
-        String expected1 = "Utente: " + "Cognome: " + "Pasca" + ", Nome: " + "Vinny" + ", Matricola: " + "0123456789" + ", Libro: " + "Titolo: " + "Norwegian wood" + ", Autori: " + "Murakami" +", Data di restituzione: " + LocalDate.of(2004, 8, 27);
+        String expected1 = "Utente: " + "0123456789 - Pasca Vinny"+ "; Libro: " + "9780123456789 - Norwegian wood, Murakami" +"; Data di Restituzione: " + LocalDate.of(2004, 8, 27);
 
         //Stringa che mi aspetto, costruita con getter di altre classi già testati che hanno l'unico scopo di restituire il formato corretto
-        String expected2 = "Utente: " + u.toStringPrestito() + ", Libro: " + l.toStringPrestito() + ", Data di restituzione: " + LocalDate.of(2004, 8, 27);
+        String expected2 = "Utente: " + u.toStringPrestito() + "; Libro: " + l.toStringPrestito() + "; Data di Restituzione: " + LocalDate.of(2004, 8, 27);
 
         assertEquals(expected1, p.toString());
         assertEquals(expected2, p.toString());
@@ -100,8 +100,8 @@ public class PrestitoTest {
         //Controllo solo se il formato della toString() sia corretto, escluse le rappresentazioni scelte dei dati.
         String s= p.toString();
         assertTrue(s.startsWith("Utente: "));
-        assertTrue(s.contains(", Libro: "));
-        assertTrue(s.contains(", Data di restituzione: "));
+        assertTrue(s.contains("; Libro: "));
+        assertTrue(s.contains("; Data di Restituzione: "));
     }
 
     @Test
@@ -130,11 +130,12 @@ public class PrestitoTest {
         System.out.println(p.getDataRestituzione());*/
 
         //Stringa costruita direttamente
-        String expected1= "Libro: "+ "Titolo: Norwegian wood, Autori: Murakami" + ", Data di restituzione: " + "2004-08-27";
+        //String expected1= "Libro: "+ "Titolo: Norwegian wood, Autori: Murakami" + ", Data di restituzione: " + "2004-08-27";
+        String expected1="Libro: " + "9780123456789 - Norwegian wood, Murakami" +"; Data di Restituzione: " + "2004-08-27";
 
         /*Stringa costruita tramite metodi getter Property (già testati) che restituiscono 
         la rappresentazuine corretta del Prestito utilizzata nella sezione utenti*/
-        String expected2= "Libro: "+ p.getLibro() + ", Data di restituzione: " + p.getDataRestituzione() ;
+        String expected2= "Libro: "+ p.getLibro() + "; Data di Restituzione: " + p.getDataRestituzione() ;
 
         assertEquals(expected1, p.toStringUtente());
         assertEquals(expected2, p.toStringUtente());
@@ -146,7 +147,7 @@ public class PrestitoTest {
         //Controllo solo se il formato della toString() sia corretto, escluse le rappresentazioni scelte dei dati.
         String s= p.toStringUtente();
         assertTrue(s.startsWith("Libro: "));
-        assertTrue(s.contains(", Data di restituzione: "));
+        assertTrue(s.contains("; Data di Restituzione: "));
     }
 
     @Test
