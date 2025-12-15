@@ -81,7 +81,7 @@ public class Prestito {
      */
     @Override
     public String toString() {
-        return "Utente: " + getUtente() + ", Libro: " + getLibro() + ", Data di restituzione: " + getDataRestituzione();
+        return "Utente: " + getUtente() + "; Libro: " + getLibro() + "; Data di Restituzione: " + getDataRestituzione();
     }
 
     /**
@@ -89,6 +89,6 @@ public class Prestito {
      * @return Ulteriore rappresentazione in String dell'oggetto Prestito.
      */
     public String toStringUtente() {
-        return "Libro: " + getLibro() + ", Data di restituzione: " + getDataRestituzione();
+        return "Libro: " + getLibro() + "; Data di Restituzione: " + getDataRestituzione();
     }
 }

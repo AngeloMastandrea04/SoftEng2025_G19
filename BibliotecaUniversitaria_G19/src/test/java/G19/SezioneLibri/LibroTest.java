@@ -121,7 +121,7 @@ class LibroTest {
     void testToStringPrestito() {
         Libro libro = new Libro("Design Patterns", "Gamma", 1994, "9791234567899", 5);
         
-        String expected = "ISBN: 9791234567899 - Design Patterns, Gamma";
+        String expected = "9791234567899 - Design Patterns, Gamma";
         assertEquals(expected, libro.toStringPrestito());
     }
 }
