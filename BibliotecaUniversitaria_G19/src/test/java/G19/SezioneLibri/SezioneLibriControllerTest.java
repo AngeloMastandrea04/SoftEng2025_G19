@@ -506,7 +506,7 @@ public class SezioneLibriControllerTest extends ApplicationTest {
     }
     
     /**
-     * Test Scalabilità: Inserimento di 3000 libri.
+     * Test FC-4: Scalabilità Inserimento di 3000 Libri.
      * Verifica che la tabella gestisca correttamente un alto volume di libri.
      */
     @Test

@@ -113,7 +113,7 @@ class LibroTest {
     void testToString() {
         Libro libro = new Libro("Java", "Gosling", 1995, "9791234567890", 10, 5);
         
-        String expected = "Titolo: Java, Autori: Gosling, Anno: 1995, ISBN: ISBN-001, CopieTotali: 10, CopieDisponibili: 5";
+        String expected = "Titolo: Java, Autori: Gosling, Anno: 1995, ISBN: 9791234567890, CopieTotali: 10, CopieDisponibili: 5";
         assertEquals(expected, libro.toString());
     }
     

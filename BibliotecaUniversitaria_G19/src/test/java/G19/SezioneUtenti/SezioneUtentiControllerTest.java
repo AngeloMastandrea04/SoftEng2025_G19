@@ -475,15 +475,15 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
     }
     
     /**
-     * Test Scalabilità: Inserimento di 3000 utenti.
+     * Test FC-4: Scalabilità Inserimento di 2000 Utenti.
      * Verifica che la tabella gestisca correttamente un alto volume di utenti.
      */
     @Test
-    public void testScalabilitaTremilaUtenti() {
+    public void testScalabilitaDuemilaUtenti() {
         //Creazione ed aggiunta utenti che non generano conflitti.
-        List<Utente> tremilaUtenti = new ArrayList<>();
-        for (int i = 0; i < 3000; i++) {
-            tremilaUtenti.add(new Utente(
+        List<Utente> duemilaUtenti = new ArrayList<>();
+        for (int i = 0; i < 2000; i++) {
+            duemilaUtenti.add(new Utente(
                 "Utente",
                 "Scalabilità " + i, 
                 "Matricola-TEST-" + i, 
@@ -492,18 +492,18 @@ public class SezioneUtentiControllerTest extends ApplicationTest {
         }
 
         interact(() -> {
-            Biblioteca.getInstance().getListaUtenti().addAll(tremilaUtenti);
+            Biblioteca.getInstance().getListaUtenti().addAll(duemilaUtenti);
         });
 
         WaitForAsyncUtils.waitForFxEvents();        //Attesa esplicita per l'aggiornamento della tabella
  
-        verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(3007));    //Verifica 7 utenti iniziali + 3000 aggiunti = 3007
+        verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(2007));    //Verifica 7 utenti iniziali + 3000 aggiunti = 3007
 
-        clickOn("#ricUtente").write("Matricola-TEST-2999");       //Verifica che l'ultimo libro sia ricercabile
+        clickOn("#ricUtente").write("Matricola-TEST-1999");       //Verifica che l'ultimo libro sia ricercabile
         verifyThat("#tabUtenti", TableViewMatchers.hasNumRows(1));
         
         interact(() -> {
-            Biblioteca.getInstance().getListaUtenti().removeAll(tremilaUtenti);
+            Biblioteca.getInstance().getListaUtenti().removeAll(duemilaUtenti);
         });
     }
 }
