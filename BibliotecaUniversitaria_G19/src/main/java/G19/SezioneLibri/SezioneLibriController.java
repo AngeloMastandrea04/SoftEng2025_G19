@@ -112,7 +112,7 @@ public class SezioneLibriController {
                 tabLibri.refresh();
             else{
                 e.getRowValue().setTitolo(e.getNewValue());
-                System.out.println("Modifica titolo -> " + libriOrdinati);
+                System.out.println("Modifica titolo -> " + e.getRowValue());
             }
         });
         cAutori.setOnEditCommit(e -> {
@@ -120,7 +120,7 @@ public class SezioneLibriController {
                 tabLibri.refresh();
             else{
                 e.getRowValue().setAutori(e.getNewValue());
-                System.out.println("Modifica autori -> " + libriOrdinati);
+                System.out.println("Modifica autori -> " + e.getRowValue());
             }
         });
         cAnno.setOnEditCommit(e -> {
@@ -130,7 +130,7 @@ public class SezioneLibriController {
             }
             else{
                 e.getRowValue().setAnno(e.getNewValue());
-                System.out.println("Modifica anno -> " + libriOrdinati);
+                System.out.println("Modifica anno -> " + e.getRowValue());
             }
         });
         cIsbn.setOnEditCommit(e -> {
@@ -142,7 +142,7 @@ public class SezioneLibriController {
                 tabLibri.refresh();
             } else{
             e.getRowValue().setIsbn(e.getNewValue());
-            System.out.println("Modifica isbn -> " + libriOrdinati);
+            System.out.println("Modifica isbn -> " + e.getRowValue());
             }
         });
         cCopieTotali.setOnEditCommit(e -> {
@@ -153,9 +153,9 @@ public class SezioneLibriController {
                 new Alert(Alert.AlertType.ERROR, "Le copieTotali inserite (" + e.getNewValue() + ") non sono valide! Devono essere almeno uguali alle copie date in prestito.", ButtonType.CANCEL).showAndWait();
             } else {
                 e.getRowValue().setCopieDisponibili(e.getNewValue() - e.getOldValue() + e.getRowValue().getCopieDisponibili());
-                System.out.println("Modifica copieDisponibili -> " + libriOrdinati);
+                System.out.println("Modifica copieDisponibili -> " + e.getRowValue());
                 e.getRowValue().setCopieTotali(e.getNewValue());
-                System.out.println("Modifica copieTotali -> " + libriOrdinati);
+                System.out.println("Modifica copieTotali -> " + e.getRowValue());
             }
         });
         
@@ -197,8 +197,10 @@ public class SezioneLibriController {
         result.ifPresent(libro -> {
             if(listaLibri.contains(libro))
                 new Alert(Alert.AlertType.ERROR, "È già presente un Libro avente l'ISBN inserito (" + libro.getIsbn() + ")!", ButtonType.CANCEL).showAndWait();
-            else
+            else{
                 listaLibri.add(libro);
+                System.out.println("Aggiunta libro -> " + libro);
+            }
         });
     }
 
@@ -219,8 +221,10 @@ public class SezioneLibriController {
         else {
             Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la cancellazione del Libro selezionato?", ButtonType.OK, ButtonType.CANCEL).showAndWait();
             result.ifPresent(db -> {
-                if(db == ButtonType.OK)
+                if(db == ButtonType.OK){
                     listaLibri.remove(sel);
+                    System.out.println("Cancellazione libro -> " + sel);
+                }
             });
         }
     }

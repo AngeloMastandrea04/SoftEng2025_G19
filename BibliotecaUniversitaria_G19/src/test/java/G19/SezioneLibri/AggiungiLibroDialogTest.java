@@ -52,7 +52,7 @@ public class AggiungiLibroDialogTest extends ApplicationTest {
     @AfterEach
     public void tearDown() throws Exception {
         FxToolkit.hideStage();                          //Chiude lo Stage
-        release(new KeyCode[]{});                       //Rialscia eventuali tsati premuti
+        release(new KeyCode[]{});                       //Rialascia eventuali tasti premuti
     }
 
     //-----------------------------------------------------------TEST INSERIMENTO----------------------------------------------------------------------

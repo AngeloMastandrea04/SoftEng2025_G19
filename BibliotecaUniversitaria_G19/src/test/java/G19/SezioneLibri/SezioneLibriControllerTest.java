@@ -20,6 +20,8 @@ import org.testfx.matcher.base.NodeMatchers;
 import org.testfx.matcher.control.TableViewMatchers;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeoutException;
 import javafx.scene.control.Label;
 
@@ -319,6 +321,64 @@ public class SezioneLibriControllerTest extends ApplicationTest {
     }
     
     /**
+     * Test IF-2.2: Modifica Anno (Successo).
+     * Verifica che la modifica sulla cella effetui i controlli.
+     */
+    @Test
+    public void testModificaAnnoValido() {
+        int anno = LocalDate.now().getYear();
+        clickOn("2011");
+        clickOn("2011"); // Doppio click sull'anno 
+        write(String.valueOf(anno));
+        push(KeyCode.ENTER);
+        
+        // Verifica che il valore sia cambiato
+        verifyThat("#tabLibri", TableViewMatchers.containsRow("The Clean Coder", "Robert C. Martin", anno, "9780137081073", 5, 5));
+    }
+    
+    /**
+     * Test IF-2.2: Modifica ISBN (Duplicato).
+     * Verifica che la modifica sulla cella effetui i controlli.
+     */
+    @Test
+    public void testModificaIsbnDuplicato() {
+        clickOn("9780134685991");
+        clickOn("9780134685991");   // Doppio click sul ISBN 
+        
+        String nuovoIsbn = "9780201616224";
+        write(nuovoIsbn);
+        push(KeyCode.ENTER);
+        
+        // Verifica Alert di Errore (Generato dal Controller)
+        verifyThat(".dialog-pane", NodeMatchers.isVisible());
+        clickOn("Annulla");
+        
+        // Verifica che il valore NON sia cambiato
+        verifyThat("#tabLibri", TableViewMatchers.containsRow("Effective Java", "Joshua Bloch", 2017, "9780134685991", 3, 3));
+    }
+    
+    /**
+     * Test IF-2.2: Modifica ISBN (Non Valido).
+     * Verifica che la modifica sulla cella effetui i controlli.
+     */
+    @Test
+    public void testModificaIsbnNonValido() {
+        clickOn("9780134685991");
+        clickOn("9780134685991");   // Doppio click sul ISBN 
+        
+        String nuovoIsbn = "9991234567890";
+        write(nuovoIsbn);
+        push(KeyCode.ENTER);
+        
+        // Verifica Alert di Errore (Generato dal Controller)
+        verifyThat(".dialog-pane", NodeMatchers.isVisible());
+        clickOn("Annulla");
+        
+        // Verifica che il valore NON sia cambiato
+        verifyThat("#tabLibri", TableViewMatchers.containsRow("Effective Java", "Joshua Bloch", 2017, "9780134685991", 3, 3));
+    }
+    
+    /**
      * Test IF-2.2: Modifica ISBN (Successo).
      * Verifica che la modifica sulla cella effetui i controlli.
      */
@@ -334,7 +394,11 @@ public class SezioneLibriControllerTest extends ApplicationTest {
         // Verifica che il valore NON sia cambiato
         verifyThat("#tabLibri", TableViewMatchers.containsRow("Effective Java", "Joshua Bloch", 2017, nuovoIsbn, 3, 3));
     }
-
+    
+    /**
+     * Test IF-2.2: Modifica Titolo (Vuoto, Non Valido).
+     * Verifica che la modifica sulla cella effetui i controlli.
+     */
     @Test
     public void testModificaTitoloNonValidoVuoto() {
         clickOn("Clean Code");
@@ -348,7 +412,28 @@ public class SezioneLibriControllerTest extends ApplicationTest {
         // Verifica che il controller non mostra un Alert ma ripristina il valore.
         verifyThat("#tabLibri", TableViewMatchers.containsRow("Clean Code", "Robert C. Martin", 2008, "9780132350884", 5, 5));
     }
+    
+    /**
+     * Test IF-2.2: Modifica Autori (Spazio, Non Valido).
+     * Verifica che la modifica sulla cella effetui i controlli.
+     */
+    @Test
+    public void testModificaAutoriNonValidoSpazio() {
+        clickOn("Robert C. Martin");
+        clickOn("Robert C. Martin");  // Doppio click sul Titolo 
+        
+        // Seleziona tutto, poi cancella.
+        write(" ");
+        push(KeyCode.ENTER);
 
+        // Verifica che il controller non mostra un Alert ma ripristina il valore.
+        verifyThat("#tabLibri", TableViewMatchers.containsRow("Clean Code", "Robert C. Martin", 2008, "9780132350884", 5, 5));
+    }
+     
+    /**
+     * Test IF-2.2: Modifica CopieTotali (Inferiori alle CopieDisponibili,Non Valido).
+     * Verifica che la modifica sulla cella effetui i controlli.
+     */
     @Test
     public void testModificaCopieTotaliInferioriAlPrestito() {
         // Scenario: Un libro ha 2 copie totali e 1 in prestito. 
@@ -380,5 +465,34 @@ public class SezioneLibriControllerTest extends ApplicationTest {
             label.getText().contains("Le copieTotali inserite (0) non sono valide! Ci deve essere almeno una copia del Libro."));
         
         clickOn("Annulla");
+    }
+    /**
+     * Test Scalabilità: Inserimento di 2000 libri.
+     * Verifica che la tabella gestisca correttamente un alto volume di libri.
+     */
+    @Test
+    public void testScalabilitaMilleLibri() {
+        //Creazione ed aggiunta libri che non generano conflitti.
+        List<Libro> milleLibri = new ArrayList<>();
+        for (int i = 0; i < 2000; i++) {
+            milleLibri.add(new Libro(
+                "Libro Scalabilità " + i, 
+                "Autore Test", 
+                2024, 
+                "ISBN-TEST-" + i, 
+                5
+            ));
+        }
+
+        interact(() -> {
+            Biblioteca.getInstance().getListaLibri().addAll(milleLibri);
+        });
+
+        WaitForAsyncUtils.waitForFxEvents();        //Attesa esplicita per l'aggiornamento della tabella
+ 
+        verifyThat("#tabLibri", TableViewMatchers.hasNumRows(2008));    //Verifica 8 libri iniziali + 2000 aggiunti = 2008
+
+        clickOn("#ricLibro").write("ISBN-TEST-1999");       //Verifica che l'ultimo libro sia ricercabile
+        verifyThat("#tabLibri", TableViewMatchers.hasNumRows(1));
     }
 }
